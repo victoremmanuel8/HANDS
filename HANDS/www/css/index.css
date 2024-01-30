@@ -104,3 +104,12 @@ nav ul {
     list-style: none;
     font-size: .9em;
 }
+
+.titulo-1 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.hr {
+    margin-right: 20%;
+}
