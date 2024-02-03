@@ -107,36 +107,3 @@ nav ul {
     font-size: 1.4em;
     margin-bottom: 10px;
 }
-
-
-.transition {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #fff; /* Cor de fundo */
-    animation-duration: 0.5s; /* Duração da animação */
-    animation-timing-function: ease-in-out; /* Função de tempo da animação */
-    animation-fill-mode: forwards; /* Manter o estado final da animação */
-}
-
-@keyframes cover {
-    from {
-        transform: scaleX(0); /* Começa sem largura */
-        transform-origin: left; /* Origem da transformação à esquerda */
-    }
-    to {
-        transform: scaleX(1); /* Termina com largura total */
-        transform-origin: left; /* Origem da transformação à esquerda */
-    }
-}
-
-.cover-left {
-    animation-name: cover; /* Usar animação 'cover' */
-}
-
-.cover-right {
-    animation-name: cover; /* Usar animação 'cover' */
-    animation-direction: reverse; /* Inverter a direção da animação */
-}

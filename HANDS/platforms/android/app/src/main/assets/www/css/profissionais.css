@@ -1,0 +1,96 @@
+
+.banner {
+    width: 100%;
+    height: 70px;
+    background:linear-gradient(90deg, #FF66B2B2, #FC9404B2, #FFB905B2, #00F4C8B2, #1090F6B2);
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#container-slider {
+    display: flex;
+    justify-content: center;
+    margin-top: 3vh;
+    width: 100%;
+    height: 130px;
+}
+
+.carousel {
+    width: 100%;
+}
+
+.wrapper{
+  display: flex;
+  position: absolute;
+  margin-left: 2vh;
+  margin-right: 2vh;
+  z-index: 3;
+  overflow: hidden;
+  width: 100%;
+}
+
+.wrapper .carousel{
+  font-size: 0px;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+}
+.carousel.dragging{
+  cursor: grab;
+  scroll-behavior: auto;
+}
+
+@media screen and (max-width: 900px) {
+  .carousel .item{
+    width: calc(100% / 1.5);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .carousel .item{
+    width: 100% calc(100% / 1.5);
+  }
+}
+
+.carousel.dragging img{
+    pointer-events: none;
+}
+
+.carousel {
+    overflow-x: scroll;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch; 
+    scroll-behavior: smooth;
+}
+
+.carousel .item {
+    display: inline-block;
+    height: 190px;
+    margin: 1vh;
+    object-fit: contain;
+    user-select: none;
+    width: calc(100% / 1.3);
+    border: solid 1px #000;
+    width: 400px;
+    border-radius: 25px;
+}
+
+.wrapper .carousel .item p {
+    font-size: 40px;
+    color: #000;
+}
+
+.carousel img{
+    height: 160px;
+    object-fit: contain;
+}
+
+.cont {
+    display: flex;
+    flex-direction: row;
+}
