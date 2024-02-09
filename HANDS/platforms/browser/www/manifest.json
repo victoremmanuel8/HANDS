@@ -1,0 +1,17 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "HANDS",
+  "short_name": "HANDS",
+  "version": "io.cordova.hellocordova",
+  "description": "Sample Apache Cordova App",
+  "author": "Team HANDS",
+  "icons": [
+    {
+      "src": "www/res/logo.png",
+      "type": "image/png",
+      "sizes": "undefinedxundefined"
+    }
+  ],
+  "start_url": "index.html"
+}

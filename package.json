@@ -1,0 +1,23 @@
+{
+  "name": "hands",
+  "version": "1.0.0",
+  "description": "plataforma de ensino de libras online, utilizando cordova",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "express-hbs": "^2.5.0",
+    "hbs": "^4.2.0",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
