@@ -20,13 +20,21 @@ const publicDirectory = path.join(__dirname, './www'); //vi
 app.use(express.static(publicDirectory));
 app.set('view engine', 'hbs'),
 //Caso detecte algum erro
-db.connect( (error) => {
-  if(error) {
-    console.log(error)
-  }else{
-    console.log("Banco de Dados Conectado...")
-  }
-})
+db.connect((error) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Banco de Dados Conectado...");
+      db.query("SELECT * from usuario", (error, results) => {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log(results);
+        }
+      });
+    }
+  });
+  
 
 app.get("/", (req, res) => {
   //res.send("<h1>Pagina-Inicial</h1>")
