@@ -16,7 +16,7 @@ const db = mysql.createConnection({
 });
 
 //criada para acessar a pasta public e acessar seu diretório 
-const publicDirectory = path.join(__dirname, './www'); //vi
+const publicDirectory = path.join(__dirname, './public'); //views // ./public
 app.use(express.static(publicDirectory));
 app.set('view engine', 'hbs'),
 //Caso detecte algum erro
@@ -25,7 +25,7 @@ db.connect((error) => {
       console.log(error);
     } else {
       console.log("Banco de Dados Conectado...");
-      db.query("SELECT * from usuario", (error, results) => {
+      db.query("SELECT * from users", (error, results) => {
         if (error) {
           console.log(error);
         } else {
@@ -38,9 +38,23 @@ db.connect((error) => {
 
 app.get("/", (req, res) => {
   //res.send("<h1>Pagina-Inicial</h1>")
-  res.render("index") //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+  res.render("index"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 });
 
+app.get("/aulas", (req, res) => {
+  //res.send("<h1>Pagina-Inicial</h1>")
+  res.render("aulas"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+});
+
+app.get("/kids", (req, res) => {
+  //res.send("<h1>Pagina-Inicial</h1>")
+  res.render("kids"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+});
+
+app.get("/profissionais", (req, res) => {
+  //res.send("<h1>Pagina-Inicial</h1>")
+  res.render("profissionais"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+});
 app.listen(5002, () => {
-  console.log("Server startado na porta 5001");
+  console.log("Server startado na porta 5002");
 })
