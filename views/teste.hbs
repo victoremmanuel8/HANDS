@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/teste.css">
+  <title>Área de teste</title>
+</head>
+<body>
+    <div class="container">
+      <div class="centro">
+      <div class="form-group">
+          Formulário de Registro
+        </div>
+        <div class="card-body">
+          <form action="/auth/teste" method="POST">
+          Nome:  <input name="nome" class="form-control" type="text" required><br/>
+          Email: <input name="email" class="form-control" type="email" required><br/>
+          <label for="senha">Senha: </label>
+          <input name="senha" class="form-control" type="password" required><br/>
+          <label for="ConfirmarSenha">Confirmar Senha: </label>
+          <input name="ConfirmarSenha" class="form-control" type="password" required><br/>
+            <input type="submit" class="btn btn-primary"/>
+          </form>
+        </div>
+      </div>
+      {{#if message }}
+      <h4 style="color: red;">{{message}}</h4>
+      {{/if}}
+    </div>
+</body>
+</html>
