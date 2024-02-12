@@ -34,9 +34,9 @@ exports.register = (req,res) => {
 
    db.query('INSERT INTO users SET ?', {nm_nome: nome, email: email, senha: hashedPassword}, (eror, results)=>{
       if(error){
-        cosnole.log(error);
+        console.log(error);
       }else {
-        console.log(results);87
+        console.log(results);
         return res.render('teste', {
           message: "Usuario registrado"
         });
