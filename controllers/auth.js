@@ -32,7 +32,7 @@ exports.register = (req,res) => {
     let hashedPassword = await bcrypt.hash(senha, 8);
     console.log(hashedPassword);
 
-   db.query('INSERT INTO users SET ?', {nm_nome: nome, email: email, senha: hashedPassword}, (eror, results)=>{
+   db.query('INSERT INTO users SET ?', {nm_usuario: nome, email: email, senha: hashedPassword}, (error, results)=>{
       if(error){
         console.log(error);
       }else {
