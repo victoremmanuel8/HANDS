@@ -14,13 +14,17 @@
         </div>
         <div class="card-body">
           <form action="/auth/teste" method="POST">
-          Nome:  <input name="nome" class="form-control" type="text" required><br/>
-          Email: <input name="email" class="form-control" type="email" required><br/>
-          <label for="senha">Senha: </label>
-          <input name="senha" class="form-control" type="password" required><br/>
-          <label for="ConfirmarSenha">Confirmar Senha: </label>
-          <input name="ConfirmarSenha" class="form-control" type="password" required><br/>
-            <input type="submit" class="btn btn-primary"/>
+           Nome: <input name="nome" class="form-control" type="text" required><br/>
+           Email: <input name="email" class="form-control" type="email" required><br/>
+          Senha: <input name="senha" class="form-control" type="password" required><br/>
+          Confirmar Senha: <input name="ConfirmarSenha" class="form-control" type="password" required><br/>
+          Tipo de usuário:
+          <select name="tp_usuario" class="form-control" required>
+        <option value="aluno">Aluno</option>
+        <option value="professor">Professor</option>
+    </select><br/>
+    Data de Registro: <input name="dt_registro" class="form-control" type="date" required><br/>
+    <input type="submit" class="btn btn-primary"/>
           </form>
         </div>
       </div>

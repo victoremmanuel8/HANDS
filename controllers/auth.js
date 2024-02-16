@@ -1,5 +1,5 @@
 //conexão com o banco de dados
-const mysql = require("mysql");
+const mysql = require("mysql2");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
@@ -13,10 +13,10 @@ const db = mysql.createConnection({
 exports.register = (req,res) => {
   console.log(req.body);
 
-  const { nome, email, senha, ConfirmarSenha } = req.body;
+  const { nome, email, senha, ConfirmarSenha, tp_usuario, dt_registro} = req.body;
 
 
-  db.query('SELECT  email FROM users WHERE email = ?', [email], async (error, results) => {
+  db.query('SELECT  email FROM tb_usuario WHERE email = ?', [email], async (error, results) => {
     if(error) {
       console.log(error);
     }
@@ -32,11 +32,11 @@ exports.register = (req,res) => {
     let hashedPassword = await bcrypt.hash(senha, 8);
     console.log(hashedPassword);
 
-   db.query('INSERT INTO users SET ?', {nm_nome: nome, email: email, senha: hashedPassword}, (eror, results)=>{
+   db.query('INSERT INTO tb_usuario SET ?', {nm_nome: nome, email: email, senha: hashedPassword, tp_usuario:tp_usuario, dt_registro:dt_registro}, (error, results)=>{
       if(error){
-        cosnole.log(error);
+        console.log(error);
       }else {
-        console.log(results);87
+        console.log(results);
         return res.render('teste', {
           message: "Usuario registrado"
         });

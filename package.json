@@ -18,7 +18,7 @@
     "express-hbs": "^2.5.0",
     "hbs": "^4.2.0",
     "jsonwebtoken": "^9.0.2",
-    "mysql": "^2.18.1"
+    "mysql2": "^3.9.1"
   },
   "devDependencies": {
     "nodemon": "^3.0.3"

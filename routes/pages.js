@@ -28,4 +28,9 @@ router.get("/profissionais", (req, res) => {
   res.render("profissionais"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 });
 
+//area de teste para usuarios
+router.get("/teste", (req, res) => {
+  res.render("teste"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+});
+
 module.exports = router;

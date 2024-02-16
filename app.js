@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require('path');
 //Garantir que o servidor starte 
-const mysql = require("mysql");
+const mysql = require("mysql2");
 const dotenv = require('dotenv');
 
 dotenv.config({path: './.env'});
@@ -31,7 +31,7 @@ db.connect((error) => {
       console.log(error);
     } else {
       console.log("Banco de Dados Conectado...");
-      db.query("SELECT * from users", (error, results) => {
+      db.query("SELECT * from tb_usuario", (error, results) => {
         if (error) {
           console.log(error);
         } else {
