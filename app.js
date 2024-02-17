@@ -2,6 +2,7 @@ const express = require("express");
 const path = require('path');
 //Garantir que o servidor starte 
 const mysql = require("mysql2");
+const mysql = require("mysql2");
 const dotenv = require('dotenv');
 
 dotenv.config({path: './.env'});
@@ -43,6 +44,7 @@ db.connect((error) => {
     } else {
       console.log("Banco de Dados Conectado...");
       db.query("SELECT * from tb_usuario", (error, results) => {
+      db.query("SELECT * from tb_usuario", (error, results) => {
         if (error) {
           console.log(error);
         } else {
@@ -57,6 +59,6 @@ db.connect((error) => {
   app.use('/', require('./routes/pages'));
   app.use('/auth', require('./routes/auth'));
 
-app.listen(5002, () => {
+app.listen(5032, () => {
   console.log("Server startado na porta 5002");
 })

@@ -3,6 +3,8 @@ const mysql = require("mysql2");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
+
+
 exports.register = (req,res) => {
   console.log(req.body);
 
@@ -25,7 +27,7 @@ exports.register = (req,res) => {
     let hashedPassword = await bcrypt.hash(senha, 8);
     console.log(hashedPassword);
 
-   db.query('INSERT INTO tb_usuario SET ?', {nm_nome: nome, email: email, senha: hashedPassword, tp_usuario:tp_usuario, dt_registro:dt_registro}, (error, results)=>{
+   db.query('INSERT INTO tb_usuario SET ?', {nm_usuario: nome, email: email, senha: hashedPassword}, (error, results)=>{
       if(error){
         console.log(error);
       }else {
