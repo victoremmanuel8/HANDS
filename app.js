@@ -8,12 +8,23 @@ dotenv.config({path: './.env'});
 
 const app = express();
 
+//.env
 const db = mysql.createConnection({
   host: process.env.HOST,
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE
 });
+
+//banco conectado com os pc's da escola
+
+/*const db = mysql.createConnection({
+  host: "localhot",
+  user: "root",
+  password: "root",
+  database: "hands_db",
+  port: "3307"
+}); */
 
 //criada para acessar a pasta public e acessar seu diretório 
 const publicDirectory = path.join(__dirname, './public'); //views // ./public
