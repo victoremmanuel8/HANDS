@@ -3,6 +3,7 @@ const path = require('path');
 //Garantir que o servidor starte 
 const mysql = require("mysql2");
 const dotenv = require('dotenv');
+const hbs = require("express-hbs/lib/hbs");
 
 dotenv.config({path: './.env'});
 
@@ -27,9 +28,18 @@ const db = mysql.createConnection({
   port: "3307"
 }); 
 
-//criada para acessar a pasta public e acessar seu diretório 
+//script
+const scripthbsDirectory = path.join(__dirname, './script-hbs'); 
+app.use(express.static(scripthbsDirectory)); 
+ 
+//criada para acessar a pasta public e acessar seu diretório CSS
 const publicDirectory = path.join(__dirname, './public'); //views // ./public
 app.use(express.static(publicDirectory));
+
+
+//imagens 
+const imgDirectory = path.join(__dirname, './res');
+app.use(express.static(imgDirectory));
 
 //analisar urls codificados enviados através do forms HTML
 app.use(express.urlencoded({ extended: false }));
