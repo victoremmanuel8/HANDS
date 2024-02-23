@@ -2,8 +2,6 @@ body {
     background: linear-gradient(-90deg, #FDB30F, #FC9012, #FF6BA1);
     display: flex;
     align-items: flex-end;
-    overflow: hidden;
-    padding: 0px;
     margin: 0px;
     font-family: Arial, Helvetica, sans-serif; /*fonte temporaria*/
 }

@@ -1,0 +1,52 @@
+.banner {
+    width: 100%;
+    height: 163px;
+    background-color: #f6f4e7;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2vh;
+}
+
+.banner svg {
+    opacity: 65%;
+}
+
+.banner .svg-1 {
+    opacity: 1;
+    position: absolute;
+}
+
+.numeros svg {
+    background-color: #d9d9d940;
+    padding-left: 15px;
+}
+
+.numeros {
+    width: 78px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 10px;
+}
+
+.numeros-1 {
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 10px;
+}
+
+.numeros-1 svg {
+    background-color: #d9d9d940;
+    padding-left: 15px;
+}
+
+.conteudo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+}
