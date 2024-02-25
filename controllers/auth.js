@@ -11,9 +11,9 @@ exports.register = (req,res) => {
   const db = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "27010206",
+    password: "root",
     database: "hands_db",
-    port: "3306"
+    port: "3307"
   }); 
   
 
@@ -32,7 +32,7 @@ exports.register = (req,res) => {
     }
     let hashedPassword = await bcrypt.hash(senha, 8);
     console.log(hashedPassword);
-    
+
 
    db.query('INSERT INTO tb_usuario SET ?', {nm_nome: nome, nm_sobrenome: sobrenome, email: email, senha: hashedPassword, dt_nascimento: dt_nascimento, tp_usuario: tp_usuario}, (error, results)=>{
       if(error){

@@ -24,9 +24,9 @@ const app = express();
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "27010206",
+  password: "root",
   database: "hands_db",
-  port: "3306"
+  port: "3307"
 }); 
 
 //script
