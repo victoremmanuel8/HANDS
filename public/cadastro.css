@@ -49,6 +49,20 @@ input {
     color: #000;
 }
 
+select {
+    background: #7c7c7c12;
+    padding: 9px;
+    padding-left: 25px;
+    height: 30px;
+    border-radius: 10vh;
+    border: none;
+    margin: 10px;
+    margin-left: 0px;
+    width: calc(90%);
+    color: #000;
+}
+
+
 textarea:focus, input:focus, select:focus {
     outline: 0;
 }

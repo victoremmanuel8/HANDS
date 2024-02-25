@@ -2,12 +2,27 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
         <meta name="color-scheme" content="light dark">
         <link rel="stylesheet" href="/cadastro.css">
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+           <script>
+        function onSubmit(token) {
+            // Verifique se todos os campos do formulário estão preenchidos
+            var form = document.getElementById("MyForm");
+            for (var i = 0; i < form.elements.length; i++) {
+            if (form.elements[i].value === '' && form.elements[i].hasAttribute('required')) {
+                alert('Há campos que ainda precisam ser preenchidos');
+                return false;
+            }
+            }
+
+    // Se todos os campos estiverem preenchidos, habilite o botão de envio
+             document.getElementById("submit").disabled = false;
+  }
+</script>
         <title>HANDS</title>
     </head>
     <body>
@@ -16,17 +31,20 @@
             <h4 class="titulo-2">Crie sua conta</h4>
             <div class="progresso"></div>
             <div class="campos">
-                <form action="/auth/cadastro" method="POST">
-                <input type="text" name="nome" id="" placeholder="Nome">
-                <input type="text" name="sobrenome" id="" placeholder="Sobrenome">
-                <input type="date" name="dt_nascimento" id="" placeholder="Data de nascimento">
-                <input type="email" name="email" id="" placeholder="E-mail">
-                <select name="tp_usuario" class="form-control" placeholder="Tipo de Usuario">
+                <form id="MyForm" action="/auth/cadastro" method="POST" required>
+                <input type="text" name="nome" id="" placeholder="Nome" required>
+                <input type="text" name="sobrenome" id="" placeholder="Sobrenome" required>
+                <ibnput type="date" name="dt_nascimento" id="" placeholder="Data de nascimento" required>
+                <input type="email" name="email" id="" placeholder="E-mail" required>
+                <select name="tp_usuario" class="form-control" placeholder="Tipo de Usuario" required>
                 <option value="aluno">Aluno</option>
                 <option value="professor">Professor</option>
-                <input type="password" name="senha" id="" placeholder="Senha">
-                <input type="password" name="ConfirmarSenha" id="" placeholder="Confirmação de senha">
-                <input type="submit" class="btn btn-primary"/>
+                <input type="password" name="senha" id="" placeholder="Senha" required>
+                <input type="password" name="ConfirmarSenha" id="" placeholder="Confirmação de senha" required>
+                <br>
+                <div class="g-recaptcha" data-sitekey="6LcW8X4pAAAAAKHfmywUcAyarIYi5RwVY7DVPP20" data-callback="onSubmit" required>
+                </div>
+                <input type="submit" id= "submit" class="btn btn-primary"/>
             </div>
             </form>
             <footer>

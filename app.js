@@ -1,9 +1,10 @@
 const express = require("express");
 const path = require('path');
 //Garantir que o servidor starte 
-const mysql = require("mysql2");
+const mysql = require('mysql2');
 const dotenv = require('dotenv');
-const hbs = require("express-hbs/lib/hbs");
+const hbs = require('express-hbs/lib/hbs');
+const axios = require('axios');
 
 dotenv.config({path: './.env'});
 
@@ -23,9 +24,9 @@ const app = express();
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "root",
+  password: "27010206",
   database: "hands_db",
-  port: "3307"
+  port: "3306"
 }); 
 
 //script
@@ -41,6 +42,28 @@ app.use(express.static(publicDirectory));
 const imgDirectory = path.join(__dirname, './res');
 app.use(express.static(imgDirectory));
 
+//Verificação do captcha
+app.post('/submit', async (req, res) => {
+  const captchaResponse = req.body['g-recaptcha-response'];
+  const secretKey = "6LcW8X4pAAAAADqckeuBr1Xq32efz7aoBE2IWZnl";
+
+  const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${captchaResponse}`;
+
+  try {
+    const response = await axios.post(verificationUrl);
+
+    if (response.data.success) {
+      // Se a verificação for bem-sucedida, armazene as informações no banco de dados.
+      comments.push(req.body.comments);
+      res.json({ success: true });
+    } else {
+      // Se a verificação falhar, envie uma resposta de erro.
+      res.json({ success: false, message: "Captcha verification failed." });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+});
 //analisar urls codificados enviados através do forms HTML
 app.use(express.urlencoded({ extended: false }));
 //garantindo que os valores do formulario venha em json
