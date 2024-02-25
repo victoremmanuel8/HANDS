@@ -9,20 +9,21 @@
         <link rel="stylesheet" href="/cadastro.css">
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
            <script>
-        function onSubmit(token) {
+            //script para o captcha funcionar 
+            function onSubmit(token) {
             // Verifique se todos os campos do formulário estão preenchidos
-            var form = document.getElementById("MyForm");
+            var form = document.getElementById("Form");
             for (var i = 0; i < form.elements.length; i++) {
-            if (form.elements[i].value === '' && form.elements[i].hasAttribute('required')) {
-                alert('Há campos que ainda precisam ser preenchidos');
-                return false;
+                if (form.elements[i].value === '' && form.elements[i].hasAttribute('required')) {
+                    alert('Há campos que ainda precisam ser preenchidos');
+                    return false;
+                }
             }
-            }
-
-    // Se todos os campos estiverem preenchidos, habilite o botão de envio
-             document.getElementById("submit").disabled = false;
-  }
-</script>
+            // Habilitar o botão de envio após a verificação do reCAPTCHA
+            document.getElementById("submit").disabled = false;
+            return true; // Permite o envio do formulário
+        }
+</script>   
         <title>HANDS</title>
     </head>
     <body>
@@ -31,7 +32,7 @@
             <h4 class="titulo-2">Crie sua conta</h4>
             <div class="progresso"></div>
             <div class="campos">
-                <form id="MyForm" action="/auth/cadastro" method="POST" required>
+                <form id="Form" action="/auth/cadastro" method="POST" required>
                 <input type="text" name="nome" id="" placeholder="Nome" required>
                 <input type="text" name="sobrenome" id="" placeholder="Sobrenome" required>
                 <ibnput type="date" name="dt_nascimento" id="" placeholder="Data de nascimento" required>
@@ -42,11 +43,15 @@
                 <input type="password" name="senha" id="" placeholder="Senha" required>
                 <input type="password" name="ConfirmarSenha" id="" placeholder="Confirmação de senha" required>
                 <br>
-                <div class="g-recaptcha" data-sitekey="6LcW8X4pAAAAAKHfmywUcAyarIYi5RwVY7DVPP20" data-callback="onSubmit" required>
+                <div class="g-recaptcha" data-sitekey="6LcW8X4pAAAAAKHfmywUcAyarIYi5RwVY7DVPP20" data-callback="onSubmit">
                 </div>
-                <input type="submit" id= "submit" class="btn btn-primary"/>
+                <br>
+                <input type="submit" id= "submit" class="btn btn-primary" disabled/>
             </div>
             </form>
+            {{#if message }}
+      <h4 style="color: #000000;">{{message}}</h4>
+      {{/if}}
             <footer>
                 <p class="titulo-3">Já possuí uma conta? <a href="/aulas.hbs">Log in</a></p>
                 <div class="ou">
