@@ -62,6 +62,16 @@ select {
     color: #000;
 }
 
+.termos_uso {
+    width: 20px;
+    color: #000;
+    justify-content: center;
+}
+
+.termos_uso a {
+    justify-content: center;
+    align-items: center;
+}
 
 textarea:focus, input:focus, select:focus {
     outline: 0;
