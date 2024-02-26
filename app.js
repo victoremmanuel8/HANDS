@@ -45,9 +45,9 @@ app.use(express.static(imgDirectory));
 //Verificação do captcha
 app.post('/submit', async (req, res) => {
   const captchaResponse = req.body['g-recaptcha-response'];
-  const secretKey = "6LcW8X4pAAAAADqckeuBr1Xq32efz7aoBE2IWZnl";
+  //const SECRET_KEY = '6LcW8X4pAAAAADqckeuBr1Xq32efz7aoBE2IWZnl';
 
-  const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${captchaResponse}`;
+  const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${SECRET_KEY}&response=${captchaResponse}`;
 
   try {
     const response = await axios.post(verificationUrl);
