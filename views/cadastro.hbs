@@ -35,7 +35,7 @@
                 <form id="Form" action="/auth/cadastro" method="POST" required>
                 <input type="text" name="nome" id="" placeholder="Nome" required>
                 <input type="text" name="sobrenome" id="" placeholder="Sobrenome" required>
-                <ibnput type="date" name="dt_nascimento" id="" placeholder="Data de nascimento" required>
+                <input type="date" name="dt_nascimento" id="" placeholder="Data de nascimento" required>
                 <input type="email" name="email" id="" placeholder="E-mail" required>
                 <select name="tp_usuario" class="form-control" placeholder="Tipo de Usuario" required>
                 <option value="aluno">Aluno</option>
@@ -45,8 +45,10 @@
                 <br>
                 <div class="g-recaptcha" data-sitekey="6LcW8X4pAAAAAKHfmywUcAyarIYi5RwVY7DVPP20" data-callback="onSubmit">
                 </div>
-                <input class="termos_uso" type="checkbox" id="termos_uso" name="termos_uso" required>
-                <label class="termos_uso" for="termos_uso">Concordo com os <a href="/termos-de-uso.html" target="_blank">Termos de Uso</a></label>
+                <div class="termos_uso">
+                <input type="checkbox" id="termos_uso" name="termos_uso" required>
+                <p for="termos_uso">Concordo com os <a href="/termos-de-uso.hbs" target="_blank">Termos de Uso</a></p>
+                </div>
                 <br>
                 <input type="submit" id= "submit" class="btn btn-primary" disabled/>
             </div>

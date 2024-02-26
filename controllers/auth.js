@@ -33,6 +33,9 @@ exports.register = (req,res) => {
     let hashedPassword = await bcrypt.hash(senha, 8);
     console.log(hashedPassword);
 
+    //descriptografia
+    const match = await bcrypt.compare(senha, user[0].ConfirmarSenha)
+
 
    db.query('INSERT INTO tb_usuario SET ?', {nm_nome: nome, nm_sobrenome: sobrenome, email: email, senha: hashedPassword, dt_nascimento: dt_nascimento, tp_usuario: tp_usuario}, (error, results)=>{
       if(error){
