@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 exports.register = (req,res) => {
   console.log(req.body);
 
-  const { nome, sobrenome, email, senha, ConfirmarSenha, dt_nascimento, tp_usuario} = req.body;
+  const { nome, sobrenome, email, rg, senha, ConfirmarSenha, dt_nascimento, tp_usuario} = req.body;
 
   const db = mysql.createConnection({
     host: "localhost",
@@ -35,7 +35,7 @@ exports.register = (req,res) => {
 
     bcrypt.compare(senha, hashedPassword)
 
-   db.query('INSERT INTO tb_usuario SET ?', {nm_nome: nome, nm_sobrenome: sobrenome, email: email, senha: hashedPassword, dt_nascimento: dt_nascimento, tp_usuario: tp_usuario}, (error, results)=>{
+   db.query('INSERT INTO tb_usuario SET ?', {nm_nome: nome, nm_sobrenome: sobrenome, email: email, cd_rg: rg, senha: hashedPassword, dt_nascimento: dt_nascimento, tp_usuario: tp_usuario}, (error, results)=>{
       if(error){
         console.log(error);
       }else {
