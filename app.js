@@ -4,6 +4,12 @@ const path = require('path');
 const mysql = require('mysql2');
 const dotenv = require('dotenv');
 const hbs = require('express-hbs/lib/hbs');
+
+
+//definindo o swiper
+const Swiper = require('swiper/js/swiper.js').default;
+
+
 const axios = require('axios');
 
 dotenv.config({path: './.env'});
@@ -91,6 +97,6 @@ db.connect((error) => {
   app.use('/', require('./routes/pages'));
   app.use('/auth', require('./routes/auth'));
 
-app.listen(5002, () => {
-  console.log("Server startado na porta 5002");
+app.listen(5000, () => {
+  console.log("Server startado na porta 5000");
 })

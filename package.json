@@ -20,7 +20,8 @@
     "hbs": "^4.2.0",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.9.1",
-    "required": "^1.0.0"
+    "required": "^1.0.0",
+    "swiper": "^5.4.5"
   },
   "devDependencies": {
     "nodemon": "^3.0.3"
