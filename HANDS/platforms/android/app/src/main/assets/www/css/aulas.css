@@ -8,6 +8,7 @@
     padding-top: 100px;
     position: relative;
     z-index: 1;
+    margin-top: 2vh;
 }
 
 .video-aulas {
@@ -97,3 +98,9 @@ nav {
     position: relative;
     z-index: 5;
 }
+
+.pesq {
+    position: relative;
+    z-index: 6;
+}
+

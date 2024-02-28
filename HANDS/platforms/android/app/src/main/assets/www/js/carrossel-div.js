@@ -5,7 +5,7 @@ carousel.addEventListener("touchstart", (e) => {
 
     carousel.addEventListener("touchend", (e) => {
         const touchEndX = e.changedTouches[0].clientX;
-        const threshold = 0; 
+        const threshold = 40; 
         const distance = touchEndX - touchStartX;
 
         if (Math.abs(distance) >= threshold) {

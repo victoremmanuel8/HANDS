@@ -42,7 +42,39 @@
   justify-content: center;
 }
 
+.banner-2 {
+  width: 100%;
+  height: 203px;
+  border-radius: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 2vh;
+  box-shadow: 0 0 30px 0px #0000007c;
+  position: relative;
+}
 
+.banner-2 .btn-ass {
+  width: 120px;
+  height: 30px;
+  border-radius: 10vh;
+  background:linear-gradient(90deg, #FEBB13, #FD9605);
+  color: #fff;
+  position: absolute;
+  bottom: 30px;
+  left: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.banner-2 img {
+  height: 180px;
+  position: absolute;
+  right: 10px;
+  bottom: 0px;
+}
 
 #container-slider {
   display: flex;

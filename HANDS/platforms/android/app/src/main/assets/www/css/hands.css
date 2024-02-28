@@ -8,6 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 2vh;
 }
 
 .banner-1 {
@@ -19,68 +20,61 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 2vh;
 }
 
 .banner-1 image {
     opacity: 81%;
 }
-/* 
-#container-slider {
-    display: flex;
-    justify-content: center;
-    margin-top: 3vh;
-    width: 100%;
-    height: 130px;
-}
 
-.carousel {
-    width: 100%;
-}
-
-.wrapper{
-  display: flex;
+.banner-1 .btn-com {
+  width: 100px;
+  height: 30px;
+  border-radius: 10vh;
+  background-color: #fff;
+  padding: 3px, 5px;
+  color: #000;
   position: absolute;
-  margin-left: 2vh;
-  margin-right: 2vh;
-  z-index: 3;
+  margin-bottom: 110px;
+  margin-left: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.wrapper .carousel{
-  font-size: 0px;
-  cursor: pointer;
+.banner-2 {
+  width: 100%;
+  height: 203px;
+  border-radius: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
-  white-space: nowrap;
-  scroll-behavior: smooth;
-}
-.carousel.dragging{
-  cursor: grab;
-  scroll-behavior: auto;
-}
-.carousel.dragging img{
-  pointer-events: none;
-}
-.carousel img{
-  height: 110px;
-  margin: 1vh;
-  object-fit: contain;
-  user-select: none;
-  width: calc(100% / 6.3);
-}
-.carousel img:first-child{
-  margin-left: 0px;
+  margin-top: 2vh;
+  box-shadow: 0 0 30px 0px #0000007c;
+  position: relative;
 }
 
-@media screen and (max-width: 900px) {
-  .carousel img{
-    width: calc(100% / 4);
-  }
+.banner-2 .btn-ass {
+  width: 120px;
+  height: 30px;
+  border-radius: 10vh;
+  background:linear-gradient(90deg, #FEBB13, #FD9605);
+  color: #fff;
+  position: absolute;
+  bottom: 30px;
+  left: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
-@media screen and (max-width: 550px) {
-  .carousel img{
-    width: 100% calc(100% / 4);
-  }
-} */
+.banner-2 img {
+  height: 180px;
+  position: absolute;
+  right: 10px;
+  bottom: 0px;
+}
 
 #container-slider {
   display: flex;
@@ -180,19 +174,3 @@ scroll-behavior: auto;
   background-color: #F6F4E7;
   border-radius: 100%;
 }
-
-.banner-1 .btn-com {
-    width: 100px;
-    height: 30px;
-    border-radius: 10vh;
-    background-color: #fff;
-    padding: 3px, 5px;
-    color: #000;
-    position: absolute;
-    margin-bottom: 110px;
-    margin-left: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-

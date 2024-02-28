@@ -1,6 +1,6 @@
 * {
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 
 * {
@@ -24,7 +24,7 @@ a {
 
 header {
     width: 100%;
-    height: 10vh;
+    height: 7vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -98,12 +98,11 @@ nav ul {
     color: #000;
 }
 
-.hr {
-    margin-right: 20%;
-    margin-top: 8px;
-}
-
 .titulo-1 {
     font-size: 1.4em;
     margin-bottom: 10px;
+}
+
+nav hr {
+    margin-bottom: 2vh;
 }

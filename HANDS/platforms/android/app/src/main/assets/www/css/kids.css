@@ -8,8 +8,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 2vh;
+    position: relative;
+    z-index: 2;
 }
-
 
 #container-slider {
     display: flex;
@@ -68,4 +70,9 @@
   .carousel img{
     width: 100% calc(100% / 1.5);
   }
+}
+
+nav ul {
+  position: relative;
+  z-index: 4;
 }
