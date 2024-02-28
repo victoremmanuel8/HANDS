@@ -8,6 +8,14 @@
         <meta name="color-scheme" content="light dark">
         <link rel="stylesheet" href="/cadastro.css">
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/vanilla-masker@1.2.0"></script>
+        <script>
+            //script para masked
+            window.onload = function() {
+                var cpfField = document.getElementById('cpf');
+                VMasker(cpfField).maskPattern("999.999.999-99");
+            }
+        </script>
            <script>
             //script para o captcha funcionar 
             function onSubmit(token) {
@@ -23,7 +31,7 @@
             document.getElementById("submit").disabled = false;
             return true; // Permite o envio do formulário
         }
-</script>   
+</script>
         <title>HANDS</title>
     </head>
     <body>
@@ -35,9 +43,9 @@
                 <form id="Form" action="/auth/cadastro" method="POST" required>
                 <input type="text" name="nome" id="" placeholder="Nome" required>
                 <input type="text" name="sobrenome" id="" placeholder="Sobrenome" required>
-                <input type="date" name="dt_nascimento" id="" placeholder="Data de nascimento" required>
+                <input type="date" name="dt_nascimento" id="dt_nascimento" placeholder="Data de nascimento" required>
                 <input type="email" name="email" id="" placeholder="E-mail" required>
-                 <input type="text" name="rg" id="" placeholder="RG" required>
+                <input type="text" name="cpf" id="cpf" placeholder="CPF" required>
                 <select name="tp_usuario" class="form-control" placeholder="Tipo de Usuario" required>
                 <option value="aluno">Aluno</option>
                 <option value="professor">Professor</option>
@@ -70,5 +78,6 @@
         <script src="cordova.js"></script>
         <script src="js/index.js"></script>
         <script src="js/carrossel.js"></script>
-    </body>
+        <script type="text/javascript">
+        </body>
 </html>
