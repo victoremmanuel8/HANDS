@@ -1,6 +1,6 @@
 * {
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 
 * {
@@ -106,3 +106,105 @@ nav ul {
 nav hr {
     margin-bottom: 2vh;
 }
+
+.container-menu a {
+    margin-right: 2vh;
+  }
+  
+  .hamburger {
+    z-index: 5;
+    cursor: pointer;
+  }
+  
+  .hamburger {
+    font-size: 3em;
+    color: #e1e1e1;
+  }
+  
+  .overlay {
+    position: fixed;  
+    top: 0;
+    left: -40px;
+    width: 180%;
+    height: 260%;
+    background-color: #0000008c;
+    z-index: 9;
+    opacity: 0;
+    visibility: hidden;
+    transition:all .8s ;
+    animation-delay: .5s;
+  }
+  
+  .show-menu .overlay {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s;
+    pointer-events: auto;
+    padding-left: 27rem;
+    font-size: .7em;
+    transition: .8s ease-in-out;
+    transition-duration: .9s;
+  }
+  
+  .sidebar {
+    width: calc(100% / 1.4);
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: 10px 5px 15px 10px #0000003d;
+    position: fixed;
+    top: 0;
+    left: -86rem;
+    transition: all .8s;
+    z-index: 10;
+    padding: 19px;
+    border-radius:0 45px ;
+  }
+  
+  .sidebar, .titulo-1 {
+    color: #000;
+  }
+  
+  .sidebar hr {
+    width: 80%;
+    color: #000;
+  }
+  
+  .show-menu .sidebar {
+    left: 0;
+    transition-duration: .8s;
+  }
+  
+  .menu {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 90px;
+    flex-direction: column;
+  }
+  
+  .menu-item {
+    margin-bottom: .5rem;
+    list-style-type: none;
+  }
+  
+  .menu-link {
+    font-family: 'Trebuchet MS';
+    font-size:  28px;
+    color: #000;
+    position: relative;
+    text-decoration: none;
+    line-height: 60px;
+    transition: color .5s;
+  }
+  
+  .btn-ass {
+    width: 230px;
+    height: 40px;
+    font-size: 1.2em;
+    border-radius:10vh 0 10vh 10vh;
+    background:linear-gradient(90deg, #FEBB13, #FD9605);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  
