@@ -131,7 +131,7 @@ nav hr {
     z-index: 9;
     opacity: 0;
     visibility: hidden;
-    transition:all .8s ;
+    transition:all .2s ;
     animation-delay: .5s;
   }
   
@@ -153,7 +153,7 @@ nav hr {
     box-shadow: 10px 5px 15px 10px #0000003d;
     position: fixed;
     top: 0;
-    left: -86rem;
+    left: -90rem;
     transition: all .8s;
     z-index: 10;
     padding: 19px;

@@ -1,7 +1,7 @@
 
 .banner {
   width: 100%;
-  height: 163px;
+  height: 20vh;
   background-color: #f6f4e7;
   border-radius: 15px;
   overflow: hidden;
@@ -13,7 +13,7 @@
 
 .banner-1 {
   width: 100%;
-  height: 203px;
+  height: 20vh;
   background-color: #f6f4e7;
   border-radius: 26px;
   overflow: hidden;
@@ -21,22 +21,28 @@
   justify-content: center;
   align-items: center;
   margin-top: 2vh;
+  position: relative;
 }
 
 .banner-1 image {
   opacity: 81%;
 }
 
+.banner-2 img {
+  opacity: 91%;
+}
+
 .banner-1 .btn-com {
-  width: 100px;
-  height: 30px;
+  width: 9vh;
+  height: 3vh;
+  font-size: 1.5vh;
   border-radius: 10vh;
   background-color: #fff;
   padding: 3px, 5px;
   color: #000;
   position: absolute;
-  margin-bottom: 110px;
-  margin-left: 250px;
+  top: 2vh;
+  right: 5.5vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,7 +50,7 @@
 
 .banner-2 {
   width: 100%;
-  height: 203px;
+  height: 25vh;
   border-radius: 26px;
   display: flex;
   justify-content: center;
@@ -53,24 +59,26 @@
   margin-top: 2vh;
   box-shadow: 0 0 30px 0px #0000007c;
   position: relative;
+  margin-bottom: 20px;
 }
 
 .banner-2 .btn-ass {
-  width: 120px;
-  height: 30px;
+  width: 14vh;
+  height: 3vh;
   border-radius: 10vh;
+  font-size: 1.5vh;
   background:linear-gradient(90deg, #FEBB13, #FD9605);
   color: #fff;
   position: absolute;
   bottom: 30px;
-  left: 40px;
+  left: 7.5vw;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .banner-2 img {
-  height: 180px;
+  height: 21vh;
   position: absolute;
   right: 10px;
   bottom: 0px;
@@ -81,7 +89,7 @@
   justify-content: center;
   margin-top: 3vh;
   width: 100%;
-  height: 180px;
+  height: 15vh;
 }
 
 .carousel {
@@ -152,8 +160,8 @@
 }
 
 .carousel img{
-  height: 66px;
-  width: 66px;
+  height: 9vh;
+  width: 9vh;
   background-color: #F6F4E7;
   overflow: hidden;
 }
@@ -169,8 +177,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 96px;
-  height: 96px;
+  width: 7.5vh;
+  height: 7.5vh;
   background-color: #F6F4E7;
   border-radius: 100%;
 }
