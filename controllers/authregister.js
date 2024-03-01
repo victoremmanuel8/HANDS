@@ -16,7 +16,7 @@ exports.register = (req,res) => {
     port: "3307"
   }); 
 
-
+    //validação do email
     db.query('SELECT email FROM tb_usuario WHERE email = ?', [email], async (error, results) => {
     if(error) {
       console.log(error);
@@ -30,6 +30,7 @@ exports.register = (req,res) => {
         message: "As senhas não correspondem"
       });
     }
+    //criptografia da senha
     let hashedPassword = await bcrypt.hash(senha, 8);
     console.log(hashedPassword);
 

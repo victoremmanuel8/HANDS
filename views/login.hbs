@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta name="color-scheme" content="light dark">
+        <link rel="stylesheet" href="/cadastro.css">
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/vanilla-masker@1.2.0"></script>
+        <script>
+            //script para masked
+            window.onload = function() {
+                var cpfField = document.getElementById('cpf');
+                VMasker(cpfField).maskPattern("999.999.999-99");
+            }
+        </script>
+        <title>HANDS</title>
+    </head>
+    <body>
+        <div class="area-cadastro">
+            <h3 class="titulo-1">Seja bem-vindo</h3>
+            <h4 class="titulo-2">Crie sua conta</h4>
+            <div class="progresso"></div>
+            <div class="campos">
+                <form id="Form" action="/auth/login" method="POST" required>
+                <input type="email" name="email" id="" placeholder="E-mail" required>   
+                <input type="password" name="senha" id="" placeholder="Senha" required>
+                <input type="submit" id= "submit" class="btn btn-primary"/>
+            </div>
+            </form>
+        </body>
+    </html>
