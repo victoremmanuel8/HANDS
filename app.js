@@ -91,7 +91,7 @@ db.connect((error) => {
       });
     }
   });
-  
+
   //Definir as rotas (Routes)
 
   app.use('/', require('./routes/pages'));

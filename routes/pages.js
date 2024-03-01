@@ -5,14 +5,13 @@ const router = express.Router();
 
 // a pagina inicial que irá aparecer ao entrar no server
 router.get("/", (req, res) => {
-  res.render("index"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+  
+  res.render("login"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 });
 
-router.get("/index", (req, res) => {
-  //res.send("<h1>Pagina-Inicial</h1>")
-  res.render("index"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+router.get('/index', (req, res) => {
+  res.render('index');
 });
-
 router.get("/aulas", (req, res) => {
   //res.send("<h1>Pagina-Inicial</h1>")
   res.render("aulas"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
@@ -37,11 +36,6 @@ router.get("/cadastro", (req, res) => {
  res.render("cadastro"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
  
  });
-  
- router.get("/cadastro", (req, res) => {
-  res.render("cadastro"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
-  
-  });
 
 router.get("/login", (req, res) => {
     res.render("login"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
