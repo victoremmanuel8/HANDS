@@ -1,0 +1,89 @@
+body {
+    background: linear-gradient(-90deg, #FDB30F, #FC9012, #FF6BA1);
+    display: flex;
+    align-items: flex-end;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif; /*fonte temporaria*/
+}
+
+.area-cadastro {
+    background-color: #fff;
+    width: 100%;
+    padding: 6vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 22vh;
+}
+
+.titulo-1 {
+    color: #000;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.titulo-2 {
+    color: #A5A5A5;
+}
+
+.titulo-3 {
+    color: #000;
+}
+
+.campos {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    background: #7c7c7c12;
+    padding: 9px;
+    padding-left: 25px;
+    height: 30px;
+    border-radius: 10vh;
+    border: none;
+    margin: 10px;
+    margin-left: 0px;
+    width: calc(90%);
+    color: #000;
+}
+
+textarea:focus, input:focus, select:focus {
+    outline: 0;
+}
+
+::-webkit-input-placeholder {
+    color: #000;
+ }
+ 
+ :-moz-placeholder { /* Firefox 18- */
+    color: #000;  
+ }
+ 
+ ::-moz-placeholder {  /* Firefox 19+ */
+    color: #000;  
+ }
+ 
+ :-ms-input-placeholder {  
+    color: #000;  
+ }
+
+ .ou {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+ }
+
+ .linha {
+    width: 130px;
+    height: 1px;
+    background-color: #000;
+ }
+
+ footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+ }

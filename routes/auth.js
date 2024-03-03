@@ -7,7 +7,7 @@ const router = express.Router();
             'auth/cadastro'
 router.post("/cadastro", authControllerregister.register) //teste
 
-            'authlogin/login'
+          'authlogin/login'
 router.post("/login", authControllerlogin.login)
 
 module.exports = router;

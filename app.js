@@ -1,19 +1,14 @@
 const express = require("express");
 const path = require('path');
+const session = require('express-session');
 //Garantir que o servidor starte 
 const mysql = require('mysql2');
 const dotenv = require('dotenv');
 const hbs = require('express-hbs/lib/hbs');
-
-
 //definindo o swiper
 const Swiper = require('swiper/js/swiper.js').default;
-
-
 const axios = require('axios');
-
 dotenv.config({path: './.env'});
-
 const app = express();
 
 //.env
@@ -30,9 +25,9 @@ const app = express();
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "root",
+  password: "27010206",
   database: "hands_db",
-  port: "3307"
+  port: "3306"
 }); 
 
 //script
@@ -92,11 +87,25 @@ db.connect((error) => {
     }
   });
 
+  
+//sessions
+/*
+app.use(session({
+  secret: '5480909043209',
+  resave: false,
+  saveUninitialized: false,
+}));
+*/
+
+  //exportar modulos 
+  module.exports = db;
+
   //Definir as rotas (Routes)
 
   app.use('/', require('./routes/pages'));
   app.use('/auth', require('./routes/auth'));
 
-app.listen(5000, () => {
+  app.listen(5000, () => {
   console.log("Server startado na porta 5000");
 })
+

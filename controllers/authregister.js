@@ -1,5 +1,6 @@
 //conexão com o banco de dados
 const mysql = require("mysql2");
+const db = require('../app.js');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
@@ -7,14 +8,6 @@ exports.register = (req,res) => {
   console.log(req.body);
 
   const { nome, sobrenome, email, cpf, senha, ConfirmarSenha, dt_nascimento, tp_usuario} = req.body;
-
-  const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "root",
-    database: "hands_db",
-    port: "3307"
-  }); 
 
     //validação do email
     db.query('SELECT email FROM tb_usuario WHERE email = ?', [email], async (error, results) => {

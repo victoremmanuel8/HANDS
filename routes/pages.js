@@ -37,10 +37,5 @@ router.get("/cadastro", (req, res) => {
  
  });
 
-router.get("/login", (req, res) => {
-    res.render("login"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
-    
-  });
-
 
 module.exports = router;

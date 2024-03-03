@@ -1,5 +1,6 @@
 //conexão com o banco de dados
 const mysql = require("mysql2");
+const db = require('../app.js');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
@@ -8,28 +9,26 @@ exports.login = (req,res) => {
 
   const { email, senha} = req.body;
 
-  const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "root",
-    database: "hands_db",
-    port: "3307"
-  }); 
-
-   db.query('SELECT * FROM tb_usuario WHERE email = ? AND senha = ?', [email, senha], (error, results)=>{
+  db.query('SELECT * FROM tb_usuario WHERE email = ?', [email], async (error, results)=>{
     if(error) {
       console.log(error);
-    }else {
+    } else {
       console.log(results);
       if(results.length > 0) {
-        // Se o usuário existir, redirecione para a página desejada
-        return res.redirect('/index');
+        const compare = await bcrypt.compare(senha, results[0].senha);
+        //comparar a senha criptografada com a forncecida pelo usuario
+        if(compare) {
+          return res.redirect('/index');
+        } else {
+          return res.render('login', {
+            message: "Senha incorreta"
+          });
+        }
       } else {
-        // Se o usuário não existir, renderize a página de login com uma mensagem
         return res.render('login', {
           message: "Usuario não encontrado"
         });
       }
     }
-})
+  })
 }
