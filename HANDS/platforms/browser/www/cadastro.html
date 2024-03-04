@@ -7,6 +7,7 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
         <meta name="color-scheme" content="light dark">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <link rel="stylesheet" href="css/cadastro.css">
         <title>HANDS</title>
     </head>
@@ -16,14 +17,17 @@
             <h4 class="titulo-2">Crie sua conta</h4>
             <div class="progresso"></div>
             <div class="campos">
-                <input type="text" name="" id="" placeholder="Nome">
-                <input type="text" name="" id="" placeholder="Sobrenome">
-                <input type="text" name="" id="" placeholder="Data de nascimento">
-                <input type="email" name="" id="" placeholder="E-mail">
-                <input type="password" name="" id="" placeholder="Senha">
-                <input type="password" name="" id="" placeholder="Confirmação de senha">
-                <input type="submit" class="btn btn-primary"/>
-            </div>
+                <form action="http://192.168.15.6/HANDS/HANDS/HANDS/server/cadastro.php" method="get">
+                    <input type="text" name="nome" id="nome" placeholder="Nome">
+                    <input type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome">
+                    <input type="date" name="dt_nascimento" id="dt_nascimento" placeholder="Data de nascimento">
+                    <input type="email" name="email" id="email" placeholder="E-mail">
+                    <input type="text" name="cpf" id="cpf" placeholder="CPF">
+                    <input type="password" name="senha" id="senha" placeholder="Senha">
+                    <input type="password" name="ConfirmarSenha" id="ConfirmarSenha" placeholder="Confirmação de senha">
+                    <button id="submit" type="submit">Enviar</button>
+                </div>
+            </form>
             <footer>
                 <p class="titulo-3">Já possuí uma conta? <a href="aulas.html">Log in</a></p>
                 <div class="ou">
@@ -37,5 +41,7 @@
         <script src="cordova.js"></script>
         <script src="js/index.js"></script>
         <script src="js/carrossel.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/cadastro.js"></script>
     </body>
 </html>
