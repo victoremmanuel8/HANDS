@@ -34,7 +34,7 @@ exports.register = (req,res) => {
         console.log(error);
       }else {
         console.log(results);
-        return res.render('cadastro', {
+        return res.render('index', {
           message: "Usuario registrado"
         });
       }
