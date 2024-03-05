@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
         if ($conn->query($sql) === TRUE) {
             echo "Novo registro criado com sucesso";
-            header('Location: /HANDS/HANDS/www/index.html');
+            header('Location: HANDS/HANDS/HANDS/www/index.html');
         } else {
             echo "Erro ao inserir registro: " . $conn->error;
         }
