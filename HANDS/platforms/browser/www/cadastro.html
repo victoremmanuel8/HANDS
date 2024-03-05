@@ -11,12 +11,20 @@
         <title>HANDS</title>
     </head>
     <body>
+        <style> @font-face{
+            font-family: kumbh-regular;
+            src: url(../../fontes/Kumbh_Sans/static/KumbhSans-Regular.ttf);
+            } </style>
+        <style> @font-face{
+            font-family: inika-bold;
+            src: url(../../fontes/Inika/Inika-Bold.ttf);
+            } </style>
         <div class="area-cadastro">
             <h3 class="titulo-1">Seja bem-vindo</h3>
             <h4 class="titulo-2">Crie sua conta</h4>
             <div class="progresso"></div>
             <div class="campos">
-                <form action="http://192.168.63.64/HANDS/HANDS/HANDS/server/cadastro.php" method="get">
+                <form action="http://10.67.112.55/HANDS/HANDS/HANDS/server/cadastro.php" method="get">
                     <input type="text" name="nome" id="nome" placeholder="Nome">
                     <input type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome">
                     <input type="date" name="dt_nascimento" id="dt_nascimento" placeholder="Data de nascimento">

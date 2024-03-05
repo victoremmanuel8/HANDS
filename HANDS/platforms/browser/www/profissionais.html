@@ -9,9 +9,18 @@
         <meta name="color-scheme" content="light dark">
         <link rel="stylesheet" href="css/profissionais.css">
         <link rel="stylesheet" href="css/base.css">
+        <link rel="stylesheet" href="../server/cadastro.php">
         <title>HANDS</title>
     </head>
     <body>
+        <style> @font-face{
+            font-family: kumbh-regular;
+            src: url(../../fontes/Kumbh_Sans/static/KumbhSans-Regular.ttf);
+            } </style>
+        <style> @font-face{
+            font-family: inika-bold;
+            src: url(../../fontes/Inika/Inika-Bold.ttf);
+            } </style>
         <header>
             <div class="container-menu"> <!-- container do menu lateral -->
                 <div class="hamburger">
@@ -41,7 +50,10 @@
                        </nav>
                    </aside>
                  </div>
-            <p>Boa tarde, Liz!</p> <!-- se for usar o PHP da pra colocar a função de colocar o nome do usuario online-->
+            <p>Bem Vindo, </p> <!-- se for usar o PHP da pra colocar a função de colocar o nome do usuario online-->
+            <php>
+                echo "<p> $nome!</p>";
+            </php>
             <div class="premium-usuario">
                 <div class="premium">
                     <svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -73,7 +85,7 @@
         <nav>
             <ul>
                 <a href="index.html">
-                    <li>HANDS</li>
+                    <li>Home</li>
                 </a>
                 <a href="kids.html">
                     <li>KIDS</li>
