@@ -9,9 +9,18 @@
         <meta name="color-scheme" content="light dark">
         <link rel="stylesheet" href="css/hands.css"> <!-- css voltado para a página da home -->
         <link rel="stylesheet" href="css/base.css"> <!-- css base que vai em todas as páginas -->
+        <link rel="stylesheet" href="../server/cadastro.php">
         <title>HANDS</title>
     </head>
     <body>
+        <style> @font-face{
+            font-family: kumbh-regular;
+            src: url(../../fontes/Kumbh_Sans/static/KumbhSans-Regular.ttf);
+            } </style>
+        <style> @font-face{
+            font-family: inika-bold;
+            src: url(../../fontes/Inika/Inika-Bold.ttf);
+            } </style>
         <header>
             <div class="container-menu"> <!-- container do menu lateral -->
                 <div class="hamburger">
@@ -41,7 +50,10 @@
                        </nav>
                    </aside>
                  </div>
-            <p>Boa tarde, Liz!</p> <!-- se for usar o PHP da pra colocar a função de colocar o nome do usuario online-->
+            <p>Bem Vindo </p> <!-- se for usar o PHP da pra colocar a função de colocar o nome do usuario online-->
+            <!-- <php>
+                echo "<p> $nome!</p>";
+            </php> -->
             <div class="premium-usuario">
                 <div class="premium">
                     <svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -72,7 +84,7 @@
         <br>
         <nav>
             <ul>
-                <li class="atual">HANDS</li>
+                <li class="atual">Home</li>
                 <a href="kids.html" class="page" id="page1">
                     <li>KIDS</li>
                 </a>
@@ -106,7 +118,7 @@
             </svg>
         </div>
         <br>
-        <h2 class="titulo-1">Categorias</h2>
+        <h2 class="titulo-1">Categorias:</h2>
         <hr class="hr">
         <div id="container-slider"> <!-- carrossel de categorias -->
             <div class="wrapper">
@@ -247,7 +259,7 @@
             </div>
         </div>
         <br>
-        <h2 class="titulo-1">Assine o Premium</h2>
+        <h2 class="titulo-1">Assine o Premium:</h2>
         <hr class="hr">
         <div class="banner-2"> <!-- banner premium -->
             <a href="#" class="btn-ass"><svg width="4vh" height="1vh" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -278,9 +290,8 @@
             </svg>
             <img src="res/lis-premium.png" alt="imagem da mascote do projeto 'lis'">
         </div>
-        <br><br>
         <br>
-        <h2 class="titulo-1">Aula Teste</h2>
+        <h2 class="titulo-1">Aula Teste:</h2>
         <hr class="hr">
         <div class="banner-1"> <!-- banner aula teste -->
             <a href="#" class="btn-com">Começar</a>
