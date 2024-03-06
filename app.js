@@ -77,7 +77,7 @@ db.connect((error) => {
       console.log(error);
     } else {
       console.log("Banco de Dados Conectado...");
-      db.query("SELECT * from tb_usuario", (error, results) => {
+      db.query("SELECT * from tb_profissional", (error, results) => {
         if (error) {
           console.log(error);
         } else {

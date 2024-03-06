@@ -8,6 +8,13 @@
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
         <meta name="color-scheme" content="light dark">
         <link rel="stylesheet" href="css/cadastro.css">
+        <script>
+            //script para masked
+            window.onload = function() {
+                var cpfField = document.getElementById('cpf');
+                VMasker(cpfField).maskPattern("999.999.999-99");
+            }
+        </script>
         <title>HANDS</title>
     </head>
     <body>
@@ -35,7 +42,7 @@
             <h4 class="titulo-2">Crie uma conta</h4>
             <div class="progresso"></div>
             <div class="campos">
-                <form action="https://#IpDaMaquina/HANDS/HANDS/HANDS/server/cadastro.php" method="get">
+                <form action="https:// 10.67.112.55/HANDS/HANDS/HANDS/server/cadastro.php" method="get">
                     <input type="text" name="nome" id="nome" placeholder="Nome">
                     <input type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome">
                     <input class="date" type="date" name="dt_nascimento" id="dt_nascimento" placeholder="Data de nascimento">

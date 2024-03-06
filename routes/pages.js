@@ -9,6 +9,11 @@ router.get("/", (req, res) => {
   res.render("login"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 });
 
+router.get("/login_prof", (req, res) => {
+  res.render("login_prof"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+  
+  });
+
 router.get('/index', (req, res) => {
   res.render('index');
 });
@@ -36,6 +41,11 @@ router.get("/cadastro", (req, res) => {
  res.render("cadastro"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
  
  });
+
+ router.get("/cadastro_prof", (req, res) => {
+  res.render("cadastro_prof"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+  
+  });
 
 
 module.exports = router;

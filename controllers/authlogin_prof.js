@@ -7,11 +7,9 @@ const bcrypt = require('bcryptjs');
 exports.login = (req,res) => {
   console.log(req.body);
 
-  const { email, senha} = req.body;
+  const { email, cpf, senha} = req.body;
 
-//'SELECT * FROM tb_usuario JOIN tb_profissional ON tb_usuario.id_usuario = tb_profissional.id_usuario WHERE tb_usuario.email = ?',
-
-  db.query('SELECT * FROM tb_usuario WHERE email = ?', [email], async (error, results)=>{
+    db.query('SELECT * FROM tb_profissional WHERE email = ?', [email], async (error, results)=>{
     if(error) {
       console.log(error);
     } else {
@@ -33,4 +31,5 @@ exports.login = (req,res) => {
       }
     }
   })
-}
+  }
+  

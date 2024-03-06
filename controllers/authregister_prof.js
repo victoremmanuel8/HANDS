@@ -4,22 +4,22 @@ const db = require('../app.js');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-exports.register = (req,res) => {
+exports.register= (req,res) => {
   console.log(req.body);
 
-  const { nome, sobrenome, email, senha, ConfirmarSenha, dt_nascimento} = req.body;
+  const { nome, sobrenome, email, cpf, senha, ConfirmarSenha, dt_nascimento} = req.body;
 
     //validação do email
-    db.query('SELECT email FROM tb_usuario WHERE email = ?', [email], async (error, results) => {
+    db.query('SELECT email FROM tb_profissional WHERE email = ?', [email], async (error, results) => {
     if(error) {
       console.log(error);
     }
     if (results.length > 0) {
-      return res.render('cadastro', { //pagina do formulario 
+      return res.render('cadastro_prof', { //pagina do formulario 
         message: "Este email já está em uso"
       }) 
     }else if( senha !== ConfirmarSenha) {
-      return res.render('cadastro', {
+      return res.render('cadastro_prof', {
         message: "As senhas não correspondem"
       });
     }
@@ -29,12 +29,12 @@ exports.register = (req,res) => {
 
     bcrypt.compare(senha, hashedPassword)
 
-   db.query('INSERT INTO tb_usuario SET ?', {nm_nome: nome, nm_sobrenome: sobrenome, email: email, senha: hashedPassword, dt_nascimento: dt_nascimento}, (error, results)=>{
+   db.query('INSERT INTO tb_profissional SET ?', {nm_prof: nome, nm_sobrenome: sobrenome, email: email, cd_cpf: cpf, senha: hashedPassword, dt_nascimento: dt_nascimento}, (error, results)=>{
       if(error){
         console.log(error);
       }else {
         console.log(results);
-        return res.redirect ('/index')
+        return res.redirect('/index');
       }
    })
   });
