@@ -9,7 +9,7 @@ exports.login = (req,res) => {
 
   const { email, cpf, senha} = req.body;
 
-    db.query('SELECT * FROM tb_profissional WHERE email = ?', [email], async (error, results)=>{
+    db.query('SELECT * FROM tb_profissional WHERE email = ? AND cd_cpf = ?', [email, cpf], async (error, results)=>{
     if(error) {
       console.log(error);
     } else {
