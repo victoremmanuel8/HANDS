@@ -20,7 +20,6 @@
     position: relative;
     z-index: 3;
     padding-bottom: 30px;
-    margin-top: 90px;
     transition: .5s ease-in-out;
 }
 
@@ -104,3 +103,102 @@ nav {
     z-index: 6;
 }
 
+/* //////////////////////////////////// */
+
+.progresso {
+    display: flex;
+    flex-direction: row;
+    padding-top: 4vh;
+    padding-right: 2vh;
+    height: 250px;
+    justify-content: space-around;
+    align-content: space-between;
+    /* justify-content: space-between; */
+}
+
+.prog-seg {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: auto;
+    justify-content: space-between;
+}
+
+.num-prog {
+    background-color: #ff66b375;
+    border-radius: 20px;
+    width: 50%;
+    height: 100%;
+    position: relative;
+    font-size: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: inika-bold;
+}
+
+.num-prog canvas {
+    position: absolute;
+    left: 20%;
+    margin-left: -50px;
+}
+
+.num-prog svg {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+}
+
+.nivel {
+    background-color: #AEF1D480;
+    width: 100%;
+    padding: 14px;
+    border-radius: 20px;
+    font-family: kumbh-regular;
+    font-size: .8em;
+    display: flex;
+    flex-direction: column;
+    align-content: space-evenly;
+    justify-content: center;
+}
+
+.nivel hr {
+    border-color: #2A8B5B;
+    border-radius: 100%;
+}
+
+.nivel svg {
+    margin-top: 4px;
+}
+
+.quant-hrs {
+    background-color: #febb134f;
+    width: 100%;
+    padding: 14px;
+    border-radius: 20px;
+    font-family: kumbh-regular;
+    font-size: .8em;
+    display: flex;
+    flex-direction: column;
+    align-content: space-evenly;
+    position: relative;
+}
+
+.quant-hrs svg {
+    position: absolute;
+    top: 20px;
+    right: -10px;
+}
+
+.quant-hrs hr {
+    border-color: #C69106;
+    border-radius: 100%;
+}
+
+.quant-hrs #tempoDecorrido {
+    font-size: 1.4em;
+    color: #A86100;
+    text-align: center;
+    margin-top: 2px;
+}
