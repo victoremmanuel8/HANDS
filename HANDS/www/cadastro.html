@@ -19,28 +19,44 @@
             font-family: inika-bold;
             src: url(../../fontes/Inika/Inika-Bold.ttf);
             } </style>
+            <svg width="430" height="457" viewBox="0 0 430 457" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.5 -68H430.5V223.198L404.444 235.886C394.223 240.864 383.228 244.062 371.931 245.343L360.472 246.642C352.52 247.544 344.487 247.488 336.548 246.475L323.718 244.838C316.263 243.887 308.939 242.099 301.885 239.506L297.304 237.823C292.442 236.037 287.726 233.875 283.199 231.358L259.769 218.331C254.6 215.457 249.696 212.13 245.115 208.39L229.5 195.64L201.101 174.913C195.714 170.981 189.947 167.598 183.886 164.814L157 152.465L130.527 143.804C123.861 141.623 116.984 140.149 110.009 139.407L84.8968 136.736C76.9938 135.896 69.0187 136 61.1404 137.048L48.1921 138.769C39.436 139.933 30.8727 142.253 22.7258 145.666L8.90063 151.459C7.30773 152.127 5.81384 153.009 4.46068 154.083C-8.83 164.624 -28.2026 153.672 -26.0243 136.849L0.5 -68Z" fill="url(#paint0_linear_75_15)"/>
+                <path d="M543 457H113V165.802L139.056 153.114C149.277 148.136 160.272 144.938 171.569 143.657L183.028 142.358C190.98 141.456 199.013 141.512 206.952 142.525L219.782 144.162C227.237 145.113 234.561 146.901 241.615 149.494L246.196 151.177C251.058 152.963 255.774 155.125 260.301 157.642L283.731 170.669C288.9 173.543 293.804 176.87 298.385 180.61L314 193.36L342.399 214.087C347.786 218.019 353.553 221.402 359.614 224.186L386.5 236.535L412.973 245.196C419.639 247.377 426.516 248.851 433.491 249.593L458.603 252.264C466.506 253.104 474.481 253 482.36 251.952L495.308 250.231C504.064 249.067 512.627 246.747 520.774 243.334L536.653 236.68C536.884 236.584 537.104 236.463 537.31 236.321C539.718 234.662 543 236.386 543 239.311V457Z" fill="white" fill-opacity="0.5"/>
+                <defs>
+                <linearGradient id="paint0_linear_75_15" x1="-2.5" y1="-16.5" x2="417.63" y2="324.911" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FF6BA1"/>
+                <stop offset="0.548446" stop-color="#6B9BFD"/>
+                <stop offset="1" stop-color="#03EBCD"/>
+                </linearGradient>
+                </defs>
+            </svg>
         <div class="area-cadastro">
             <h3 class="titulo-1">Seja bem-vindo</h3>
-            <h4 class="titulo-2">Crie sua conta</h4>
+            <h4 class="titulo-2">Crie uma conta</h4>
             <div class="progresso"></div>
             <div class="campos">
                 <form action="https://#IpDaMaquina/HANDS/HANDS/HANDS/server/cadastro.php" method="get">
                     <input type="text" name="nome" id="nome" placeholder="Nome">
                     <input type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome">
-                    <input type="date" name="dt_nascimento" id="dt_nascimento" placeholder="Data de nascimento">
+                    <input class="date" type="date" name="dt_nascimento" id="dt_nascimento" placeholder="Data de nascimento">
                     <input type="email" name="email" id="email" placeholder="E-mail">
                     <input type="text" name="cpf" id="cpf" placeholder="CPF">
                     <input type="password" name="senha" id="senha" placeholder="Senha">
                     <input type="password" name="ConfirmarSenha" id="ConfirmarSenha" placeholder="Confirmação de senha">
-                    <button id="submit" type="submit">Enviar</button>
+                    <input type="submit" id="submit" class="btn-primary" value="Sign in"/>
                 </div>
             </form>
             <footer>
-                <p class="titulo-3">Já possuí uma conta? <a href="aulas.html">Log in</a></p>
+                <p class="titulo-3">Já possuí uma conta? <a href="login.html"><span class="login">Log in</span></a></p>
+                <br>
                 <div class="ou">
                     <div class="linha"></div>
-                    <p class="titulo-3">ou</p>
+                    <p class="titulo-4">ou</p>
                     <div class="linha"></div>
+                </div>
+                <div class="redes">
+                </div>
+                <p class="titulo-5">Conecte-se com</p>
                 </div>
             </footer>
         </div>
