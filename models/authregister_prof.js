@@ -13,12 +13,7 @@ const tb_profissional = connSequelize.define('tb_profissional', {
     primaryKey: true,
     allowNull: false
 },
-    id_usuario: {
-        type: DataTypes.INTEGER.UNSIGNED,
-        autoIncrement: false,
-        foreingKey: true,
-        allowNull: true
-    },
+
   nm_prof: {
     type: DataTypes.STRING,
     allowNull: false

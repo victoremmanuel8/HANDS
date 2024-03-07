@@ -3,34 +3,36 @@ const mysql = require("mysql2");
 const db = require('../app.js');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const { tb_usuario } = require('../models/authregister_prof.js'); 
 
-exports.login = (req,res) => {
+
+exports.login = async (req, res) => {
   console.log(req.body);
 
-  const { email, senha} = req.body;
+  const { email, senha } = req.body;
 
-//'SELECT * FROM tb_usuario JOIN tb_profissional ON tb_usuario.id_usuario = tb_profissional.id_usuario WHERE tb_usuario.email = ?',
+  try {
+    const user = await tb_usuario.findOne({ where: { email: email } });
 
-  db.query('SELECT * FROM tb_usuario WHERE email = ?', [email], async (error, results)=>{
-    if(error) {
-      console.log(error);
-    } else {
-      console.log(results);
-      if(results.length > 0) {
-        const compare = await bcrypt.compare(senha, results[0].senha);
-        //comparar a senha criptografada com a forncecida pelo usuario
-        if(compare) {
-          return res.redirect('/index');
-        } else {
-          return res.render('login', {
-            message: "Senha incorreta"
-          });
-        }
+    if (user) {
+      const compare = await bcrypt.compare(senha, user.senha);
+
+      if (compare) {
+        return res.redirect('/index');
       } else {
         return res.render('login', {
-          message: "Usuario não encontrado"
+          message: "Senha incorreta"
         });
       }
+    } else {
+      return res.render('login', {
+        message: "Usuário não encontrado"
+      });
     }
-  })
-}
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send("Erro ao fazer login");
+  }
+};
+
+//analisar o exports

@@ -25,7 +25,7 @@ exports.register = async (req, res) => {
   // Inserção do usuário
   try {
     const newUser = await tb_profissional.create({
-      nm_nome: nome,
+      nm_prof: nome,
       nm_sobrenome: sobrenome,
       email: email,
       cd_cpf: cpf,
