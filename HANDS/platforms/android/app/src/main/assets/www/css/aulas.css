@@ -138,6 +138,12 @@ nav {
     font-family: inika-bold;
 }
 
+.num-prog canvas {
+    position: absolute;
+    left: 20%;
+    margin-left: -50px;
+}
+
 .num-prog svg {
     position: absolute;
     top: -15px;
