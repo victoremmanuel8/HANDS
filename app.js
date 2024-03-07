@@ -8,6 +8,7 @@ const hbs = require('express-hbs/lib/hbs');
 //definindo o swiper
 const Swiper = require('swiper/js/swiper.js').default;
 const axios = require('axios');
+const { connSequelize, nmDB } = require('./config/bdConnection');
 dotenv.config({path: './.env'});
 const app = express();
 
@@ -19,16 +20,6 @@ const app = express();
   database: process.env.DATABASE
 });
 */
-
-//banco conectado com os pc's da escola
-
-const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "root",
-  database: "hands_db",
-  port: "3307"
-}); 
 
 //script
 const scripthbsDirectory = path.join(__dirname, './script-hbs'); 
@@ -71,21 +62,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.set('view engine', 'hbs'),
-//Caso detecte algum erro
-db.connect((error) => {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log("Banco de Dados Conectado...");
-      db.query("SELECT * from tb_profissional", (error, results) => {
-        if (error) {
-          console.log(error);
-        } else {
-          console.log(results);
-        }
-      });
-    }
-  });
 
   
 //sessions
@@ -97,8 +73,14 @@ app.use(session({
 }));
 */
 
-  //exportar modulos 
-  module.exports = db;
+ // Conexão com o Sequelize
+connSequelize.sync()
+connSequelize.authenticate().then(() => {
+    console.log(`Conexao bem sucedida do Sequelize com o MySQL de nome ${nmDB}`)
+}).catch(erroConn => {
+    console.error(`Incapaz de conectar-se ao banco MySQL de nome ${nmDB}`, erroConn)
+})
+
 
   //Definir as rotas (Routes)
 
