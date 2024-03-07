@@ -5,14 +5,15 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const {tb_profissional} = require('../models/authregister_prof.js')
 
+//exportando os registros no route auth.js
 exports.register = async (req, res) => {
   console.log(req.body);
 
   const { nome, sobrenome, email, cpf, senha, ConfirmarSenha, dt_nascimento } = req.body;
 
   // Verificação do email
-  const exisUser = await tb_profissional.findOne({ where: { email: email } });
-  if (exisUser) {
+  const Exist_prof = await tb_profissional.findOne({ where: { email: email } });
+  if (Exist_prof) {
     return res.render('cadastro', { message: "Este email já está em uso" });
   } else if (senha !== ConfirmarSenha) {
     return res.render('cadastro', { message: "As senhas não correspondem" });
@@ -22,9 +23,9 @@ exports.register = async (req, res) => {
   const hashedPassword = await bcrypt.hash(senha, 8);
   console.log(hashedPassword);
 
-  // Inserção do usuário
+  // Inserção do profissional ao banco de dados
   try {
-    const newUser = await tb_profissional.create({
+    const Add_prof= await tb_profissional.create({
       nm_prof: nome,
       nm_sobrenome: sobrenome,
       email: email,
@@ -32,7 +33,7 @@ exports.register = async (req, res) => {
       senha: hashedPassword,
       dt_nascimento: dt_nascimento
     });
-    console.log(newUser);
+    console.log(Add_prof);
     return res.redirect('/index');
   } catch (error) {
     console.log(error);

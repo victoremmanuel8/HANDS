@@ -3,19 +3,21 @@ const mysql = require("mysql2");
 const db = require('../app.js');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const { tb_usuario } = require('../models/authregister_prof.js'); 
+const { tb_usuario } = require('../models/authregister.js'); 
 
-
+//exportando os registros no route auth.js
 exports.login = async (req, res) => {
   console.log(req.body);
 
+  //declarando as variaveis presentes no forms de login do usuario
   const { email, senha } = req.body;
 
+// Selecionando o usuario correspondente do banco de dados
   try {
-    const user = await tb_usuario.findOne({ where: { email: email } });
+    const db_usu = await tb_usuario.findOne({ where: { email: email } });
 
-    if (user) {
-      const compare = await bcrypt.compare(senha, user.senha);
+    if (db_usu) {
+      const compare = await bcrypt.compare(senha, db_usu.senha);
 
       if (compare) {
         return res.redirect('/index');
