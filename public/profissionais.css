@@ -1,7 +1,7 @@
 
 .banner {
     width: 100%;
-    height: 70px;
+    height: 7vh;
     background:linear-gradient(90deg, #FF66B2B2, #FC9404B2, #FFB905B2, #00F4C8B2, #1090F6B2);
     border-radius: 15px;
     overflow: hidden;
@@ -98,14 +98,14 @@
 
 .profi-dess {
   width: 100%;
-  height: 120px;
+  height: 15vh;
   display: flex;
   align-items: end;
 }
 
 .profi-des {
   width: 100%;
-  height: 70px;
+  height: 5vh;
   background-color: #E4FAFF;
   border-radius: 15px;
   display: flex;

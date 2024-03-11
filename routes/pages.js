@@ -47,5 +47,10 @@ router.get("/cadastro", (req, res) => {
   
   });
 
+  router.get("/cat-num", (req, res) => {
+    res.render("cat-num"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+    
+    });
+
 
 module.exports = router;
