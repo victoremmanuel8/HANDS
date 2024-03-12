@@ -1,4 +1,4 @@
-function _padraoTableBDExistence(typedTablenm) {
+function _padraoTableDBExistente(typedTablenm) {
 
     return {
         timestamps: false, //não registra o horário da tabela quando foi criado
@@ -8,5 +8,5 @@ function _padraoTableBDExistence(typedTablenm) {
     }
     
     module.exports = {
-        _padraoTableBDExistence
+        _padraoTableDBExistente
     }

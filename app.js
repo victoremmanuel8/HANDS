@@ -11,15 +11,8 @@ const axios = require('axios');
 const { connSequelize, nmDB } = require('./config/bdConnection');
 dotenv.config({path: './.env'});
 const app = express();
+const { selectQuery } = require('./Querys/QuerySelects');
 
-//.env
-/*const db = mysql.createConnection({
-  host: process.env.HOST,
-  user: process.env.DATABASE_USER,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE
-});
-*/
 
 //script
 const scripthbsDirectory = path.join(__dirname, './script-hbs'); 
