@@ -1,4 +1,5 @@
 const { connSequelize } = require('../config/bdConnection')
+const { Model, Op, Sequelize } = require('sequelize')
 const { 
     tb_usuario,
     tb_profissional
@@ -23,6 +24,22 @@ async function runServer() {
     })
 
     console.log(resultBusca)
+
+
+
+
+resultBusca = await tb_usuario.findAll({
+    attributes:[
+        'nm_nome',
+        'dt_nascimento'
+    ],
+    order:[
+        Sequelize.literal('dt_nascimento DESC')
+    ],
+    raw:true
+  })
+
+console.log(resultBusca)
 
 }
 

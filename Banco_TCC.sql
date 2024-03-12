@@ -17,8 +17,12 @@ dt_nascimento DATE
 );
 
 INSERT INTO tb_usuario (nm_nome, nm_sobrenome, cd_cpf, email, senha, dt_nascimento)
-	VALUES('Luan', 'Henrique', '214.675.897-01', 'luanhenrique123@gmail.com', 'luan123', '2004-06-06');
-
+	VALUES('Luan', 'Henrique', '214.675.897-01', 'luanhenrique123@gmail.com', 'luan123', '2004-06-06'),
+		  ('Gabriel Logan', 'Sanches', '156.156.156-00', 'gabriel.sanches31@etec.sp.gov.br', 'senha', '2006-06-15'),
+		  ('Pyetra', 'Quintiana', '134.025.758-96', 'pyetra.quintiana@etec.sp.gov.br', 'amosapos', '2007-04-13'),
+          ('Maria', 'Santos', '759.367.923-18', 'maria.santos2815@etec.sp.gov.br', 'rock4life', '2004-01-25'),
+          ('Victor', 'Silva', '205.129.567-54', 'victor.silva974@etec.sp.gov.br', 'amoaR', '2005-01-29');
+          
 create table tb_profissional (
 
 id_profissional INT primary key auto_increment,
