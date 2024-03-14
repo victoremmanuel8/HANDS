@@ -10,8 +10,10 @@ const Swiper = require('swiper/js/swiper.js').default;
 const axios = require('axios');
 const { connSequelize, nmDB } = require('./config/bdConnection');
 dotenv.config({path: './.env'});
+const appBack = express()  
 const app = express();
-const { selectQuery } = require('./Querys/QuerySelects');
+const { runQuery } = require('./Querys/QuerySelects.js');
+
 
 
 //script
@@ -74,13 +76,40 @@ connSequelize.authenticate().then(() => {
     console.error(`Incapaz de conectar-se ao banco MySQL de nome ${nmDB}`, erroConn)
 })
 
+  //rotas da consulta 
+  appBack.use(express.json())
+
+  appBack.get('/usuario', (req, resp) => {
+
+    console.log('Msg aparece no console Node caso eu use essa rota!')
+    resp.send(`
+        <div id="conteudo-pagina" style="font-family: monospace;" >
+            <h1>Página-Zero</h1>
+            <p>Olhe, uma proto-página no ínicio do meu ~site~.</p>
+        </div>
+    `)
+
+})
+
+// Abaixo importei minhas rotas/caminhos criados e disse que minha aplicação web irá usá-los:
+const usuarioRoutes = require('./routes/pages.js')
+appBack.use('/usuario', usuarioRoutes)
+
 
   //Definir as rotas (Routes)
-
   app.use('/', require('./routes/pages'));
   app.use('/auth', require('./routes/auth'));
 
-  app.listen(5000, () => {
-  console.log("Server startado na porta 5000");
-})
+  app.listen(5000, async () => {
+    console.log("Server startado na porta 5000");
+  
+    // Executando a consulta e imprimindo o resultado no terminal
+    try {
+      let resultBusca = await runQuery();
+      console.log(resultBusca);
+    } catch (error) {
+      console.error('Erro ao executar a consulta:', error);
+    }
+  });
+
 

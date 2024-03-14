@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const ControllerUsuario= require('../controllers/consultaback')
 
+
+router.get('/usuario', ControllerUsuario.getAllusuarios)
 //aqui a função get e render vai pegar a url e renderizar ela no site
 
 // a pagina inicial que irá aparecer ao entrar no server
