@@ -17,5 +17,5 @@ const tb_usuario = connSequelize.define('tb_usuario', {
 
 
 module.exports = { 
-    tb_usuario, 
+    tb_usuario
 }

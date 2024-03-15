@@ -34,7 +34,7 @@ module.exports = {
         const { id_usuario } = req.params
         const { nm_nome, nm_sobrenome, email, cd_cpf, senha, dt_nascimento } = req.body
 
-        const usuarioAchado = await usuario.findByPk(id_usuario)
+        const usuarioAchado = await tb_usuario.findByPk(id_usuario)
 
         if(!usuarioAchado) {
             return resp.status(404).json({ message: 'usuario não encontrado!' })
@@ -52,7 +52,7 @@ module.exports = {
         return resp.json(usuarioEditado)
     },
     getusuariosAndItsContact: async (req, resp) => {
-        const resultBusca =  await usuario.findAll({
+        const resultBusca =  await tb_usuario.findAll({
             include: {
                 model: authlogin,
                 required: true
@@ -83,6 +83,8 @@ module.exports = {
 
         return resp.json(resultBusca)
     }, */
+
+    //criar
     createNewusuario: async (req, resp) => {
         const { 
             nm_nome, 
@@ -93,7 +95,7 @@ module.exports = {
             dt_nascimento
         } = req.body
 
-        const usuarioCriado =  await usuario.create({
+        const usuarioCriado =  await tb_usuario.create({
             nm_usuario: nm_nome,
             nm_sobrenome: nm_sobrenome,
             email: email,
@@ -104,10 +106,12 @@ module.exports = {
         
         return resp.json(usuarioCriado)
     },
+
+    //deletar
     deleteusuariobyId: async (req, resp) => {
         const { id_usuario } = req.params
 
-        const usuarioAchado = await usuario.findByPk(id_usuario)
+        const usuarioAchado = await tb_usuario.findByPk(id_usuario)
 
         if (!usuarioAchado) {
             return resp.json({ message: 'usuario não encontrado!' })
@@ -120,7 +124,7 @@ module.exports = {
     deleteSetOfusuariosByIds: async (req, resp) => {
         const { id_init, id_final } = req.params 
 
-        const usuariosPraApagar = await usuario.findAll({
+        const usuariosPraApagar = await tb_usuario.findAll({
             where: {
                 id_usuario: {
                     [Op.between]: [id_init, id_final]

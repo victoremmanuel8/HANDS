@@ -36,5 +36,5 @@ tb_aula.hasMany(tb_tarefa, { foreignKey: 'id_aula' });
 tb_usuario.hasMany(tb_tarefa, { foreignKey: 'id_usuario' });
 
 module.exports = { 
-  tb_tarefa,
+  tb_tarefa
 }

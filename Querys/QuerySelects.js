@@ -45,9 +45,3 @@ console.log(resultBusca)
 
 runServer()
 
-module.exports = {
-    tb_usuario,
-    tb_profissional,
-    tb_categoria,
-    tb_aula,
-}

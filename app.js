@@ -13,6 +13,7 @@ dotenv.config({path: './.env'});
 const appBack = express()  
 const app = express();
 const { Query } = require('./Querys/QuerySelects.js');
+const UsuarioRoutes = require('./routes/pages.js')
 
 
 
@@ -91,9 +92,32 @@ connSequelize.authenticate().then(() => {
 
 })
 
+appBack.put('/atualizar', (req, resp) => {
+
+  console.log('Msg aparece no console Node caso eu use essa rota!')
+  resp.send(`
+      <div id="conteudo-pagina" style="font-family: monospace;" >
+          <h1>Página-Zero</h1>
+          <p>Olhe, uma proto-página no ínicio do meu ~site~.</p>
+      </div>
+  `)
+
+})
+
+appBack.delete('/delete', (req, resp) => {
+
+  console.log('Msg aparece no console Node caso eu use essa rota!')
+  resp.send(`
+      <div id="conteudo-pagina" style="font-family: monospace;" >
+          <h1>Página-Zero</h1>
+          <p>Olhe, uma proto-página no ínicio do meu ~site~.</p>
+      </div>
+  `)
+
+})
+
 // Abaixo importei minhas rotas/caminhos criados e disse que minha aplicação web irá usá-los:
-const usuarioRoutes = require('./routes/pages.js')
-appBack.use('/usuario', usuarioRoutes)
+appBack.use('/usuario', UsuarioRoutes)
 
 
   //Definir as rotas (Routes)

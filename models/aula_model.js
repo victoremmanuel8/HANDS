@@ -27,5 +27,5 @@ _padraoTableDBExistente('tb_aula'));
 tb_profissional.hasMany( tb_aula, { foreignKey: 'id_prof' });
 
 module.exports = { 
-  tb_aula,
+  tb_aula
 }

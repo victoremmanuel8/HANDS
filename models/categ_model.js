@@ -13,5 +13,5 @@ const tb_categoria = connSequelize.define('tb_categoria', {
 _padraoTableDBExistente('tb_categoria'));
 
 module.exports = { 
-  tb_categoria,
+  tb_categoria
 }
