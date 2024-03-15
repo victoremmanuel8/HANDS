@@ -3,7 +3,7 @@ const mysql = require("mysql2");
 const db = require('../app.js');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const { tb_usuario } = require('../models/AllModels.js'); 
+const { tb_usuario } = require('../models/usu_model.js'); 
 
 //exportando os registros no route auth.js
 exports.login = async (req, res) => {

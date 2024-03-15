@@ -1,9 +1,9 @@
 const { connSequelize } = require('../config/bdConnection')
 const { Model, Op, Sequelize } = require('sequelize')
-const { 
-    tb_usuario,
-    tb_profissional
-} = require('../models/AllModels')
+const { tb_usuario} = require('../models/usu_model.js')
+const { tb_profissional } = require('../models/prof_model.js');
+const { tb_categoria } = require('../models/categ_model.js');
+const { tb_aula } = require('../models/aula_model.js');
 
 
 connSequelize.sync()
@@ -44,3 +44,10 @@ console.log(resultBusca)
 }
 
 runServer()
+
+module.exports = {
+    tb_usuario,
+    tb_profissional,
+    tb_categoria,
+    tb_aula,
+}

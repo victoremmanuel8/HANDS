@@ -3,18 +3,18 @@ const mysql = require("mysql2");
 const db = require('../app.js');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const {tb_profissional} = require('../models/AllModels.js')
+const {tb_profissional} = require('../models/prof_model.js')
 
 //exportando os registros no route auth.js
 exports.login = async (req, res) => {
   console.log(req.body);
 
    //declarando as variaveis presentes no forms de login profissional
-  const { email, cpf,  senha } = req.body;
+  const { email, rg,  senha } = req.body;
 
   // Selecionando o profissional correspondente do banco de dados
   try {
-    const db_prof = await tb_profissional.findOne({ where: { email: email, cd_cpf: cpf } });
+    const db_prof = await tb_profissional.findOne({ where: { email: email, cd_rg: rg} });
 
     if (db_prof) {
       const compare = await bcrypt.compare(senha, db_prof.senha);

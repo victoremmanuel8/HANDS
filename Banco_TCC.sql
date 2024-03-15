@@ -10,25 +10,24 @@ id_usuario INT primary key auto_increment,
 nm_nome VARCHAR (100) not null,
 nm_sobrenome VARCHAR (100) not null,
 email VARCHAR(100) not null UNIQUE,
-cd_cpf VARCHAR(14) not null UNIQUE,
 senha VARCHAR(255),
 /*tp_usuario ENUM ('aluno', 'professor'), */
 dt_nascimento DATE
 );
 
-INSERT INTO tb_usuario (nm_nome, nm_sobrenome, cd_cpf, email, senha, dt_nascimento)
-	VALUES('Luan', 'Henrique', '214.675.897-01', 'luanhenrique123@gmail.com', 'luan123', '2004-06-06'),
-		  ('Gabriel Logan', 'Sanches', '156.156.156-00', 'gabriel.sanches31@etec.sp.gov.br', 'senha', '2006-06-15'),
-		  ('Pyetra', 'Quintiana', '134.025.758-96', 'pyetra.quintiana@etec.sp.gov.br', 'amosapos', '2007-04-13'),
-          ('Maria', 'Santos', '759.367.923-18', 'maria.santos2815@etec.sp.gov.br', 'rock4life', '2004-01-25'),
-          ('Victor', 'Silva', '205.129.567-54', 'victor.silva974@etec.sp.gov.br', 'amoaR', '2005-01-29');
+INSERT INTO tb_usuario (nm_nome, nm_sobrenome, email, senha, dt_nascimento)
+	VALUES('Luan', 'Henrique', 'luanhenrique123@gmail.com', 'luan123', '2004-06-06'),
+		  ('Gabriel Logan', 'Sanches', 'gabriel.sanches31@etec.sp.gov.br', 'senha', '2006-06-15'),
+		  ('Pyetra', 'Quintiana', 'pyetra.quintiana@etec.sp.gov.br', 'amosapos', '2007-04-13'),
+          ('Maria', 'Santos',  'maria.santos2815@etec.sp.gov.br', 'rock4life', '2004-01-25'),
+          ('Victor', 'Silva', 'victor.silva974@etec.sp.gov.br', 'amoaR', '2005-01-29');
           
 create table tb_profissional (
 
 id_profissional INT primary key auto_increment,
 nm_prof VARCHAR (100) not null,
 nm_sobrenome VARCHAR (100) not null,
-cd_cpf VARCHAR (100) not null UNIQUE,
+cd_rg CHAR (12) not null UNIQUE,
 email VARCHAR(100) not null UNIQUE,
 senha VARCHAR(255) not null,
 dt_nascimento DATE
@@ -104,4 +103,6 @@ CREATE TABLE tb_tarefas_premium
 CREATE tb_video_premium */
 
 select * from tb_usuario;
+
+select * from tb_profissional;
 

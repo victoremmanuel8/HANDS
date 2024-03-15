@@ -12,7 +12,7 @@ const { connSequelize, nmDB } = require('./config/bdConnection');
 dotenv.config({path: './.env'});
 const appBack = express()  
 const app = express();
-const { runQuery } = require('./Querys/QuerySelects.js');
+const { Query } = require('./Querys/QuerySelects.js');
 
 
 
@@ -103,13 +103,6 @@ appBack.use('/usuario', usuarioRoutes)
   app.listen(5000, async () => {
     console.log("Server startado na porta 5000");
   
-    // Executando a consulta e imprimindo o resultado no terminal
-    try {
-      let resultBusca = await runQuery();
-      console.log(resultBusca);
-    } catch (error) {
-      console.error('Erro ao executar a consulta:', error);
-    }
   });
 
 

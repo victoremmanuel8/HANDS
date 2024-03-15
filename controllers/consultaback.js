@@ -1,6 +1,5 @@
 const { raw } = require('body-parser')
-const { tb_usuario } = require('../models/AllModels.js')
-const { authlogin } = require('../models/AllModels.js') //funcionando sem
+const { tb_usuario } = require('../models/usu_model.js')
 const { Sequelize, Op } = require('sequelize')
 
 // **************************************************************************
