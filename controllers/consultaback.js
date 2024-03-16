@@ -2,149 +2,142 @@ const { raw } = require('body-parser')
 const { tb_usuario } = require('../models/usu_model.js')
 const { Sequelize, Op } = require('sequelize')
 
-// **************************************************************************
-// AVISO IMPORTANTE:
-// **************************************************************************
-// Código abaixo não está sendo usado por nada,
-// porém não possui o Try-Catch, sendo a forma
-// como estudantes estavam acostumados (porém isso é ruim  no caso, pois
-// o Try-Catch impede que o servidor/site pare caso o usuário faça alguma
-// chamada indevida).
-// **************************************************************************
-// Aluno pode fazer dessa forma se desejar, mas sabendo que dessa forma
-// caso qualquer consulta dê erro devido a problema X ou Y, o site irá
-// congelar instantâneamente!
-// **************************************************************************
-
 module.exports = {
     getAllusuarios: async (req, resp) => {
-        const Allusuario = await tb_usuario.findAll()
-        return resp.json(Allusuario)        
+        try {
+            const Allusuarios = await tb_usuario.findAll()
+            if (!Allusuarios) 
+                return resp.status(404).json({ message: 'Usuário não encontrado!' })
+            return resp.status(200).json(Allusuarios) 
+        }       
+        catch(erro) {
+            console.log('Erro na consulta: ', erro)
+            res.status(500).json({ message: 'Erro interno do servidor!' });
+        }
     },
     getusuarioById: async (req, resp) => {
-        const { id_usuario } = req.params
-        const usuario = await tb_usuario.findByPk(id_usuario)
-        
-        if (!usuario) 
-            return resp.json({ message: 'usuario não encontrado!' })
-        else 
-            return resp.json(usuario)
+        try {
+            const { id_usuario } = req.params
+            const usuario = await tb_usuario.findByPk(id_usuario)
+            
+            if (!usuario) 
+                return resp.status(404).json({ message: 'Usuário não encontrado!' })
+            else 
+                return resp.status(200).json(usuario) 
+        }
+        catch(erro) { 
+            console.log('Erro na consulta: ', erro)
+            return resp.status(400).json({ message: 'Erro na consulta realizada!' }) 
+        }
     },
     editusuarioById: async (req, resp) => {
-        const { id_usuario } = req.params
-        const { nm_nome, nm_sobrenome, email, cd_cpf, senha, dt_nascimento } = req.body
+            const { id_usuario } = req.params
+            const { nm_nome, nm_sobrenome, email, senha, dt_nascimento } = req.body
 
-        const usuarioAchado = await tb_usuario.findByPk(id_usuario)
+            const usuario = await tb_usuario.findByPk(id_usuario)
 
-        if(!usuarioAchado) {
-            return resp.status(404).json({ message: 'usuario não encontrado!' })
-        }
+            usuario.nm_usuario = nm_nome
+            usuario.nm_sobrenome_usuario = nm_sobrenome
+            usuario.email_usuario = email
+            usuario.senha_usuario = senha
+            usuario.dt_nasci_usuario = dt_nascimento
 
-        usuarioAchado.nm_usuario = nm_nome
-        usuarioAchado.nm_sobrenome = nm_sobrenome
-        usuarioAchado.email = email
-        usuarioAchado.cd_cpf = cd_cpf
-        usuarioAchado.senha = senha
-        usuarioAchado.dt_nascimento = dt_nascimento
+            if(!usuario)
+                return resp.status(404).json({ message: 'Usuário não encontrado!' })
 
-        const usuarioEditado = await usuarioAchado.save()
-        
-        return resp.json(usuarioEditado)
-    },
+            const usuarioEditado = await usuario.save()         
+            return resp.status(200).json(usuarioEditado)
+        },
     getusuariosAndItsContact: async (req, resp) => {
-        const resultBusca =  await tb_usuario.findAll({
-            include: {
-                model: authlogin,
-                required: true
-            }
-        })
-
-        return resp.json(resultBusca)
-    },
-    /*
-    getAndCountusuariosByTheirSexinCountry: async (req, resp) => {
-        const resultBusca = await usuario.findAll({
-            where: {
-                nm_paisOrigem: { 
-                    [Op.in]: [
-                        'Brasil', 
-                        'Estados Unidos', 
-                        'Austrália'
-                    ] 
+        try {
+            const resultBusca =  await tb_usuario.findAll({
+                include: {
+                    model: authlogin,
+                    required: true
                 }
-            },
-            attributes: [
-                'nm_nome', 
-                'email',
-                [ Sequelize.fn('COUNT', Sequelize.col('*')), 'QTD total:' ]
-            ],
-            group: [ 'nm_nome', 'email' ],
-        })
-
-        return resp.json(resultBusca)
-    }, */
-
-    //criar
-    createNewusuario: async (req, resp) => {
-        const { 
-            nm_nome, 
-            nm_sobrenome, 
-            email, 
-            cd_cpf,
-            senha,
-            dt_nascimento
-        } = req.body
-
-        const usuarioCriado =  await tb_usuario.create({
-            nm_usuario: nm_nome,
-            nm_sobrenome: nm_sobrenome,
-            email: email,
-            cd_cpf: cd_cpf,
-            senha: senha,
-            dt_nascimento: dt_nascimento
-        })
-        
-        return resp.json(usuarioCriado)
-    },
-
-    //deletar
-    deleteusuariobyId: async (req, resp) => {
-        const { id_usuario } = req.params
-
-        const usuarioAchado = await tb_usuario.findByPk(id_usuario)
-
-        if (!usuarioAchado) {
-            return resp.json({ message: 'usuario não encontrado!' })
+            })
+            if (resultBusca.length == 0)
+                return resp.status(404).json({ message: 'Usuários contendo contatos não encontrados!' })   
+            return resp.status(200).json(resultBusca)
         }
+        catch(erro) { 
+            console.log('Erro na consulta: ', erro)
+            return resp.status(400).json({ message: 'Erro na consulta realizada!' }) 
+        }
+    },
+    createNewusuario: async (req, resp) => {
+        try {
+            const { 
+                nm_nome, 
+                nm_sobrenome, 
+                email, 
+                senha,
+                dt_nascimento
+            } = req.body
+    
+            const usuario_criado =  await tb_usuario.create({
+                nm_nome: nm_nome,
+                nm_sobrenome: nm_sobrenome,
+                email: email,
+                senha: senha,
+                dt_nascimento: dt_nascimento
+            })
+            
+            return resp.json(usuario_criado)
+        }
+        catch(erro) {
+            console.error('Erro na consulta:', erro)
+            return resp.status(400).json({ message: 'Erro na consulta realizada!' })
+        }
+    },
+    deleteusuarioById: async (req, resp) => {
+        try {
+            const { id_usuario } = req.params
 
-        await usuarioAchado.destroy()
+            const usuario = await tb_usuario.findByPk(id_usuario)
 
-        return resp.json({ message: `usuario com id = ${id_usuario} deletado.` })
+            if (!usuario) {
+                return resp.status(404).json({ message: 'Usuário não encontrado!' })
+            }
+
+            await usuario.destroy()
+
+            return resp.json({ message: `Usuário com id = ${id_usuario} deletado.` })
+        }
+        catch(erro) {
+            console.error('Erro na consulta:', erro)
+            return resp.status(400).json({ message: 'Erro na consulta realizada!' })
+        }
     },
     deleteSetOfusuariosByIds: async (req, resp) => {
-        const { id_init, id_final } = req.params 
+        try {
+            const { id_init, id_final } = req.params 
 
-        const usuariosPraApagar = await tb_usuario.findAll({
-            where: {
-                id_usuario: {
-                    [Op.between]: [id_init, id_final]
+            const usuario_apagar = await tb_usuario.findAll({
+                where: {
+                    id_usuario: {
+                        [Op.between]: [id_init, id_final]
+                    }
                 }
-            }
-        })
+            })
 
-        if (usuariosPraApagar.length === 0) {
-            return resp.status(404).json({ 
-                message: `Não há usuarios entre uma lista de ids entre ${id_init} e ${id_final}`
+            if (usuario_apagar.length === 0) {
+                return resp.status(404).json({ 
+                    message: `Não há usuários entre uma lista de ids entre ${id_init} e ${id_final}`
+                })
+            }
+
+            for (const usuario of usuario_apagar) {
+                await usuario.destroy()
+            }
+
+            return resp.json({ 
+                message: `Todos os usuários entre os de id ${id_init} e ${id_final} apagados!` 
             })
         }
-
-        for (const usuario of usuariosPraApagar) {
-            await usuario.destroy()
+        catch(erro) {
+            console.error('Erro na consulta:', erro)
+            return resp.status(400).json({ message: 'Erro na consulta realizada!' })
         }
-
-        return resp.json({ 
-            message: `Todos os usuarios entre os de id ${id_init} e ${id_final} apagados!` 
-        })
     }
 }
-

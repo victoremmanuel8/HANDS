@@ -8,11 +8,26 @@ const tb_usuario = connSequelize.define('tb_usuario', {
       primaryKey: true,
       autoIncrement: true
     },
-    nm_nome: DataTypes.STRING(100),
-    nm_sobrenome: DataTypes.STRING(100),
-    email: DataTypes.STRING(100),
-    senha: DataTypes.STRING(100),
-    dt_nascimento: DataTypes.DATE
+    nm_nome: {
+      type: DataTypes.STRING(100),
+      defaultValue: 'teste'
+    },
+    nm_sobrenome: {
+      type: DataTypes.STRING(100),
+      defaultValue: 'teste'
+    },
+    email: {
+      type: DataTypes.STRING(100),
+      defaultValue: 'luanhenrique66@gmail.com'
+    },
+    senha: {
+      type: DataTypes.STRING(100),
+      defaultValue: '333'
+    },
+    dt_nascimento: {
+      type: DataTypes.DATE,
+      defaultValue: '2004-09-09'
+    },
 }, _padraoTableDBExistente('tb_usuario'));
 
 

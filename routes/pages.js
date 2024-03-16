@@ -3,8 +3,9 @@ const router = express.Router();
 const ControllerUsuario= require('../controllers/consultaback')
 
 router.get('/usuario', ControllerUsuario.getAllusuarios)
-router.delete('/usuario/:id_usuario', ControllerUsuario.deleteusuariobyId)
-router.post('/atualizar', ControllerUsuario.createNewusuario)
+router.put('/usuario/id/:id_usuario', ControllerUsuario.editusuarioById)
+router.post('/usuario/criar', ControllerUsuario.createNewusuario)
+router.delete('/usuario/:id_usuario', ControllerUsuario.deleteusuarioById)
 
 //aqui a função get e render vai pegar a url e renderizar ela no site
 
