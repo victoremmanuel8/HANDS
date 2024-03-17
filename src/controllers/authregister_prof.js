@@ -1,6 +1,6 @@
 //conexão com o banco de dados
 const mysql = require("mysql2");
-const db = require('../app.js');
+const db = require('../../app.js');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const {tb_profissional} = require('../models/prof_model.js')

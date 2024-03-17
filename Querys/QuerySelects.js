@@ -1,9 +1,10 @@
 const { connSequelize } = require('../config/bdConnection')
 const { Model, Op, Sequelize } = require('sequelize')
-const { tb_usuario} = require('../models/usu_model.js')
-const { tb_profissional } = require('../models/prof_model.js');
-const { tb_categoria } = require('../models/categ_model.js');
-const { tb_aula } = require('../models/aula_model.js');
+const { tb_usuario} = require('../src/models/usu_model.js')
+const { tb_profissional } = require('../src/models/prof_model.js');
+const { tb_categoria } = require('../src/models/categ_model.js');
+const { tb_aula } = require('../src/models/aula_model.js');
+const { tb_premium } = require('../src/models/prem_model.js');
 
 
 connSequelize.sync()
@@ -65,6 +66,7 @@ resultBusca = await tb_premium.findAll({
         [Sequelize.fn('COUNT', Sequelize.col('*')), 'qtd']
     ],
     group:[
+        'id_usuario',
         'status'
     ],
     raw:true
@@ -165,13 +167,14 @@ resultBusca = await tb_premium.findAll({
         [Sequelize.fn('COUNT', Sequelize.col('*')), 'qtd']
     ],
     group:[
-        'status'
+        'status',
+        '`tb_usuario.id_usuario`' // Incluir id_usuario na cláusula GROUP BY
     ],
     order:[
-        Sequelize.literal('id_usuario DESC')
+        [Sequelize.literal('`tb_usuario.id_usuario` DESC')]
     ],
     raw:true
-  })
+})
 
 console.log(resultBusca)
 

@@ -1,5 +1,5 @@
-const { connSequelize } = require('../config/bdConnection')
-const { _padraoTableDBExistente } = require('../config/configTabelasDB')
+const { connSequelize } = require('../../config/bdConnection')
+const { _padraoTableDBExistente } = require('../../config/configTabelasDB')
 const { Sequelize, DataTypes } = require('sequelize')
 const { tb_usuario } = require('../models/usu_model.js');
 const { tb_aula } = require('../models/aula_model.js');
@@ -32,8 +32,10 @@ const tb_tarefa = connSequelize.define('tb_tarefa', {
 _padraoTableDBExistente('tb_tarefa'));
 
 tb_aula.hasMany(tb_tarefa, { foreignKey: 'id_aula' });
+tb_tarefa.belongsTo(tb_aula, { foreignKey: 'id_aula'});
 
 tb_usuario.hasMany(tb_tarefa, { foreignKey: 'id_usuario' });
+tb_tarefa.belongsTo(tb_usuario, {foreignKey: 'id_usuario'});
 
 module.exports = { 
   tb_tarefa

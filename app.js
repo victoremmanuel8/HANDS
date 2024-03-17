@@ -13,16 +13,16 @@ dotenv.config({path: './.env'});
 const appBack = express()  
 const app = express();
 const { Query } = require('./Querys/QuerySelects.js');
-const UsuarioRoutes = require('./routes/pages.js')
+const UsuarioRoutes = require('./src/routes/pages.js')
 
 
+app.set('views', path.join(__dirname, 'src/views'));
 
-//script
-const scripthbsDirectory = path.join(__dirname, './script-hbs'); 
+const scripthbsDirectory = path.join(__dirname, 'src/script-hbs'); 
 app.use(express.static(scripthbsDirectory)); 
  
 //criada para acessar a pasta public e acessar seu diretório CSS
-const publicDirectory = path.join(__dirname, './public'); //views // ./public
+const publicDirectory = path.join(__dirname, 'src/public'); //views // ./public
 app.use(express.static(publicDirectory));
 
 
@@ -81,48 +81,22 @@ connSequelize.authenticate().then(() => {
   appBack.use(express.json())
 
   appBack.get('/usuario', (req, resp) => {
-
-    console.log('Msg aparece no console Node caso eu use essa rota!')
-    resp.send(`
-        <div id="conteudo-pagina" style="font-family: monospace;" >
-            <h1>Página-Zero</h1>
-            <p>Olhe, uma proto-página no ínicio do meu ~site~.</p>
-        </div>
-    `)
-
 })
 
 appBack.put('/atualizar', (req, resp) => {
 
-  console.log('Msg aparece no console Node caso eu use essa rota!')
-  resp.send(`
-      <div id="conteudo-pagina" style="font-family: monospace;" >
-          <h1>Página-Zero</h1>
-          <p>Olhe, uma proto-página no ínicio do meu ~site~.</p>
-      </div>
-  `)
-
 })
 
 appBack.delete('/delete', (req, resp) => {
-
-  console.log('Msg aparece no console Node caso eu use essa rota!')
-  resp.send(`
-      <div id="conteudo-pagina" style="font-family: monospace;" >
-          <h1>Página-Zero</h1>
-          <p>Olhe, uma proto-página no ínicio do meu ~site~.</p>
-      </div>
-  `)
-
 })
 
 // Abaixo importei minhas rotas/caminhos criados e disse que minha aplicação web irá usá-los:
-appBack.use('/usuario', UsuarioRoutes)
+appBack.use('/prof', UsuarioRoutes)
 
 
   //Definir as rotas (Routes)
-  app.use('/', require('./routes/pages'));
-  app.use('/auth', require('./routes/auth'));
+  app.use('/', require('./src/routes/pages.js'));
+  app.use('/auth', require('./src/routes/auth.js'));
 
   app.listen(5000, async () => {
     console.log("Server startado na porta 5000");

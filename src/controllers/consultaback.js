@@ -31,23 +31,32 @@ module.exports = {
         }
     },
     editusuarioById: async (req, resp) => {
-            const { id_usuario } = req.params
-            const { nm_nome, nm_sobrenome, email, senha, dt_nascimento } = req.body
+        try {
+            const { id_usuario } = req.params;
+            const { nm_nome, nm_sobrenome, email, senha, dt_nascimento } = req.body;
 
-            const usuario = await tb_usuario.findByPk(id_usuario)
+            let usuario = await tb_usuario.findByPk(id_usuario);
+    
+            if (!usuario) {
+                return resp.status(404).json({ message: 'Usuário não encontrado!' });
+            }
 
-            usuario.nm_usuario = nm_nome
-            usuario.nm_sobrenome_usuario = nm_sobrenome
-            usuario.email_usuario = email
-            usuario.senha_usuario = senha
-            usuario.dt_nasci_usuario = dt_nascimento
+            await usuario.update({
+                nm_nome: nm_nome,
+                nm_sobrenome: nm_sobrenome,
+                email: email,
+                senha: senha,
+                dt_nascimento: dt_nascimento
+            });
+    
+            usuario = await tb_usuario.findByPk(id_usuario);
+            return resp.status(200).json(usuario);
 
-            if(!usuario)
-                return resp.status(404).json({ message: 'Usuário não encontrado!' })
-
-            const usuarioEditado = await usuario.save()         
-            return resp.status(200).json(usuarioEditado)
-        },
+        } catch (error) {
+            console.error('Erro na consulta:', error);
+            return resp.status(500).json({ message: 'Erro interno do servidor ao editar usuário!' });
+        }
+    },
     getusuariosAndItsContact: async (req, resp) => {
         try {
             const resultBusca =  await tb_usuario.findAll({
