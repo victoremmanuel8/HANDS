@@ -35,8 +35,8 @@ async function runServer() {
 
 resultBusca = await tb_usuario.findAll({
     attributes:[
-        'nm_nome',
-        'dt_nascimento'
+       [Sequelize.literal('tb_usuario.nm_nome'), 'Usuario'],
+       [Sequelize.literal('tb_usuario.dt_nascimento'), 'Nascimento']
     ],
     order:[
         Sequelize.literal('dt_nascimento DESC')
@@ -90,16 +90,16 @@ resultBusca = await tb_premium.findAll({
         }
     },
     attributes:[
-        'id_assinatura',
-        'status',
+        [Sequelize.literal('tb_premium.status'), 'status'],
+        [Sequelize.literal('tb_premium.id_assinatura'), 'assinatura'],
         [Sequelize.fn('COUNT', Sequelize.col('*')), 'qtd']
     ],
     order:[
-        Sequelize.literal('id_assinatura DESC')
+        Sequelize.literal(' id_assinatura DESC')
     ],
     group:[
-        'id_assinatura',
-        'status'
+        'tb_premium.id_assinatura',
+        'tb_premium.status',
     ],
     raw:true
   })
@@ -113,14 +113,15 @@ console.log(resultBusca)
 */
 
 resultBusca = await tb_premium.findAll({
+    attributes:[
+       [Sequelize.literal('tb_premium.status'), 'status'],
+       [Sequelize.literal('tb_usuario.nm_nome'), 'Usuario']
+    ],
     include:{
         model: tb_usuario,
         required: true,
-        attributes: ['nm_nome'],
+        attributes: []
     },
-    attributes:[
-        'status',
-    ],
     raw:true
   })
 
@@ -133,18 +134,21 @@ console.log(resultBusca)
 */
 
 resultBusca = await tb_aula.findAll({
+    attributes:[
+        [Sequelize.literal('tb_aula.titulo'), 'titulo']
+    ],
     include:[{
         model: tb_profissional,
         required: true,
-        attributes: ['id_profissional', 'nm_prof', 'nm_sobrenome'],
+        attributes: [
+            [Sequelize.literal('tb_profissional.nm_prof'),'Nome'], 
+            [Sequelize.literal('tb_profissional.nm_sobrenome'),'Sobrenome']
+        ]
     }, {
         model: tb_categoria,
         required: true,
         attributes:['nm_categoria'],
     }],
-    attributes:[
-        'titulo'
-    ],
     raw:true
   })
 
@@ -157,21 +161,17 @@ console.log(resultBusca)
 */
 
 resultBusca = await tb_premium.findAll({
-    include:{
-        model: tb_usuario,
-        required: true,
-        attributes: ['id_usuario'],
-    },
-    attributes:[
-        'status',
+    attributes: [
+        [Sequelize.literal('tb_premium.status'), 'status'],       
         [Sequelize.fn('COUNT', Sequelize.col('*')), 'qtd']
     ],
+    include:{
+        model: tb_usuario,
+        attributes: [],
+        required: true,
+    },
     group:[
-        'status',
-        '`tb_usuario.id_usuario`' // Incluir id_usuario na cláusula GROUP BY
-    ],
-    order:[
-        [Sequelize.literal('`tb_usuario.id_usuario` DESC')]
+        'tb_premium.status',
     ],
     raw:true
 })

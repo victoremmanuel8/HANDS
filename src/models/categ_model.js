@@ -8,7 +8,7 @@ const tb_categoria = connSequelize.define('tb_categoria', {
     primaryKey: true,
     autoIncrement: true
   },
-  nm_nome: DataTypes.STRING(50)
+  nm_categoria: DataTypes.STRING(50)
 }, 
 _padraoTableDBExistente('tb_categoria'));
 
