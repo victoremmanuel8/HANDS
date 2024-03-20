@@ -42,13 +42,6 @@
             </div>
             <div class="progresso"></div>
             <div class="campos">
-                <form>
-  <input type="text" id="inputField" onkeyup="updateProgress()" placeholder="Digite algo...">
-</form>
-<div class="progress-container">
-  
-</div>
-
                 <form id="Form" action="/auth/cadastro" method="POST" required>
                 <input class="input" type="text" name="nome" id="" placeholder="Nome" required>
                 <input class="input" type="text" name="sobrenome" id="" placeholder="Sobrenome" required>
@@ -56,7 +49,6 @@
                 <input class="input" type="email" name="email" id="" placeholder="E-mail" required>
                 <input class="input" type="password" name="senha" id="" placeholder="Senha" required>
                 <input class="input" type="password" name="ConfirmarSenha" id="" placeholder="Confirmação de senha" required>
-                </form>
                 <br>
                 <div class="g-recaptcha" data-sitekey="6LcW8X4pAAAAAKHfmywUcAyarIYi5RwVY7DVPP20" data-callback="onSubmit">
                 </div>
@@ -65,9 +57,10 @@
                         <input class="check" type="checkbox" id="termos_uso" name="termos_uso" required>
                         <p for="termos_uso">Concordo com os <a href="/termos-de-uso.hbs" target="_blank">Termos de Uso</a></p>
                     </div>
+                     <input class="button" type="submit" id= "submit" class="btn btn-primary" disabled/>
                 </div>
                 <br>
-                <input class="button" type="submit" id= "submit" class="btn btn-primary" disabled/>
+                </form>
             </div>
             {{#if message }}
       <h4 style="color: #000000;">{{message}}</h4>
