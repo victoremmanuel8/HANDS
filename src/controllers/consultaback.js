@@ -33,7 +33,7 @@ module.exports = {
     editusuarioById: async (req, resp) => {
         try {
             const { id_usuario } = req.params;
-            const { nm_nome, nm_sobrenome, email, senha, dt_nascimento } = req.body;
+            const { nm_usuario, nm_sobrenome, email, senha, dt_nascimento } = req.body;
 
             let usuario = await tb_usuario.findByPk(id_usuario);
     
@@ -42,7 +42,7 @@ module.exports = {
             }
 
             await usuario.update({
-                nm_nome: nm_nome,
+                nm_usuario: nm_nome,
                 nm_sobrenome: nm_sobrenome,
                 email: email,
                 senha: senha,
@@ -77,7 +77,7 @@ module.exports = {
     createNewusuario: async (req, resp) => {
         try {
             const { 
-                nm_nome, 
+                nm_usuario, 
                 nm_sobrenome, 
                 email, 
                 senha,
@@ -85,7 +85,7 @@ module.exports = {
             } = req.body
     
             const usuario_criado =  await tb_usuario.create({
-                nm_nome: nm_nome,
+                nm_usuario: nm_usuario,
                 nm_sobrenome: nm_sobrenome,
                 email: email,
                 senha: senha,
