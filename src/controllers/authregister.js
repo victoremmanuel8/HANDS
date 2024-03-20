@@ -27,7 +27,7 @@ exports.register = async (req, res) => {
   // Inserção do usuário ao banco de dados
   try {
     const Add_usuario = await tb_usuario.create({
-      nm_nome: nome,
+      nm_usuario: nome,
       nm_sobrenome: sobrenome,
       email: email,
       senha: hashedPassword,

@@ -8,7 +8,7 @@ const tb_usuario = connSequelize.define('tb_usuario', {
       primaryKey: true,
       autoIncrement: true
     },
-    nm_nome: {
+    nm_usuario: {
       type: DataTypes.STRING(100)
     },
     nm_sobrenome: {
