@@ -62,12 +62,11 @@ resultBusca = await tb_premium.findAll({
         }
     },
     attributes:[
-        'status',
+        [Sequelize.literal('tb_premium.status'), 'status'],       
         [Sequelize.fn('COUNT', Sequelize.col('*')), 'qtd']
     ],
     group:[
-        'id_usuario',
-        'status'
+        'tb_premium.status'
     ],
     raw:true
   })
@@ -164,15 +163,21 @@ console.log(resultBusca)
 resultBusca = await tb_premium.findAll({
     attributes: [
         [Sequelize.literal('tb_premium.status'), 'status'],       
-        [Sequelize.fn('COUNT', Sequelize.col('*')), 'qtd']
+        [Sequelize.literal('tb_usuario.nm_nome'), 'Nome'],
+        [Sequelize.literal('tb_premium.dt_fim'), 'Data_Fim']
     ],
     include:{
         model: tb_usuario,
         attributes: [],
         required: true,
     },
+    order: [
+        [Sequelize.literal('dt_fim DESC')]
+],
     group:[
+        'tb_usuario.nm_nome',
         'tb_premium.status',
+        'tb_premium.dt_fim'
     ],
     raw:true
 })
