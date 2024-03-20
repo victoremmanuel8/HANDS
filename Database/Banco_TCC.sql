@@ -94,7 +94,7 @@ INSERT INTO tb_usuario (nm_nome, nm_sobrenome, email, senha, dt_nascimento)
                   ('Gabriel Logan', 'Sanches', 'gabriel.sanches31@etec.sp.gov.br', 'senha', '2006-06-15'),
                   ('Pyetra', 'Quintiana', 'pyetra.quintiana@etec.sp.gov.br', 'amosapos', '2007-04-13'),
                   ('Maria', 'Santos',  'maria.santos2815@etec.sp.gov.br', 'rock4life', '2004-01-25'),
-                  ('Victor', 'Silva', 'victor.silva974@etec.sp.gov.br', 'amoaR', '2005-01-29');
+                  ('Victor', 'Silva', 'victor.silva974@etec.sp.gov.br', 'amoaBR', '2005-01-29');
 
 INSERT INTO tb_profissional (nm_prof, nm_sobrenome, cd_rg, email, senha, dt_nascimento)
     VALUES('Aline', 'Caruso', '12.345.678-9', 'aline.caruso1@hotmail.com', 'amodaraula', '1988-10-04'),
@@ -103,7 +103,7 @@ INSERT INTO tb_profissional (nm_prof, nm_sobrenome, cd_rg, email, senha, dt_nasc
                   ('Marcos', 'Alves', '24.681.357-9', 'profmarcosalves84@gmail.com', 'mjf0784', '1984-10-04'),
                   ('Henrique', 'Santos', '11.223.344-5', 'professorhenriquesantos2000@gmail.com', 'mvsgnts1754', '2000-05-17'),
                   ('Anderson', 'Silva', '55.555.555-5', 'professorandersonsilva94@gmail.com', 'coringaominhavida', '1994-01-04'),
-                  ('Paola', 'Arantes', '98.765.432-0', 'profpaola0204@gmail.com', 'pnatugj38', '1990-02-04');
+                  ('Paola', 'Arantes', '98.765.432-0', 'profpaola0204@gmail.com', 'pnatugj38', '1990-02-04'); 
                   
 insert into tb_categoria(nm_categoria)values
 ('Alfabeto');
@@ -121,11 +121,24 @@ INSERT INTO tb_premium (id_usuario, dt_inicio, dt_fim, status)
                     (4, '2024-01-01', '2025-01-01', 'cancelado'),
                     (5, '2024-01-01', '2025-02-01', 'cancelado');
 
-/*
-CREATE TABLE tb_videos
-CREATE TABLE tb_aulas_premium
-CREATE TABLE tb_tarefas_premium
-CREATE tb_video_premium */
+
+CREATE TABLE tb_videos(
+    id_aula INT,
+    nm_aula VARCHAR,
+    titulo VARCHAR(100),
+    descricao TEXT,
+    id_profissional INT,
+    nm_categoria VARCHAR,
+    id_categoria INT,
+    nm_categoria VARCHAR,
+    FOREIGN KEY (id_aula) REFERENCES tb_aula(id_aula),
+    FOREIGN KEY(nm_aula) REFERENCES tb_aula(nm_aula),
+    FOREIGN KEY (id_profissional) REFERENCES tb_profissional(id_profissional),
+    FOREIGN KEY (id_categoria) REFERENCES tb_categoria(id_categoria),
+    FOREIGN KEY (nm_categoria) REFERENCES tb_categoria(nm_categoria)
+);
+
+
 
 select * from tb_usuario;
 
