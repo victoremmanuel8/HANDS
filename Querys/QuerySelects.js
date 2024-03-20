@@ -135,19 +135,20 @@ console.log(resultBusca)
 
 resultBusca = await tb_aula.findAll({
     attributes:[
-        [Sequelize.literal('tb_aula.titulo'), 'titulo']
+        [Sequelize.literal('tb_aula.titulo'), 'titulo'],
+        [Sequelize.literal('tb_profissional.nm_prof'),'Nome'], 
+        [Sequelize.literal('tb_profissional.nm_sobrenome'),'Sobrenome'],
+        [Sequelize.literal('tb_categoria.nm_categoria'), 'Categoria']
     ],
     include:[{
         model: tb_profissional,
         required: true,
-        attributes: [
-            [Sequelize.literal('tb_profissional.nm_prof'),'Nome'], 
-            [Sequelize.literal('tb_profissional.nm_sobrenome'),'Sobrenome']
-        ]
+        attributes: []
     }, {
         model: tb_categoria,
         required: true,
-        attributes:['nm_categoria'],
+        as: 'tb_categoria',
+        attributes:[]
     }],
     raw:true
   })

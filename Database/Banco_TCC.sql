@@ -41,15 +41,9 @@ CREATE TABLE tb_aula (
     data_publicacao DATE,
     #preco DECIMAL(10, 2), -- Preço da aula
     publica BOOLEAN DEFAULT true, -- Indica se a aula é pública (gratuita)
-    CONSTRAINT FOREIGN KEY (id_profissional) REFERENCES tb_profissional(id_profissional),
-    CONSTRAINT FOREIGN KEY (id_categoria) REFERENCES tb_categoria(id_categoria)
+     FOREIGN KEY (id_profissional) REFERENCES tb_profissional(id_profissional),
+     FOREIGN KEY (id_categoria) REFERENCES tb_categoria(id_categoria)
 );
-
--- Inserção de uma aula
-
-
--- Inserção de outra aula
-
 
 -- Tabela para gerenciar as tarefas dos usuários
 CREATE TABLE tb_tarefa (
@@ -116,7 +110,7 @@ insert into tb_categoria(nm_categoria)values
 
 
 INSERT INTO tb_aula (titulo, descricao, conteudo, id_categoria, id_profissional, data_publicacao, publica)
-VALUES ('Banco de Dados Relacionais', 'Explorando SQL e modelagem de dados.', 'SELECT, JOIN, índices, etc.', 1, 1, '2024-03-20', true);
+VALUES ('Ensino De Libras', 'Aprendendo o Alfabeto', 'Alfabeto do A - Z de maneira clara.', 1, 1, '2024-03-20', true);
 
 
 

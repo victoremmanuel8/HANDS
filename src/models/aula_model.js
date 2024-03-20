@@ -32,11 +32,11 @@ const tb_aula = connSequelize.define('tb_aula', {
 }, 
 _padraoTableDBExistente('tb_aula'));
 
-tb_profissional.hasMany( tb_aula, { foreignKey: 'id_profissional' });
-tb_aula.belongsTo(tb_profissional, {foreignKey: 'id_profissional'});
+tb_profissional.hasMany( tb_aula, {  foreignKey: 'id_profissional' });
+tb_aula.belongsTo(tb_profissional, { foreignKey: 'id_profissional'});
 
-tb_categoria.hasMany( tb_aula, { foreignKey: 'id_categoria' });
-tb_aula.belongsTo(tb_categoria, {foreignKey: 'id_categoria'});
+tb_categoria.hasMany( tb_aula, { as: 'tb_categoria', foreignKey: 'id_categoria' });
+tb_aula.belongsTo(tb_categoria, {as: 'tb_categoria', foreignKey: 'id_categoria'});
 
 module.exports = { 
   tb_aula
