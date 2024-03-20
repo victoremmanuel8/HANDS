@@ -42,6 +42,13 @@
             </div>
             <div class="progresso"></div>
             <div class="campos">
+                <form>
+  <input type="text" id="inputField" onkeyup="updateProgress()" placeholder="Digite algo...">
+</form>
+<div class="progress-container">
+  
+</div>
+
                 <form id="Form" action="/auth/cadastro" method="POST" required>
                 <input class="input" type="text" name="nome" id="" placeholder="Nome" required>
                 <input class="input" type="text" name="sobrenome" id="" placeholder="Sobrenome" required>
@@ -69,9 +76,9 @@
                 <p class="titulo-3">Já possuí uma conta? <a href="/aulas.hbs">Log in</a></p>
             </footer>
         </div>
-        <script src="js/troca-pag.js"></script>
+        <script src="/troca-pag.js"></script>
         <script src="cordova.js"></script>
-        <script src="js/index.js"></script>
-        <script src="js/carrossel.js"></script>
+        <script src="/index.js"></script>
+        <script src="/carrossel.js"></script>
         </body>
 </html>
