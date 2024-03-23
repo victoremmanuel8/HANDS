@@ -6,7 +6,7 @@ use hands_db;
 #registro de cadastro
 create table tb_usuario (
 id_usuario INT primary key auto_increment,
-nm_nome VARCHAR (100) not null,
+nm_usuario VARCHAR (100) not null,
 nm_sobrenome VARCHAR (100) not null,
 email VARCHAR(100) not null UNIQUE,
 senha VARCHAR(255),
@@ -89,7 +89,7 @@ CREATE TABLE tb_premium (
     FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
 );
 
-INSERT INTO tb_usuario (nm_nome, nm_sobrenome, email, senha, dt_nascimento)
+INSERT INTO tb_usuario (nm_usuario, nm_sobrenome, email, senha, dt_nascimento)
 	VALUES('Luan', 'Henrique', 'luanhenrique123@gmail.com', 'luan123', '2004-06-06'),
                   ('Gabriel Logan', 'Sanches', 'gabriel.sanches31@etec.sp.gov.br', 'senha', '2006-06-15'),
                   ('Pyetra', 'Quintiana', 'pyetra.quintiana@etec.sp.gov.br', 'amosapos', '2007-04-13'),
@@ -124,18 +124,13 @@ INSERT INTO tb_premium (id_usuario, dt_inicio, dt_fim, status)
 
 CREATE TABLE tb_videos(
     id_aula INT,
-    nm_aula VARCHAR,
     titulo VARCHAR(100),
     descricao TEXT,
     id_profissional INT,
-    nm_categoria VARCHAR,
     id_categoria INT,
-    nm_categoria VARCHAR,
     FOREIGN KEY (id_aula) REFERENCES tb_aula(id_aula),
-    FOREIGN KEY(nm_aula) REFERENCES tb_aula(nm_aula),
     FOREIGN KEY (id_profissional) REFERENCES tb_profissional(id_profissional),
-    FOREIGN KEY (id_categoria) REFERENCES tb_categoria(id_categoria),
-    FOREIGN KEY (nm_categoria) REFERENCES tb_categoria(nm_categoria)
+    FOREIGN KEY (id_categoria) REFERENCES tb_categoria(id_categoria)
 );
 
 
