@@ -20,6 +20,8 @@ exports.login = async (req, res) => {
       const compare = await bcrypt.compare(senha, db_usu.senha);
 
       if (compare) {
+        const token = jwt.sign({ id: db_usu.id }, 'JANX7AWB12BAKX');
+        res.cookie('token', token, { httpOnly: true, secure: true });
         return res.redirect('/index');
       } else {
         return res.render('login', {

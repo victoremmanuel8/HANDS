@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const ControllerUsuario= require('../controllers/consultaback')
+const verificaAutenticacao = require('../middleware/Auth')
 
 
 //rotas do back para o insomnia
@@ -22,9 +23,11 @@ router.get("/login_prof", (req, res) => {
   
   });
 
-router.get('/index', (req, res) => {
+// Rota que requer autenticação
+router.get('/index', verificaAutenticacao, (req, res) => {
   res.render('index');
 });
+
 router.get("/aulas", (req, res) => {
   //res.send("<h1>Pagina-Inicial</h1>")
   res.render("aulas"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).

@@ -14,6 +14,16 @@ const appBack = express()
 const app = express();
 const { Query } = require('./Querys/QuerySelects.js');
 const UsuarioRoutes = require('./src/routes/pages.js')
+const verificaAutenticacao = require('./src/middleware/Auth.js')
+const cookieParser = require('cookie-parser')
+app.use(cookieParser());
+
+app.use((req, res, next) => {
+  console.log(req.cookies);
+  next();
+});
+
+
 
 
 app.set('views', path.join(__dirname, 'src/views'));
