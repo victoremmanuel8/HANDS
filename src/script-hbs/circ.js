@@ -11,7 +11,7 @@ function drawCircle(progress) {
     // Desenhar o círculo externo completo
     context.beginPath();
     context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-    context.strokeStyle = '#ffffff70';
+    context.strokeStyle = '#00000070';
     context.lineWidth = 7;
     context.stroke();
 
@@ -20,7 +20,7 @@ function drawCircle(progress) {
     var endAngle = startAngle + (progress / 100 * 2 * Math.PI);
     context.beginPath();
     context.arc(centerX, centerY, radius, startAngle, endAngle, false);
-    context.strokeStyle = '#fff';
+    context.strokeStyle = '#000';
     context.lineWidth = 7;
     context.stroke();
 }
