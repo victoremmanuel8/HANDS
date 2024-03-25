@@ -25,7 +25,7 @@ app.post('/login', async (req, res) => {
   // Se o usuário existir, crie um token com base no ID do usuário
   const token = jwt.sign({ id: usuario.id }, 'JANX7AWB12BAKX');
 
-  res.cookie('token', token, { httpOnly: true});
+ res.cookie('token', token, { httpOnly: true});
 
   // Envie uma resposta de sucesso
   res.json({ token });
