@@ -1,16 +1,21 @@
+body {
+  overflow-x: hidden;
+}
 
 .banner {
-  width: 100%;
-  height: 20vh;
-    background-color: #ADECFA;
-    border-radius: 15px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 2vh;
-    position: relative;
-    z-index: 2;
+  display: flex;
+  flex-direction: column;
+  margin: 15vh;
+  margin-top: 20vh
+}
+
+.background {
+  position: absolute;
+  width: 110%;
+  height: 300vh;
+  left: -510px;
+  top: -690px;
+  z-index: -1;
 }
 
 #container-slider {
@@ -89,4 +94,9 @@ nav ul {
   padding: 1vh 3vh;
   border-radius: 30px;
   border: solid 3px #fff;
+}
+
+.cor-verde {
+  color: #594A3F;
+  font-weight: 370;
 }
