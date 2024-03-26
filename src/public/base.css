@@ -7,8 +7,18 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
+.background {
+  position: absolute;
+  width: 110%;
+  height: 300vh;
+  left: -10px;
+  top: -190px;
+  z-index: -1;
+}
+
 body {
     padding: 2vh;
+    padding-top: 50px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -22,12 +32,57 @@ a {
     color: #A4A4A4;
 }
 
-header {
+/* header {
     width: 100%;
     height: 7vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
+} */
+
+
+header {
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+li {
+  list-style: none;
+  /* font-family: kumbh-regular; */ 
+  font-size: 2.1vh;
+}
+
+.sing-aulas {
+  background: linear-gradient(90deg, #50dfff, #5dbdfe, #6b9bfd);
+  padding: 1vh 1.4vh;
+  border-radius: 30px;
+  color: #fff;
+}
+
+.login-aulas {
+  color: #68a4fe;
+  padding: 1vh 3vh;
+  border-radius: 30px;
+  border: solid 3px #fff;
+}
+
+/* a:hover {
+   font-family: kumbh-medium;
+} */
+
+a {
+  text-decoration: none;
+  color: #907a85;
 }
 
 .premium-usuario {
@@ -207,4 +262,64 @@ nav hr {
     align-items: center;
     justify-content: space-evenly;
   }
-  
+
+  .titulo-1 {
+    /* font-family: kumbh-bold; */
+   font-size: 75px;
+}
+
+.titulo-1-5 {
+  /* font-family: kumbh-bold; */
+ font-size: 65px;
+}
+
+.titulo-2 {
+    /* font-family: kumbh-regular; */ 
+    font-weight: 300;
+   font-size: 25px;
+   color: #68584c;
+}
+
+.titulo-3 {
+    /* font-family: kumbh-light; */
+   font-size: 50px;
+   color: #77787C;
+   font-weight: 100;
+}
+
+.titulo-4 {
+    /* font-family: kumbh-light; */
+   font-size: 55px;
+   font-weight: 200;
+}
+
+.titulo-1-cor {
+  background: linear-gradient(45deg, #36a7d4, #24d3e3cb);
+    -webkit-background-clip: text; /* Isso é necessário para que o gradiente seja aplicado ao texto */
+    -webkit-text-fill-color: transparent; /* Isso é necessário para ocultar a cor do texto padrão */
+    font-size: 65px;
+}
+
+
+
+[data-anime] {
+  opacity: 0;
+  transition: .5s ease-in-out; 
+}
+
+[data-anime="left"] {
+  transform: translate3d(-50px, -30px, -10px);
+}
+
+[data-anime="right"] {
+  transform: translate3d(50px, 30px, 0);
+}
+
+[data-anime="bottom"] {
+  transform: translate3d(0, 50px, 0);
+}
+
+[data-anime].animate {
+  opacity: 100%;
+  transform: translate3d(0px, 0px, 0px);
+}

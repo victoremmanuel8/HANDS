@@ -3,14 +3,25 @@ a {
 }
 
 body {
-    background: linear-gradient(120deg, #f6ebff, #85bfce, #cec3ff, #22aeff);
+    /* background: linear-gradient(120deg, #f6ebff, #85bfce, #cec3ff, #22aeff); */
+    background-color: #fff;
     background-size: 200%;
     display: flex;
     align-items: flex-end;
     padding: 0px;
     margin: 0px;
     font-family: Arial, Helvetica, sans-serif; /*fonte temporaria*/
+    overflow-x: hidden;
 }
+
+.background {
+    position: absolute;
+    width: 110%;
+    height: 175vh;
+    left: -10px;
+    top: -190px;
+    z-index: -1;
+  }
 
 .area-cadastro {
     width: 100%;
@@ -58,8 +69,8 @@ body {
 }
 
 .input {
-    background: #00000018;
-    box-shadow: inset -6px 7px 7px #00000015;
+    background: #7373730f;
+    box-shadow: inset -6px 7px 7px #0000000c;
     padding: 9px;
     padding-left: 25px;
     height: 30px;
@@ -106,17 +117,18 @@ input .check {
 
 .button {
     border-radius: 30px;
-    background: #00000018;
+    background: #00000034;
     box-shadow: inset -6px 7px 7px #00000015, 4px 3px 3px #4b4b4b15;
     padding: 12px 84px;
-    color: #fff;
+    color: #222;
     cursor: pointer;
     border: none;
     transition: .5s ease-in;
 }
 
 .button:hover {
-    background: #0000005e;
+    background: #0000005a;
+    color: #ffffff;
     box-shadow: inset -6px 7px 7px #00000033, 4px 3px 3px #00000033;
 }
 
@@ -145,6 +157,7 @@ select {
     display: flex;
     justify-content: center;
 }
+
 textarea:focus, input:focus, select:focus {
     outline: 0;
 }
@@ -164,6 +177,11 @@ textarea:focus, input:focus, select:focus {
  :-ms-input-placeholder {  
     color: #000;  
  }
+
+ input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(0.8);
+  }
 
  .ou {
     display: flex;
@@ -204,4 +222,11 @@ textarea:focus, input:focus, select:focus {
   form {
     margin-bottom: 20px;
   }
+
   
+.titulo-4 {
+    /* font-family: kumbh-light; */
+   font-size: 15px;
+   font-weight: 200;
+   color: #000;
+}

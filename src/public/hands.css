@@ -1,14 +1,45 @@
+body {
+  background-color: #fff;
+  padding: 120px;
+  padding-top: 50px;
+  overflow-x: hidden;
+}
 
-.banner {
-  width: 100%;
-  height: 20vh;
-  background-color: #f6f4e7;
-  border-radius: 15px;
-  overflow: hidden;
+section {
+  margin-top: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+.banner {
+  width: 809px;
+  /* background-color: #f6f4e7; */
+  border-radius: 35px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  /* justify-content: space-evenly; */
+  flex-direction: row-reverse;
+  align-items: center;
   margin-bottom: 2vh;
+  background: #0000000b;
+  box-shadow: inset -6px 7px 7px #00000015;
+  border: none;
+  margin: 10px;
+  color: #000;
+  margin-top: 10vh;
+}
+
+.banner svg {
+  transition: .7s ease-in-out;
+}
+
+.banner:hover svg{
+  scale: 1.07;
+  transition: .7s ease-in-out;
+  rotate: 4deg;
 }
 
 .banner-1 {
@@ -113,6 +144,7 @@
   white-space: nowrap;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch; 
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .carousel.dragging{
@@ -151,10 +183,27 @@
   user-select: none;
   width: calc(100% / 4.6);
   border-radius: 25px;
+  transition: .5s ease-in-out;
+}
+
+.carousel .item:hover svg {
+  scale: 1.07;
+  filter: drop-shadow( -3px 3px 3px #289bda72);
+  transition: .5s ease-in-out;
+}
+
+.carousel .item:hover .img {
+  scale: 1.03;
+  filter: drop-shadow( -3px 3px 3px #00000044);
+  transition: .5s ease-in-out;
+}
+
+.carousel .item svg {
+  transition: .5s ease-in-out;
 }
 
 .wrapper .carousel .item p {
-  font-size: 14px;
+  font-size: 18px;
   color: #989696;
   margin-top: 1.5vh;
 }
@@ -177,10 +226,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 7.5vh;
-  height: 7.5vh;
-  background-color: #F6F4E7;
+  width: 14vh;
+  height: 14vh;
+  background: linear-gradient(90deg, #1e83bd82, #5680ff82);
   border-radius: 100%;
+  transition: .5s ease-in-out;
 }
 
 .premium-menu {
@@ -193,4 +243,42 @@
 
 #container-slider {
   font-family: inika-bold;
+}
+
+/* ////////////////////////////////////////////////////// */
+
+.verde {
+  background: linear-gradient(45deg, #36a7d4, #24d3e3cb);
+  -webkit-background-clip: text; /* Isso é necessário para que o gradiente seja aplicado ao texto */
+  -webkit-text-fill-color: transparent; /* Isso é necessário para ocultar a cor do texto padrão */
+}
+
+.aula-teste {
+  margin-top: 20vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: relative;
+}
+
+.btn-exp {
+   /* font-family: kumbh-bold; */
+  font-size: 20px;
+  padding: 14px 46px;
+  background-color: #ffffff3d;
+  border-radius: 14px;
+  box-shadow: 1px 1px 20px 2px #85747425;
+  transition: .6s ease-in-out;
+}
+
+.btn-exp:hover {
+  padding: 16px 48px;
+  background-color: #ffffff5d;
+  box-shadow: 1px 1px 20px 2px #85747448;
+}
+
+.estrelas {
+  position: absolute;
+  bottom: 190px;
+  right: -40px
 }
