@@ -3,6 +3,8 @@ const mysql = require("mysql2");
 const db = require('../../app.js');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const smtpconfig = require("../../config/smtpConfig");
+const nodemailer = require("nodemailer");
 const {tb_usuario} = require('../models/usu_model.js')
 
 //exportando os registros no route auth.js
@@ -33,6 +35,54 @@ exports.register = async (req, res) => {
       senha: hashedPassword,
       dt_nascimento: dt_nascimento
     });
+
+    const htmlContent = `
+    <html>
+      <head>
+        <style>
+          /* Adicione seu CSS aqui */
+          body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+          }
+          .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            background-color: #3498db;
+            color: #ffffff;
+            border-radius: 5px;
+          }
+        </style>
+      </head>
+      <body>
+        <h1>Confirme seu Email</h1>
+        <p>Clique no botão abaixo para confirmar seu email. Você será redirecionado para outra página</p>
+        <a href="http://localhost:5000/validaEmail">Confirmar E-mail</a>
+      </body>
+    </html>
+  `;
+
+    const transporter = nodemailer.createTransport(smtpconfig);
+
+    async function sendmail() {
+      try {
+        const mailSend = await transporter.sendMail({
+          html: htmlContent,
+          subject: "confirme seu email no HANDS",
+          from: "HANDS <hands_enterprise@outlook.com>",
+          to: email,
+        });
+        console.log(mailSend);
+      } catch (err) {
+        console.error(`erro ao enviar email ${err}`);
+      }
+    }
+    sendmail();
+
     console.log(Add_usuario);
     return res.redirect('/cadastro');
   } catch (error) {
