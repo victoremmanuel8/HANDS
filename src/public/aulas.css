@@ -34,6 +34,13 @@
     margin-bottom: 2vh;
 }
 
+.aula video {
+    width: 200px;
+    border-radius: 20px;
+    box-shadow: 7px 7px 7px #0000002e;
+    margin-right: 40px;
+}
+
 .video-aulas img {
     width: 100px;
     border: solid 1px #000;

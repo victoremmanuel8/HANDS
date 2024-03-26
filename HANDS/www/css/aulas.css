@@ -202,3 +202,10 @@ nav {
     text-align: center;
     margin-top: 2px;
 }
+
+.aula video {
+    width: 200px;
+    border-radius: 20px;
+    box-shadow: 7px 7px 7px #0000002e;
+    margin-right: 40px;
+}
