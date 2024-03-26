@@ -135,9 +135,9 @@ li {
     border: solid 3px #fff;
 }
 
-a:hover {
-     /* font-family: kumbh-medium; */
-}
+/* a:hover {
+     font-family: kumbh-medium;
+} */
 
 a {
     text-decoration: none;
