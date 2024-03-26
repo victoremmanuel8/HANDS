@@ -34,7 +34,7 @@ exports.register = async (req, res) => {
       dt_nascimento: dt_nascimento
     });
     console.log(Add_usuario);
-    return res.redirect('/index');
+    return res.redirect('/cadastro');
   } catch (error) {
     console.log(error);
     return res.status(500).send("Erro ao cadastrar usuário");

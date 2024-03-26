@@ -89,6 +89,20 @@ CREATE TABLE tb_premium (
     FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
 );
 
+CREATE TABLE tb_videos(
+    id_aula INT,
+    nm_arquivo VARCHAR(100),
+    arquivo BLOB,
+    descricao TEXT,
+    id_profissional INT,
+    id_categoria INT,
+    FOREIGN KEY (id_aula) REFERENCES tb_aula(id_aula),
+    FOREIGN KEY (id_profissional) REFERENCES tb_profissional(id_profissional),
+    FOREIGN KEY (id_categoria) REFERENCES tb_categoria(id_categoria)
+);
+
+
+
 INSERT INTO tb_usuario (nm_usuario, nm_sobrenome, email, senha, dt_nascimento)
 	VALUES('Luan', 'Henrique', 'luanhenrique123@gmail.com', 'luan123', '2004-06-06'),
                   ('Gabriel Logan', 'Sanches', 'gabriel.sanches31@etec.sp.gov.br', 'senha', '2006-06-15'),
@@ -122,19 +136,8 @@ INSERT INTO tb_premium (id_usuario, dt_inicio, dt_fim, status)
                     (5, '2024-01-01', '2025-02-01', 'cancelado');
 
 
-CREATE TABLE tb_videos(
-    id_aula INT,
-    titulo VARCHAR(100),
-    descricao TEXT,
-    id_profissional INT,
-    id_categoria INT,
-    FOREIGN KEY (id_aula) REFERENCES tb_aula(id_aula),
-    FOREIGN KEY (id_profissional) REFERENCES tb_profissional(id_profissional),
-    FOREIGN KEY (id_categoria) REFERENCES tb_categoria(id_categoria)
-);
-
-
-
 select * from tb_usuario;
 
 select * from tb_profissional;
+
+select * from tb_videos;
