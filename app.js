@@ -35,6 +35,8 @@ app.use(express.static(scripthbsDirectory));
 const publicDirectory = path.join(__dirname, 'src/public'); //views // ./public
 app.use(express.static(publicDirectory));
 
+const videoDirectory = path.join(__dirname, 'src/assets');
+app.use(express.static(videoDirectory))
 
 //imagens 
 const imgDirectory = path.join(__dirname, './res');
