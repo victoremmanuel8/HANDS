@@ -76,3 +76,17 @@ nav ul {
   position: relative;
   z-index: 4;
 }
+
+.sing-aulas {
+  background: linear-gradient(90deg, #02F2CA, #31A395);
+  padding: 1vh 1.4vh;
+  border-radius: 30px;
+  color: #fff;
+}
+
+.login-aulas {
+  color: #68a4fe;
+  padding: 1vh 3vh;
+  border-radius: 30px;
+  border: solid 3px #fff;
+}
