@@ -82,12 +82,12 @@ app.use(session({
 */
 
  // Conexão com o Sequelize
-connSequelize.sync()
-connSequelize.authenticate().then(() => {
-    console.log(`Conexao bem sucedida do Sequelize com o MySQL de nome ${nmDB}`)
-}).catch(erroConn => {
-    console.error(`Incapaz de conectar-se ao banco MySQL de nome ${nmDB}`, erroConn)
-})
+// connSequelize.sync()
+// connSequelize.authenticate().then(() => {
+//     console.log(`Conexao bem sucedida do Sequelize com o MySQL de nome ${nmDB}`)
+// }).catch(erroConn => {
+//     console.error(`Incapaz de conectar-se ao banco MySQL de nome ${nmDB}`, erroConn)
+// })
 
   //rotas da consulta 
   appBack.use(express.json())
