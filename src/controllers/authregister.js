@@ -61,7 +61,7 @@ exports.register = async (req, res) => {
       <body>
         <h1>Confirme seu Email</h1>
         <p>Clique no botão abaixo para confirmar seu email. Você será redirecionado para outra página</p>
-        <a href="http://localhost:5000/validaEmail">Confirmar E-mail</a>
+        <a href="http://localhost:5000/">Confirmar E-mail</a>
       </body>
     </html>
   `;
