@@ -1,7 +1,7 @@
 <?php
 $server = "localhost";
 $user = "root";
-$password = "";
+$password = "root";
 $database = "hands_db";
 $port = 3306;
 

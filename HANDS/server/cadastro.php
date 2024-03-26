@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $dt_nascimento = $_GET['dt_nascimento'] ?? '';
 
     if ($nome && $sobrenome && $email && $cpf && $senha && $dt_nascimento) {
-        $sql = "INSERT INTO tb_usuario(nm_nome, nm_sobrenome, email, cd_cpf, senha, dt_nascimento) VALUES ('$nome', '$sobrenome', '$email', '$cpf', '$senha', '$dt_nascimento')";
+        $sql = "INSERT INTO tb_usuario(nm_usuario, nm_sobrenome, email, cd_cpf, senha, dt_nascimento) VALUES ('$nome', '$sobrenome', '$email', '$cpf', '$senha', '$dt_nascimento')";
 
         if ($conn->query($sql) === TRUE) {
             echo "Novo registro criado com sucesso";

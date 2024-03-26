@@ -16,6 +16,7 @@ const { Query } = require('./Querys/QuerySelects.js');
 const UsuarioRoutes = require('./src/routes/pages.js')
 const verificaAutenticacao = require('./src/middleware/Auth.js')
 const cookieParser = require('cookie-parser')
+const video = require ('./src/assets/index.js')
 app.use(cookieParser());
 
 app.use((req, res, next) => {
@@ -35,7 +36,7 @@ app.use(express.static(scripthbsDirectory));
 const publicDirectory = path.join(__dirname, 'src/public'); //views // ./public
 app.use(express.static(publicDirectory));
 
-const videoDirectory = path.join(__dirname, 'src/assets');
+const videoDirectory = path.join(__dirname, 'src/assets/video');
 app.use(express.static(videoDirectory))
 
 //imagens 

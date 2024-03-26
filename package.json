@@ -19,6 +19,7 @@
     "express": "^4.19.1",
     "express-hbs": "^2.5.0",
     "express-session": "^1.18.0",
+    "fs": "^0.0.1-security",
     "hbs": "^4.2.0",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.9.1",
