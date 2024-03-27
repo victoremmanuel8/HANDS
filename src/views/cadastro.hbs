@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="/cadastro.css">
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <script src="https://cdn.jsdelivr.net/npm/vanilla-masker@1.2.0"></script>
+        <script src="https://accounts.google.com/gsi/client" async></script>
         <script>
             //script para masked
             window.onload = function() {
@@ -154,7 +155,7 @@
                 <div class="termos_uso">
                     <div class="row">
                         <input class="check" type="checkbox" id="termos_uso" name="termos_uso" required>
-                        <p for="termos_uso">Concordo com os <a href="/termos-de-uso.hbs" target="_blank">Termos de Uso</a></p>
+                        <p for="termos_uso">Concordo com os <a href="/termos-uso" target="_blank">Termos de Uso</a></p>
                     </div>
                      <input class="button" type="submit" id= "submit" class="btn btn-primary" disabled/>
                 </div>
@@ -166,6 +167,37 @@
       {{/if}}
             <footer>
                 <p class="titulo-3">Já possuí uma conta? <a href="/">Log in</a></p>
+                <p class="título-3">ou</p>
+                <div id="googleSignInButton"></div>
+                <style>
+                    /* Esconde o texto do botão */
+                    .abcRioButtonContents {
+                    display: none !important;
+                    }
+                </style>
+                <script>
+                     // Função para lidar com a resposta de credencial
+                    function handleCredentialResponse(response) {
+                        // Lógica adicional após a obtenção do token
+                        }
+                        // Ao carregar a página
+                        window.onload = function () {
+                        google.accounts.id.initialize({
+                        client_id: "269010019206-te6nfdj47ppqq6npbumbfm0ssun3r4rg.apps.googleusercontent.com",
+                        callback: handleCredentialResponse
+                        });
+
+                        google.accounts.id.renderButton(
+                        document.getElementById("googleSignInButton"),
+                        {
+                            theme: "outline",
+                            size: "large",
+                            type: "icon" // Mostrar apenas o ícone
+                        }
+                        );
+                        google.accounts.id.prompt(); // Exibir o diálogo One Tap
+                        }
+                </script>
             </footer>
         </div>
         <script src="/troca-pag.js"></script>
