@@ -26,6 +26,17 @@ exports.register = async (req, res) => {
   const hashedPassword = await bcrypt.hash(senha, 8);
   console.log(hashedPassword);
 
+  // Verificação da data de nascimento
+  let dt_atual = new Date();
+  let data_nascimento = new Date(dt_nascimento);
+  
+  if (data_nascimento >= dt_atual) {
+    return res.render('cadastro', { message: "A data de nascimento não pode ser futura" });
+  } else if (data_nascimento.getFullYear() < 1930) {
+    return res.render('cadastro', { message: "A data de nascimento não pode ser anterior a 1930" });
+  }
+  
+
   // Inserção do usuário ao banco de dados
   try {
     const Add_usuario = await tb_usuario.create({

@@ -3,6 +3,6 @@ module.exports = connectmail = {
     port: 587,
     auth: {
         user: "hands_enterprise@outlook.com", 
-        pass: "" //senha da nossa conta
+        pass: "hands159*" //senha da nossa conta
       }
   }

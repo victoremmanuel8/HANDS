@@ -19,6 +19,7 @@
     "express": "^4.19.2",
     "express-hbs": "^2.5.0",
     "express-session": "^1.18.0",
+    "express-validator": "^7.0.1",
     "fs": "^0.0.1-security",
     "hbs": "^4.2.0",
     "jsonwebtoken": "^9.0.2",

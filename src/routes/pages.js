@@ -13,7 +13,7 @@ router.delete('/usuario/:id_usuario', ControllerUsuario.deleteusuarioById)
 //aqui a função get e render vai pegar a url e renderizar ela no site
 
 // a pagina inicial que irá aparecer ao entrar no server
-router.get("/", (req, res) => {
+router.get("/",  (req, res) => {
   
   res.render("login"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 });
