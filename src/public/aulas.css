@@ -1,4 +1,4 @@
-
+/* 
 .banner {
     background: linear-gradient(90deg, #FECF82, #FC9404, #FF66B2);
     width: 100%;
@@ -110,8 +110,6 @@ nav {
     z-index: 6;
 }
 
-/* //////////////////////////////////// */
-
 .progresso {
     display: flex;
     flex-direction: row;
@@ -120,7 +118,7 @@ nav {
     height: 250px;
     justify-content: space-around;
     align-content: space-between;
-    /* justify-content: space-between; */
+    justify-content: space-between;
 }
 
 .prog-seg {
@@ -208,4 +206,4 @@ nav {
     color: #A86100;
     text-align: center;
     margin-top: 2px;
-}
+} */

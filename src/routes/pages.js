@@ -28,11 +28,6 @@ router.get('/index', /*verificaAutenticacao,*/ (req, res) => {
   res.render('index');
 });
 
-router.get("/aulas", (req, res) => {
-  //res.send("<h1>Pagina-Inicial</h1>")
-  res.render("aulas"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
-});
-
 router.get("/kids", (req, res) => {
   //res.send("<h1>Pagina-Inicial</h1>")
   res.render("kids"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
@@ -63,8 +58,8 @@ router.get("/cadastro", (req, res) => {
     
     });
 
-  router.get("/aulas-novo", (req, res) => {
-      res.render("aulas-novo"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+  router.get("/aulas", (req, res) => {
+      res.render("aulas"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
       
       });
 

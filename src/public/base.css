@@ -8,8 +8,6 @@
 }
 
 body {
-    padding: 2vh;
-    padding-top: 50px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -254,8 +252,9 @@ nav hr {
 .titulo-2 {
     /* font-family: kumbh-regular; */ 
     font-weight: 300;
-   font-size: 30px;
+   font-size: 35px;
    color: #68584c;
+   margin-top: 2vh;
 }
 
 .titulo-3 {
@@ -283,6 +282,11 @@ nav hr {
     font-size: 65px;
 }
 
+.titulo-1-cor-vinho {
+  color: #99415E;
+    font-size: 65px;
+}
+
 [data-anime] {
   opacity: 0;
   transition: .5s ease-in-out; 
@@ -303,4 +307,73 @@ nav hr {
 [data-anime].animate {
   opacity: 100%;
   transform: translate3d(0px, 0px, 0px);
+}
+
+ul a svg {
+  transition: .3s ease-in-out;
+}
+
+ul a svg:hover {
+  transition: .3s ease-in-out;
+  scale: 1.08;
+  rotate: 3deg;
+}
+
+.svg-container {
+  position: relative;
+  display: inline-block;
+  width: 100px; /* Defina o tamanho do seu SVG aqui */
+  height: 100px; /* Defina o tamanho do seu SVG aqui */
+}
+.svg-container svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+ul a svg:hover .h{
+  transition: .3s ease-in-out;
+  fill: #fe9205dc;
+}
+
+ul a svg .h{
+  transition: .3s ease-in-out;
+}
+
+ul a svg:hover .a{
+  transition: .3s ease-in-out;
+  fill: #50D59Bdc;
+}
+
+ul a svg .a{
+  transition: .3s ease-in-out;
+}
+
+ul a svg:hover .n{
+  transition: .3s ease-in-out;
+  fill: #F9BC07dc;
+}
+
+ul a svg .n{
+  transition: .3s ease-in-out;
+}
+
+ul a svg:hover .d{
+  transition: .3s ease-in-out;
+  fill: #FD67B1dc;
+}
+
+ul a svg .d{
+  transition: .3s ease-in-out;
+}
+
+ul a svg:hover .s{
+  transition: .3s ease-in-out;
+  fill: #20557ddc;
+}
+
+ul a svg .s{
+  transition: .3s ease-in-out;
 }
