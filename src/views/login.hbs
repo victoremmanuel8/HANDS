@@ -11,6 +11,7 @@
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <script src="https://cdn.jsdelivr.net/npm/vanilla-masker@1.2.0"></script>
         <script src="https://accounts.google.com/gsi/client" async></script>
+        <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
         <script>
             //script para masked
             window.onload = function() {
@@ -120,8 +121,9 @@
                 <script>
                      // Função para lidar com a resposta de credencial
                     function handleCredentialResponse(response) {
-                        // Lógica adicional após a obtenção do token
-                        }
+                        const data = jwt_decode(response.credential)
+                        console.log(data)
+                     }
                         // Ao carregar a página
                         window.onload = function () {
                         google.accounts.id.initialize({
