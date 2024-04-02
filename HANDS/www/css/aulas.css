@@ -1,4 +1,4 @@
-
+/* 
 .banner {
     background: linear-gradient(90deg, #FECF82, #FC9404, #FF66B2);
     width: 100%;
@@ -9,8 +9,18 @@
     position: relative;
     z-index: 1;
     margin-top: 2vh;
+} */
+
+.banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+.banner svg{
+    filter: drop-shadow(10px 20px 4rem  #00BD9E);
+}
+/* 
 .video-aulas {
     width: auto;
     background-color: #fff;
@@ -104,16 +114,18 @@ nav {
 }
 
 /* //////////////////////////////////// */
-
 .progresso {
+    text-align: center;
+}
+
+.progresso-1 {
     display: flex;
-    flex-direction: row;
+    flex-direction:row;
     padding-top: 4vh;
     padding-right: 2vh;
     height: 250px;
     justify-content: space-around;
     align-content: space-between;
-    /* justify-content: space-between; */
 }
 
 .prog-seg {
@@ -135,7 +147,6 @@ nav {
     justify-content: center;
     align-items: center;
     color: #fff;
-    font-family: inika-bold;
 }
 
 .num-prog canvas {
@@ -149,13 +160,18 @@ nav {
     top: -15px;
     left: -15px;
 }
+.blur-verde {
+    width: 30px;
+    height: 30px;
+    filter: blur(200px);
+    background-color: #00BD9E;
+}
 
 .nivel {
     background-color: #AEF1D480;
     width: 100%;
     padding: 14px;
     border-radius: 20px;
-    font-family: kumbh-regular;
     font-size: .8em;
     display: flex;
     flex-direction: column;
@@ -177,7 +193,6 @@ nav {
     width: 100%;
     padding: 14px;
     border-radius: 20px;
-    font-family: kumbh-regular;
     font-size: .8em;
     display: flex;
     flex-direction: column;
@@ -208,4 +223,4 @@ nav {
     border-radius: 20px;
     box-shadow: 7px 7px 7px #0000002e;
     margin-right: 40px;
-}
+} 
