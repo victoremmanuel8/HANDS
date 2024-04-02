@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const jwt = require('jsonwebtoken');
+const jwt_decode = require('jwt-decode');
 const cookieParser = require('cookie-parser');
 const { tb_usuario } = require('../controllers/authlogin');
 app.use(cookieParser());
@@ -57,4 +58,25 @@ module.exports = async function verificaAutenticacao(req, res, next) {
   }
 }
 
+const ap = express();
+const port = 3307;
+app.post('/login', (req, res) => {
+  const { token } = req.body; // Token de acesso retornado pelo Google
+  
+  // Decodificar o token para obter as informações do usuário
+  const userData = jwt_decode(token);
+
+  // Armazenar as informações do usuário no banco de dados MySQL
+  const {email, senha } = userData;
+  const sql = `INSERT INTO usuarios (email, senha) VALUES ('${email}', '${senha}')`;
+  
+  connection.query(sql, (error, results, fields) => {
+      if (error) {
+          console.error('Erro ao cadastrar usuário no banco de dados: ' + error);
+          return res.status(500).send('Erro ao cadastrar usuário');
+      }
+      console.log('Usuário cadastrado com sucesso no banco de dados');
+      res.status(200).send('Usuário cadastrado com sucesso');
+  });
+});
 
