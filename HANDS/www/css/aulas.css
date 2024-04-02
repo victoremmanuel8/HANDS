@@ -126,6 +126,7 @@ nav {
     height: 250px;
     justify-content: space-around;
     align-content: space-between;
+    position: relative;
 }
 
 .prog-seg {
@@ -137,7 +138,7 @@ nav {
 }
 
 .num-prog {
-    background-color: #ff66b375;
+    background-color: #00BD9E;
     border-radius: 20px;
     width: 50%;
     height: 100%;
@@ -160,10 +161,15 @@ nav {
     top: -15px;
     left: -15px;
 }
+
 .blur-verde {
-    width: 30px;
-    height: 30px;
-    filter: blur(200px);
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    position: absolute;
+    top: 10px;
+    left: -22px;
+    filter: blur(80px);
     background-color: #00BD9E;
 }
 
@@ -189,7 +195,7 @@ nav {
 }
 
 .quant-hrs {
-    background-color: #febb134f;
+    background-color: #ACF9CF;
     width: 100%;
     padding: 14px;
     border-radius: 20px;
@@ -207,13 +213,13 @@ nav {
 }
 
 .quant-hrs hr {
-    border-color: #C69106;
+    border-color: #128031;
     border-radius: 100%;
 }
 
 .quant-hrs #tempoDecorrido {
     font-size: 1.4em;
-    color: #A86100;
+    color: #128031;
     text-align: center;
     margin-top: 2px;
 }
@@ -224,3 +230,7 @@ nav {
     box-shadow: 7px 7px 7px #0000002e;
     margin-right: 40px;
 } 
+
+.videoaulas {
+    text-align: center;
+}
