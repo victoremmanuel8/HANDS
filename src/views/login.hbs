@@ -103,13 +103,21 @@
             </svg>
         </div>
         <div class="area-cadastro">
+            <div class="alert-text">
+        {{#each erros}}
+        <div class="alert alert-danger">{{text}}</div>
+
+
+
+         {{/each}}
+        </div>
             <h3 class="titulo-1">Seja bem-vindo</h3>
             <h4 class="titulo-2">Conecte-se a sua conta</h4>
             <div class="progresso"></div>
             <div class="campos">
                 <form id="Form" action="/auth/login" method="POST" required>
-                <input class="input" type="email" name="email" id="" placeholder="E-mail" required>   
-                <input class="input" type="password" name="senha" id="" placeholder="Senha" required>
+                <input class="input" type="email" name="email" id="" placeholder="E-mail">   
+                <input class="input" type="password" name="senha" id="" placeholder="Senha">
                 <br><br>
                 <input  class="button" type="submit" id= "submit" class="btn btn-primary"/>
             </div>

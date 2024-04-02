@@ -1,6 +1,6 @@
 const express = require("express");
+const req = require("./node_modules/req/node_modules/mime");
 const path = require('path');
-const session = require('express-session');
 //Garantir que o servidor starte 
 const mysql = require('mysql2');
 const dotenv = require('dotenv');
@@ -14,9 +14,28 @@ const appBack = express()
 const app = express();
 //const { Query } = require('./Querys/QuerySelects.js');
 const UsuarioRoutes = require('./src/routes/pages.js')
-const verificaAutenticacao = require('./src/middleware/Auth.js')
+//const verificaAutenticacao = require('./src/middleware/Auth.js')
 const cookieParser = require('cookie-parser')
-const video = require ('./src/assets/index.js')
+const session = require("express-session")
+const flash = require("connect-flash")
+//const video = require ('./src/assets/index.js')
+
+//Sessão
+app.use(session({
+  secret: 'hands',
+  resave: true,
+  saveUninitialized: true,
+}))
+
+//Flash
+app.use(flash())
+//middleware
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash("success_msg")
+    res.locals.error_msg - req.flash("error_msg")
+    next()
+})
+
 app.use(cookieParser());
 
 app.use((req, res, next) => {
@@ -71,16 +90,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.set('view engine', 'hbs'),
-
-  
-//sessions
-/*
-app.use(session({
-  secret: '5480909043209',
-  resave: false,
-  saveUninitialized: false,
-}));
-*/
 
  // Conexão com o Sequelize
 connSequelize.sync()
