@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         if ($result && $result->num_rows > 0) {
             echo "Acessado!";
             // Redirecionar o usuário para a página inicial
-            header('Location: /HANDS/HANDS/HANDS/www/index.html');
+            header('Location: /HANDS/HANDS/HANDS/www/views/index.html');
             exit(); 
         } else {
             echo "Erro ao acessar: " . $conn->error;

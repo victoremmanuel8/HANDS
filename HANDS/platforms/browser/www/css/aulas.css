@@ -1,4 +1,4 @@
-
+/* 
 .banner {
     background: linear-gradient(90deg, #FECF82, #FC9404, #FF66B2);
     width: 100%;
@@ -9,7 +9,46 @@
     position: relative;
     z-index: 1;
     margin-top: 2vh;
+} */
+
+.pesq {
+    width: 100%;
+    height: 40px;
+    /* background: linear-gradient(90deg, #ADECFA, #16B0FF); */
+    background-color: #EFFFE5;
+    margin-bottom: 2.5vh;
+    border-radius: 10vh;
+    display: flex;
+    overflow: hidden;
 }
+
+.icon svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    background-color: #00BD9E;
+    height: 40px;
+    width: 40px;
+    border-radius: 100vh;
+    position: absolute;
+}
+
+.banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.banner svg{
+    filter: drop-shadow(10px 20px 4rem  #00BD9E);
+}
+
+.verde {
+    color: #136c41ba;
+  }
 
 .video-aulas {
     width: auto;
@@ -29,13 +68,15 @@
 
 .aula {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+    text-align: left;
     margin-bottom: 2vh;
 }
 
-.video-aulas img {
-    width: 100px;
+.video-aulas iframe {
+    width: 95%;
+    height: 170px;
     border: solid 1px #000;
     margin-right: 3vh;
     border-radius: 10px;
@@ -77,6 +118,7 @@
 
 .info {
     margin-right: 3vh;
+    margin-top: 15px;
 }
 
 .video-aulas .ler-mais-btn {
@@ -104,16 +146,19 @@ nav {
 }
 
 /* //////////////////////////////////// */
-
 .progresso {
+    text-align: center;
+}
+
+.progresso-1 {
     display: flex;
-    flex-direction: row;
+    flex-direction:row;
     padding-top: 4vh;
     padding-right: 2vh;
     height: 250px;
     justify-content: space-around;
     align-content: space-between;
-    /* justify-content: space-between; */
+    position: relative;
 }
 
 .prog-seg {
@@ -125,7 +170,7 @@ nav {
 }
 
 .num-prog {
-    background-color: #ff66b375;
+    background-color: #00BD9E;
     border-radius: 20px;
     width: 50%;
     height: 100%;
@@ -135,7 +180,6 @@ nav {
     justify-content: center;
     align-items: center;
     color: #fff;
-    font-family: inika-bold;
 }
 
 .num-prog canvas {
@@ -150,12 +194,22 @@ nav {
     left: -15px;
 }
 
+.blur-verde {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    position: absolute;
+    top: 10px;
+    left: -22px;
+    filter: blur(80px);
+    background-color: #00BD9E;
+}
+
 .nivel {
     background-color: #AEF1D480;
     width: 100%;
     padding: 14px;
     border-radius: 20px;
-    font-family: kumbh-regular;
     font-size: .8em;
     display: flex;
     flex-direction: column;
@@ -173,11 +227,10 @@ nav {
 }
 
 .quant-hrs {
-    background-color: #febb134f;
+    background-color: #ACF9CF;
     width: 100%;
     padding: 14px;
     border-radius: 20px;
-    font-family: kumbh-regular;
     font-size: .8em;
     display: flex;
     flex-direction: column;
@@ -192,20 +245,24 @@ nav {
 }
 
 .quant-hrs hr {
-    border-color: #C69106;
+    border-color: #128031;
     border-radius: 100%;
 }
 
 .quant-hrs #tempoDecorrido {
     font-size: 1.4em;
-    color: #A86100;
+    color: #128031;
     text-align: center;
     margin-top: 2px;
 }
 
 .aula video {
-    width: 200px;
-    border-radius: 20px;
-    box-shadow: 7px 7px 7px #0000002e;
-    margin-right: 40px;
+    width: 150px;
+    border: solid 1px #000;
+    margin-right: 3vh;
+    border-radius: 10px;
+}
+
+.videoaulas {
+    text-align: center;
 }

@@ -10,16 +10,15 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $nome = $_GET['nome'] ?? ''; //evitar injeção Mysql
     $sobrenome = $_GET['sobrenome'] ?? '';
     $email = $_GET['email'] ?? '';
-    $cpf = $_GET['cpf'] ?? '';
     $senha = $_GET['senha'] ?? '';
     $dt_nascimento = $_GET['dt_nascimento'] ?? '';
 
-    if ($nome && $sobrenome && $email && $cpf && $senha && $dt_nascimento) {
-        $sql = "INSERT INTO tb_usuario(nm_usuario, nm_sobrenome, email, cd_cpf, senha, dt_nascimento) VALUES ('$nome', '$sobrenome', '$email', '$cpf', '$senha', '$dt_nascimento')";
+    if ($nome && $sobrenome && $email && $senha && $dt_nascimento) {
+        $sql = "INSERT INTO tb_usuario(nm_usuario, nm_sobrenome, email, senha, dt_nascimento) VALUES ('$nome', '$sobrenome', '$email',  '$senha', '$dt_nascimento')";
 
         if ($conn->query($sql) === TRUE) {
             echo "Novo registro criado com sucesso";
-            header('Location: HANDS/HANDS/HANDS/www/index.html');
+            header('Location: HANDS/HANDS/HANDS/www/views/index.html');
         } else {
             echo "Erro ao inserir registro: " . $conn->error;
         }
