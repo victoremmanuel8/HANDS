@@ -11,17 +11,19 @@
         <title>HANDS</title>
         <link rel="icon" type="image/x-icon" href="/logo.png">
     </head>
-    <div class="alert-text">
-      {{#if success_msg}}
-      <div class="alert alert-success">{{success_msg}}</div>
+<script>
+          setTimeout(function () {
+        document.getElementById("success").style.transitionDuration = ".3s"; 
 
-{{/if}}
-</div>
-
-{{#if error_msg}}
-  <div class="alert alert-danger">{{error_msg}}</div>
-  
-{{/if}}
+              setTimeout(function () {
+        document.getElementById("success").style.opacity = "0"; // Define a opacidade como 0
+    // Oculta o alerta após 2 segundos
+                  setTimeout(function () {
+        document.getElementById("success").style.display = "none"; 
+                  }, 300)
+                        }, 500); // 500 milissegundos para a transição
+                             }, 2000);
+</script>
     <body>
         <div class="background">
             <svg width="100%" height="" viewBox="0 0 1280 1290" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -244,6 +246,14 @@
             </ul>
         </header>
         <section>
+                    <div class="alert-text">
+    {{#if success_msg}}
+        <div id='success'class="alert alert-success">{{success_msg}}</div>
+    {{/if}}
+    {{#if error_msg}}
+        <div id="erro" class="alert alert-danger">{{error_msg}}</div>
+    {{/if}}
+</div>
 {{!-- <header>
             <div class="container-menu">
                 <div class="hamburger">
