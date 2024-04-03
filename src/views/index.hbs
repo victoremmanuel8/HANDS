@@ -11,6 +11,17 @@
         <title>HANDS</title>
         <link rel="icon" type="image/x-icon" href="/logo.png">
     </head>
+    <div class="alert-text">
+      {{#if success_msg}}
+      <div class="alert alert-success">{{success_msg}}</div>
+
+{{/if}}
+</div>
+
+{{#if error_msg}}
+  <div class="alert alert-danger">{{error_msg}}</div>
+  
+{{/if}}
     <body>
         <div class="background">
             <svg width="100%" height="" viewBox="0 0 1280 1290" fill="none" xmlns="http://www.w3.org/2000/svg">

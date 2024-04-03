@@ -36,7 +36,7 @@ router.post("/login", (req, res) => {
     if (erros.length > 0) {
         res.render("login", { erros: erros });
     } else {
-      authControllerlogin.login(req, res);
+        authControllerlogin.login(req, res);
     }
   });
 

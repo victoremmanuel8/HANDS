@@ -53,7 +53,7 @@ console.log(resultBusca)
 */
 
 resultBusca = await tb_premium.findAll({
-    where: {
+    where: { 
         status:{
             [Op.in]:[
                 'ativo',

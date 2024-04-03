@@ -62,6 +62,9 @@ app.use(express.static(videoDirectory))
 const imgDirectory = path.join(__dirname, './res');
 app.use(express.static(imgDirectory));
 
+const partialDirectory = path.join(__dirname, 'src/views/partials')
+app.use(express.static(partialDirectory))
+
 //Verificação do captcha
 app.post('/submit', async (req, res) => {
   const captchaResponse = req.body['g-recaptcha-response'];
