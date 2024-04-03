@@ -11,6 +11,31 @@
     margin-top: 2vh;
 } */
 
+.pesq {
+    width: 100%;
+    height: 40px;
+    /* background: linear-gradient(90deg, #ADECFA, #16B0FF); */
+    background-color: #EFFFE5;
+    margin-bottom: 2.5vh;
+    border-radius: 10vh;
+    display: flex;
+    overflow: hidden;
+}
+
+.icon svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    background-color: #00BD9E;
+    height: 40px;
+    width: 40px;
+    border-radius: 100vh;
+    position: absolute;
+}
+
 .banner {
     display: flex;
     justify-content: space-between;
@@ -20,7 +45,11 @@
 .banner svg{
     filter: drop-shadow(10px 20px 4rem  #00BD9E);
 }
-/* 
+
+.verde {
+    color: #136c41ba;
+  }
+
 .video-aulas {
     width: auto;
     background-color: #fff;
@@ -39,13 +68,15 @@
 
 .aula {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+    text-align: left;
     margin-bottom: 2vh;
 }
 
-.video-aulas img {
-    width: 100px;
+.video-aulas iframe {
+    width: 95%;
+    height: 170px;
     border: solid 1px #000;
     margin-right: 3vh;
     border-radius: 10px;
@@ -87,6 +118,7 @@
 
 .info {
     margin-right: 3vh;
+    margin-top: 15px;
 }
 
 .video-aulas .ler-mais-btn {
@@ -225,11 +257,11 @@ nav {
 }
 
 .aula video {
-    width: 200px;
-    border-radius: 20px;
-    box-shadow: 7px 7px 7px #0000002e;
-    margin-right: 40px;
-} 
+    width: 150px;
+    border: solid 1px #000;
+    margin-right: 3vh;
+    border-radius: 10px;
+}
 
 .videoaulas {
     text-align: center;

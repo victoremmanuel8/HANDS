@@ -48,31 +48,6 @@ header {
     margin-right: 30px;
 }
 
-.pesq {
-    width: 100%;
-    height: 40px;
-    /* background: linear-gradient(90deg, #ADECFA, #16B0FF); */
-    background-color: #EFFFE5;
-    margin-bottom: 2.5vh;
-    border-radius: 10vh;
-    display: flex;
-    overflow: hidden;
-}
-
-.icon svg {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.icon {
-    background-color: #00BD9E;
-    height: 40px;
-    width: 40px;
-    border-radius: 100vh;
-    position: absolute;
-}
-
 .input-pesq {
     border: none !important;
     outline: none;
@@ -100,20 +75,16 @@ nav ul {
 }
 
 .titulo-1 {
-    font-size: 1.4em;
+    font-size: 1.5em;
     margin-bottom: 10px;
 }
 
 .titulo-2 {
   /* font-family: kumbh-regular; */ 
   font-weight: 300;
- font-size: 13px;
+ font-size: 16px;
  color: #68584c;
  margin-top: 2vh;
-}
-
-.verde {
-  color: #136c41ba;
 }
 
 nav hr {
