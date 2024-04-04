@@ -12,7 +12,7 @@ const { connSequelize, nmDB } = require('./config/bdConnection');
 dotenv.config({path: './.env'});
 const appBack = express()  
 const app = express();
-//const { Query } = require('./Querys/QuerySelects.js');
+// const { Query } = require('./Querys/QuerySelects.js');
 const UsuarioRoutes = require('./src/routes/pages.js')
 //const verificaAutenticacao = require('./src/middleware/Auth.js')
 const cookieParser = require('cookie-parser')
