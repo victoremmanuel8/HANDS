@@ -1,12 +1,12 @@
- const {Sequelize} = require ('sequelize')
- const usuario =  'root'
- const senha = 'root'
- const nmDB = 'hands_db'
- const connSequelize =  new Sequelize(
-    `mysql:${usuario}:${senha}@mysql.railway.internal:3306/${nmDB}`//porta 3307(escola) ou 3306 (casa)z
- )
+    const {Sequelize} = require ('sequelize')
+    const usuario =  'root'
+    const senha = 'eytfetRKZCiGTVzfETRqziAwVWAcgGsx'
+    const nmDB = 'railway'
+    const connSequelize =  new Sequelize(
+        `mysql:${usuario}:${senha}@roundhouse.proxy.rlwy.net:32065/${nmDB}`//porta 3307(escola) ou 3306 (casa)z
+    )
 
- module.exports = {
-     connSequelize,
-     nmDB
- }
+    module.exports = {
+        connSequelize,
+        nmDB
+    }
