@@ -5,10 +5,11 @@ const path = require('path');
 const mysql = require('mysql2');
 const dotenv = require('dotenv');
 const hbs = require('express-hbs/lib/hbs');
+const multer = require('multer');
 //definindo o swiper
 const Swiper = require('swiper/js/swiper.js').default;
-const axios = require('axios');
-const { connSequelize, nmDB } = require('./config/bdConnection');
+const axios = require('axios'); //vê a utlidade futuramente
+const { connSequelize, nmDB } = require('./src/config/bdConnection.js');
 dotenv.config({path: './.env'});
 const appBack = express()  
 const app = express();
@@ -17,7 +18,8 @@ const UsuarioRoutes = require('./src/routes/pages.js')
 //const verificaAutenticacao = require('./src/middleware/Auth.js')
 const cookieParser = require('cookie-parser')
 const session = require("express-session")
-const flash = require("connect-flash")
+const flash = require("connect-flash");
+const morgan = require("morgan")
 //const video = require ('./src/assets/index.js')
 
 //Sessão
@@ -36,15 +38,14 @@ app.use((req, res, next) => {
     next()
 })
 
+app.use(morgan('dev'))
+
 app.use(cookieParser());
 
 app.use((req, res, next) => {
   console.log(req.cookies);
   next();
 });
-
-
-
 
 app.set('views', path.join(__dirname, 'src/views'));
 
@@ -57,7 +58,6 @@ app.use(express.static(publicDirectory));
 
 const videoDirectory = path.join(__dirname, 'src/assets/video');
 app.use(express.static(videoDirectory))
-
 //imagens 
 const imgDirectory = path.join(__dirname, './res');
 app.use(express.static(imgDirectory));

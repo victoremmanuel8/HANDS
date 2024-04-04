@@ -1,4 +1,4 @@
-const { connSequelize } = require('../config/bdConnection')
+const { connSequelize } = require('../src/config/bdConnection.js')
 const { Model, Op, Sequelize } = require('sequelize')
 const { tb_usuario} = require('../src/models/usu_model.js')
 const { tb_profissional } = require('../src/models/prof_model.js');
