@@ -20,7 +20,12 @@ const cookieParser = require('cookie-parser')
 const session = require("express-session")
 const flash = require("connect-flash");
 const morgan = require("morgan")
+const mongoose = require("mongoose");
 //const video = require ('./src/assets/index.js')
+
+mongoose.connect("mongodb://localhost:27017/hands_db", {
+  useNewUrlParser: true,
+  });
 
 //Sessão
 app.use(session({

@@ -4,12 +4,20 @@ const multer = require('multer')
 const multerConfig = require('../config/multer')
 const ControllerUsuario= require('../controllers/consultaback')
 const verificaAutenticacao = require('../middleware/Auth')
+const Post = require('../models/Post')
 
 //rota do multer para ver através do back
-router.post("/posts", multer(multerConfig).single('file'), (req, res) =>{
+router.post("/posts", multer(multerConfig).single('file'), async (req, res) =>{
+  const { originalname: name, size, filename: key} = req.file;
+  const post = await Post.create({
+    name,
+    size,
+    key,
+    url: ' ',
+  });
   console.log(req.file);
 
-  return res.json({ text: "Sucesso!"});
+  return res.json({ post });
 });
 
 //rotas do back para o insomnia
