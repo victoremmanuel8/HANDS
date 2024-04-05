@@ -10,7 +10,6 @@ nm_usuario VARCHAR (100) not null,
 nm_sobrenome VARCHAR (100) not null,
 email VARCHAR(100) not null UNIQUE,
 senha VARCHAR(255),
-/*tp_usuario ENUM ('aluno', 'professor'), */
 dt_nascimento DATE
 );
           
@@ -33,12 +32,12 @@ CREATE TABLE tb_categoria (
 
 CREATE TABLE tb_aula (
     id_aula INT PRIMARY KEY AUTO_INCREMENT,
-    titulo VARCHAR(100) NOT NULL,
-    descricao TEXT,
+    ds_titulo VARCHAR(100) NOT NULL,
+    ds_descricao TEXT,
     conteudo TEXT,
     id_categoria INT,
     id_profissional INT,
-    data_publicacao DATE,
+    dt_publicacao DATE,
     #preco DECIMAL(10, 2), -- Preço da aula
     publica BOOLEAN DEFAULT true, -- Indica se a aula é pública (gratuita)
      FOREIGN KEY (id_profissional) REFERENCES tb_profissional(id_profissional),
@@ -50,7 +49,7 @@ CREATE TABLE tb_tarefa (
     id_tarefa INT PRIMARY KEY AUTO_INCREMENT,
     id_aula INT,
     id_usuario INT,
-    descricao TEXT,
+    ds_descricao TEXT,
     status ENUM('pendente', 'completo'),
     dt_prazo DATE,
     FOREIGN KEY (id_aula) REFERENCES tb_aula(id_aula),
@@ -62,31 +61,10 @@ CREATE TABLE tb_avaliacao (
     id_aula INT,
     id_aluno INT,
     nr_avaliacao INT,
-    descricao TEXT,
+    ds_descricao TEXT,
     dt_avaliacao DATE,
     FOREIGN KEY (id_aula) REFERENCES tb_aula(id_aula),
     FOREIGN KEY (id_aluno) REFERENCES tb_usuario(id_usuario)
-);
-
-
--- Tabela para gerenciar as aulas assistidas pelos usuários
-CREATE TABLE tb_aula_assistida (
-    id_aula_assistida INT PRIMARY KEY AUTO_INCREMENT,
-    id_aula INT,
-    id_usuario INT,
-    dt_assistida DATE,
-    FOREIGN KEY (id_aula) REFERENCES tb_aula(id_aula),
-    FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
-    );
-    
-    -- Tabela para gerenciar as assinaturas premium dos usuários
-CREATE TABLE tb_premium (
-    id_assinatura INT PRIMARY KEY AUTO_INCREMENT,
-    id_usuario INT,
-    dt_inicio DATE,
-    dt_fim DATE,
-    status ENUM('ativo', 'cancelado'),
-    FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
 );
 
 CREATE TABLE tb_videos(
@@ -100,6 +78,26 @@ CREATE TABLE tb_videos(
     FOREIGN KEY (id_profissional) REFERENCES tb_profissional(id_profissional),
     FOREIGN KEY (id_categoria) REFERENCES tb_categoria(id_categoria)
 );
+
+-- Tabela para gerenciar as assinaturas premium dos usuários
+CREATE TABLE tb_premium (
+    id_assinatura INT PRIMARY KEY AUTO_INCREMENT,
+    id_usuario INT,
+    dt_inicio DATE,
+    dt_fim DATE,
+    status ENUM('ativo', 'cancelado'),
+    FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
+);
+
+-- Tabela para gerenciar as aulas assistidas pelos usuários
+CREATE TABLE tb_aula_assistida (
+    id_aula_assistida INT PRIMARY KEY AUTO_INCREMENT,
+    id_aula INT,
+    id_usuario INT,
+    dt_assistida DATE,
+    FOREIGN KEY (id_aula) REFERENCES tb_aula(id_aula),
+    FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
+    );
 
 
 
