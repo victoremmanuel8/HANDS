@@ -5,12 +5,11 @@ const multerConfig = require('../config/multer')
 const ControllerUsuario= require('../controllers/consultaback')
 const verificaAutenticacao = require('../middleware/Auth')
 
-//multer
-
+//rota do multer para ver através do back
 router.post("/posts", multer(multerConfig).single('file'), (req, res) =>{
   console.log(req.file);
 
-  return res.json({ hello: "Rocket"});
+  return res.json({ text: "Sucesso!"});
 });
 
 //rotas do back para o insomnia
@@ -18,6 +17,7 @@ router.get('/usuario', ControllerUsuario.getAllusuarios)
 router.put('/usuario/id/:id_usuario', ControllerUsuario.editusuarioById)
 router.post('/usuario/criar', ControllerUsuario.createNewusuario)
 router.delete('/usuario/:id_usuario', ControllerUsuario.deleteusuarioById)
+
 
 //aqui a função get e render vai pegar a url e renderizar ela no site
 

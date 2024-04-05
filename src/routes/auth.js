@@ -17,6 +17,8 @@ router.post("/cadastro_prof", authControllerprof.register)
 'authlogin/login_prof'
 router.post("/login_prof", authControllerlogprof.login)
 
+
+//validações do login
                 'auth/login'
 router.post("/login", (req, res) => {
     const { email, senha } = req.body; 
