@@ -1,123 +1,131 @@
 * {
-    margin: 0px;
-    padding: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
 * {
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 body {
-    padding: 2vh;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    background-color: #fff;
-    color: #000;
-    font-family: kumbh-regular;
+  padding: 2vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #fff;
+  color: #000;
+  font-family: kumbh-regular;
 }
 
 a {
-    text-decoration: none;
-    color: #A4A4A4;
+  text-decoration: none;
+  color: #A4A4A4;
 }
 
 header {
-    width: 100%;
-    height: 7vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: 100%;
+  height: 7vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .premium-usuario {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .usuario {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 
 .line-temp {
-    width: 27px;
-    height: 2px;
-    background-color: #000;
-    border-radius: 10vh;
-    margin: 5px;
-    margin-right: 30px;
+  width: 27px;
+  height: 2px;
+  background-color: #000;
+  border-radius: 10vh;
+  margin: 5px;
+  margin-right: 30px;
 }
 
 .input-pesq {
-    border: none !important;
-    outline: none;
-    color: #000;
-    font-size: 1.1em;
-    width: 100%;
-    height: 100%;
-    border-radius: -10px;
-    margin-left: 50px;
-    background: transparent;
+  border: none !important;
+  outline: none;
+  color: #000;
+  font-size: 1.1em;
+  width: 100%;
+  height: 100%;
+  border-radius: -10px;
+  margin-left: 50px;
+  background: transparent;
 }
 
 nav ul {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    color: #A4A4A4;
-    list-style: none;
-    font-size: .9em;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: #A4A4A4;
+  list-style: none;
+  font-size: .9em;
 }
 
 .atual {
-    font-size: 1.16em;
-    color: #000;
+  font-size: 1.16em;
+  color: #000;
 }
 
 .titulo-1 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+  font-size: 1.5em;
+  margin-bottom: 10px;
 }
 
 .titulo-2 {
   /* font-family: kumbh-regular; */ 
   font-weight: 300;
- font-size: 16px;
- color: #68584c;
- margin-top: 2vh;
+  font-size: 16px;
+  color: #68584c;
+  margin-top: 2vh;
+}
+
+.titulo-3 {
+  font-size: 13px;
+}
+
+.centralizado {
+  text-align: center;
 }
 
 nav hr {
-    margin-bottom: 2vh;
+  margin-bottom: 2vh;
 }
 
 .container-menu a {
-    margin-right: 2vh;
-  }
+  margin-right: 2vh;
+}
   
   .hamburger {
-    z-index: 5;
-    cursor: pointer;
-  }
+  z-index: 5;
+  cursor: pointer;
+ }
   
   .hamburger {
-    font-size: 3em;
-    color: #e1e1e1;
-  }
+  font-size: 3em;
+  color: #e1e1e1;
+}
   
   .overlay {
-    position: fixed;  
-    top: 0;
-    left: -40px;
-    width: 180%;
-    height: 260%;
-    background-color: #0000008c;
-    z-index: 9;
-    opacity: 0;
-    visibility: hidden;
-    transition:all .2s ;
-    animation-delay: .5s;
-  }
+  position: fixed;  
+  top: 0;
+  left: -40px;
+  width: 180%;
+  height: 260%;
+  background-color: #0000008c;
+  z-index: 9;
+  opacity: 0;
+  visibility: hidden;
+  transition:all .2s ;
+  animation-delay: .5s;
+}
   
   .show-menu .overlay {
     opacity: 1;
