@@ -72,12 +72,12 @@ router.get("/teste", checkAuthenticated,(req, res) => {
   res.render("teste"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 });
 
-router.get("/cadastro", checkAuthenticated, (req, res) => {
+router.get("/cadastro", (req, res) => {
  res.render("cadastro"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
  
  });
 
- router.get("/cadastro_prof", checkAuthenticated, (req, res) => {
+ router.get("/cadastro_prof",  (req, res) => {
   res.render("cadastro_prof"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
   
   });

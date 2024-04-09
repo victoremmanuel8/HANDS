@@ -269,7 +269,6 @@ color: #000;
 
 .aulas {
   display: flex;
-  gap: 20vh;
   flex-direction: column;
 }
 
@@ -277,6 +276,7 @@ color: #000;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-top: 20vh;
 }
 
 .video-aulas iframe {
@@ -314,4 +314,5 @@ color: #000;
   margin-left: 65%;
   color: #A6A6A6;
   cursor: pointer;
+  font-size: 20px;
 }
