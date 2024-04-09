@@ -5,7 +5,7 @@
     <author email="dev@hands.com" href="https://hands.com.br">
         Team HANDS
     </author>
-    <content src="index.html" />
+    <content src="views/cadastro.html" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <icon src="www/res/logo.png" />
