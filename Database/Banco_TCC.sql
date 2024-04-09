@@ -9,7 +9,7 @@ id_usuario INT primary key auto_increment,
 nm_usuario VARCHAR (100) not null,
 nm_sobrenome VARCHAR (100) not null,
 email VARCHAR(100) not null UNIQUE,
-senha VARCHAR(255),
+senha VARCHAR(50),
 dt_nascimento DATE
 );
           
