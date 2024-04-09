@@ -22,6 +22,7 @@ exports.login = async (req, res) => {
       if (compare) {
         const token = jwt.sign({ id: db_usu.id }, 'JANX7AWB12BAKX');
         res.cookie('token', token, { httpOnly: true, secure: true });
+        req.session.user = db_usu; // Armazena o usuário na sessão
         req.flash("success_msg", "Login efetuado com sucesso")
         return res.redirect('/index');
       } else {

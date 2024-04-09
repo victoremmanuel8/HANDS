@@ -32,6 +32,7 @@ app.use(session({
   secret: 'hands',
   resave: true,
   saveUninitialized: true,
+  cookie: { maxAge: 60 * 60 * 2300 }
 }))
 
 //Flash
