@@ -23,6 +23,11 @@ senha VARCHAR(255) not null,
 dt_nascimento DATE
 );
 
+create table tb_youtube(
+id_youtube INT primary key auto_increment,
+nm_you VARCHAR (100) not null UNIQUE,
+);
+
 
 CREATE TABLE tb_categoria (
     id_categoria INT PRIMARY KEY AUTO_INCREMENT,
@@ -116,14 +121,17 @@ INSERT INTO tb_profissional (nm_prof, nm_sobrenome, cd_rg, email, senha, dt_nasc
                   ('Henrique', 'Santos', '11.223.344-5', 'professorhenriquesantos2000@gmail.com', 'mvsgnts1754', '2000-05-17'),
                   ('Anderson', 'Silva', '55.555.555-5', 'professorandersonsilva94@gmail.com', 'coringaominhavida', '1994-01-04'),
                   ('Paola', 'Arantes', '98.765.432-0', 'profpaola0204@gmail.com', 'pnatugj38', '1990-02-04'); 
-                  
+          
 insert into tb_categoria(nm_categoria)values
-('Alfabeto');
+('Alfabeto'),
+('Números'),
+('Animais'),
+('Frutas'),
+('Dia a dia');
 
 
 INSERT INTO tb_aula (titulo, descricao, conteudo, id_categoria, id_profissional, data_publicacao, publica)
 VALUES ('Ensino De Libras', 'Aprendendo o Alfabeto', 'Alfabeto do A - Z de maneira clara.', 1, 1, '2024-03-20', true);
-
 
 
 INSERT INTO tb_premium (id_usuario, dt_inicio, dt_fim, status)

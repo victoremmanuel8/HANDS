@@ -3,7 +3,7 @@ const router = express.Router();
 const multer = require('multer')
 const multerConfig = require('../config/multer')
 const ControllerUsuario= require('../controllers/consultaback')
-const verificaAutenticacao = require('../middleware/Auth')
+const session = require("express-session")
 const Post = require('../models/Post')
 
 //rota do multer para ver através do back
@@ -27,6 +27,17 @@ router.post('/usuario/criar', ControllerUsuario.createNewusuario)
 router.delete('/usuario/:id_usuario', ControllerUsuario.deleteusuarioById)
 
 
+
+  //function do middleware
+
+  function checkAuthenticated(req, res, next) {
+    if (req.session.user) {
+      next();
+    } else {
+      res.redirect('/');
+    }
+  }
+  
 //aqui a função get e render vai pegar a url e renderizar ela no site
 
 // a pagina inicial que irá aparecer ao entrar no server
@@ -40,52 +51,53 @@ router.get("/login_prof", (req, res) => {
   
   });
 
+
 // Rota que requer autenticação
-router.get('/index', /*verificaAutenticacao,*/ (req, res) => {
+router.get('/index', checkAuthenticated,/*verificaAutenticacao,*/ (req, res) => {
   res.render('index');
 });
 
-router.get("/kids", (req, res) => {
+router.get("/kids", checkAuthenticated, (req, res) => {
   //res.send("<h1>Pagina-Inicial</h1>")
   res.render("kids"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 });
 
-router.get("/profissionais", (req, res) => {
+router.get("/profissionais", checkAuthenticated, (req, res) => {
   //res.send("<h1>Pagina-Inicial</h1>")
   res.render("profissionais"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 });
 
 //area de teste para usuarios
-router.get("/teste", (req, res) => {
+router.get("/teste", checkAuthenticated,(req, res) => {
   res.render("teste"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 });
 
-router.get("/cadastro", (req, res) => {
+router.get("/cadastro", checkAuthenticated, (req, res) => {
  res.render("cadastro"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
  
  });
 
- router.get("/cadastro_prof", (req, res) => {
+ router.get("/cadastro_prof", checkAuthenticated, (req, res) => {
   res.render("cadastro_prof"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
   
   });
 
-  router.get("/cat-num", (req, res) => {
+  router.get("/cat-num", checkAuthenticated,(req, res) => {
     res.render("cat-num"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
     
     });
 
-  router.get("/aulas", (req, res) => {
+  router.get("/aulas", checkAuthenticated,(req, res) => {
       res.render("aulas"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
       
       });
 
-  router.get("/header", (req, res) => {
+  router.get("/header", checkAuthenticated,(req, res) => {
       res.render("header"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
         
       });
 
-  router.get("/termos-uso", (req, res) => {
+  router.get("/termos-uso", checkAuthenticated,(req, res) => {
        res.render("termos-uso"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
           
         });

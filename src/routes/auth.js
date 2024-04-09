@@ -18,6 +18,7 @@ router.post("/cadastro_prof", authControllerprof.register)
 router.post("/login_prof", authControllerlogprof.login)
 
 
+
 //validações do login
                 'auth/login'
 router.post("/login", (req, res) => {
