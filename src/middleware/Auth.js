@@ -58,9 +58,7 @@ module.exports = async function verificaAutenticacao(req, res, next) {
   }
 }
 
-const ap = express();
-const port = 3307;
-app.post('/login', (req, res) => {
+app.post('cadastro', (req, res) => {
   const { token } = req.body; // Token de acesso retornado pelo Google
   
   // Decodificar o token para obter as informações do usuário
