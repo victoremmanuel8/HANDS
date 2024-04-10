@@ -44,8 +44,8 @@ module.exports = {
             await usuario.update({
                 nm_usuario: nm_nome,
                 nm_sobrenome: nm_sobrenome,
-                email: email,
-                senha: senha,
+                ds_email: email,
+                nr_senha: senha,
                 dt_nascimento: dt_nascimento
             });
     
@@ -87,8 +87,8 @@ module.exports = {
             const usuario_criado =  await tb_usuario.create({
                 nm_usuario: nm_usuario,
                 nm_sobrenome: nm_sobrenome,
-                email: email,
-                senha: senha,
+                ds_email: email,
+                nr_senha: senha,
                 dt_nascimento: dt_nascimento
             })
             

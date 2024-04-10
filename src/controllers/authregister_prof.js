@@ -12,7 +12,7 @@ exports.register = async (req, res) => {
   const { nome, sobrenome, email, rg, senha, ConfirmarSenha, dt_nascimento } = req.body;
 
   // Verificação do email
-  const Exist_prof = await tb_profissional.findOne({ where: { email: email } });
+  const Exist_prof = await tb_profissional.findOne({ where: { ds_email: email } });
   if (Exist_prof) {
     return res.render('cadastro', { message: "Este email já está em uso" });
   } else if (senha !== ConfirmarSenha) {
@@ -28,9 +28,9 @@ exports.register = async (req, res) => {
     const Add_prof= await tb_profissional.create({
       nm_prof: nome,
       nm_sobrenome: sobrenome,
-      email: email,
+      ds_email: email,
       cd_rg: rg,
-      senha: hashedPassword,
+      nr_senha: hashedPassword,
       dt_nascimento: dt_nascimento
     });
     console.log(Add_prof);

@@ -25,7 +25,7 @@ const tb_tarefa = connSequelize.define('tb_tarefa', {
        key: 'id_usuario'
   }
 },
-  descricao: DataTypes.STRING(100),
+  ds_descricao: DataTypes.STRING(100),
   status: DataTypes.ENUM('pendente', 'completo'),
   dt_prazo: DataTypes.DATE      
       },

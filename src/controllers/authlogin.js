@@ -14,10 +14,10 @@ exports.login = async (req, res) => {
 
 // Selecionando o usuario correspondente do banco de dados
   try {
-    const db_usu = await tb_usuario.findOne({ where: { email: email } });
+    const db_usu = await tb_usuario.findOne({ where: { ds_email: email } });
 
     if (db_usu) {
-      const compare = await bcrypt.compare(senha, db_usu.senha);
+      const compare = await bcrypt.compare(senha, db_usu.nr_senha);
 
       if (compare) {
         const token = jwt.sign({ id: db_usu.id }, 'JANX7AWB12BAKX');

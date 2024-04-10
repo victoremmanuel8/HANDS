@@ -10,9 +10,9 @@ const tb_aula = connSequelize.define('tb_aula', {
     primaryKey: true,
     autoIncrement: true
   },
-  titulo: DataTypes.STRING(50),
-  descricao: DataTypes.STRING(200),
-  conteudo: DataTypes.DECIMAL(11, 2),
+  ds_titulo: DataTypes.STRING(50),
+  ds_descricao: DataTypes.STRING(200),
+  ds_conteudo: DataTypes.DECIMAL(11, 2),
   id_categoria: {
     type: DataTypes.INTEGER,
     references: {
@@ -27,7 +27,7 @@ const tb_aula = connSequelize.define('tb_aula', {
           key: 'id_profissional'
       }
   },
-  data_publicacao: DataTypes.DATE,
+  dt_publicacao: DataTypes.DATE,
   publica: DataTypes.BOOLEAN
 }, 
 _padraoTableDBExistente('tb_aula'));

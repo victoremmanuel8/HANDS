@@ -17,10 +17,10 @@ const tb_profissional = connSequelize.define('tb_profissional', {
   cd_rg: {
     type: DataTypes.NUMBER(12),
   },
-  email: {
+  ds_email: {
     type: DataTypes.STRING(100),
   },
-  senha: {
+  nr_senha: {
     type:DataTypes.STRING(255),
   },
   dt_nascimento: DataTypes.DATE

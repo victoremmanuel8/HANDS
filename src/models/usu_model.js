@@ -14,10 +14,10 @@ const tb_usuario = connSequelize.define('tb_usuario', {
     nm_sobrenome: {
       type: DataTypes.STRING(100)
     },
-    email: {
+    ds_email: {
       type: DataTypes.STRING(100),
     },
-    senha: {
+   nr_senha: {
       type: DataTypes.STRING(100),
     },
     dt_nascimento: {

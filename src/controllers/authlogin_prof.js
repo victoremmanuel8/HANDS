@@ -14,10 +14,10 @@ exports.login = async (req, res) => {
 
   // Selecionando o profissional correspondente do banco de dados
   try {
-    const db_prof = await tb_profissional.findOne({ where: { email: email, cd_rg: rg} });
+    const db_prof = await tb_profissional.findOne({ where: { ds_email: email, cd_rg: rg} });
 
     if (db_prof) {
-      const compare = await bcrypt.compare(senha, db_prof.senha);
+      const compare = await bcrypt.compare(senha, db_prof.nr_senha);
 
       if (compare) {
         return res.redirect('/index');
