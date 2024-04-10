@@ -19,10 +19,12 @@ module.exports = {
     },
   }),
   limits: {
-    fileSize: 20 * 1024 * 1024,
+    fileSize: 100 * 1024 * 1024,
   },
   fileFilter: (req, file, cb) => {
     const allowedMimes = [ 
+      'video/mp4',
+      'video/mov',
       'image/jpeg',
       'image/jpg',
       'image/pjpeg',

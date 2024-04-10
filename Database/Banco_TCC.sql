@@ -8,8 +8,8 @@ create table tb_usuario (
 id_usuario INT primary key auto_increment,
 nm_usuario VARCHAR (100) not null,
 nm_sobrenome VARCHAR (100) not null,
-email VARCHAR(100) not null UNIQUE,
-senha VARCHAR(50),
+ds_email VARCHAR(100) not null UNIQUE,
+nr_senha VARCHAR(100),
 dt_nascimento DATE
 );
           
@@ -18,14 +18,14 @@ id_profissional INT primary key auto_increment,
 nm_prof VARCHAR (100) not null,
 nm_sobrenome VARCHAR (100) not null,
 cd_rg CHAR (12) not null UNIQUE,
-email VARCHAR(100) not null UNIQUE,
-senha VARCHAR(255) not null,
+ds_email VARCHAR(100) not null UNIQUE,
+nr_senha VARCHAR(255) not null,
 dt_nascimento DATE
 );
 
 create table tb_youtube(
 id_youtube INT primary key auto_increment,
-nm_you VARCHAR (100) not null UNIQUE,
+nm_you VARCHAR (100) not null UNIQUE
 );
 
 
@@ -39,7 +39,7 @@ CREATE TABLE tb_aula (
     id_aula INT PRIMARY KEY AUTO_INCREMENT,
     ds_titulo VARCHAR(100) NOT NULL,
     ds_descricao TEXT,
-    conteudo TEXT,
+    ds_conteudo TEXT,
     id_categoria INT,
     id_profissional INT,
     dt_publicacao DATE,
@@ -75,8 +75,8 @@ CREATE TABLE tb_avaliacao (
 CREATE TABLE tb_videos(
     id_aula INT,
     nm_arquivo VARCHAR(100),
-    arquivo BLOB,
-    descricao TEXT,
+    nr_arquivo BLOB,
+    ds_descricao TEXT,
     id_profissional INT,
     id_categoria INT,
     FOREIGN KEY (id_aula) REFERENCES tb_aula(id_aula),
@@ -106,14 +106,14 @@ CREATE TABLE tb_aula_assistida (
 
 
 
-INSERT INTO tb_usuario (nm_usuario, nm_sobrenome, email, senha, dt_nascimento)
+INSERT INTO tb_usuario (nm_usuario, nm_sobrenome, ds_email, nr_senha, dt_nascimento)
 	VALUES('Luan', 'Henrique', 'luanhenrique123@gmail.com', 'luan123', '2004-06-06'),
                   ('Gabriel Logan', 'Sanches', 'gabriel.sanches31@etec.sp.gov.br', 'senha', '2006-06-15'),
                   ('Pyetra', 'Quintiana', 'pyetra.quintiana@etec.sp.gov.br', 'amosapos', '2007-04-13'),
                   ('Maria', 'Santos',  'maria.santos2815@etec.sp.gov.br', 'rock4life', '2004-01-25'),
                   ('Victor', 'Silva', 'victor.silva974@etec.sp.gov.br', 'amoaBR', '2005-01-29');
 
-INSERT INTO tb_profissional (nm_prof, nm_sobrenome, cd_rg, email, senha, dt_nascimento)
+INSERT INTO tb_profissional (nm_prof, nm_sobrenome, cd_rg, ds_email, nr_senha, dt_nascimento)
     VALUES('Aline', 'Caruso', '12.345.678-9', 'aline.caruso1@hotmail.com', 'amodaraula', '1988-10-04'),
                   ('Fernando', 'Costa', '75.284.912-0', 'fernandocostaprofessor@hotmail.com', 'vaiporco', '1965-03-25'),
                   ('Ingrid', 'Souza', '98.765.143-2', 'ingridsouzaprof1213@gmail.com', 'belinha2304', '1999-12-13'),
@@ -130,7 +130,7 @@ insert into tb_categoria(nm_categoria)values
 ('Dia a dia');
 
 
-INSERT INTO tb_aula (titulo, descricao, conteudo, id_categoria, id_profissional, data_publicacao, publica)
+INSERT INTO tb_aula (ds_titulo, ds_descricao, ds_conteudo, id_categoria, id_profissional, dt_publicacao, publica)
 VALUES ('Ensino De Libras', 'Aprendendo o Alfabeto', 'Alfabeto do A - Z de maneira clara.', 1, 1, '2024-03-20', true);
 
 
@@ -141,9 +141,3 @@ INSERT INTO tb_premium (id_usuario, dt_inicio, dt_fim, status)
                     (4, '2024-01-01', '2025-01-01', 'cancelado'),
                     (5, '2024-01-01', '2025-02-01', 'cancelado');
 
-
-select * from tb_usuario;
-
-select * from tb_profissional;
-
-select * from tb_videos;
