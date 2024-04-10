@@ -1,14 +1,19 @@
 const express = require("express");
+const path = require('path');
 //Garantir que o servidor starte 
 const mysql = require('mysql2');
-const path = require('path');
 const dotenv = require('dotenv');
+const hbs = require('express-hbs/lib/hbs');
+const multer = require('multer');
+//definindo o swiper
+const Swiper = require('swiper/js/swiper.js').default;
+const axios = require('axios'); //vê a utlidade futuramente
 const { connSequelize, nmDB } = require('../config/bdConnection.js');
 dotenv.config({path: './.env'});
 const appBack = express()  
 const app = express();
 // const { Query } = require('./Querys/QuerySelects.js');
-const UsuarioRoutes = require('../www/routes/pages.js')
+const UsuarioRoutes = require('./routes/pages.js')
 //const verificaAutenticacao = require('./src/middleware/Auth.js')
 const cookieParser = require('cookie-parser')
 const session = require("express-session")
