@@ -3,7 +3,7 @@ const mysql = require("mysql2");
 const db = require('../app.js');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const smtpconfig = require("../config/smtpConfig.js");
+const smtpconfig = require("../../config/smtpConfig.js");
 const nodemailer = require("nodemailer");
 const {tb_usuario} = require('../models/usu_model.js')
 

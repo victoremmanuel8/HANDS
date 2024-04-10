@@ -29,26 +29,26 @@ router.get("/login_prof", (req, res) => {
   });
 
 // Rota que requer autenticação
-router.get('/', /*verificaAutenticacao,*/ (req, res) => {
+router.get('/index', /*verificaAutenticacao,*/ (req, res) => {
   res.render('index');
 });
 
-router.get("/", (req, res) => {
+router.get("/kids", (req, res) => {
   //res.send("<h1>Pagina-Inicial</h1>")
   res.render("kids"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 });
 
-router.get("/", (req, res) => {
+router.get("/profissionais", (req, res) => {
   //res.send("<h1>Pagina-Inicial</h1>")
   res.render("profissionais"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 });
 
 //area de teste para usuarios
-router.get("/",(req, res) => {
+router.get("/teste",(req, res) => {
   res.render("teste"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 });
 
-router.get("/", (req, res) => {
+router.get("/cadastro", (req, res) => {
  res.render("cadastro"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
  
  });
@@ -58,17 +58,17 @@ router.get("/", (req, res) => {
   
   });
 
-  router.get("/",(req, res) => {
+  router.get("/cat-num",(req, res) => {
     res.render("cat-num"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
     
     });
 
-  router.get("/",(req, res) => {
+  router.get("/aulas",(req, res) => {
       res.render("aulas"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
       
       });
 
-  router.get("/",(req, res) => {
+  router.get("/termos-uso",(req, res) => {
        res.render("termos-uso"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
           
         });
