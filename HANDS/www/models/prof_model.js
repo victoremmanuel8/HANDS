@@ -1,5 +1,5 @@
-const { connSequelize } = require('../config/bdConnection.js')
-const { _padraoTableDBExistente } = require('../config/configTabelasDB')
+const { connSequelize } = require('../../config/bdConnection.js')
+const { _padraoTableDBExistente } = require('../../config/configTabelasDB.js')
 const { Sequelize, DataTypes } = require('sequelize')
 
 const tb_profissional = connSequelize.define('tb_profissional', {
