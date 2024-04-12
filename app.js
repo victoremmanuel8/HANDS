@@ -4,6 +4,7 @@ const path = require('path');
 //Garantir que o servidor starte 
 const mysql = require('mysql2');
 const dotenv = require('dotenv');
+require("dotenv").config();
 const hbs = require('express-hbs/lib/hbs');
 const multer = require('multer');
 //definindo o swiper
@@ -45,6 +46,7 @@ app.use((req, res, next) => {
 })
 
 app.use(morgan('dev'))
+app.use('/files', express.static(path.resolve(__dirname, './tmp/uploads' )));
 
 app.use(cookieParser());
 
