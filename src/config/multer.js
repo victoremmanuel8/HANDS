@@ -22,7 +22,7 @@ filename: (req, file, cb) => {
   }),
   s3: multerS3({
       s3: new aws.S3(),
-      bucket: 'uploadexample2',
+      bucket: process.env.BUCKET_NAME,
       contentType: multerS3.AUTO_CONTENT_TYPE,
       acl: 'public-read', 
       key: (req, file, cb) => {
@@ -44,7 +44,7 @@ filename: (req, file, cb) => {
 
 module.exports = {
   dest: path.resolve(__dirname, '..', '..', 'tmp', 'uploads'),
-  storage: storageTypes['local'], //s3 quando tiver na nuvem da amazon
+  storage: storageTypes[process.env.STORAGE_TYPE], //s3 quando tiver na nuvem da amazon
   limits: {
     fileSize: 100 * 1024 * 1024,
   },

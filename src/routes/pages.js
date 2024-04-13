@@ -24,11 +24,20 @@ router.post("/posts", multer(multerConfig).single('file'), async (req, res) =>{
   return res.json(post);
 });
 
-router.delete('/posts/:id', async (req, res) =>{
-    const post = await Post.findById(req.params.id);
-        await post.remove();
-          return res.send();
-})
+router.delete('/posts/:id', async (req, res) => {
+  try {
+      const post = await Post.findOneAndDelete({ _id: req.params.id });
+      if (!post) {
+          return res.status(404).send({ error: 'Post não encontrado' });
+      }
+
+      return res.status(200).send({ message: 'Post deletado com sucesso' });
+  } catch (error) {
+      console.error('Error deleting post:', error);
+      return res.status(500).send({ error: 'Erro interno' });
+  }
+});
+
 
 //rotas do back para o insomnia
 router.get('/usuario', ControllerUsuario.getAllusuarios)

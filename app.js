@@ -24,8 +24,9 @@ const morgan = require("morgan")
 const mongoose = require("mongoose");
 //const video = require ('./src/assets/index.js')
 
-mongoose.connect("mongodb://localhost:27017/hands_db", {
+mongoose.connect( process.env.MONGO_URL, {
   useNewUrlParser: true,
+  useUnifiedTopology: true,
   });
 
 //Sessão
