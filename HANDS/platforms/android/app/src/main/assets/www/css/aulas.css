@@ -77,9 +77,8 @@
 .video-aulas iframe {
     width: 95%;
     height: 170px;
-    border: solid 1px #000;
     margin-right: 3vh;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 .negrito {

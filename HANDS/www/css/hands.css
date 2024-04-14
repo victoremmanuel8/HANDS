@@ -48,6 +48,10 @@
   position: relative;
 } */
 
+body {
+  overflow-x: hidden;
+}
+
 .banner {
   margin-top: 3vh;
   margin-bottom: 13vh;
@@ -59,13 +63,15 @@
 
 .esquerda {
   width: 50%;
+  margin-left: 2vh;
 }
 
 .esquerda .liz {
   position: absolute;
   top: -50px;
-  right: -20px;
+  right: -2vh;
 }
+
 
 .direita {
   width: 100%;

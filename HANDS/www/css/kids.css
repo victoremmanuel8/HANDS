@@ -105,7 +105,7 @@ scroll-behavior: auto;
   margin: 1.2vh;
   object-fit: contain;
   user-select: none;
-  width: calc(100% / 1.6);
+  width: calc(100% / 1.14);
   border-radius: 25px;
 }
 

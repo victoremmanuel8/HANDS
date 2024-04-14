@@ -48,17 +48,30 @@
   position: relative;
 } */
 
+body {
+  overflow-x: hidden;
+}
+
 .banner {
   margin-top: 3vh;
   margin-bottom: 13vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 40px;
+  position: relative;
 }
 
 .esquerda {
   width: 50%;
+  margin-left: 2vh;
 }
+
+.esquerda .liz {
+  position: absolute;
+  top: -50px;
+  right: -2vh;
+}
+
 
 .direita {
   width: 100%;
@@ -232,7 +245,7 @@ section {
   z-index: -1;
 }
 
-.FC9404-2 {
+/* .FC9404-2 {
   width: 60px;
   height: 60px;
   background-color: #fc9504c7;
@@ -242,7 +255,7 @@ section {
   top: 140px;
   right: 40px;
   z-index: -1;
-}
+} */
 
 .FC9404-3 {
   width: 70px;
@@ -262,7 +275,7 @@ section {
   background-color: #ffb805b2;
   border-radius: 100%;
   position: absolute;
-  top: 220px;
+  top: 270px;
   filter: blur(2rem);
   right: -10px;
   z-index: -1;
