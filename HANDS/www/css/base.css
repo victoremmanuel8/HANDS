@@ -84,7 +84,6 @@ nav ul {
   font-weight: 300;
   font-size: 16px;
   color: #68584c;
-  margin-top: 2vh;
 }
 
 .titulo-3 {
@@ -213,4 +212,9 @@ nav hr {
 
 .txt-center {
   text-align: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
 }
