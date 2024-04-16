@@ -125,30 +125,22 @@
             <footer>
                 <p class="titulo-3">Não possui conta? <a href="/cadastro">Cadastre-se</a></p>
                 <p class="título-3">ou</p>
-                <div id="googleSignInButton"></div>
                 <script>
-                     // Função para lidar com a resposta de credencial
-                    function handleCredentialResponse(response) {
-                        const data = jwt_decode(response.credential)
-                        console.log(data)
-                     }
-                        // Ao carregar a página
-                        window.onload = function () {
-                        google.accounts.id.initialize({
-                        client_id: "269010019206-te6nfdj47ppqq6npbumbfm0ssun3r4rg.apps.googleusercontent.com",
-                        callback: handleCredentialResponse
-                        });
+                    const passport = require('passport');
+                    const GoogleStrategy = require('passport-google-oauth2').Strategy;
 
-                        google.accounts.id.renderButton(
-                        document.getElementById("googleSignInButton"),
-                        {
-                            theme: "outline",
-                            size: "large",
-                            type: "icon" // Mostrar apenas o ícone
-                        }
-                        );
-                        google.accounts.id.prompt(); // Exibir o diálogo One Tap
-                        }
+                    passport.use(new GoogleStrategy({
+                        clientID:     GOOGLE_CLIENT_ID,
+                        clientSecret: GOOGLE_CLIENT_SECRET,
+                        callbackURL: "http://localhost:5000/auth/google/callback",
+                        passReqToCallback   : true
+                    },
+                    function(request, accessToken, refreshToken, profile, done) {
+                        User.findOrCreate({ googleId: profile.id }, function (err, user) {
+                        return done(err, user);
+                        });
+                         }
+                    ));
                 </script>
             </footer>
         </body>

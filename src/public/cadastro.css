@@ -14,6 +14,13 @@ body {
     overflow-x: hidden;
 }
 
+.alert-text {
+    position: absolute; left: 50%; top: 10%;
+    background-color:  #f5c6cb;
+    transform: translate(-50%, -50%);
+    gap: 20px;
+  }
+  
 .background {
     position: absolute;
     width: 110%;

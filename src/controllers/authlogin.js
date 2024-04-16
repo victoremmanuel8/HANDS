@@ -10,7 +10,7 @@ exports.login = async (req, res) => {
   console.log(req.body);
 
   //declarando as variaveis presentes no forms de login do usuario
-  const { email, senha } = req.body;
+  const {email, senha } = req.body;
 
 // Selecionando o usuario correspondente do banco de dados
   try {
@@ -23,7 +23,7 @@ exports.login = async (req, res) => {
         const token = jwt.sign({ id: db_usu.id }, 'JANX7AWB12BAKX');
         res.cookie('token', token, { httpOnly: true, secure: true });
         req.session.user = db_usu; // Armazena o usuário na sessão
-        req.flash("success_msg", "Seja bem-vindo(a)")
+        req.flash("success_msg", `Seja bem-vindo(a) ${db_usu.nm_usuario}`)
         return res.redirect('/index');
       } else {
         return res.render('login', {

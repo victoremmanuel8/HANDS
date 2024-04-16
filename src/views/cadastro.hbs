@@ -141,6 +141,9 @@
                 <h3 class="titulo-1">Seja bem-vindo ao HANDS</h3>
                 <h4 class="titulo-2">Crie sua conta conosco</h4>
             </div>
+                   {{#if message }}
+       <div class="alert-text">{{message}}</div>
+      {{/if}}
             <div class="progresso"></div>
             <div class="campos">
                 <form id="Form" action="/auth/cadastro" method="POST" required>
@@ -163,43 +166,26 @@
                 <br>
                 </form>
             </div>
-            {{#if message }}
-      <h4 style="color: #000000;">{{message}}</h4>
-      {{/if}}
             <footer>
                 <p class="titulo-3">Já possuí uma conta? <a href="/">Log in</a></p>
                 <p class="título-3">ou</p>
-                <div id="googleSignInButton"></div>
-                <style>
-                    /* Esconde o texto do botão */
-                    .abcRioButtonContents {
-                    display: none !important;
-                    }
-                </style>
                 <script>
-                     // Função para lidar com a resposta de credencial
-                    function handleCredentialResponse(response) {
-                        // Lógica adicional após a obtenção do token
-                        }
-                        // Ao carregar a página
-                        window.onload = function () {
-                        google.accounts.id.initialize({
-                        client_id: "269010019206-te6nfdj47ppqq6npbumbfm0ssun3r4rg.apps.googleusercontent.com",
-                        callback: handleCredentialResponse
-                        });
+                    const passport = require('passport');
+                    const GoogleStrategy = require('passport-google-oauth2').Strategy;
 
-                        google.accounts.id.renderButton(
-                        document.getElementById("googleSignInButton"),
-                        {
-                            theme: "outline",
-                            size: "large",
-                            type: "icon" // Mostrar apenas o ícone
-                        }
-                        );
-                        google.accounts.id.prompt(); // Exibir o diálogo One Tap
-                        }
+                    passport.use(new GoogleStrategy({
+                        clientID:     GOOGLE_CLIENT_ID,
+                        clientSecret: GOOGLE_CLIENT_SECRET,
+                        callbackURL: "http://yourdomain:3000/auth/google/callback",
+                        passReqToCallback   : true
+                    },
+                    function(request, accessToken, refreshToken, profile, done) {
+                        User.findOrCreate({ googleId: profile.id }, function (err, user) {
+                        return done(err, user);
+                        });
+                    }
+                    ));
                 </script>
-                
             </footer>
         </div>
         <script src="/troca-pag.js"></script>

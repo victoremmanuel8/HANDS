@@ -1,4 +1,4 @@
-const express = require('express');
+/*const express = require('express');
 const app = express();
 const jwt = require('jsonwebtoken');
 const jwt_decode = require('jwt-decode');
@@ -76,5 +76,4 @@ app.post('cadastro', (req, res) => {
       console.log('Usuário cadastrado com sucesso no banco de dados');
       res.status(200).send('Usuário cadastrado com sucesso');
   });
-});
-
+});*/
