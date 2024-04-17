@@ -87,6 +87,21 @@ body {
     width: 60%;
     color: #000;
 }
+#icon {
+    position: absolute;
+    background-color: #000;
+    background: url(/olho_aberto.png);
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    margin-left: 320px;
+    cursor: pointer;
+}
+
+#icon.hide {
+    background: url(/olho_fechado.png);
+    background-size: cover;
+}
 
 form {
     display: flex;
@@ -99,6 +114,8 @@ form {
 input .check {
     padding: 4px;
 }
+
+
 
 
 ::-webkit-input-placeholder {

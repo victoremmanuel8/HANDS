@@ -106,9 +106,6 @@
             <div class="alert-text">
         {{#each erros}}
         <div class="alert alert-danger">{{text}}</div>
-
-
-
          {{/each}}
         </div>
             <h3 class="titulo-1">Seja bem-vindo</h3>
@@ -117,7 +114,8 @@
             <div class="campos">
                 <form id="Form" action="/auth/login" method="POST" required>
                 <input class="input" type="email" name="email" id="" placeholder="E-mail">   
-                <input class="input" type="password" name="senha" id="" placeholder="Senha">
+                <input class="input" type="password" name="senha" id="password"  placeholder="Senha">
+                <div id="icon" onclick="showHide()"></div>
                 <br><br>
                 <input  class="button" type="submit" id= "submit" class="btn btn-primary"/>
             </div>
@@ -142,6 +140,7 @@
                          }
                     ));
                 </script>
+                  <script src="/login.js"></script>
             </footer>
         </body>
     </html>

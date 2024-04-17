@@ -32,7 +32,7 @@ router.post("/login", (req, res) => {
   
     if (!senha || typeof senha === 'undefined' || senha === null) {
         erros.push({ text: "Senha inválida" });
-    } else if (senha.length < 3) {
+    } else if (senha.length < 8) {
         erros.push({ text: "Senha da categoria muito pequena" });
     }
   
