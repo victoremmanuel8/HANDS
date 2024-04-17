@@ -123,23 +123,7 @@
             <footer>
                 <p class="titulo-3">Não possui conta? <a href="/cadastro">Cadastre-se</a></p>
                 <p class="título-3">ou</p>
-                <script>
-                    const passport = require('passport');
-                    const GoogleStrategy = require('passport-google-oauth2').Strategy;
-
-                    passport.use(new GoogleStrategy({
-                        clientID:     GOOGLE_CLIENT_ID,
-                        clientSecret: GOOGLE_CLIENT_SECRET,
-                        callbackURL: "http://localhost:5000/auth/google/callback",
-                        passReqToCallback   : true
-                    },
-                    function(request, accessToken, refreshToken, profile, done) {
-                        User.findOrCreate({ googleId: profile.id }, function (err, user) {
-                        return done(err, user);
-                        });
-                         }
-                    ));
-                </script>
+                <a href="/auth/google">Login com o google</a>
                   <script src="/login.js"></script>
             </footer>
         </body>
