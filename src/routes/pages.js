@@ -20,9 +20,9 @@ router.post("/posts", multer(multerConfig).single('file'), async (req, res) =>{
     url
   });
   /*console.log(req.file); */
-
   return res.json(post);
 });
+
 
 router.delete('/posts/:id', async (req, res) => {
   try {
@@ -45,7 +45,7 @@ router.put('/usuario/id/:id_usuario', ControllerUsuario.editusuarioById)
 router.post('/usuario/criar', ControllerUsuario.createNewusuario)
 router.delete('/usuario/:id_usuario', ControllerUsuario.deleteusuarioById)
 
-
+router.get("/pesquisa/:nm_usuario", ControllerUsuario.getUsuarioByName);
 
   //function do middleware
 
@@ -120,6 +120,11 @@ router.get("/cadastro", (req, res) => {
        res.render("termos-uso"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
           
         });
+        
+  router.get("/pesquisa", (req, res) => {
+    res.render("pesquisa"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+       
+     });
   
 
 module.exports = router;

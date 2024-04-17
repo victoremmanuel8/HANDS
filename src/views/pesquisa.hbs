@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca de Usuário</title>
+</head>
+<body>
+    <input type="text" id="inputSearch" placeholder="Digite o nome do Usuário">
+    <button id="btnSearch">Buscar</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        document.getElementById('btnSearch').addEventListener('click', async () => {
+            const searchTerm = document.getElementById('inputSearch').value;
+            try {
+                const response = await fetch(`/pesquisa/${searchTerm}`);
+                const data = await response.json();
+                exibirResultado(data);
+            } catch (error) {
+                console.error(error);
+            }
+        });
+
+        function exibirResultado(data) {
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.innerHTML = '';
+
+            if (data.message) {
+                resultadoDiv.innerText = data.message;
+            } else {
+                const nomeUsuario = document.createElement('p');
+                nomeUsuario.innerText = `Nome: ${data.nm_usuario}`;
+                resultadoDiv.appendChild(nomeUsuario);
+
+                const emailUsuario = document.createElement('p');
+                emailUsuario.innerText = `E-mail: ${data.ds_email}`;
+                resultadoDiv.appendChild(emailUsuario);
+
+                // Adicione mais campos conforme necessário
+            }
+        }
+    </script>
+</body>
+</html>
+
+    </script>
+</body>
+</html>

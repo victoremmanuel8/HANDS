@@ -10,6 +10,7 @@ const multer = require('multer');
 //definindo o swiper
 const Swiper = require('swiper/js/swiper.js').default;
 const axios = require('axios'); //vê a utlidade futuramente
+const fetch = require('fetch')
 const { connSequelize, nmDB } = require('./src/config/bdConnection.js');
 dotenv.config({path: './.env'});
 const appBack = express()  

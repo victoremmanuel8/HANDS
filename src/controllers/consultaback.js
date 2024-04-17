@@ -30,6 +30,24 @@ module.exports = {
             return resp.status(400).json({ message: 'Erro na consulta realizada!' }) 
         }
     },
+    getUsuarioByName: async (req, res) => {
+            try {
+                const nm_usuario = req.params.nm_usuario; // Pegar o valor do parâmetro da URL
+                const resultado = await tb_usuario.findOne({
+                    where: {
+                        nm_usuario: nm_usuario
+                    }
+                });
+                if (resultado) {
+                    res.json(resultado); // Enviar resultado como JSON
+                } else {
+                    res.status(404).json({ message: 'Usuário não encontrado' });
+                }
+            } catch (error) {
+                console.error(error);
+                res.status(500).json({ message: 'Erro interno do servidor' });
+            }
+        },
     editusuarioById: async (req, resp) => {
         try {
             const { id_usuario } = req.params;
