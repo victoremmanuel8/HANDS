@@ -131,6 +131,10 @@ appBack.use('/prof', UsuarioRoutes)
   //Definir as rotas (Routes)
   app.use('/', require('./src/routes/pages.js'));
   app.use('/auth', require('./src/routes/auth.js'));
+  
+  //middleware
+  app.use('/' , require('./src/middleware/auth.js'))
+  app.use('/' , require('./src/middleware/index.js'))
 
   app.listen(5000, async () => {
     console.log("Server startado na porta 5000");

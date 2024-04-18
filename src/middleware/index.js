@@ -16,12 +16,12 @@ app.get ('/', (req, res) => {
     res.sendFile ('index.html');
 });
 
-// app.use(session({
-//     secret: 'mysecret',
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: { secure: false },
-// }));
+app.use(session({
+    secret: 'hands',
+    resave: false,
+    saveUninitialized: true,
+     cookie: { secure: false },
+ }));
 
 app.use (passport.initialize());
 app.use(passport.session());
@@ -44,7 +44,3 @@ app.get('/auth/index', isLoggendIn, (res, req) => {
     let nome = req.user.displayNome;
     res.send(`Hello ${nome}`);
 });
-
-app.listen (5000, () => {
-    console.log ('LIstening on port 5000');
-})
