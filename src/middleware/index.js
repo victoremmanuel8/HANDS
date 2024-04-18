@@ -23,7 +23,7 @@ app.get ('/', (req, res) => {
 //     cookie: { secure: false }
 // }))
 
-// app.use (passport.initialize());
+app.use (passport.initialize());
 
 app.get('/auth/google',
   passport.authenticate('google', { scope:

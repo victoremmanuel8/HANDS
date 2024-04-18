@@ -48,7 +48,6 @@ router.delete('/usuario/:id_usuario', ControllerUsuario.deleteusuarioById)
 router.get("/pesquisa/:nm_usuario", ControllerUsuario.getUsuarioByName);
 
   //function do middleware
-
   function checkAuthenticated(req, res, next) {
     if (req.session.user) {
       next();
@@ -56,6 +55,18 @@ router.get("/pesquisa/:nm_usuario", ControllerUsuario.getUsuarioByName);
       res.redirect('/');
     }
   }
+
+  //destroy da sessão
+  router.get('/logout', function(req, res){
+    req.session.destroy(function(err){
+       if(err){
+          console.log(err);
+       } else {
+          res.redirect('/');
+       }
+    });
+ });
+ 
   
 //aqui a função get e render vai pegar a url e renderizar ela no site
 
