@@ -132,15 +132,18 @@
 </filter>
 </defs>
 </svg>
-
-
-                
         </div>
         <div class="area-cadastro">
             <div>
                 <h3 class="titulo-1">Seja bem-vindo ao HANDS</h3>
                 <h4 class="titulo-2">Crie sua conta conosco</h4>
             </div>
+                 <div class="area-cadastro">
+                   <div class="alert-text">
+                      {{#each erros}}
+                    <div class="alertalert-danger">{{text}}</div>
+                      {{/each}}
+                    </div>
                    {{#if message }}
        <div class="alert-text">{{message}}</div>
       {{/if}}

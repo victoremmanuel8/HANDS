@@ -78,7 +78,6 @@ app.use(express.static(partialDirectory))
 //Verificação do captcha
 app.post('/submit', async (req, res) => {
   const captchaResponse = req.body['g-recaptcha-response'];
-  //const SECRET_KEY = '6LcW8X4pAAAAADqckeuBr1Xq32efz7aoBE2IWZnl';
 
   const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${SECRET_KEY}&response=${captchaResponse}`;
 

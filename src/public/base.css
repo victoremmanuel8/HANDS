@@ -183,7 +183,7 @@ nav hr {
     box-shadow: 10px 5px 15px 10px #0000003d;
     position: fixed;
     top: 0;
-    left: -86rem;
+    left: -96rem;
     transition: all .8s;
     z-index: 10;
     padding: 19px;
@@ -249,6 +249,16 @@ nav hr {
  font-size: 65px;
 }
 
+.frase {
+  text-align: center;
+  margin: 20px;
+  margin-top: -20px;
+}
+
+.txt-center {
+  text-align: center;
+}
+
 .titulo-2 {
     /* font-family: kumbh-regular; */ 
     font-weight: 300;
@@ -263,6 +273,11 @@ nav hr {
    color: #77787C;
    font-weight: 100;
 }
+
+.titulo-3-5 {
+  font-size: 13px;
+}
+
 
 .titulo-4 {
     /* font-family: kumbh-light; */

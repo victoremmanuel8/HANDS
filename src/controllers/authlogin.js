@@ -27,7 +27,8 @@ exports.login = async (req, res) => {
         req.session.user = db_usu; // Armazena o usuário na sessão
         req.flash("success_msg", `Seja bem-vindo(a), ${db_usu.nm_usuario}`)
         return res.redirect('/index');
-      } else {
+      }
+      else {
           erros.push({ text: "Senha/Email inválida" });
           return res.render('login', {erros: erros
         });

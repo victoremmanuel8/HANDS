@@ -254,3 +254,16 @@ textarea:focus, input:focus, select:focus {
    font-weight: 200;
    color: #000;
 }
+
+.alertalert-danger {
+    color: #721c24;
+    padding: 10px;
+}
+
+.alert-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
