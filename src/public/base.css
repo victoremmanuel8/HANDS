@@ -177,7 +177,7 @@ nav hr {
   }
   
   .sidebar {
-    width: calc(100% / 1.4);
+    width: auto;
     height: 100vh;
     background-color: #fff;
     box-shadow: 10px 5px 15px 10px #0000003d;
@@ -264,7 +264,6 @@ nav hr {
     font-weight: 300;
    font-size: 35px;
    color: #68584c;
-   margin-top: 2vh;
 }
 
 .titulo-3 {
@@ -278,6 +277,9 @@ nav hr {
   font-size: 13px;
 }
 
+.titulo-3-6 {
+  font-size: 23px;
+}
 
 .titulo-4 {
     /* font-family: kumbh-light; */

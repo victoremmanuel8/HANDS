@@ -3,7 +3,6 @@ padding-left: 5vh;
 padding-right: 5vh;
 }
 
-
 .perfil {
 display: flex;
 justify-content: center;
@@ -33,6 +32,8 @@ margin-top: 3vh;
 display: flex;
 flex-direction: column;
 gap: 30px;
+justify-content: center;
+align-items: center;
 }
 
 .config-div {
@@ -41,14 +42,14 @@ flex-direction: row;
 gap: 15px;
 align-items: center;
 border-radius: 20px;
-width: 100%;
+width: 80%;
 box-shadow: 0 0 20px #b3b3b345;
 padding: 10px;
 }
 
 .icon-config {
-width: 60px;
-height: 60px;
+width: 80px;
+height: 80px;
 background-color: #fc950445;
 border-radius: 13px;
 display: flex;
@@ -57,8 +58,8 @@ align-items: center;
 }
 
 .icon-priv {
-width: 60px;
-height: 60px;
+width: 80px;
+height: 80px;
 background-color: #8aa33174;
 border-radius: 13px;
 display: flex;
@@ -67,8 +68,8 @@ align-items: center;
 }
 
 .icon-sino {
-width: 60px;
-height: 60px;
+width: 80px;
+height: 80px;
 background-color: #ab80f15c;
 border-radius: 13px;
 display: flex;
@@ -79,7 +80,6 @@ align-items: center;
 .titulo-2 {
 font-weight: 800;
 }
-
 
 #container-slider {
 display: flex;
@@ -146,7 +146,7 @@ margin: 1vh;
 margin-right: 2vh;
 object-fit: contain;
 user-select: none;
-width: calc(100% / 4.6);
+width: calc(100% / 7);
 border-radius: 25px;
 }
 
@@ -174,24 +174,27 @@ border-radius: 100%;
 }
 
 .b51D49C {
-width: 100px;
-height: 100px;
+width: 150px;
+height: 150px;
 background-color: #51d49c;
 position: absolute;
 filter: blur(50px);
 border-radius: 100%;
-right: 0;
+right: 30vh;
 top: 12vh;
+z-index: -1;
 }
 
 .bFF6D9C {
-width: 100px;
-height: 100px;
+width: 150px;
+height: 150px;
 background-color: #ff6d9c;
 position: absolute;
 border-radius: 100%;
 filter: blur(50px);
 top: 3vh;
+left: 30vh;
+z-index: -1;
 }
 
 .estrela {
@@ -199,4 +202,3 @@ position: absolute;
 top: 7vh;
 left: 5vh;
 }
-
