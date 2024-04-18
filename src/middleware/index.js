@@ -20,11 +20,11 @@ app.get ('/', (req, res) => {
 //     secret: 'mysecret',
 //     resave: false,
 //     saveUninitialized: true,
-//     cookie: { secure: false }
-// }))
+//     cookie: { secure: false },
+// }));
 
 app.use (passport.initialize());
-
+app.use(passport.session());
 app.get('/auth/google',
   passport.authenticate('google', { scope:
       [ 'email', 'profile' ] }
@@ -32,16 +32,16 @@ app.get('/auth/google',
 
 app.get( '/auth/google/callback',
     passport.authenticate( 'google', {
-        successRedirect: '/auth/google/success',
-        failureRedirect: '/auth/google/failure'
+        successRedirect: '/auth/index',
+        failureRedirect: '/auth/login'
 }));
 
-app.get('/auth/google/failure', (res, req) => {
+app.get('/auth/login', (res, req) => {
     res.send('Something went wrong!');
 });
 
-app.get('/auth/protected', isLoggendIn, (res, req) => {
-    let name = req.user.displayName;
+app.get('/auth/index', isLoggendIn, (res, req) => {
+    let nome = req.user.displayNome;
     res.send(`Hello ${nome}`);
 });
 
