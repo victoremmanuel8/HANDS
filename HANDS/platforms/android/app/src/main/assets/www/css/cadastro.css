@@ -1,13 +1,16 @@
 
 body {
-    background-color: #fff;
+    background-color: #14bec1;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     margin: 0px;
     font-family: Arial, Helvetica, sans-serif; /*fonte temporaria*/
     padding: 0px;
-    overflow-x: hidden;
+    overflow: hidden;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 100%;
+    height: 100vh;
 }
 
 a {
@@ -15,51 +18,104 @@ a {
 }
 
 .area-cadastro {
-    padding:  0 40px 0px;
     display: flex;
-    flex-direction: column;
-    margin-top: 25vh;
-    position: relative;
-    z-index: 6;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
 }
 
-svg {
+/* #step0 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    border: solid 1px #000;
+    padding: 130px 50px;
+    border-radius: 20px 20px 20px 0px ;
+} */
+
+.balao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 80px;
+    background: #fff;
+    border-radius: 20px;
+    width: 350px;
+    height: auto;
+    position: relative;
+    box-shadow: 0 0 16px #98989870;
+}
+  
+.balao:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #fff;
+    bottom: -20px;
+    left: 20%;
+}
+  
+#step0 .liz {
+    position: absolute;
+    bottom: -32px;
+    left: 3px;
+}
+
+.step3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.liz {
     position: absolute;
     z-index: 3;
 }
 
+.area-cadastro .hands {
+    position: fixed;
+    top: 5vh;
+    left: 5vh;
+}
 
 .titulo-1 {
     color: #000;
     font-size: 1.6em;
     margin-bottom: 10px;
-    font-family: inika-bold;
 }
 
 .titulo-2 {
     color: #A5A5A5;
-    font-family: inika-bold;
+    /* font-family: inika-bold; */
 }
 
 .titulo-3 {
     color: #000;
-    font-family: inika-bold;
+    /* font-family: inika-bold; */
 }
 
 .titulo-4 {
     color: #a5a5a5;
-    font-family: inika-bold;
+    /* font-family: inika-bold; */
 }
 
 .titulo-5 {
     color: #a5a5a5;
-    font-family: inika-bold;
+    /* font-family: inika-bold; */
     font-size: 1.2em;
 }
 
 .titulo-6 {
     color: #000000b4;
-    font-family: kumbh-regular;
+    /* font-family: kumbh-regular; */
 }
 
 .campos {
@@ -67,17 +123,18 @@ svg {
     flex-direction: column;
 }
 
-input {
-    background: #7c7c7c12;
+.input {
+    background: transparent;
     padding: 9px;
     padding-left: 25px;
     height: 30px;
-    border-radius: 10vh;
+    border-radius: 15px;
     border: none;
     margin: 10px;
     margin-left: 0px;
     width: calc(90%);
-    color: #000;
+    color: #fff;
+    box-shadow: inset 0 0 10px #5353535f;
 }
 
 .btn-primary {
@@ -86,7 +143,7 @@ input {
     width: 100%;
     font-size: 1.4em;
     height: 60px;
-    font-family: inika-bold;
+    /* font-family: inika-bold; */
 }
 
 .login {
@@ -99,7 +156,7 @@ textarea:focus, input:focus, select:focus {
 
 ::-webkit-input-placeholder {
     color: #000;
-    font-family: inika-bold;
+    /* font-family: inika-bold; */
     font-size: 1.2em;
  }
  
@@ -117,7 +174,7 @@ textarea:focus, input:focus, select:focus {
 
  .date {
     color: #000;
-    font-family: inika-bold;
+    /* font-family: inika-bold; */
     font-size: 1.1em;
  }
 
@@ -146,3 +203,61 @@ textarea:focus, input:focus, select:focus {
     justify-content: center;
     flex-direction: column;
  }
+
+ .hidden {
+    display: none;
+ }
+
+#btn-cadastro {
+    border: none;
+    padding: 7px 19px;
+    border-radius: 10vh;
+    background-color:#1C8394;
+    display: none;
+    transition: .5s ease;
+    scale: 1.5;
+}
+
+#enviar {
+    border: none;
+    padding: 7px 19px;
+    border-radius: 10vh;
+    background-color:#1C8394;
+    transition: .5s ease;
+    scale: 1.5;
+}
+
+.conversa {
+    margin-top: 5vh;
+}
+
+.texto {
+    font-family: monospace;
+    font-size: 20px;
+    color: #000;
+    text-align: center;
+}
+
+.voltar {
+    background-color: transparent;
+    border: none !important;
+    position: absolute;
+    top: 14vh;
+    font-weight: 800;
+    left: 5vh;
+}
+
+.proximo {
+    background-color: transparent;
+    border: none !important;
+    position: absolute;
+    font-weight: 800;
+    right: 5vh;
+    bottom: 10vh;
+}
+
+.check {
+    width: 15px;
+    height: 15px;
+}
+
