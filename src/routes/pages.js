@@ -137,5 +137,12 @@ router.get("/cadastro", (req, res) => {
        
      });
   
+     router.get("/perfil", checkAuthenticated,(req, res) => {
+        if(req.session.user) {
+          res.render('perfil', { user: req.session.user });
+        }
+    }); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+         
+
 
 module.exports = router;

@@ -78,7 +78,6 @@ app.use(express.static(partialDirectory))
 //Verificação do captcha
 app.post('/submit', async (req, res) => {
   const captchaResponse = req.body['g-recaptcha-response'];
-  //const SECRET_KEY = '6LcW8X4pAAAAADqckeuBr1Xq32efz7aoBE2IWZnl';
 
   const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${SECRET_KEY}&response=${captchaResponse}`;
 
@@ -132,6 +131,10 @@ appBack.use('/prof', UsuarioRoutes)
   //Definir as rotas (Routes)
   app.use('/', require('./src/routes/pages.js'));
   app.use('/auth', require('./src/routes/auth.js'));
+  
+  //middleware
+  app.use('/' , require('./src/middleware/auth.js'))
+  app.use('/' , require('./src/middleware/index.js'))
 
   app.listen(5000, async () => {
     console.log("Server startado na porta 5000");

@@ -15,12 +15,11 @@ exports.register = async (req, res) => {
   const { nome, sobrenome, email, senha, ConfirmarSenha, dt_nascimento } = req.body;
 
   // Verificação do email
-  const Exist_usuario= await tb_usuario.findOne({ where: { ds_email: email } });
+  const Exist_usuario= await tb_usuario.findOne({ where: { ds_email: email}});
   if (Exist_usuario) {
-    return res.render('cadastro', { message: "Este email já está em uso" });
-  } else if (senha !== ConfirmarSenha) {
-    return res.render('cadastro', { message: "As senhas não correspondem" });
-  }
+      return res.render('cadastro', { message: "Email já em uso" });
+    }
+  
 
   // Criptografia da senha
   const hashedPassword = await bcrypt.hash(senha, 8);
@@ -35,6 +34,7 @@ exports.register = async (req, res) => {
   } else if (data_nascimento.getFullYear() < 1930) {
     return res.render('cadastro', { message: "A data de nascimento não pode ser anterior a 1930" });
   }
+
   
 
   // Inserção do usuário ao banco de dados

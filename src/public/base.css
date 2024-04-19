@@ -177,13 +177,13 @@ nav hr {
   }
   
   .sidebar {
-    width: calc(100% / 1.4);
+    width: auto;
     height: 100vh;
     background-color: #fff;
     box-shadow: 10px 5px 15px 10px #0000003d;
     position: fixed;
     top: 0;
-    left: -86rem;
+    left: -96rem;
     transition: all .8s;
     z-index: 10;
     padding: 19px;
@@ -249,12 +249,21 @@ nav hr {
  font-size: 65px;
 }
 
+.frase {
+  text-align: center;
+  margin: 20px;
+  margin-top: -20px;
+}
+
+.txt-center {
+  text-align: center;
+}
+
 .titulo-2 {
     /* font-family: kumbh-regular; */ 
     font-weight: 300;
    font-size: 35px;
    color: #68584c;
-   margin-top: 2vh;
 }
 
 .titulo-3 {
@@ -262,6 +271,14 @@ nav hr {
    font-size: 50px;
    color: #77787C;
    font-weight: 100;
+}
+
+.titulo-3-5 {
+  font-size: 13px;
+}
+
+.titulo-3-6 {
+  font-size: 23px;
 }
 
 .titulo-4 {

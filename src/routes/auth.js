@@ -8,15 +8,12 @@ const authControllerlogprof = require('../controllers/authlogin_prof');
 
 
 //aqui a função get e render vai pegar a url e renderizar ela no site
-            'auth/cadastro'
-router.post("/cadastro", authControllerregister.register) //teste
 
                 'auth/cadastro_prof'
 router.post("/cadastro_prof", authControllerprof.register)
 
 'authlogin/login_prof'
 router.post("/login_prof", authControllerlogprof.login)
-
 
 
 //validações do login
@@ -42,6 +39,26 @@ router.post("/login", (req, res) => {
         authControllerlogin.login(req, res);
     }
   });
+
+  'auth/login'
+  router.post("/cadastro", (req, res) => {
+      const { senha, ConfirmarSenha } = req.body; 
+    
+      const erros = [];
+    
+      if (!senha || typeof senha === 'undefined' || senha === null) {
+        erros.push({ text: "Senha da categoria muito pequena" });
+      }  if (senha.length < 8) {
+        erros.push({ text: "Senha da categoria muito pequena" });
+    }  else if (ConfirmarSenha.length < 8) {
+        erros.push({ text: "Senha da categoria muito pequena" });
+      }
+      if (erros.length > 0) {
+          res.render("cadastro", { erros: erros });
+      } else {
+        authControllerregister.register(req, res);
+      }
+    });
 
 
 module.exports = router;
