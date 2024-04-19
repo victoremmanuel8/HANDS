@@ -1,0 +1,14 @@
+
+.banner {
+    width: 95%;
+    height: 163px;
+    background-color: #ADECFA;
+    border-radius: 25px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2vh;
+    position: relative;
+    z-index: 2;
+  }
