@@ -21,9 +21,14 @@ const tb_profissional = connSequelize.define('tb_profissional', {
     type: DataTypes.STRING(100),
   },
   nr_senha: {
-    type:DataTypes.STRING(255),
+    type: DataTypes.STRING(255),
   },
-  dt_nascimento: DataTypes.DATE
+  dt_nascimento: {
+    type: DataTypes.DATE
+  },
+  sg_sexo: {
+    type: DataTypes.ENUM('M', 'F')
+  },
 }, _padraoTableDBExistente('tb_profissional'));
 
 module.exports = { 
