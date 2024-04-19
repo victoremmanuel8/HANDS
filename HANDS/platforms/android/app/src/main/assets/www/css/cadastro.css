@@ -1,6 +1,6 @@
 
 body {
-    background-color: #14bec1;
+    background-color: #7c37fc;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -41,13 +41,49 @@ a {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 80px;
+    gap: 60px;
     background: #fff;
     border-radius: 20px;
     width: 350px;
     height: auto;
     position: relative;
     box-shadow: 0 0 16px #98989870;
+    padding: 17px 12px;
+    color: #000;
+    display: none;
+}
+
+#step0 .balao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 60px;
+    background: #fff;
+    border-radius: 20px;
+    width: 350px;
+    height: auto;
+    position: relative;
+    box-shadow: 0 0 16px #98989870;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#step1 .balao {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 20px;
+    width: 350px;
+    height: auto;
+    position: relative;
+    color: #000;
+    padding-left: 2vh;
+    padding-right: 1vh;
+}
+
+#texto3 {
+    padding: 10px;
 }
   
 .balao:after {
@@ -62,22 +98,50 @@ a {
     left: 20%;
 }
   
-#step0 .liz {
+ .liz {
     position: absolute;
-    bottom: -32px;
+    bottom: -90px;
     left: 3px;
 }
+
+@media screen and (max-height: 900px) {
+    .liz {
+        width: 100px;
+        position: absolute;
+        bottom: -20px;
+        left: 3px;
+    }
+
+    #step1 .balao {
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        border-radius: 20px;
+        width: 350px;
+        height: auto;
+        position: relative;
+        color: #000;
+        font-size: medium;
+        padding-left: 2vh;
+        padding-right: 1vh;
+    }
+
+    #step1 {
+        margin-top: 9vh;
+    }
+
+    .proximo {
+        position: absolute;
+        bottom: -30vh;
+    }
+    }
+    
 
 .step3 {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-
-.liz {
-    position: absolute;
-    z-index: 3;
 }
 
 .area-cadastro .hands {
@@ -135,6 +199,21 @@ a {
     width: calc(90%);
     color: #fff;
     box-shadow: inset 0 0 10px #5353535f;
+    border: solid 1.4px #fff;
+    display: none;
+}
+
+.pulsating {
+    animation: pulsate 1s infinite alternate;
+}
+
+@keyframes pulsate {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.06);
+    }
 }
 
 .btn-primary {
@@ -204,6 +283,11 @@ textarea:focus, input:focus, select:focus {
     flex-direction: column;
  }
 
+
+button {
+    cursor: pointer;
+}
+
  .hidden {
     display: none;
  }
@@ -232,10 +316,10 @@ textarea:focus, input:focus, select:focus {
 }
 
 .texto {
-    font-family: monospace;
     font-size: 20px;
     color: #000;
     text-align: center;
+    font-weight: 600;
 }
 
 .voltar {
@@ -253,7 +337,7 @@ textarea:focus, input:focus, select:focus {
     position: absolute;
     font-weight: 800;
     right: 5vh;
-    bottom: 10vh;
+    bottom: 5vh;
 }
 
 .check {
@@ -261,3 +345,16 @@ textarea:focus, input:focus, select:focus {
     height: 15px;
 }
 
+[data-anime] {
+    opacity: 0;
+    transition: .5s ease-in-out; 
+  }
+  
+  [data-anime="bottom"] {
+    transform: translate3d(0, 50px, 0);
+  }
+  
+  [data-anime].animate {
+    opacity: 100%;
+    transform: translate3d(0px, 0px, 0px);
+  }
