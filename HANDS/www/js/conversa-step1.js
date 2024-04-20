@@ -1,18 +1,18 @@
-let textosStep1Exibidos = false;
+let textoStep1Exibido = false;
 
 document.getElementById('btn-cadastro').addEventListener('click', function() {
     document.getElementById('step0').classList.add('hidden');
     document.getElementById('step1').classList.remove('hidden');
-    if (!textosStep1Exibidos) {
+    if (!textoStep1Exibido) {
         exibirTextoStep1(0);
         exibirCamposStep1();
-        textosStep1Exibidos = true;
+        textoStep1Exibido = true;
     }
 });
 
 function exibirTextoStep1(index) {
     const textosStep1 = [
-        "Agora vamos colocar seus dados base, com eles você consegue fazer seu login futuramente"
+        "Qual é o seu nome? Seu e-mail será para login futuramente."
     ];
 
     const elementoStep1 = document.querySelector('#texto3');
@@ -22,7 +22,7 @@ function exibirTextoStep1(index) {
         const intervalo = setInterval(function() {
             elemento.textContent += texto.charAt(i);
             i++;
-            if (i > texto.length) {
+            if (i >= texto.length) {
                 clearInterval(intervalo);
                 callback();
             }
@@ -31,8 +31,7 @@ function exibirTextoStep1(index) {
 
     if (index < textosStep1.length) {
         escreverTexto(textosStep1[index], elementoStep1, 100, () => {
-            exibirTextoStep1(index + 1);
+            // Não é necessário chamar novamente a função exibirTextoStep1, pois queremos exibir o texto apenas uma vez.
         });
     }
 }
-

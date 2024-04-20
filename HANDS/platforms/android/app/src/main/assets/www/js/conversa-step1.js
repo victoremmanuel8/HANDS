@@ -12,7 +12,7 @@ document.getElementById('btn-cadastro').addEventListener('click', function() {
 
 function exibirTextoStep1(index) {
     const textosStep1 = [
-        "Agora vamos colocar seus dados base, com eles você consegue fazer seu login futuramente"
+        "Qual é o seu nome? seu e-mail será para login futuramente"
     ];
 
     const elementoStep1 = document.querySelector('#texto3');

@@ -1,3 +1,6 @@
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+ }
 
 body {
     background-color: #7c37fc;
@@ -127,12 +130,12 @@ a {
     }
 
     #step1 {
-        margin-top: 9vh;
+        margin-top: 12vh;
     }
 
     .proximo {
+        width: 26;
         position: absolute;
-        bottom: -30vh;
     }
     }
     
@@ -300,6 +303,19 @@ button {
     display: none;
     transition: .5s ease;
     scale: 1.5;
+    box-shadow: 0px 4px 1px #0d5562;
+}
+
+#btn-cadastro:hover{
+    border: none;
+    padding: 7px 19px;
+    border-radius: 10vh;
+    background-color:#1C8394;
+    display: none;
+    transition: .5s ease;
+    scale: 1.5;
+    box-shadow: 0px 0px 0px #0c424c;
+    transform: translate3d(0px, 5px, 0); /* Move o elemento 50px para a direita, 100px para baixo e não muda a posição na profundidade (eixo Z) */
 }
 
 #enviar {
