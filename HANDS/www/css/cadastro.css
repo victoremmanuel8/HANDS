@@ -98,8 +98,8 @@ a {
     bottom: -20px;
     left: 20%;
 }
-  
- .liz {
+
+.liz {
     position: absolute;
     bottom: -90px;
     left: 3px;
@@ -358,17 +358,3 @@ button {
     width: 15px;
     height: 15px;
 }
-
-[data-anime] {
-    opacity: 0;
-    transition: .5s ease-in-out; 
-  }
-  
-  [data-anime="bottom"] {
-    transform: translate3d(0, 50px, 0);
-  }
-  
-  [data-anime].animate {
-    opacity: 100%;
-    transform: translate3d(0px, 0px, 0px);
-  }
