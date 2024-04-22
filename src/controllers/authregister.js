@@ -12,13 +12,16 @@ exports.register = async (req, res) => {
   console.log(req.body);
 
   //declarando as variaveis presentes no forms de cadastro usuario 
-  const { nome, sobrenome, email, senha, ConfirmarSenha, dt_nascimento } = req.body;
+  const { nome, sobrenome, email, senha, Confir_Senha, dt_nascimento } = req.body;
 
   // Verificação do email
   const Exist_usuario= await tb_usuario.findOne({ where: { ds_email: email}});
   if (Exist_usuario) {
       return res.render('cadastro', { message: "Email já em uso" });
+    } else if (senha !== Confir_Senha) {
+      return res.render('cadastro', { message: "As senhas não correspondem" });
     }
+    
   
 
   // Criptografia da senha

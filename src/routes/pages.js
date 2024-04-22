@@ -134,14 +134,20 @@ router.get("/cadastro", (req, res) => {
         
   router.get("/pesquisa", (req, res) => {
     res.render("pesquisa"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
-       
+
      });
+
+     router.get("/redef_senha", checkAuthenticated, (req,res) => {
+      res.render('redef_senha');
+    });
   
      router.get("/perfil", checkAuthenticated,(req, res) => {
         if(req.session.user) {
           res.render('perfil', { user: req.session.user });
         }
     }); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+
+   
          
 
 

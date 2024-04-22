@@ -5,9 +5,13 @@ const authControllerregister = require('../controllers/authregister');
 const authControllerlogin = require('../controllers/authlogin');
 const authControllerprof = require('../controllers/authregister_prof');
 const authControllerlogprof = require('../controllers/authlogin_prof');
-
+const authControllerPassword = require('../controllers/authPassword')
 
 //aqui a função get e render vai pegar a url e renderizar ela no site
+
+                'auth/redef_senha'
+router.post("/redef_senha", authControllerPassword.pass)
+
 
                 'auth/cadastro_prof'
 router.post("/cadastro_prof", authControllerprof.register)
@@ -42,7 +46,7 @@ router.post("/login", (req, res) => {
 
   'auth/login'
   router.post("/cadastro", (req, res) => {
-      const { senha, ConfirmarSenha } = req.body; 
+      const { senha, Confir_Senha} = req.body; 
     
       const erros = [];
     
@@ -50,7 +54,7 @@ router.post("/login", (req, res) => {
         erros.push({ text: "Senha da categoria muito pequena" });
       }  if (senha.length < 8) {
         erros.push({ text: "Senha da categoria muito pequena" });
-    }  else if (ConfirmarSenha.length < 8) {
+    }  else if (Confir_Senha.length < 8) {
         erros.push({ text: "Senha da categoria muito pequena" });
       }
       if (erros.length > 0) {

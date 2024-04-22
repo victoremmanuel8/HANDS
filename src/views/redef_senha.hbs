@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta name="color-scheme" content="light dark">
+        <link rel="stylesheet" href="/cadastro.css">
+        <link rel="stylesheet" href="/login.css">
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/vanilla-masker@1.2.0"></script>
+        <script src="https://accounts.google.com/gsi/client" async></script>
+        <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
+        <script>
+            //script para masked
+            window.onload = function() {
+                var cpfField = document.getElementById('cpf');
+                VMasker(cpfField).maskPattern("999.999.999-99");
+            }
+        </script>
+        <title>HANDS</title>
+        <link rel="icon" type="image/x-icon" href="/logo.png">
+    </head>
+    <body>
+        <div class="background">
+            <svg width="100%" height="" viewBox="0 0 1280 832" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g filter="url(#filter0_f_381_33)">
+                <circle cx="50" cy="25" r="50" fill="#8AA331"/>
+                </g>
+                <g filter="url(#filter1_f_381_33)">
+                <path d="M259 139.5C259 209.916 201.916 267 131.5 267C61.0837 267 4 209.916 4 139.5C4 69.0837 61.0837 12 131.5 12C201.916 12 259 69.0837 259 139.5Z" fill="#02F2CA"/>
+                </g>
+                <g filter="url(#filter2_f_381_33)">
+                <circle cx="101.5" cy="75.5" r="63.5" fill="#00BD9E"/>
+                </g>
+                <g filter="url(#filter3_f_381_33)">
+                <circle cx="1211.5" cy="738.5" r="93.5" fill="#02F2CA"/>
+                </g>
+                <g filter="url(#filter4_f_381_33)">
+                <circle cx="304.5" cy="671.5" r="202.5" fill="#31A351"/>
+                </g>
+                <g filter="url(#filter5_f_381_33)">
+                <circle cx="1032.5" cy="66.5" r="127.5" fill="#4BD2BC"/>
+                </g>
+                <g filter="url(#filter6_f_381_33)">
+                <circle cx="1096.5" cy="343.5" r="63.5" fill="#8AA231"/>
+                </g>
+                <g filter="url(#filter7_f_381_33)">
+                <circle cx="163.5" cy="810.5" r="63.5" fill="#00FF75"/>
+                </g>
+                <rect width="1280" height="832" fill="#EFFFE6" fill-opacity="0.5"/>
+                <g filter="url(#filter8_f_381_33)">
+                <circle cx="1279.5" cy="139.5" r="127.5" fill="#00FF75"/>
+                </g>
+                <defs>
+                <filter id="filter0_f_381_33" x="-200" y="-225" width="500" height="500" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_381_33"/>
+                </filter>
+                <filter id="filter1_f_381_33" x="-196" y="-188" width="655" height="655" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_381_33"/>
+                </filter>
+                <filter id="filter2_f_381_33" x="-112" y="-138" width="427" height="427" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feGaussianBlur stdDeviation="75" result="effect1_foregroundBlur_381_33"/>
+                </filter>
+                <filter id="filter3_f_381_33" x="971.333" y="498.333" width="480.333" height="480.333" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feGaussianBlur stdDeviation="73.3333" result="effect1_foregroundBlur_381_33"/>
+                </filter>
+                <filter id="filter4_f_381_33" x="-215.647" y="151.353" width="1040.29" height="1040.29" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feGaussianBlur stdDeviation="158.824" result="effect1_foregroundBlur_381_33"/>
+                </filter>
+                <filter id="filter5_f_381_33" x="705" y="-261" width="655" height="655" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_381_33"/>
+                </filter>
+                <filter id="filter6_f_381_33" x="833" y="80" width="527" height="527" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_381_33"/>
+                </filter>
+                <filter id="filter7_f_381_33" x="-100" y="547" width="527" height="527" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_381_33"/>
+                </filter>
+                <filter id="filter8_f_381_33" x="852" y="-288" width="855" height="855" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feGaussianBlur stdDeviation="150" result="effect1_foregroundBlur_381_33"/>
+                </filter>
+                </defs>
+            </svg>
+        </div>
+        <div class="area-cadastro">
+            <div class="alert-text">
+        {{#each erros}}
+        <div class="alert alert-danger">{{text}}</div>
+         {{/each}}
+        </div>
+            <h3 class="titulo-1">Seja bem-vindo</h3>
+            <h4 class="titulo-2">Troque a sua senha</h4>
+            <div class="progresso"></div>
+            <div class="campos">
+                <form id="Form" action="/auth/redef_senha" method="POST" required>
+                <input class="input" type="email" name="email" id="" placeholder="Email">   
+                <input class="input" type="password" name="New_Pass" id="password" placeholder="Nova Senha">   
+                <input class="input" type="password" name="Confir_Pass" id="password" placeholder="Confirmar a Nova Senha">
+                <br><br>
+                <input  class="button" type="submit" id= "submit" class="btn btn-primary"/>
+            </div>
+            </form>
+            <footer>
+                  <script src="/login.js"></script>
+            </footer>
+        </body>
+    </html>

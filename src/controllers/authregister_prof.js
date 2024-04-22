@@ -9,13 +9,13 @@ const {tb_profissional} = require('../models/prof_model.js')
 exports.register = async (req, res) => {
   console.log(req.body);
 
-  const { nome, sobrenome, email, rg, senha, ConfirmarSenha, dt_nascimento } = req.body;
+  const { nome, sobrenome, email, rg, senha, Confir_Senha, dt_nascimento } = req.body;
 
   // Verificação do email
   const Exist_prof = await tb_profissional.findOne({ where: { ds_email: email } });
   if (Exist_prof) {
     return res.render('cadastro', { message: "Este email já está em uso" });
-  } else if (senha !== ConfirmarSenha) {
+  } else if (senha !== Confir_Senha) {
     return res.render('cadastro', { message: "As senhas não correspondem" });
   }
 
