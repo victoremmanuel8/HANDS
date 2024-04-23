@@ -312,3 +312,22 @@ section {
   bottom: 190px;
   right: -40px
 }
+
+.objetivos {
+  width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 40px;
+  text-align: center;
+  font-size: 1.3em;
+}
+
+.primeiro {
+  padding: 120px 20px;
+  background-color: #fff;
+  border-radius: 25px;
+  box-shadow: 1px 1px 20px 2px #8574745b;
+  width: calc(80%/4);
+}
