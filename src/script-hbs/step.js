@@ -137,7 +137,7 @@ function startRegistration() {
 }
 
     function checkStep3() {
-        var termos = document.getElementById('termos').checked;
+        var termos = document.getElementById('termos_uso').checked;
 
         if (termos) {
             // Aqui você pode adicionar a lógica para enviar o formulário

@@ -149,7 +149,7 @@ router.get("/cadastro", (req, res) => {
         
       });
 
-  router.get("/termos-uso", checkAuthenticated,(req, res) => {
+  router.get("/termos-uso",(req, res) => {
        res.render("termos-uso"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
           
         });

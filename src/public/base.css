@@ -287,13 +287,6 @@ nav hr {
    font-weight: 200;
 }
 
-.titulo-1-cor {
-  background: linear-gradient(45deg, #36a7d4, #24d3e3cb);
-    -webkit-background-clip: text; /* Isso é necessário para que o gradiente seja aplicado ao texto */
-    -webkit-text-fill-color: transparent; /* Isso é necessário para ocultar a cor do texto padrão */
-    font-size: 65px;
-}
-
 .titulo-1-cor-verde {
   color: #136c41ba;
     font-size: 65px;

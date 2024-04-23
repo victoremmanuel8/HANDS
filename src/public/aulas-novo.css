@@ -120,12 +120,19 @@ li {
     font-size: 2.1vh;
 }
 
-.sing-aulas {
+/* .sing-aulas {
     background: linear-gradient(90deg, #50dfff, #5dbdfe, #6b9bfd);
     padding: 1vh 1.4vh;
     border-radius: 30px;
     color: #fff;
-}
+} */
+
+.sing-aulas {
+    background: linear-gradient(90deg, #02F2CA, #31A395);
+    padding: 1vh 1.4vh;
+    border-radius: 30px;
+    color: #fff;
+  }
 
 .login-aulas {
     color: #68a4fe;
