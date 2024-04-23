@@ -235,7 +235,7 @@
                                 var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Verifica o formato do email
 
                                 // Lista de palavras de baixo calão
-                                var palavrasProibidas = ['pau', 'fds', 'pika', 'piroca', 'buceta', 'bct', 'vagina', 'xana', 'xereca', 'larisinha', 'cu', 'uc', 'cool', 'cookie', 'porra', 'poha', 'caralho', 'cona', 'foda', 'foda-se', 'foder', 'fodido', 'fodida', 'fodidos', 'fodidas', 'fodemos', 'fodem', 'foda', 'fodilhão', 'fodilhona', 'fodona', 'fode', 'foderes', 'fodes', 'fodendo', 'fodesse', 'cona', 'foda', 'foda-se', 'fodido', 'fodida', 'fodidos', 'fodidas', 'fodemos', 'fodem', 'foda', 'fode', 'foder', 'foderes', 'fodes', 'fodendo', 'fodesse', 'caralho'];
+                                var palavrasProibidas = ['pau', 'mãe', 'pai', 'vo', 'vó', 'vô', 'tia', 'tio', 'prima', 'primo', 'irmã', 'safada', 'fds', 'pika', 'piroca', 'buceta', 'bct', 'vagina', 'xana', 'xereca', 'larisinha', 'cu', 'uc', 'cool', 'cookie', 'porra', 'poha', 'caralho', 'cona', 'foda', 'foda-se', 'foder', 'fodido', 'fodida', 'fodidos', 'fodidas', 'fodemos', 'fodem', 'foda', 'fodilhão', 'fodilhona', 'fodona', 'fode', 'foderes', 'fodes', 'fodendo', 'fodesse', 'cona', 'foda', 'foda-se', 'fodido', 'fodida', 'fodidos', 'fodidas', 'fodemos', 'fodem', 'foda', 'fode', 'foder', 'foderes', 'fodes', 'fodendo', 'fodesse', 'caralho'];
 
                                 // Lista de palavras permitidas
                                 var palavrasPermitidas = ['paulo', 'pietra', 'pietro']; // Adicione aqui as palavras permitidas
@@ -265,7 +265,7 @@
                             }
 
                             function exibirTextoPalavra() {
-                                escreverTexto("Nome não permitido, verifique se foi digitado corretamente ou se o campo não está vazio", document.getElementById('texto6'), .1, () => {
+                                escreverTexto("Nome não permitido, verifique se foi digitado corretamente ou se existe campos vazios", document.getElementById('texto6'), .1, () => {
                                     document.querySelector('.balao1').style.display = 'block';
                                     limparTexto(document.getElementById('texto6'), 3500); // Limpa o texto após 3 segundos
                                 });

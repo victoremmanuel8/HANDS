@@ -6,7 +6,6 @@ body {
     background-color: #7c37fc;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
     margin: 0px;
     font-family: Arial, Helvetica, sans-serif; /*fonte temporaria*/
     padding: 0px;
@@ -14,6 +13,8 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     width: 100%;
     height: 100vh;
+    justify-content: center;
+    align-items: center;
 }
 
 a {
@@ -24,8 +25,8 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
     height: 100vh;
+    position: relative;
 }
 
 /* #step0 {
@@ -65,14 +66,13 @@ a {
     background: #fff;
     border-radius: 20px;
     width: auto;
-    height: 50px;
+    height: 70px;
     overflow: hidden;
     position: absolute;
     z-index: 888;
     color: #000;
     display: none;
 }
-
 
 #step0 .balao {
     display: flex;
@@ -121,7 +121,6 @@ a {
 .liz {
     position: absolute;
     bottom: -90px;
-    left: 3px;
     z-index: 5;
 }
 
@@ -129,8 +128,7 @@ a {
     .liz {
         width: 100px;
         position: absolute;
-        bottom: -20px;
-        left: 3px;
+        bottom: -90px;
     }
 
     #step1 .balao {
@@ -154,6 +152,10 @@ a {
     .proximo {
         width: 26;
         position: absolute;
+    }
+
+    .area-cadastro {
+        margin-top: -15vh;
     }
     }
     
@@ -362,7 +364,7 @@ button {
     position: absolute;
     top: 14vh;
     font-weight: 800;
-    left: 5vh;
+    left: 1vh;
     display: none;
 }
 
@@ -372,7 +374,7 @@ button {
     position: absolute;
     top: 14vh;
     font-weight: 800;
-    left: 5vh;
+    left: 1vh;
 }
 
 .proximo {
@@ -380,7 +382,7 @@ button {
     border: none !important;
     position: absolute;
     font-weight: 800;
-    right: 5vh;
+    right: 1vh;
     bottom: 5vh;
 }
 

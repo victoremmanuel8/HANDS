@@ -112,12 +112,11 @@
                 </svg>
                 <div>
                     <label for="nome">Nome:</label>
-                    <input class="input" type="text" id="nome" pattern="[A-Za-zÀ-ÿ\s']+" required><br><br>
+                    <input class="input" type="text" id="nome" required><br><br>
                     <label for="sobrenome">Sobrenome:</label>
-                    <input class="input" type="text" id="sobrenome"><br><br>
+                    <input class="input" type="text" id="sobrenome" required><br><br>
                     <label for="email">Email:</label>
-                    <input class="input" type="email" id="email"><br>
-                    <script src="../js/input.js"></script>
+                    <input class="input" type="email" id="email" required><br>
                 </div>
                     
                     <div class="conversa">
@@ -125,6 +124,7 @@
                         <div class="texto" id="texto3"></div>
                         <div class="balao1">
                             <div class="texto" id="texto5"></div>
+                            <div class="texto" id="texto6"></div>
                         </div>
                    <script src="../js/conversa-step1.js"></script>
                 </div>
@@ -134,6 +134,7 @@
                         <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
                     </svg>
                 </button>
+                <script src="../js/input.js"></script>
                 <button onclick="nextStep(1)" class="proximo">
                     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
@@ -154,7 +155,6 @@
             
                 <label for="confirmarSenha">Confirmar Senha:</label>
                 <input class="input" type="password" id="confirmarSenha"><br><br>
-                <script src="../js/input.js"></script>
                 </div>
                 <div class="balao" id="balaoErro"></div>
             
@@ -163,6 +163,7 @@
                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
                 </svg>
             </button>
+            <script src="../js/input.js"></script>
                 <button onclick="nextStep(2)" class="proximo">
                     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
@@ -220,82 +221,93 @@
                     }
                 }
 
-                function checkStep1() {
-                    var nomeInput = document.getElementById('nome');
-                    var sobrenomeInput = document.getElementById('sobrenome');
-                    var emailInput = document.getElementById('email');
+                                function checkStep1() {
+                                var nomeInput = document.getElementById('nome');
+                                var sobrenomeInput = document.getElementById('sobrenome');
+                                var emailInput = document.getElementById('email');
 
-                    var nome = nomeInput.value.trim();
-                    var sobrenome = sobrenomeInput.value.trim();
-                    var email = emailInput.value.trim();
+                                var nome = nomeInput.value.trim();
+                                var sobrenome = sobrenomeInput.value.trim();
+                                var email = emailInput.value.trim();
 
-                    // Expressões regulares para validação
-                    var nomeRegex = /^[a-zA-ZÀ-ÿ\s']+$/; // Permite letras, espaços e apóstrofos
-                    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Verifica o formato do email
+                                // Expressões regulares para validação
+                                var nomeRegex = /^[a-zA-ZÀ-ÿ\s']{2,}$/; // Pelo menos duas letras, permitindo acentos e espaços
+                                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Verifica o formato do email
 
-                    // Verifica se os campos não estão vazios e seguem as regras de validação
-                    if (nome !== '' && sobrenome !== '' && email !== '' && nomeRegex.test(nome) && nomeRegex.test(sobrenome) && emailRegex.test(email)) {
-                        document.getElementById('step1').classList.add('hidden');
-                        document.getElementById('step2').classList.remove('hidden');
-                    } else {
-                        function escreverTexto(texto, elemento, velocidade = 50, callback) {
-                        let i = 0;
-                        const intervalo = setInterval(function() {
-                            elemento.textContent += texto.charAt(i);
-                            i++;
-                            if (i > texto.length) {
-                                clearInterval(intervalo);
-                                callback();
+                                // Lista de palavras de baixo calão
+                                var palavrasProibidas = ['pau', 'mãe', 'pai', 'vo', 'vó', 'vô', 'tia', 'tio', 'prima', 'primo', 'irmã', 'safada', 'fds', 'pika', 'piroca', 'buceta', 'bct', 'vagina', 'xana', 'xereca', 'larisinha', 'cu', 'uc', 'cool', 'cookie', 'porra', 'poha', 'caralho', 'cona', 'foda', 'foda-se', 'foder', 'fodido', 'fodida', 'fodidos', 'fodidas', 'fodemos', 'fodem', 'foda', 'fodilhão', 'fodilhona', 'fodona', 'fode', 'foderes', 'fodes', 'fodendo', 'fodesse', 'cona', 'foda', 'foda-se', 'fodido', 'fodida', 'fodidos', 'fodidas', 'fodemos', 'fodem', 'foda', 'fode', 'foder', 'foderes', 'fodes', 'fodendo', 'fodesse', 'caralho'];
+
+                                // Lista de palavras permitidas
+                                var palavrasPermitidas = ['paulo', 'pietra', 'pietro']; // Adicione aqui as palavras permitidas
+
+                                // Verifica se o nome contém palavras proibidas, exceto as excepcionais
+                                var nomeValido = (nomeRegex.test(nome) && !palavrasProibidas.some(palavra => nome.toLowerCase().includes(palavra.toLowerCase())) || palavrasPermitidas.includes(nome.toLowerCase())) && nome.length >= 2;
+
+                                // Verifica se o sobrenome contém palavras proibidas, exceto as excepcionais
+                                var sobrenomeValido = nomeRegex.test(sobrenome) && (!palavrasProibidas.some(palavra => sobrenome.toLowerCase().includes(palavra.toLowerCase())) || palavrasPermitidas.includes(sobrenome.toLowerCase())) && sobrenome.length >= 2;
+
+                                // Verifica se os campos não estão vazios e seguem as regras de validação
+                                if (nome !== '' && sobrenome !== '' && email !== '' && nomeValido && sobrenomeValido && emailRegex.test(email)) {
+                                    document.getElementById('step1').classList.add('hidden');
+                                    document.getElementById('step2').classList.remove('hidden');
+                                } else if (!nomeValido) {
+                                    exibirTextoPalavra();
+                                }  else {
+                                    exibirTextoErro();
+                                }
                             }
-                        }, velocidade);
-                    }
 
-                    function limparTexto(elemento, delay) {
-                        setTimeout(function() {
-                            elemento.textContent = ''; // Limpa o conteúdo do elemento
-                        }, delay);
-                    }
+                            function exibirTextoErro() {
+                                escreverTexto("Verifique se todos os campos foram digitados corretamente", document.getElementById('texto5'), .1, () => {
+                                    document.querySelector('.balao1').style.display = 'block';
+                                    limparTexto(document.getElementById('texto5'), 3500); // Limpa o texto após 3 segundos
+                                });
+                            }
 
-                    const textos = [
-                        "Verifique se todos os campos foram digitados corretamente"
-                    ];
+                            function exibirTextoPalavra() {
+                                escreverTexto("Nome não permitido, verifique se foi digitado corretamente ou se existe campos vazios", document.getElementById('texto6'), .1, () => {
+                                    document.querySelector('.balao1').style.display = 'block';
+                                    limparTexto(document.getElementById('texto6'), 3500); // Limpa o texto após 3 segundos
+                                });
+                            }
 
-                    const elementos = [
-                        document.getElementById('texto5')
-                    ];
+                            // Funções auxiliares de escrita e limpeza de texto
+                            function escreverTexto(texto, elemento, velocidade = 50, callback) {
+                                let i = 0;
+                                const intervalo = setInterval(function() {
+                                    elemento.textContent += texto.charAt(i);
+                                    i++;
+                                    if (i > texto.length) {
+                                        clearInterval(intervalo);
+                                        callback();
+                                    }
+                                }, velocidade);
+                            }
 
-                    function exibirTexto(index) {
-                        if (index < textos.length) {
-                            escreverTexto(textos[index], elementos[index], .1, () => {
-                                document.querySelector('.balao1').style.display = 'block';
-                                limparTexto(elementos[index], 3500); // Limpa o texto após 3 segundos (3000 milissegundos)
-                                // limparTexto(document.querySelector('.balao1'), 3000); // Esconde o balão após 3 segundos
-                            });
-                        } 
-                    }
+                            function limparTexto(elemento, delay) {
+                                setTimeout(function() {
+                                    elemento.textContent = ''; // Limpa o conteúdo do elemento
+                                }, delay);
+                            }
 
-                    exibirTexto(0);
-                    }
-                }
-
-                // Adiciona event listener para o campo 'nome' para capturar eventos de digitação
                 document.getElementById('nome').addEventListener('keypress', function(event) {
                     // Obtém o código da tecla digitada
                     var keyCode = event.keyCode || event.which;
+                    var keyChar = String.fromCharCode(keyCode);
                     
-                    // Se o código da tecla for um número, cancela o evento
-                    if (keyCode >= 48 && keyCode <= 57) {
+                    // Verifica se o caractere é um número, um caractere especial ou um dos caracteres restritos
+                    if ((keyCode >= 48 && keyCode <= 57) || /[!@#$%^&*()[\]\-+=_'":;\/\\{}<>|,.¨?`ªº§¹²³£¢¬₢]/.test(keyChar)) {
                         event.preventDefault();
                     }
                 });
 
-                // Adiciona event listener para o campo 'sobrenome' para capturar eventos de digitação
                 document.getElementById('sobrenome').addEventListener('keypress', function(event) {
                     // Obtém o código da tecla digitada
                     var keyCode = event.keyCode || event.which;
+                    var keyChar = String.fromCharCode(keyCode);
                     
-                    // Se o código da tecla for um número, cancela o evento
-                    if (keyCode >= 48 && keyCode <= 57) {
+                    // Verifica se o caractere é um número, um caractere especial ou um dos caracteres restritos
+                    if ((keyCode >= 48 && keyCode <= 57) || /[!@#$%^&*()[\]\-+=_'":;\/\\{}<>|,.¨?`ªº§¹²³£¢¬₢]/.test(keyChar)) {
                         event.preventDefault();
                     }
                 });
