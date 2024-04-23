@@ -50,11 +50,29 @@ a {
     width: 350px;
     height: auto;
     position: relative;
-    box-shadow: 0 0 16px #98989870;
     padding: 17px 12px;
     color: #000;
     display: none;
+    z-index: 1;
 }
+
+.balao1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 60px;
+    background: #fff;
+    border-radius: 20px;
+    width: auto;
+    height: 50px;
+    overflow: hidden;
+    position: absolute;
+    z-index: 888;
+    color: #000;
+    display: none;
+}
+
 
 #step0 .balao {
     display: flex;
@@ -67,7 +85,6 @@ a {
     width: 350px;
     height: auto;
     position: relative;
-    box-shadow: 0 0 16px #98989870;
     padding-left: 30px;
     padding-right: 30px;
 }
@@ -97,14 +114,15 @@ a {
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
     border-top: 20px solid #fff;
-    bottom: -20px;
-    left: 20%;
+    bottom: -15px;
+    left: 15%;
 }
-  
- .liz {
+
+.liz {
     position: absolute;
     bottom: -90px;
     left: 3px;
+    z-index: 5;
 }
 
 @media screen and (max-height: 900px) {
@@ -345,6 +363,16 @@ button {
     top: 14vh;
     font-weight: 800;
     left: 5vh;
+    display: none;
+}
+
+.voltar1 {
+    background-color: transparent;
+    border: none !important;
+    position: absolute;
+    top: 14vh;
+    font-weight: 800;
+    left: 5vh;
 }
 
 .proximo {
@@ -360,17 +388,3 @@ button {
     width: 15px;
     height: 15px;
 }
-
-[data-anime] {
-    opacity: 0;
-    transition: .5s ease-in-out; 
-  }
-  
-  [data-anime="bottom"] {
-    transform: translate3d(0, 50px, 0);
-  }
-  
-  [data-anime].animate {
-    opacity: 100%;
-    transform: translate3d(0px, 0px, 0px);
-  }

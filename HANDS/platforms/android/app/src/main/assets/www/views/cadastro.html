@@ -8,13 +8,13 @@
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
         <meta name="color-scheme" content="light dark">
         <link rel="stylesheet" href="../css/cadastro.css">
-        <script>
+        <!-- <script>
             //script para masked
             window.onload = function() {
                 var cpfField = document.getElementById('cpf');
                 VMasker(cpfField).maskPattern("999.999.999-99");
             }
-        </script>
+        </script> -->
         <title>HANDS</title>
     </head>
     <body>
@@ -59,7 +59,7 @@
                     </div>
 
                     <script>
-                        function escreverTexto(texto, elemento, velocidade = 10, callback) {
+                        function escreverTexto(texto, elemento, velocidade = 20, callback) {
                             let i = 0;
                             const intervalo = setInterval(function() {
                                 elemento.textContent += texto.charAt(i);
@@ -73,7 +73,7 @@
                 
                         const textos = [
                             "Olá, meu nome é Liz 🥰",
-                            "Está pronto para começarmos? ",
+                            "Está pronto para começar?"
                         ];
                 
                         const elementos = document.querySelectorAll('.texto');
@@ -112,7 +112,7 @@
                 </svg>
                 <div>
                     <label for="nome">Nome:</label>
-                    <input class="input" type="text" id="nome"><br><br>
+                    <input class="input" type="text" id="nome" pattern="[A-Za-zÀ-ÿ\s']+" required><br><br>
                     <label for="sobrenome">Sobrenome:</label>
                     <input class="input" type="text" id="sobrenome"><br><br>
                     <label for="email">Email:</label>
@@ -122,8 +122,10 @@
                     
                     <div class="conversa">
                 <div class="balao">
-                        <div class="texto" id="texto3">
-                </div>
+                        <div class="texto" id="texto3"></div>
+                        <div class="balao1">
+                            <div class="texto" id="texto5"></div>
+                        </div>
                    <script src="../js/conversa-step1.js"></script>
                 </div>
                 <img class="liz" src="../res/lis-oi-redi.png" alt="imagem da personagem principal do sistema dando oi">
@@ -156,7 +158,7 @@
                 </div>
                 <div class="balao" id="balaoErro"></div>
             
-                <button onclick="previousStep(2)" class="voltar">
+                <button onclick="previousStep(2)" class="voltar1">
                 <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
                 </svg>
@@ -181,7 +183,7 @@
                 
                     <div class="g-recaptcha" data-sitekey="sua-chave-publica-do-recaptcha"></div><br>
                 
-                    <button onclick="previousStep(3)" class="voltar">
+                    <button onclick="previousStep(3)" class="voltar1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
                         </svg>
@@ -192,66 +194,142 @@
                 </div>
             </div>
         </div>
-        <script>
-               function startRegistration() {
-        document.getElementById('step0').classList.add('hidden');
-        document.getElementById('step1').classList.remove('hidden');
-    }
+        <script> //script dos estagios do cadastro
+                function startRegistration() {
+                document.getElementById('step0').classList.add('hidden');
+                document.getElementById('step1').classList.remove('hidden');
+                    
+                    // Mostrar o botão após 6 segundos somente no passo 1
+                    setTimeout(function() {
+                        document.querySelector('.voltar').style.display = 'inline-block';
+                    }, 6500);
+                }
 
-    function previousStep(step) {
-        document.getElementById('step' + step).classList.add('hidden');
-        document.getElementById('step' + (step - 1)).classList.remove('hidden');
-    }
+                function previousStep(step) {
+                    document.getElementById('step' + step).classList.add('hidden');
+                    document.getElementById('step' + (step - 1)).classList.remove('hidden');
+                }
 
-    function nextStep(step) {
-        if (step === 1) {
-            checkStep1();
-        } else if (step === 2) {
-            checkStep2();
-        } else if (step === 3) {
-            checkStep3();
-        }
-    }
+                function nextStep(step) {
+                    if (step === 1) {
+                        checkStep1();
+                    } else if (step === 2) {
+                        checkStep2();
+                    } else if (step === 3) {
+                        checkStep3();
+                    }
+                }
 
-    function checkStep1() {
-        var nome = document.getElementById('nome').value.trim();
-        var sobrenome = document.getElementById('sobrenome').value.trim();
-        var email = document.getElementById('email').value.trim();
+                function checkStep1() {
+                    var nomeInput = document.getElementById('nome');
+                    var sobrenomeInput = document.getElementById('sobrenome');
+                    var emailInput = document.getElementById('email');
 
-        if (nome !== '' && sobrenome !== '' && email !== '') {
-            document.getElementById('step1').classList.add('hidden');
-            document.getElementById('step2').classList.remove('hidden');
-        }
-    }
+                    var nome = nomeInput.value.trim();
+                    var sobrenome = sobrenomeInput.value.trim();
+                    var email = emailInput.value.trim();
 
-    function checkStep2() {
-    var senha = document.getElementById('senha').value.trim();
-    var confirmarSenha = document.getElementById('confirmarSenha').value.trim();
-    var balaoErro = document.getElementById('balaoErro');
+                    // Expressões regulares para validação
+                    var nomeRegex = /^[a-zA-ZÀ-ÿ\s']+$/; // Permite letras, espaços e apóstrofos
+                    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Verifica o formato do email
 
-    if (senha !== '' && confirmarSenha !== '' && senha === confirmarSenha) {
-        document.getElementById('step2').classList.add('hidden');
-        document.getElementById('step3').classList.remove('hidden');
-    } else {
-        balaoErro.textContent = 'As senhas não são compatíveis. Por favor, verifique e tente novamente. 😔';
-        const balao = document.getElementById('balaoErro');
-        balao.style.display = 'block'; 
-    }
-}
+                    // Verifica se os campos não estão vazios e seguem as regras de validação
+                    if (nome !== '' && sobrenome !== '' && email !== '' && nomeRegex.test(nome) && nomeRegex.test(sobrenome) && emailRegex.test(email)) {
+                        document.getElementById('step1').classList.add('hidden');
+                        document.getElementById('step2').classList.remove('hidden');
+                    } else {
+                        function escreverTexto(texto, elemento, velocidade = 50, callback) {
+                        let i = 0;
+                        const intervalo = setInterval(function() {
+                            elemento.textContent += texto.charAt(i);
+                            i++;
+                            if (i > texto.length) {
+                                clearInterval(intervalo);
+                                callback();
+                            }
+                        }, velocidade);
+                    }
 
-    function checkStep3() {
-        var termos = document.getElementById('termos').checked;
+                    function limparTexto(elemento, delay) {
+                        setTimeout(function() {
+                            elemento.textContent = ''; // Limpa o conteúdo do elemento
+                        }, delay);
+                    }
 
-        if (termos) {
-            // Aqui você pode adicionar a lógica para enviar o formulário
-            alert('Formulário enviado com sucesso!');
-        }
-    }
+                    const textos = [
+                        "Verifique se todos os campos foram digitados corretamente"
+                    ];
+
+                    const elementos = [
+                        document.getElementById('texto5')
+                    ];
+
+                    function exibirTexto(index) {
+                        if (index < textos.length) {
+                            escreverTexto(textos[index], elementos[index], .1, () => {
+                                document.querySelector('.balao1').style.display = 'block';
+                                limparTexto(elementos[index], 3500); // Limpa o texto após 3 segundos (3000 milissegundos)
+                                // limparTexto(document.querySelector('.balao1'), 3000); // Esconde o balão após 3 segundos
+                            });
+                        } 
+                    }
+
+                    exibirTexto(0);
+                    }
+                }
+
+                // Adiciona event listener para o campo 'nome' para capturar eventos de digitação
+                document.getElementById('nome').addEventListener('keypress', function(event) {
+                    // Obtém o código da tecla digitada
+                    var keyCode = event.keyCode || event.which;
+                    
+                    // Se o código da tecla for um número, cancela o evento
+                    if (keyCode >= 48 && keyCode <= 57) {
+                        event.preventDefault();
+                    }
+                });
+
+                // Adiciona event listener para o campo 'sobrenome' para capturar eventos de digitação
+                document.getElementById('sobrenome').addEventListener('keypress', function(event) {
+                    // Obtém o código da tecla digitada
+                    var keyCode = event.keyCode || event.which;
+                    
+                    // Se o código da tecla for um número, cancela o evento
+                    if (keyCode >= 48 && keyCode <= 57) {
+                        event.preventDefault();
+                    }
+                });
+
+                function checkStep2() {
+                var senha = document.getElementById('senha').value.trim();
+                var confirmarSenha = document.getElementById('confirmarSenha').value.trim();
+                var balaoErro = document.getElementById('balaoErro');
+
+                // Expressão regular para verificar se a senha tem pelo menos 6 caracteres e uma letra maiúscula
+                var senhaRegex = /^(?=.*[A-Z]).{6,}$/;
+
+                if (senha !== '' && confirmarSenha !== '' && senha === confirmarSenha && senhaRegex.test(senha)) {
+                    document.getElementById('step2').classList.add('hidden');
+                    document.getElementById('step3').classList.remove('hidden');
+                } else {
+                    if (!senhaRegex.test(senha)) {
+                        balaoErro.textContent = 'A senha deve ter pelo menos 6 caracteres e conter pelo menos 1 letra maiúscula. Por favor, verifique e tente novamente. 😔';
+                    } else {
+                        balaoErro.textContent = 'As senhas não são compatíveis. Por favor, verifique e tente novamente. 😔';
+                    }
+                    const balao = document.getElementById('balaoErro');
+                    balao.style.display = 'block';
+                }
+            }
+
+                function checkStep3() {
+                    var termos = document.getElementById('termos').checked;
+
+                    if (termos) {
+                        // Aqui você pode adicionar a lógica para enviar o formulário
+                    }
+                }
         </script>
         </div>
-        <script src="../js/troca-pag.js"></script>
-        <script src="cordova.js"></script>
-        <script src="../js/index.js"></script>
-        <script src="../js/carrossel.js"></script>
     </body>
 </html>

@@ -53,7 +53,26 @@ a {
     padding: 17px 12px;
     color: #000;
     display: none;
+    z-index: 1;
 }
+
+.balao1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 60px;
+    background: #fff;
+    border-radius: 20px;
+    width: auto;
+    height: 50px;
+    overflow: hidden;
+    position: absolute;
+    z-index: 888;
+    color: #000;
+    display: none;
+}
+
 
 #step0 .balao {
     display: flex;
@@ -95,14 +114,15 @@ a {
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
     border-top: 20px solid #fff;
-    bottom: -20px;
-    left: 20%;
+    bottom: -15px;
+    left: 15%;
 }
 
 .liz {
     position: absolute;
     bottom: -90px;
     left: 3px;
+    z-index: 5;
 }
 
 @media screen and (max-height: 900px) {
@@ -337,6 +357,16 @@ button {
 }
 
 .voltar {
+    background-color: transparent;
+    border: none !important;
+    position: absolute;
+    top: 14vh;
+    font-weight: 800;
+    left: 5vh;
+    display: none;
+}
+
+.voltar1 {
     background-color: transparent;
     border: none !important;
     position: absolute;
