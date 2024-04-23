@@ -11,6 +11,7 @@ const PostSchema = new mongoose.Schema({
     size: Number,
     key: String,
     url: String,
+    categoria: String,
     createAt: {
         type: Date,
         default: Date.now,

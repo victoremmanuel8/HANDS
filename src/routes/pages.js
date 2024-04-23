@@ -1,7 +1,9 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 const multer = require('multer')
 const multerConfig = require('../config/multer')
+const fs = require('fs')
+const path = require('path')
 const ControllerUsuario= require('../controllers/consultaback')
 const session = require("express-session")
 const Post = require('../models/Post')
@@ -11,17 +13,37 @@ router.get('/posts', async (req, res) => {
     return res.json(posts);
 });
 //rota do multer para ver através do back
-router.post("/posts", multer(multerConfig).single('file'), async (req, res) =>{
-  const { originalname: name, size, key, location: url= ''} = req.file;
-  const post = await Post.create({
-    name,
-    size,
-    key,
-    url
+  router.post("/posts", multer(multerConfig).single('file'), async (req, res) =>{
+    const { originalname: name, size, key, location: url= ''} = req.file;
+    const { categoria } = req.body;
+
+    const post = await Post.create({
+      name,
+      size,
+      key,
+      url,
+      categoria,
+    });
+    console.log(req.file); 
+    // return res.json(post);
+    return res.redirect("/")
   });
-  /*console.log(req.file); */
-  return res.json(post);
-});
+
+  //filtro para encontrar as categorias especificas
+  router.get('/upload/:categoria', async (req, res) => {
+    const { categoria } = req.params;
+  
+    try {
+      // Consulta no banco de dados MongoDB para recuperar os arquivos da categoria especificada
+      const files = await Post.find({ categoria });
+  
+      // Retorna os arquivos encontrados em formato JSON
+      res.json(files);
+    } catch (error) {
+      console.error('Erro ao buscar arquivos:', error);
+      res.status(500).send('Erro interno');
+    }
+  });
 
 
 router.delete('/posts/:id', async (req, res) => {
@@ -147,8 +169,31 @@ router.get("/cadastro", (req, res) => {
         }
     }); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 
-   
-         
+    router.get("/media", (req, res) => {
+      res.render('media')
+    })
+
+    router.get("/upload", (req, res) => {
+      res.render('upload')
+    })
+
+
+   // Rota para servir os vídeos e demonstrar
+router.get('/videos/:filename', (req, res) => {
+  const { filename } = req.params;
+  const filePath = path.join(__dirname, '..', '..', 'tmp', 'uploads', filename);
+
+  // Verifica se o arquivo existe
+  fs.access(filePath, fs.constants.F_OK, (err) => {
+    if (err) {
+      console.error(err);
+      return res.status(404).send('Arquivo não encontrado');
+    }
+
+    // Se o arquivo existir, envia-o como resposta
+    res.sendFile(filePath);
+  });
+});
 
 
 module.exports = router;
