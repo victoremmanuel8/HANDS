@@ -98,6 +98,7 @@ app.post('/submit', async (req, res) => {
 });
 //analisar urls codificados enviados através do forms HTML
 app.use(express.urlencoded({ extended: false }));
+
 //garantindo que os valores do formulario venha em json
 app.use(express.json());
 

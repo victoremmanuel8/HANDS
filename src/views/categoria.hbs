@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vídeos da Categoria {{ file.categoria }}</title>
+</head>
+<body>
+
+    
+    {{#if file.length}}
+        <ul>
+            {{#each file}}
+                <li>
+                    <div class="categoria">
+                    Categoria: {{ this.categoria }}
+                    </div>
+                    {{#if video}} <!-- Verifica se é um vídeo -->
+                        <video controls>
+                            <source src="{{ url }}" type='video/mp4'>
+                            Seu navegador não suporta o elemento de vídeo.
+                        </video>
+                    {{else}} <!-- Se não for um vídeo, presume-se que seja uma imagem -->
+                        <img src="{{ url }}" alt="{{ name }}">
+                    {{/if}}
+                </li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <p>Nenhum vídeo ou imagem encontrado nesta categoria.</p>
+    {{/if}}
+</body>
+</html>

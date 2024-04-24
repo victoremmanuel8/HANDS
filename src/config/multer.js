@@ -46,7 +46,7 @@ module.exports = {
   dest: path.resolve(__dirname, '..', '..', 'tmp', 'uploads'),
   storage: storageTypes[process.env.STORAGE_TYPE], //s3 quando tiver na nuvem da amazon
   limits: {
-    fileSize: 100 * 1024 * 1024,
+    fileSize: 200 * 1024 * 1024,
   },
   fileFilter: (req, file, cb) => {
     const allowedMimes = [ 

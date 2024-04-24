@@ -32,18 +32,18 @@ router.get('/posts', async (req, res) => {
   //filtro para encontrar as categorias especificas
   router.get('/upload/:categoria', async (req, res) => {
     const { categoria } = req.params;
-  
+
     try {
-      // Consulta no banco de dados MongoDB para recuperar os arquivos da categoria especificada
-      const files = await Post.find({ categoria });
-  
-      // Retorna os arquivos encontrados em formato JSON
-      res.json(files);
+        // Consulta no banco de dados MongoDB para recuperar os arquivos da categoria especificada
+        const file = await Post.find({ categoria });
+
+        // Renderiza o arquivo de modelo com os arquivos encontrados
+        res.render('categoria', { file }); // Supondo que o arquivo de modelo se chame 'index.hbs' e está na pasta 'views'
     } catch (error) {
-      console.error('Erro ao buscar arquivos:', error);
-      res.status(500).send('Erro interno');
+        console.error('Erro ao buscar arquivos:', error);
+        res.status(500).send('Erro interno');
     }
-  });
+});
 
 
 router.delete('/posts/:id', async (req, res) => {
@@ -175,6 +175,10 @@ router.get("/cadastro", (req, res) => {
 
     router.get("/upload", (req, res) => {
       res.render('upload')
+    })
+
+    router.get('/categoria', (req,res) => {
+      res.render('categoria')
     })
 
 

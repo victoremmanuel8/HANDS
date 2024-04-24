@@ -11,6 +11,10 @@ const PostSchema = new mongoose.Schema({
     size: Number,
     key: String,
     url: String,
+    video: {
+      type: Boolean,
+      default: true
+    },  
     categoria: String,
     createAt: {
         type: Date,
@@ -20,7 +24,7 @@ const PostSchema = new mongoose.Schema({
 
 PostSchema.pre('save', function() {
     if (!this.url) {
-        this.url = `${process.env.APP_URL}/files/${this.key}`;
+        this.url = `http://localhost:5000/files/${this.key}`;
     }
 });
 
