@@ -10,28 +10,3 @@ document.getElementById('btn-cadastro').addEventListener('click', function() {
     }
 });
 
-function exibirTextoStep1(index) {
-    const textosStep1 = [
-        "Qual é o seu nome? Seu e-mail será para login futuramente."
-    ];
-
-    const elementoStep1 = document.querySelector('#texto3');
-
-    function escreverTexto(texto, elemento, velocidade = 10, callback) {
-        let i = 0;
-        const intervalo = setInterval(function() {
-            elemento.textContent += texto.charAt(i);
-            i++;
-            if (i >= texto.length) {
-                clearInterval(intervalo);
-                callback();
-            }
-        }, velocidade);
-    }
-
-    if (index < textosStep1.length) {
-        escreverTexto(textosStep1[index], elementoStep1, 100, () => {
-            // Não é necessário chamar novamente a função exibirTextoStep1, pois queremos exibir o texto apenas uma vez.
-        });
-    }
-}
