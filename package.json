@@ -28,6 +28,7 @@
         "hbs": "^4.2.0",
         "jsonwebtoken": "^9.0.2",
         "jwt-decode": "^4.0.0",
+        "mime-types": "^2.1.35",
         "moment": "^2.30.1",
         "mongoose": "^8.3.0",
         "morgan": "^1.10.0",

@@ -59,7 +59,7 @@ app.use((req, res, next) => {
 
 app.set('views', path.join(__dirname, 'src/views'));
 
-const scripthbsDirectory = path.join(__dirname, 'src/script-hbs'); 
+const scripthbsDirectory = path.join(__dirname, 'src/script'); 
 app.use(express.static(scripthbsDirectory)); 
  
 //criada para acessar a pasta public e acessar seu diretório CSS

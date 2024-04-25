@@ -26,10 +26,10 @@ router.get('/posts', async (req, res) => {
     });
     console.log(req.file); 
     // return res.json(post);
-    return res.redirect("/")
+    return res.redirect("/index")
   });
 
-  //filtro para encontrar as categorias especificas
+  // filtro para encontrar as categorias especificas
   router.get('/upload/:categoria', async (req, res) => {
     const { categoria } = req.params;
 
@@ -44,6 +44,7 @@ router.get('/posts', async (req, res) => {
         res.status(500).send('Erro interno');
     }
 });
+
 
 
 router.delete('/posts/:id', async (req, res) => {
@@ -180,6 +181,11 @@ router.get("/cadastro", (req, res) => {
     router.get('/categoria', (req,res) => {
       res.render('categoria')
     })
+
+    router.get('/categoria_animais', (req,res) => {
+      res.render('categoria_animais')
+    })
+
 
 
    // Rota para servir os vídeos e demonstrar
