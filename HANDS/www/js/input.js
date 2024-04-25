@@ -1,20 +1,46 @@
-// Obtém todas as divs com a classe 'form-input'
-var divs = document.querySelectorAll('.form-input');
+document.addEventListener('DOMContentLoaded', function() {
+    var etapas = document.querySelectorAll('.etapa');
+    var botoesProximo = document.querySelectorAll('.proximo');
+    var botoesAnterior = document.querySelectorAll('.anterior');
 
-// Define o estilo 'display: inline-block' para a primeira div
-divs[0].style.display = 'inline-block';
+    function mostrarEtapa(etapa) {
+        etapas.forEach(function(elemento) {
+            elemento.classList.remove('visivel');
+        });
+        etapas[etapa].classList.add('visivel');
+    }
 
-// Adiciona um evento de input a cada div
-divs.forEach(function(div, index) {
-    div.addEventListener('input', function() {
-        // Remove a classe pulsating desta div
-        this.classList.remove('pulsating');
-        
-        // Verifica se a div atual não é a última
-        if (index < divs.length - 1) {
-            // Mostra a próxima div
-            divs[index + 1].style.display = 'inline-block';
-            divs[index + 1].classList.add('pulsating'); // Adiciona a classe pulsating à próxima div
+    function validarCampos(etapa) {
+        var campos = etapas[etapa].querySelectorAll('.input');
+        for (var i = 0; i < campos.length; i++) {
+            if (campos[i].value === '') {
+                return false;
+            }
         }
+        return true;
+    }
+
+    function proximaEtapa(etapaAtual) {
+        if (validarCampos(etapaAtual)) {
+            mostrarEtapa(etapaAtual + 1);
+        } else {
+            alert('Por favor, preencha todos os campos antes de prosseguir.');
+        }
+    }
+
+    function etapaAnterior(etapaAtual) {
+        mostrarEtapa(etapaAtual - 1);
+    }
+
+    botoesProximo.forEach(function(botao, indice) {
+        botao.addEventListener('click', function() {
+            proximaEtapa(indice);
+        });
+    });
+
+    botoesAnterior.forEach(function(botao, indice) {
+        botao.addEventListener('click', function() {
+            etapaAnterior(indice);
+        });
     });
 });

@@ -1,4 +1,3 @@
-
 function escreverTexto(texto, elemento, velocidade = 20, callback) {
     let i = 0;
     const intervalo = setInterval(function() {
@@ -13,7 +12,8 @@ function escreverTexto(texto, elemento, velocidade = 20, callback) {
 
 const textos = [
     "Olá, meu nome é Liz 🥰",
-    "Está pronto para começar?"
+    "Está pronto para começar?",
+    "coloque seus dados de forma correta, assim conseguiremos cadastrar você dentro do nosso sistema 😀"
 ];
 
 const elementos = document.querySelectorAll('.texto');
