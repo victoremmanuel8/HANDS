@@ -15,7 +15,7 @@ router.get('/posts', async (req, res) => {
 //rota do multer para ver através do back
   router.post("/posts", multer(multerConfig).single('file'), async (req, res) =>{
     const { originalname: name, size, key, location: url= ''} = req.file;
-    const { categoria } = req.body;
+    const { categoria, nivel } = req.body;
 
     const post = await Post.create({
       name,
@@ -23,6 +23,7 @@ router.get('/posts', async (req, res) => {
       key,
       url,
       categoria,
+      nivel,
     });
     console.log(req.file); 
     // return res.json(post);
