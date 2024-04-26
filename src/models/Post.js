@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const mime = require('mime-types');
 const { promisify } = require('util');
+const { INTEGER, ENUM } = require('sequelize');
 
 const s3 = new aws.S3();
 
@@ -17,6 +18,11 @@ const PostSchema = new mongoose.Schema({
       default: true
     },  
     categoria: String,
+    nivel: {
+      type: String,
+      enum: ['Iniciante', 'Intermediario', 'Expert'],
+      required: true
+    },
     createAt: {
         type: Date,
         default: Date.now,
