@@ -1,6 +1,12 @@
 body {
-padding-left: 5vh;
-padding-right: 5vh;
+    background-color: #fff;
+    padding-top: 50px;
+    overflow-x: hidden;
+    transition: .5s ease-in-out;
+}
+
+header ul a svg {
+    filter: drop-shadow(-16px 0 1.5rem rgb(197, 20, 220));
 }
 
 .perfil {
@@ -186,14 +192,14 @@ z-index: -1;
 }
 
 .bFF6D9C {
-width: 150px;
-height: 150px;
-background-color: #ff6d9c;
+width: 250px;
+height: 250px;
+background-color: #ff6d9bb4;
 position: absolute;
 border-radius: 100%;
 filter: blur(50px);
-top: 3vh;
-left: 30vh;
+top: -2vh;
+left: 12vh;
 z-index: -1;
 }
 

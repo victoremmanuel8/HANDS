@@ -4,6 +4,10 @@ body {
   padding-top: 50px;
 }
 
+header ul a svg {
+  filter: drop-shadow(-16px 0 1.5rem rgb(220, 20, 210));
+}
+
 section {
   display: flex;
   justify-content: center;

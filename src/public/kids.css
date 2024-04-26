@@ -3,6 +3,10 @@ body {
   overflow-x: hidden;
 }
 
+header ul a svg {
+  filter: drop-shadow(-16px 0 1.5rem rgb(20, 220, 153));
+}
+
 .banner {
   display: flex;
   flex-direction: column;
