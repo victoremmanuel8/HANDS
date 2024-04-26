@@ -111,22 +111,26 @@
                         </div>
                     </div>
                     <form id="Form" action="/auth/cadastro" method="POST" required>
-                            <label for="nome" id="nome">Nome:</label>
+                            {{!-- <label for="nome" id="nome">Nome:</label> --}}
                             <input class="input" type="text" name="nome" id="name" placeholder="Nome" required> 
-                            <label for="sobrenome">Sobrenome:</label>
+                            {{!-- <label for="sobrenome">Sobrenome:</label> --}}
                             <input class="input" type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome" required>
-                            <label for="nascimento">Data de nascimento:</label>
-                            <input class="input" type="date" name="dt_nascimento" id="dt_nascimento" placeholder="Data de nascimento" required>
-                            <label for="email">Email:</label>
+                            <label class="nascimento" for="nascimento">Data de nascimento:</label>
+                            <input class="input" type="date" name="dt_nascimento" id="dt_nascimento" placeholder="Data de nascimento" required> 
+                            {{!-- <label for="email">Email:</label> --}}
                             <input class="input" type="email" name="email" id="email" placeholder="E-mail" required>
-                            <label for="senha">Senha:</label>
+                            {{!-- <label for="senha">Senha:</label> --}}
                             <input class="input" type="password" name="senha" id="senha" placeholder="Senha" required>
-                            <label for="confirmarSenha">Confirmar Senha:</label>
+                            {{!-- <label for="confirmarSenha">Confirmar Senha:</label> --}}
                             <input class="input" type="password" name="Confir_Senha" id="confirmarSenha" placeholder="Confirmação de senha" required>
+                            <div class="row1">
+                                <input class="check" type="checkbox" id="termos_uso" name="termos_uso" required>
+                                <label for="termos">Eu concordo com os termos de uso</label>
+                                <a href="/termos-uso">termos de uso</a>
+                            </div>
                             <div class="g-recaptcha" data-sitekey="6LcW8X4pAAAAAKHfmywUcAyarIYi5RwVY7DVPP20" data-callback="onSubmit">
                             </div>
-                            <input class="check" type="checkbox" id="termos_uso" name="termos_uso" required> <label for="termos">Eu concordo com os termos de uso</label>
-                            <input class="button" type="submit" id= "submit" class=" btn-primary" disabled/>
+                            <input type="submit" id="submit" class="btn-primary" value="Sign in"/> <br><br><br>
                     </form>
                 <script src="/input.js"></script>
                 </div>
