@@ -1,8 +1,11 @@
+
 body {
-  background-color: #fff;
+  background-color: #FFF7EC;
   padding-top: 50px;
   overflow-x: hidden;
   transition: .5s ease-in-out;
+  overflow-x: hidden;
+  position: relative;
 }
 
 .alert.alert-success {
@@ -271,14 +274,14 @@ section {
 
 .verde {
   background: linear-gradient(45deg, #AB6402, #AB6402);
-  -webkit-background-clip: text; /* Isso é necessário para que o gradiente seja aplicado ao texto */
-  -webkit-text-fill-color: transparent; /* Isso é necessário para ocultar a cor do texto padrão */
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent; 
 }
 
 .titulo-1-cor {
   background: linear-gradient(45deg, #AB6402, #AB6402);
-    -webkit-background-clip: text; /* Isso é necessário para que o gradiente seja aplicado ao texto */
-    -webkit-text-fill-color: transparent; /* Isso é necessário para ocultar a cor do texto padrão */
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
     font-size: 65px;
 }
 
@@ -331,3 +334,5 @@ section {
   box-shadow: 1px 1px 20px 2px #8574745b;
   width: calc(80%/4);
 }
+
+/* BACKGROUND */

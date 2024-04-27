@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #fff;
+    background-color: #EFFFE6;
     padding-top: 50px;
     overflow-x: hidden;
 }
@@ -17,6 +17,7 @@ body {
     left: -10px;
     top: -190px;
     z-index: -1;
+    opacity: .3;
 }
 
 .titulo-1 {
@@ -88,7 +89,7 @@ body {
      /* font-family: kumbh-bold; */
     font-size: 20px;
     padding: 14px 46px;
-    background-color: #ffffff3d;
+    background-color: #ffffff;
     border-radius: 14px;
     box-shadow: 1px 1px 20px 2px #85747425;
 }

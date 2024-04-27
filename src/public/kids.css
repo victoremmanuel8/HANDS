@@ -1,6 +1,7 @@
 body {
   padding-top: 50px;
   overflow-x: hidden;
+  background-color: #F3FFEC;
 }
 
 header ul a svg {

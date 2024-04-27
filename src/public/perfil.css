@@ -6,7 +6,8 @@ body {
 }
 
 header ul a svg {
-    filter: drop-shadow(-16px 0 1.5rem rgb(197, 20, 220));
+    position: relative;
+    z-index: 99;
 }
 
 .perfil {
