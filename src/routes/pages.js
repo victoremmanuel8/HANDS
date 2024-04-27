@@ -8,10 +8,34 @@ const ControllerUsuario= require('../controllers/consultaback')
 const session = require("express-session")
 const Post = require('../models/Post')
 
+
+  //function do middleware (de sessão)
+  function checkAuthenticated(req, res, next) {
+    if (req.session.user) {
+      next();
+    } else {
+      res.redirect('/');
+    }
+  }
+
+  //destroy da sessão (encerrar a sessão do usuário)
+  router.get('/logout', function(req, res){
+    req.session.destroy(function(err){
+       if(err){
+          console.log(err);
+       } else {
+          res.redirect('/');
+       }
+    });
+ });
+ 
+
+ //rota para visualizar todos os arquivos que estão no mongo DB em json
 router.get('/posts', async (req, res) => {
   const posts = await Post.find();
     return res.json(posts);
 });
+
 //rota do multer para ver através do back
   router.post("/posts", multer(multerConfig).single('file'), async (req, res) =>{
     const { originalname: name, size, key, location: url= ''} = req.file;
@@ -31,23 +55,61 @@ router.get('/posts', async (req, res) => {
   });
 
   // filtro para encontrar as categorias especificas
-  router.get('/upload/:categoria', async (req, res) => {
-    const { categoria } = req.params;
+//   router.get('/upload/:categoria', checkAuthenticated, async (req, res) => {
+//     const { categoria } = req.params;
 
-    try {
-        // Consulta no banco de dados MongoDB para recuperar os arquivos da categoria especificada
-        const file = await Post.find({ categoria });
+//     try {
+//         // Consulta no banco de dados MongoDB para recuperar os arquivos da categoria especificada
+//         const file = await Post.find({ categoria });
 
-        // Renderiza o arquivo de modelo com os arquivos encontrados
-        res.render('categoria', { file }); // Supondo que o arquivo de modelo se chame 'index.hbs' e está na pasta 'views'
-    } catch (error) {
-        console.error('Erro ao buscar arquivos:', error);
-        res.status(500).send('Erro interno');
-    }
+//         // Renderiza o arquivo de modelo com os arquivos encontrados
+//         res.render('categoria', { file }); // Supondo que o arquivo de modelo se chame 'index.hbs' e está na pasta 'views'
+//     } catch (error) {
+//         console.error('Erro ao buscar arquivos:', error);
+//         res.status(500).send('Erro interno');
+//     }
+// });
+
+
+//rota para visualizar os videos/imagens de acordo com a categoria e nivel do usuário
+router.get('/upload/:categoria', async (req, res) => {
+  const { categoria } = req.params;
+  
+  try {
+      // Verifica se o usuário está autenticado
+      if (!req.session.user) {
+          return res.redirect('/'); 
+      }
+      
+      // Obtém o nível do usuário da sessão do usuário
+      const nv_usu = req.session.user.nm_nivel; 
+
+      const files = await Post.find({ categoria });
+
+      // Filtra os arquivos com base no nível do usuário
+      const files_permitidos = files.filter(file => {
+          if (nv_usu === 'Basico') {
+              // Se o usuário for 'Basico', retorna apenas os arquivos 'Basico'
+              return file.nivel === 'Basico';
+          } else if (nv_usu === 'Intermediario') {
+              // Se o usuário for 'Intermediário', retorna arquivos 'Basico' e 'Intermediário'
+              return file.nivel === 'Basico' || file.nivel === 'Intermediario';
+          } else {
+              // Se o usuário for 'Avançado', retorna todos os arquivos
+              return true;
+          }
+      });
+      console.log('Nível do usuário:', nv_usu);
+      
+      // Renderiza o arquivo de modelo com os arquivos permitidos encontrados
+      res.render('categoria', { file: files_permitidos }); 
+  } catch (error) {
+      console.error('Erro ao buscar arquivos:', error);
+      res.status(500).send('Erro interno');
+  }
 });
 
-
-
+//rota para deletar os posts com base no id do arquivo
 router.delete('/posts/:id', async (req, res) => {
   try {
       const post = await Post.findOneAndDelete({ _id: req.params.id });
@@ -71,26 +133,6 @@ router.delete('/usuario/:id_usuario', ControllerUsuario.deleteusuarioById)
 
 router.get("/pesquisa/:nm_usuario", ControllerUsuario.getUsuarioByName);
 
-  //function do middleware
-  function checkAuthenticated(req, res, next) {
-    if (req.session.user) {
-      next();
-    } else {
-      res.redirect('/');
-    }
-  }
-
-  //destroy da sessão
-  router.get('/logout', function(req, res){
-    req.session.destroy(function(err){
-       if(err){
-          console.log(err);
-       } else {
-          res.redirect('/');
-       }
-    });
- });
- 
   
 //aqui a função get e render vai pegar a url e renderizar ela no site
 
@@ -112,18 +154,11 @@ router.get('/index', checkAuthenticated,/*verificaAutenticacao,*/ (req, res) => 
 });
 
 router.get("/kids", checkAuthenticated, (req, res) => {
-  //res.send("<h1>Pagina-Inicial</h1>")
   res.render("kids"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 });
 
 router.get("/profissionais", checkAuthenticated, (req, res) => {
-  //res.send("<h1>Pagina-Inicial</h1>")
   res.render("profissionais"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
-});
-
-//area de teste para usuarios
-router.get("/teste", checkAuthenticated,(req, res) => {
-  res.render("teste"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 });
 
 router.get("/cadastro", (req, res) => {
@@ -171,25 +206,15 @@ router.get("/cadastro", (req, res) => {
         }
     }); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 
-    router.get("/media", (req, res) => {
-      res.render('media')
-    })
-
-    router.get("/upload", (req, res) => {
+    router.get("/upload", checkAuthenticated, (req, res) => {
       res.render('upload')
     })
 
-    router.get('/categoria', (req,res) => {
+    router.get('/categoria', checkAuthenticated, (req,res) => {
       res.render('categoria')
     })
 
-    router.get('/categoria_animais', (req,res) => {
-      res.render('categoria_animais')
-    })
-
-
-
-   // Rota para servir os vídeos e demonstrar
+   // Rota para servir os vídeos e demonstrar (para fins de teste. Não vai ser utilizado)
 router.get('/videos/:filename', (req, res) => {
   const { filename } = req.params;
   const filePath = path.join(__dirname, '..', '..', 'tmp', 'uploads', filename);

@@ -20,7 +20,7 @@ const PostSchema = new mongoose.Schema({
     categoria: String,
     nivel: {
       type: String,
-      enum: ['Iniciante', 'Intermediario', 'Expert'],
+      enum: ['Basico', 'Intermediario', 'Avancado'],
       required: true
     },
     createAt: {

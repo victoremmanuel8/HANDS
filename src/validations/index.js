@@ -1,3 +1,5 @@
+//tentar puxar as validações daqui, para não ficar desorganizado
+
 const { body, validationResult } = require('express-validator');
 const express = require('express')
 const app = express();

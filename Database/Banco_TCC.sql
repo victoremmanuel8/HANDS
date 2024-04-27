@@ -12,6 +12,7 @@ ds_email VARCHAR(100) not null UNIQUE,
 nr_senha VARCHAR(100),
 dt_nascimento DATE,
 nr_idade INT,
+nm_nivel ENUM('Basico', 'Intermediario', 'Avancado'),
 sg_sexo ENUM ('M', 'F')
 );
           
@@ -150,5 +151,6 @@ select tb_usuario.nm_usuario As "nome do usuario",
 tb_usuario.dt_nascimento AS "Data de Nascimento do Usuario",
 FLOOR(DATEDIFF(CURDATE(), dt_nascimento) /365) AS "Idade do Usuario"
 	From tb_usuario;
+    
 
 	
