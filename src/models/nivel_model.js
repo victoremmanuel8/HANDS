@@ -12,7 +12,7 @@ const tb_nivel = connSequelize.define('tb_nivel', {
     type: DataTypes.ENUM('Iniciante', 'Intermediario', 'Expert'),
   }
 }, 
-_padraoTableDBExistente('tb_categoria'));
+_padraoTableDBExistente('tb_nivel'));
 
 module.exports = { 
   tb_categoria

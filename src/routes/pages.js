@@ -7,6 +7,7 @@ const path = require('path')
 const ControllerUsuario= require('../controllers/consultaback')
 const session = require("express-session")
 const Post = require('../models/Post')
+const cl_views = require('../models/View')
 
 
   //function do middleware (de sessão)
@@ -54,23 +55,6 @@ router.get('/posts', async (req, res) => {
     return res.redirect("/index")
   });
 
-  // filtro para encontrar as categorias especificas
-//   router.get('/upload/:categoria', checkAuthenticated, async (req, res) => {
-//     const { categoria } = req.params;
-
-//     try {
-//         // Consulta no banco de dados MongoDB para recuperar os arquivos da categoria especificada
-//         const file = await Post.find({ categoria });
-
-//         // Renderiza o arquivo de modelo com os arquivos encontrados
-//         res.render('categoria', { file }); // Supondo que o arquivo de modelo se chame 'index.hbs' e está na pasta 'views'
-//     } catch (error) {
-//         console.error('Erro ao buscar arquivos:', error);
-//         res.status(500).send('Erro interno');
-//     }
-// });
-
-
 //rota para visualizar os videos/imagens de acordo com a categoria e nivel do usuário
 router.get('/upload/:categoria', async (req, res) => {
   const { categoria } = req.params;
@@ -105,6 +89,36 @@ router.get('/upload/:categoria', async (req, res) => {
       res.render('categoria', { file: files_permitidos }); 
   } catch (error) {
       console.error('Erro ao buscar arquivos:', error);
+      res.status(500).send('Erro interno');
+  }
+});
+
+router.post('/upload/:videoId/visualizado', async (req, res) => {
+  const { videoId } = req.params;
+  const userId = req.session.id;
+
+  try {
+      // Verifica se o usuário já assistiu ao vídeo anteriormente
+      const video_view = await cl_views.findOne({ videoId, userId });
+
+      if (video_view) {
+          console.log('Este vídeo já foi assistido pelo usuário anteriormente.');
+             return res.render('categoria', { assistido: true });
+      }
+
+      // Cria um novo registro na coleção de vídeos assistidos
+      const new_video_view = new cl_views({
+          videoId,
+          userId
+      });
+
+      await new_video_view.save();
+
+      console.log('Vídeo assistido registrado com sucesso.');
+      
+      return res.render('categoria', { assistido: true });
+  } catch (error) {
+      console.error('Erro ao registrar vídeo assistido:', error);
       res.status(500).send('Erro interno');
   }
 });
@@ -230,6 +244,45 @@ router.get('/videos/:filename', (req, res) => {
     res.sendFile(filePath);
   });
 });
-
-
 module.exports = router;
+
+  // filtro para encontrar as categorias especificas
+//   router.get('/upload/:categoria', checkAuthenticated, async (req, res) => {
+//     const { categoria } = req.params;
+
+//     try {
+//         // Consulta no banco de dados MongoDB para recuperar os arquivos da categoria especificada
+//         const file = await Post.find({ categoria });
+
+//         // Renderiza o arquivo de modelo com os arquivos encontrados
+//         res.render('categoria', { file }); // Supondo que o arquivo de modelo se chame 'index.hbs' e está na pasta 'views'
+//     } catch (error) {
+//         console.error('Erro ao buscar arquivos:', error);
+//         res.status(500).send('Erro interno');
+//     }
+// });
+
+
+// router.post('/video/:videoId/visualizado', async (req, res) => {
+//   const { videoId } = req.params;
+//   const userId = req.session.id; 
+
+//   try {
+//       // Verifique se o usuário já assistiu ao vídeo anteriormente
+//       const video_view = await cl_views.findOne({ videoId, userId });
+
+//       if (!video_view) {
+//           // Crie um novo registro na coleção de vídeos assistidos
+//           const new_video_view = new cl_views({
+//               videoId,
+//               userId
+//           });
+//           await new_video_view.save();
+//       }
+
+//       res.sendStatus(200); // Responda com sucesso
+//   } catch (error) {
+//       console.error('Erro ao registrar visualização do vídeo:', error);
+//       res.status(500).send('Erro interno');
+//   }
+// });
