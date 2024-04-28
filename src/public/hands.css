@@ -105,10 +105,6 @@ section {
   opacity: 81%;
 }
 
-.banner-2 img {
-  opacity: 91%;
-}
-
 .banner-1 .btn-com {
   width: 9vh;
   height: 3vh;
@@ -125,11 +121,11 @@ section {
   justify-content: center;
 }
 
-
 .banner-2 img {
   height: 21vh;
   position: absolute;
   right: 10px;
+  opacity: 91%;
   bottom: 0px;
 }
 
@@ -333,6 +329,55 @@ section {
   border-radius: 25px;
   box-shadow: 1px 1px 20px 2px #8574745b;
   width: calc(80%/4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 10vh;
+  margin-bottom: 5vh;
+  transition: .6s ease-in-out;
 }
 
-/* BACKGROUND */
+.primeiro svg {
+  position: absolute;
+  top: -80px;
+}
+
+.primeiro:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 900px) {
+  .objetivos {
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.3em;
+  }
+
+  .primeiro {
+    padding: 120px 20px;
+    background-color: #fff;
+    border-radius: 25px;
+    box-shadow: 1px 1px 20px 2px #8574745b;
+    width: calc(95%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+    transition: .6s ease-in-out;
+  }
+
+  .banner .bannerMulher {
+    display: none;
+  }
+
+  .banner-2 > img {
+    display: none;
+  }
+  }

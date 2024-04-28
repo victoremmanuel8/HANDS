@@ -5,7 +5,7 @@ body {
 }
 
 header ul a svg {
-  filter: drop-shadow(-16px 0 1.5rem rgb(220, 20, 210));
+  filter: drop-shadow(0 0 1.5rem rgb(220, 20, 210));
 }
 
 section {

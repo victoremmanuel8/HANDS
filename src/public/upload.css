@@ -4,6 +4,10 @@ body {
     padding-top: 50px;
 }
 
+header ul .perfil {
+    filter: drop-shadow(0 0 1.5rem #234747);
+}  
+
 section {
     width: 100%;
     height: 100vh;
@@ -39,7 +43,7 @@ section {
 form {
     padding: 50px;
     backdrop-filter: blur(10px);
-    border-radius: 10vh;
+    border-radius: 6vh;
     display: flex;
     flex-direction: column;
     gap: 40px;
