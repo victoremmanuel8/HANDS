@@ -67,3 +67,10 @@ inputs.forEach(function(input, index) {
         smoothScroll(inputs[inputs.length - 1], scrollOffset);
     });
 });
+document.getElementById('Form').addEventListener('submit', function(event) {
+    var senha = document.getElementById('senha').value;
+    if (senha.length < 8) {
+        alert('Senha de categoria muito pequena');
+        event.preventDefault(); // Impede o envio do formulário
+    }
+});
