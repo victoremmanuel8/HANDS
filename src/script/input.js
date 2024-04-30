@@ -73,4 +73,12 @@ document.getElementById('Form').addEventListener('submit', function(event) {
         alert('Senha de categoria muito pequena');
         event.preventDefault(); // Impede o envio do formulário
     }
+     else {
+        alert('Cadastro concluído com sucesso!');   
+
+        // Ocultar o alerta após alguns segundos
+        setTimeout(function() {
+            alert('Cadastro concluído com sucesso!');   // Limpar o alerta
+        }, 2000);
+    }
 });
