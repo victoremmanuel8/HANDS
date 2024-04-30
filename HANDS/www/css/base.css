@@ -48,6 +48,10 @@ header {
   margin-right: 30px;
 }
 
+.pesq {
+  height: 45px;
+}
+
 .input-pesq {
   border: none !important;
   outline: none;
