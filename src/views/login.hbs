@@ -22,11 +22,11 @@
         <link rel="icon" type="image/x-icon" href="/logo.png">
     </head>
     <body>
-            {{!-- <div class="alert-text">
+             <div class="alert-text">
         {{#each erros}}
         <div class="alert alert-danger">{{text}}</div>
          {{/each}}
-        </div> --}}
+        </div> 
           <div class="row">
               <div class="fixed1">
                 <div class="fixed">
@@ -39,7 +39,7 @@
             </div>
             <form id="Form" action="/auth/login" method="POST" required>
                 <input class="input-block" type="email" name="email" id="" placeholder="E-mail">   
-                <input class="input-block" type="password" name="senha" id="password"  placeholder="Senha">
+                <input class="input-block" type="password" name="senha" id="password"  placeholder="Senha" maxlength="20">
                 <div id="icon" onclick="showHide()"></div>
                 <input  class="button" type="submit" id= "submit" class="btn btn-primary"/>
                 <p class="titulo-3">Não possui conta? <a href="/cadastro">Cadastre-se</a></p>
