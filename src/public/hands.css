@@ -17,7 +17,7 @@ body {
 }
 
 .alert-text {
-  position: absolute; left: 50%; top: 10%;
+  position: absolute; left: 50%; top: 5%;
   transform: translate(-50%, -50%);
   gap: 20px;
 }
