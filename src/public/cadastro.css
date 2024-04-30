@@ -18,6 +18,11 @@ a {
     text-decoration: none;
 }
 
+.alert-text {
+    position: relative;
+    top: 80px;
+}
+
 .area-cadastro {
     display: flex;
     align-items: center;

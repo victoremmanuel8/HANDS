@@ -4,6 +4,7 @@
  const nmDB = process.env.DATABASE
  const connSequelize =  new Sequelize(
      `mysql:${usuario}:${senha}@roundhouse.proxy.rlwy.net:26139/${nmDB}` //porta 3307(escola) ou 3306 (casa)
+     `mysql:${usuario}:${senha}@localhost:3306/${nmDB}` //porta 3307(escola) ou 3306 (casa)
  )
 
  module.exports = {

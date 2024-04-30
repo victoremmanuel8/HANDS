@@ -52,7 +52,7 @@ router.get('/posts', async (req, res) => {
     });
     console.log(req.file); 
     // return res.json(post);
-    return res.redirect("/index")
+    return res.redirect("/upload")
   });
 
 //rota para visualizar os videos/imagens de acordo com a categoria e nivel do usuário
