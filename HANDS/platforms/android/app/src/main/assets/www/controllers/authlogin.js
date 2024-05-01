@@ -14,17 +14,17 @@ exports.login = async (req, res) => {
 
 // Selecionando o usuario correspondente do banco de dados
   try {
-    const db_usu = await tb_usuario.findOne({ where: { email: email } });
+    const db_usu = await tb_usuario.findOne({ where: { ds_email: email } });
 
     if (db_usu) {
-      const compare = await bcrypt.compare(senha, db_usu.senha);
+      const compare = await bcrypt.compare(senha, db_usu.nr_senha);
 
       if (compare) {
         const token = jwt.sign({ id: db_usu.id }, 'JANX7AWB12BAKX');
         res.cookie('token', token, { httpOnly: true, secure: true });
         req.session.user = db_usu; // Armazena o usuário na sessão
         req.flash("success_msg", "Seja bem-vindo(a)")
-        return res.redirect('/index');
+        return res.redirect('/index.html');
       } else {
         return res.render('login', {
           message: "Senha incorreta"

@@ -15,7 +15,7 @@ exports.register = async (req, res) => {
   const { nome, sobrenome, email, senha, ConfirmarSenha, dt_nascimento } = req.body;
 
   // Verificação do email
-  const Exist_usuario= await tb_usuario.findOne({ where: { email: email } });
+  const Exist_usuario= await tb_usuario.findOne({ where: { ds_email: email } });
   if (Exist_usuario) {
     return res.render('cadastro', { message: "Este email já está em uso" });
   } else if (senha !== ConfirmarSenha) {
@@ -42,8 +42,8 @@ exports.register = async (req, res) => {
     const Add_usuario = await tb_usuario.create({
       nm_usuario: nome,
       nm_sobrenome: sobrenome,
-      email: email,
-      senha: hashedPassword,
+      ds_email: email,
+      nr_senha: hashedPassword,
       dt_nascimento: dt_nascimento
     });
 

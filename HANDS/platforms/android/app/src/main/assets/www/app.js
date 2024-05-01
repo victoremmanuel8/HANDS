@@ -1,5 +1,7 @@
 const express = require("express");
 const path = require('path');
+const https = require("https");
+const fs = require("fs")
 //Garantir que o servidor starte 
 const mysql = require('mysql2');
 const dotenv = require('dotenv');
@@ -25,6 +27,13 @@ const mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost:27017/hands_db", {
   useNewUrlParser: true,
   });
+
+  const privateKey = fs.readFileSync('server.key', 'utf8'); 
+const certificate = fs.readFileSync('server.crt');
+
+const passphrase = 'hands'; // Substitua 'sua_senha_da_chave' pela senha real da sua chave
+
+const https_server = https.createServer({ key: privateKey, cert: certificate, passphrase: passphrase }, app);
 
 //Sessão
 app.use(session({
@@ -130,9 +139,8 @@ appBack.use('/prof', UsuarioRoutes)
   app.use('/', require('./routes/pages.js'));
  app.use('/auth', require('./routes/auth.js'));
 
-  app.listen(5000, async () => {
-    console.log("Server startado na porta 5000");
-  
-  });
+ https_server.listen(5000, async () => {
+  console.log("Server startado na porta 5000 (HTTPS)");
+});
 
 

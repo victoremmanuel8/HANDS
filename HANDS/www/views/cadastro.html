@@ -76,7 +76,7 @@
             </div>
             
             <div id="step1" class="hidden">
-                <button class="voltar" onclick="previousStep(1)">
+                <button class="voltar" onclick="previousStep(1)">a
                     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" class="bi bi-arrow-left" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
                       </svg>
@@ -87,28 +87,28 @@
                     </svg>
                 </header>
                 <div>
-                    <form id="Form" action="/auth/cadastro" method="POST" required>
+                    <form id="Form" action="https://192.168.1.5:5000/auth/cadastro" method="POST" required>
                         <div class="form-input">
-                            <label for="nome" id="nome">Nome:</label>
-                            <input class="input" type="text" id="nome" required><br><br>
+                            <label for="nome" id="nome" >Nome:</label>
+                            <input class="input" type="text" id="nome" name="nome" required><br><br>
                         </div>
                         <div class="form-input">
                             <label for="sobrenome">Sobrenome:</label>
-                            <input class="input" type="text" id="sobrenome" required><br><br>
+                            <input class="input" type="text" id="sobrenome"  name="sobrenome"required><br><br>
                         </div>
                         <div class="form-input">
                             <label for="nascimento">Data de nascimento:</label>
-                            <input class="input" type="date" id="dt_nascimento" required><br><br>
+                            <input class="input" type="date" id="dt_nascimento" name="dt_nascimento" placeholder="data"><br><br>
                         </div>
                         <div class="form-input">
                             <label for="email">Email:</label>
-                            <input class="input" type="email" id="email" required><br>
+                            <input class="input" type="email" id="email" name="email"><br>
                         </div>
                         <div class="form-input">
                             <label for="senha">Senha:</label>
-                            <input class="input" type="password" id="senha"><br><br>
+                            <input class="input" type="password" id="senha" senha="senha"><br><br>
                             <label for="confirmarSenha">Confirmar Senha:</label>
-                            <input class="input" type="password" id="confirmarSenha"><br><br>
+                            <input class="input" type="password" id="confirmarSenha" name="ConfirmarSenha"><br><br>
                         </div>
                         <div class="form-input">
                             <input class="check" type="checkbox" id="termos"> <label for="termos">Eu concordo com os termos de uso</label><br><br><br><br>
