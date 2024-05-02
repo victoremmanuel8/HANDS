@@ -20,6 +20,10 @@ a {
     color: #A4A4A4;
 }
 
+.atual {
+  font-weight: 800;
+}
+
 /* header {
     width: 100%;
     height: 7vh;

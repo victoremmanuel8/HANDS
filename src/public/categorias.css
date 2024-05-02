@@ -1,0 +1,26 @@
+body {
+    overflow-x: hidden;
+    background-color: #EFFFE6;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    padding-top: 50px;
+}
+
+.background {
+    position: absolute;
+    width: 110%;
+    height: 300vh;
+    left: -10px;
+    top: -190px;
+    z-index: -1;
+    opacity: .3;
+}
