@@ -240,6 +240,7 @@ a {
     z-index: 3;
     padding-bottom: 30px;
     transition: .5s ease-in-out;
+    margin-top: 10vh;
 }
 
 .banner .video-aulas .titulo-1 {
@@ -272,4 +273,9 @@ a {
     height: 40vh;
     margin-right: 3vh;
     border-radius: 20px;
+}
+
+.mais-conteudo {
+    display: none;
+    transition: .5s ease-in-out;
 }

@@ -99,7 +99,7 @@ scroll-behavior: auto;
   display: inline-block;
   margin: 1.2vh;
   object-fit: contain;
-  user-select: none;
+  /* user-select: none; */
   width: calc(100% / 3.2);
   border-radius: 55px;
   box-shadow: #00000073 0 0 15px;

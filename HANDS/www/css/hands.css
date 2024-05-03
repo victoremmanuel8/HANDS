@@ -197,7 +197,7 @@ body {
   margin: 1vh;
   margin-right: 2vh;
   object-fit: contain;
-  user-select: none;
+  /* user-select: none; */
   width: calc(100% / 4.6);
   border-radius: 25px;
 }
