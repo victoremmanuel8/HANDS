@@ -11,8 +11,13 @@ header ul a svg {
 .banner {
   display: flex;
   flex-direction: column;
-  margin: 15vh;
-  margin-top: 20vh
+  margin-top: 20vh;
+  text-align: center;
+  width: 100%;
+}
+
+.banner svg {
+  width: 100%;
 }
 
 .background {
@@ -24,85 +29,3 @@ header ul a svg {
   z-index: -1;
 }
 
-#container-slider {
-    display: flex;
-    justify-content: center;
-    margin-top: 3vh;
-    width: 100%;
-    height: 130px;
-}
-
-.carousel {
-    width: 100%;
-}
-
-.wrapper{
-  display: flex;
-  position: absolute;
-  margin-left: 2vh;
-  margin-right: 2vh;
-  z-index: 3;
-}
-
-.wrapper .carousel{
-  font-size: 0px;
-  cursor: pointer;
-  overflow: hidden;
-  white-space: nowrap;
-  scroll-behavior: smooth;
-}
-.carousel.dragging{
-  cursor: grab;
-  scroll-behavior: auto;
-}
-.carousel.dragging img{
-  pointer-events: none;
-}
-.carousel img{
-  height: 310px;
-  margin: 1vh;
-  object-fit: contain;
-  user-select: none;
-  width: calc(100% / 6.3);
-  border: solid 1px #000;
-  border-radius: 25px;
-}
-.carousel img:first-child{
-  margin-left: 0px;
-}
-
-@media screen and (max-width: 900px) {
-  .carousel img{
-    width: calc(100% / 1.5);
-  }
-}
-
-@media screen and (max-width: 550px) {
-  .carousel img{
-    width: 100% calc(100% / 1.5);
-  }
-}
-
-nav ul {
-  position: relative;
-  z-index: 4;
-}
-
-.sing-aulas {
-  background: linear-gradient(90deg, #02F2CA, #31A395);
-  padding: 1vh 1.4vh;
-  border-radius: 30px;
-  color: #fff;
-}
-
-.login-aulas {
-  color: #68a4fe;
-  padding: 1vh 3vh;
-  border-radius: 30px;
-  border: solid 3px #fff;
-}
-
-.cor-verde {
-  color: #594A3F;
-  font-weight: 370;
-}
