@@ -191,9 +191,10 @@ router.get("/cadastro", (req, res) => {
     });
 
   router.get("/aulas", checkAuthenticated,(req, res) => {
-      res.render("aulas"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
-      
-      });
+    if(req.session.user) {
+      res.render('aulas', { user: req.session.user });
+    }
+}); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 
   router.get("/header", checkAuthenticated,(req, res) => {
       res.render("header"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).

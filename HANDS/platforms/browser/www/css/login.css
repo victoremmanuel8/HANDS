@@ -5,15 +5,12 @@
 
 a {
     text-decoration: none;
+    color: #000000
 }
 
 body {
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin: 0px;
-    font-family: Arial, Helvetica, sans-serif; /*fonte temporaria*/
+    background-color: #7c37fc;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .area-login {
@@ -23,6 +20,7 @@ body {
     margin-top: 28vh;
     position: relative;
     z-index: 6;
+    color: #fff;
 }
 
 svg {
@@ -31,31 +29,17 @@ svg {
 }
 
 .titulo-1 {
-    color: #000;
     font-size: 1.6em;
     margin-bottom: 10px;
-    font-family: inika-bold;
-}
-
-.titulo-3 {
-    color: #000;
-    font-family: inika-bold;
 }
 
 .titulo-4 {
     color: #a5a5a5;
-    font-family: inika-bold;
 }
 
 .titulo-5 {
     color: #a5a5a5;
-    font-family: inika-bold;
     font-size: 1.2em;
-}
-
-.titulo-6 {
-    color: #000000b4;
-    font-family: kumbh-regular;
 }
 
 .campos {
@@ -64,21 +48,26 @@ svg {
 }
 
 input {
-    background: #7c7c7c21;
+    background: transparent;
     padding: 9px;
     padding-left: 25px;
-    height: 45px;
-    border-radius: 10vh;
+    height: 30px;
+    border-radius: 15px;
     border: none;
     margin: 10px;
     margin-left: 0px;
     width: calc(90%);
-    color: #000;
+    color: #fff;
+    box-shadow: inset 0 0 10px #5353535f;
+    border: solid 1.4px #fff;
 }
 
 form {
-    color: #000;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
 }
 
 form p {
@@ -86,16 +75,18 @@ form p {
 }
 
 .cadastro {
-    color: #1C8394;
+    color: #10e221;
 }
 
-.btn-primary {
-    background-color: #85A611;
-    color: #fff;
+.button {
     width: 100%;
-    font-size: 1.4em;
-    height: 60px;
-    font-family: inika-bold;
+    height: 4vh;
+    border: none;
+    border-radius: 10vh;
+    background-color:#1C8394;
+    font-size: large;
+    color: #fff;
+    box-shadow: 0px 4px 1px #0d5562;
 }
 
 textarea:focus, input:focus, select:focus {
@@ -103,43 +94,6 @@ textarea:focus, input:focus, select:focus {
 }
 
 ::-webkit-input-placeholder {
-    color: #000;
-    font-family: inika-bold;
+    color: #fff;
     font-size: 1.2em;
- }
- 
- :-moz-placeholder { /* Firefox 18- */
-    color: #000;  
- }
- 
- ::-moz-placeholder {  /* Firefox 19+ */
-    color: #000;  
- }
- 
- :-ms-input-placeholder {  
-    color: #000;  
- }
-
- .ou {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    justify-content: space-between;
- }
-
- .linha {
-    width: 130px;
-    height: 1px;
-    background-color: #8f8f8f;
- }
-
- footer {
-    height: 130px;
-    justify-content: space-around;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    font-family: inika-bold;
-    color: #a5a5a5;
  }

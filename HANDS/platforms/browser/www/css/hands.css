@@ -1,6 +1,5 @@
 .pesq {
   width: 100%;
-  height: 40px;
   /* background: linear-gradient(90deg, #ADECFA, #16B0FF); */
   background-color: #fff3e1;
   margin-bottom: 2.5vh;
@@ -17,8 +16,8 @@
 
 .icon {
   background-color: #FFBB5E;
-  height: 40px;
-  width: 40px;
+  height: 45px;
+  width: 45px;
   border-radius: 100vh;
   position: absolute;
 }
@@ -48,17 +47,34 @@
   position: relative;
 } */
 
+body {
+  overflow-x: hidden;
+}
+
 .banner {
   margin-top: 3vh;
   margin-bottom: 13vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 40px;
+  position: relative;
 }
 
 .esquerda {
   width: 50%;
+  margin-left: 2vh;
 }
+
+.texto-esqueda {
+  font-size: 1.2em;
+}
+
+.esquerda .liz {
+  position: absolute;
+  top: -50px;
+  right: -2vh;
+}
+
 
 .direita {
   width: 100%;
@@ -74,6 +90,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  margin-left: 2vh;
 }
 
 .banner-1 .titulo-2 {
@@ -97,7 +114,16 @@
 
 .btn-aula-teste {
   color: #594A3F;
-  padding: 8px 15px;
+  padding: 5px 15px;
+  border-radius: 10vh;
+  background-color: #fff;
+  filter: drop-shadow(10px 30px 2.3rem  #ff9500);
+}
+
+.esquerda .btn-aula-teste {
+  color: #594A3F;
+  font-size: 0.8em;
+  padding: 5px 15px;
   border-radius: 10vh;
   background-color: #fff;
   filter: drop-shadow(10px 30px 2.3rem  #ff9500);
@@ -195,7 +221,7 @@
   align-items: center;
   width: 7.5vh;
   height: 7.5vh;
-  background-color: #F6F4E7;
+  background-color: #ffbc5d32;
   border-radius: 100%;
 }
 
@@ -232,7 +258,7 @@ section {
   z-index: -1;
 }
 
-.FC9404-2 {
+/* .FC9404-2 {
   width: 60px;
   height: 60px;
   background-color: #fc9504c7;
@@ -242,7 +268,7 @@ section {
   top: 140px;
   right: 40px;
   z-index: -1;
-}
+} */
 
 .FC9404-3 {
   width: 70px;
@@ -262,7 +288,7 @@ section {
   background-color: #ffb805b2;
   border-radius: 100%;
   position: absolute;
-  top: 220px;
+  top: 270px;
   filter: blur(2rem);
   right: -10px;
   z-index: -1;

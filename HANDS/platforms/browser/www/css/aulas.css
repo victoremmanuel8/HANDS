@@ -76,10 +76,9 @@
 
 .video-aulas iframe {
     width: 95%;
-    height: 170px;
-    border: solid 1px #000;
+    height: 30vh;
     margin-right: 3vh;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 .negrito {
@@ -265,4 +264,27 @@ nav {
 
 .videoaulas {
     text-align: center;
+}
+
+.btn{
+    padding: 7px 18px;
+    border-radius: 10vh;
+    box-shadow: 5px 4px 15px  #4f4f4f6f;
+    background-color: #fff;
+    color: #000;
+}
+
+.btn-svg {
+    position: relative;
+    margin-top: 19vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-svg svg {
+    position: absolute;
+    bottom: -2%;
+    z-index: -1;
+    filter: drop-shadow(0 0 1em rgba(25, 201, 99, 0.9));
 }

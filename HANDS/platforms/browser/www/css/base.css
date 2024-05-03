@@ -48,6 +48,10 @@ header {
   margin-right: 30px;
 }
 
+.pesq {
+  height: 45px;
+}
+
 .input-pesq {
   border: none !important;
   outline: none;
@@ -84,7 +88,6 @@ nav ul {
   font-weight: 300;
   font-size: 16px;
   color: #68584c;
-  margin-top: 2vh;
 }
 
 .titulo-3 {
@@ -127,80 +130,117 @@ nav hr {
   animation-delay: .5s;
 }
   
-  .show-menu .overlay {
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.3s;
-    pointer-events: auto;
-    padding-left: 27rem;
-    font-size: .7em;
-    transition: .8s ease-in-out;
-    transition-duration: .9s;
-  }
+.show-menu .overlay {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s;
+  pointer-events: auto;
+  padding-left: 27rem;
+  font-size: .7em;
+  transition: .8s ease-in-out;
+  transition-duration: .9s;
+}
+
+.sidebar {
+  width: calc(100% / 1.4);
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: 10px 5px 15px 10px #0000003d;
+  position: fixed;
+  top: 0;
+  left: -90rem;
+  transition: all .8s;
+  z-index: 10;
+  padding: 19px;
+  border-radius:0 45px ;
+}
+
+.sidebar, .titulo-1 {
+  color: #000;
+}
+
+.sidebar hr {
+  width: 80%;
+  color: #000;
+}
+
+.show-menu .sidebar {
+  left: 0;
+  transition-duration: .8s;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 90px;
+  flex-direction: column;
+}
   
-  .sidebar {
-    width: calc(100% / 1.4);
-    height: 100vh;
-    background-color: #fff;
-    box-shadow: 10px 5px 15px 10px #0000003d;
-    position: fixed;
-    top: 0;
-    left: -90rem;
-    transition: all .8s;
-    z-index: 10;
-    padding: 19px;
-    border-radius:0 45px ;
-  }
+.menu-item {
+  margin-bottom: .5rem;
+  list-style-type: none;
+}
+
+.menu-link {
+  font-family: 'Trebuchet MS';
+  font-size:  28px;
+  color: #000;
+  position: relative;
+  text-decoration: none;
+  line-height: 60px;
+  transition: color .5s;
+}
   
-  .sidebar, .titulo-1 {
-    color: #000;
-  }
-  
-  .sidebar hr {
-    width: 80%;
-    color: #000;
-  }
-  
-  .show-menu .sidebar {
-    left: 0;
-    transition-duration: .8s;
-  }
-  
-  .menu {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 90px;
-    flex-direction: column;
-  }
-  
-  .menu-item {
-    margin-bottom: .5rem;
-    list-style-type: none;
-  }
-  
-  .menu-link {
-    font-family: 'Trebuchet MS';
-    font-size:  28px;
-    color: #000;
-    position: relative;
-    text-decoration: none;
-    line-height: 60px;
-    transition: color .5s;
-  }
-  
-  .btn-ass {
-    width: 230px;
-    height: 40px;
-    font-size: 1.2em;
-    border-radius:10vh 0 10vh 10vh;
-    background:linear-gradient(90deg, #FEBB13, #FD9605);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-  }
-  
-  @font-face{
-    font-family: kumbh-regular;
-    src: url(../../../fontes/Kumbh_Sans/static/KumbhSans-Medium.ttf);
-    } 
+.btn-ass {
+  width: 230px;
+  height: 40px;
+  font-size: 1.2em;
+  border-radius:10vh 0 10vh 10vh;
+  background:linear-gradient(90deg, #FEBB13, #FD9605);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+@font-face{
+  font-family: kumbh-regular;
+  src: url(../../../fontes/Kumbh_Sans/static/KumbhSans-Medium.ttf);
+  } 
+
+.frase {
+  text-align: center;
+  margin: 20px;
+  margin-top: -20px;
+}
+
+.txt-center {
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+[data-anime] {
+  opacity: 0;
+  transition: .5s ease-in-out; 
+}
+
+[data-anime="left"] {
+  transform: translate3d(-50px, -30px, -10px);
+}
+
+[data-anime="right"] {
+  transform: translate3d(50px, 30px, 0);
+}
+
+[data-anime="bottom"] {
+  transform: translate3d(0, 50px, 0);
+}
+
+[data-anime].animate {
+  opacity: 100%;
+  transform: translate3d(0px, 0px, 0px);
+}
