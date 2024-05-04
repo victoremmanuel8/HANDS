@@ -1,9 +1,6 @@
 * {
     margin: 0px;
     padding: 0px;
-}
-
-* {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
@@ -31,7 +28,6 @@ a {
     align-items: center;
     justify-content: space-between;
 } */
-
 
 header {
   background: transparent;

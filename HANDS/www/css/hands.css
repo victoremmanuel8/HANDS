@@ -148,8 +148,6 @@ body {
 .wrapper{
   display: flex;
   position: absolute;
-  margin-left: 2vh;
-  margin-right: 2vh;
   z-index: 3;
   overflow: hidden;
   width: 100%;

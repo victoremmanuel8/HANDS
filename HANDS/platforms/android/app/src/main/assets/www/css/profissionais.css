@@ -17,8 +17,8 @@
 
 .icon {
   background-color: #FF6D9C;
-  height: 40px;
-  width: 40px;
+  height: 45px;
+  width: 45px;
   border-radius: 100vh;
   position: absolute;
 }
@@ -112,7 +112,7 @@
     display: inline-block;
     margin: 1.2vh;
     object-fit: contain;
-    user-select: none;
+    /* user-select: none; */
     width: calc(100% / 1.2);
     border-radius: 35px;
 }

@@ -16,8 +16,8 @@
 
 .icon {
   background-color: #52DAFF;
-  height: 40px;
-  width: 40px;
+  height: 45px;
+  width: 45px;
   border-radius: 100vh;
   position: absolute;
 }
@@ -103,7 +103,7 @@ scroll-behavior: auto;
   display: inline-block;
   margin: 1.2vh;
   object-fit: contain;
-  user-select: none;
+  /* user-select: none; */
   width: calc(100% / 2.14);
   border-radius: 25px;
 }
