@@ -27,12 +27,6 @@ dt_nascimento DATE,
 sg_sexo ENUM ('M', 'F')
 );
 
-create table tb_youtube(
-id_youtube INT primary key auto_increment,
-nm_you VARCHAR (100) not null UNIQUE
-);
-
-
 CREATE TABLE tb_categoria (
     id_categoria INT PRIMARY KEY AUTO_INCREMENT,
     nm_categoria VARCHAR(100) NOT NULL
@@ -68,47 +62,23 @@ CREATE TABLE tb_tarefa (
 CREATE TABLE tb_avaliacao (
     id_avaliacao INT PRIMARY KEY AUTO_INCREMENT,
     id_aula INT,
-    id_aluno INT,
+    id_usuario INT,
     nr_avaliacao INT,
     ds_descricao TEXT,
     dt_avaliacao DATE,
     FOREIGN KEY (id_aula) REFERENCES tb_aula(id_aula),
-    FOREIGN KEY (id_aluno) REFERENCES tb_usuario(id_usuario)
-);
-
-CREATE TABLE tb_videos(
-    id_aula INT,
-    nm_arquivo VARCHAR(100),
-    nr_arquivo BLOB,
-    ds_descricao TEXT,
-    id_profissional INT,
-    id_categoria INT,
-    FOREIGN KEY (id_aula) REFERENCES tb_aula(id_aula),
-    FOREIGN KEY (id_profissional) REFERENCES tb_profissional(id_profissional),
-    FOREIGN KEY (id_categoria) REFERENCES tb_categoria(id_categoria)
+    FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
 );
 
 -- Tabela para gerenciar as assinaturas premium dos usuários
-CREATE TABLE tb_premium (
+/* CREATE TABLE tb_premium (
     id_assinatura INT PRIMARY KEY AUTO_INCREMENT,
     id_usuario INT,
     dt_inicio DATE,
     dt_fim DATE,
     status ENUM('ativo', 'cancelado'),
     FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
-);
-
--- Tabela para gerenciar as aulas assistidas pelos usuários
-CREATE TABLE tb_aula_assistida (
-    id_aula_assistida INT PRIMARY KEY AUTO_INCREMENT,
-    id_aula INT,
-    id_usuario INT,
-    dt_assistida DATE,
-    FOREIGN KEY (id_aula) REFERENCES tb_aula(id_aula),
-    FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
-    );
-
-
+); */
 
 INSERT INTO tb_usuario (nm_usuario, nm_sobrenome, ds_email, nr_senha, dt_nascimento, nr_idade, sg_sexo)
 	VALUES('Luan', 'Henrique', 'luanhenrique123@gmail.com', 'luan123', '2004-06-06', 19, 'M'),
@@ -138,12 +108,12 @@ INSERT INTO tb_aula (ds_titulo, ds_descricao, ds_conteudo, id_categoria, id_prof
 VALUES ('Ensino De Libras', 'Aprendendo o Alfabeto', 'Alfabeto do A - Z de maneira clara.', 1, 1, '2024-03-20', true);
 
 
-INSERT INTO tb_premium (id_usuario, dt_inicio, dt_fim, status)
+/* INSERT INTO tb_premium (id_usuario, dt_inicio, dt_fim, status)
     VALUES  (1, '2024-01-01', '2025-01-01', 'ativo'),
                     (2, '2024-01-01', '2025-02-01', 'ativo'),
                     (3, '2024-01-01', '2025-03-01', 'ativo'),
                     (4, '2024-01-01', '2025-01-01', 'cancelado'),
-                    (5, '2024-01-01', '2025-02-01', 'cancelado');
+                    (5, '2024-01-01', '2025-02-01', 'cancelado'); */
 
 select * from tb_usuario;
 

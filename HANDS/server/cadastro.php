@@ -1,24 +1,28 @@
 <?php
 include 'connection.php';
 
-//conexão funcionando
-header("Access-Control-Allow-Origin: *"); 
-
-// Verificar se os dados foram enviados via GET
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    // Atribuir os valores dos parâmetros GET a variáveis
-    $nome = $_GET['nome'] ?? ''; //evitar injeção Mysql
-    $sobrenome = $_GET['sobrenome'] ?? '';
-    $email = $_GET['email'] ?? '';
-    $senha = $_GET['senha'] ?? '';
-    $dt_nascimento = $_GET['dt_nascimento'] ?? '';
+// Verificar se os dados foram enviados via POST
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Atribuir os valores dos parâmetros POST a variáveis
+    $nome = mysqli_real_escape_string($conn, $_POST['nome'] ?? '');
+    $sobrenome = mysqli_real_escape_string($conn, $_POST['sobrenome'] ?? '');
+    $email = mysqli_real_escape_string($conn, $_POST['email'] ?? '');
+    $senha = mysqli_real_escape_string($conn, $_POST['senha'] ?? '');
+    $dt_nascimento = mysqli_real_escape_string($conn, $_POST['dt_nascimento'] ?? '');
 
     if ($nome && $sobrenome && $email && $senha && $dt_nascimento) {
-        $sql = "INSERT INTO tb_usuario(nm_usuario, nm_sobrenome, email, senha, dt_nascimento) VALUES ('$nome', '$sobrenome', '$email',  '$senha', '$dt_nascimento')";
+        // Criptografar a senha
+        $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
-        if ($conn->query($sql) === TRUE) {
-            echo "Novo registro criado com sucesso";
-            header('Location: HANDS/HANDS/HANDS/www/views/index.html');
+        $sql = "INSERT INTO tb_usuario(nm_usuario, nm_sobrenome, ds_email, nr_senha, dt_nascimento) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sssss", $nome, $sobrenome, $email, $senhaHash, $dt_nascimento);
+
+        if ($stmt->execute()) {
+            $stmt->close();
+            $conn->close();
+            header('Location: /HANDS/HANDS/HANDS/www/index.html');
+            exit(); // Importante sair após o redirecionamento
         } else {
             echo "Erro ao inserir registro: " . $conn->error;
         }
@@ -28,6 +32,4 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 } else {
     echo "Método de requisição inválido.";
 }
-
-$conn->close();
 ?>

@@ -1,25 +1,35 @@
 <?php
 
 include 'connection.php';
-//conexão funcionando
+
 header("Access-Control-Allow-Origin: *"); 
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     // Atribuir os valores dos parâmetros GET a variáveis
-    $email = $_GET['email'] ?? '';
-    $senha = $_GET['senha'] ?? '';
+    $ds_email = $_GET['ds_email'] ?? '';
+    $nr_senha = $_GET['nr_senha'] ?? '';
 
-    if ($email && $senha) {
-        $sql = "SELECT * FROM tb_usuario WHERE email='$email' AND senha='$senha'";
+    if ($ds_email && $nr_senha) {
+        // Criptografar a senha fornecida pelo usuário
+        $nr_senha_hash = password_hash($nr_senha, PASSWORD_DEFAULT);
+
+        // Consulta SQL para verificar o usuário com o email e senha fornecidos
+        $sql = "SELECT * FROM tb_usuario WHERE ds_email='$ds_email'";
         $result = $conn->query($sql);
 
         if ($result && $result->num_rows > 0) {
-            echo "Acessado!";
-            // Redirecionar o usuário para a página inicial
-            header('Location: /HANDS/HANDS/HANDS/www/views/index.html');
-            exit(); 
+            // Verificar se a senha criptografada corresponde à senha armazenada no banco de dados
+            $row = $result->fetch_assoc();
+            if (password_verify($nr_senha, $row['nr_senha'])) {
+                echo "Acessado!";
+                // Redirecionar o usuário para a página inicial
+                header('Location: /HANDS/HANDS/HANDS/www/index.html');
+                exit(); 
+            } else {
+                echo "Senha incorreta.";
+            }
         } else {
-            echo "Erro ao acessar: " . $conn->error;
+            echo "Usuário não encontrado.";
         }
     } else {
         echo "Por favor, forneça todos os campos necessários.";
@@ -29,5 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 }
 
 $conn->close();
+
 
 ?>
