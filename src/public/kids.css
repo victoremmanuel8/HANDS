@@ -1,23 +1,78 @@
 body {
   padding-top: 50px;
   overflow-x: hidden;
-  background-color: #cce7ff83;
+  background-color: #ffffff;
 }
 
-header ul a svg {
-  filter: drop-shadow(-16px 0 1rem #629ff0);
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 7vh;
 }
 
-.banner {
+.banner1 {
   display: flex;
   flex-direction: column;
-  margin-top: 20vh;
+  margin-top: 10vh;
   text-align: center;
-  width: 100%;
+  backdrop-filter: blur(200px);
+  padding: 40px;
+  border-radius: 10vh;
+  background:radial-gradient( #1683ff5c, #ffffff) ;
+  position: relative;
+}
+
+.banner2 {
+  display: flex;
+  width: 600px;
+  flex-direction: column;
+  margin-top: 10vh;
+  text-align: center;
+  backdrop-filter: blur(200px);
+  padding: 40px;
+  border-radius: 10vh;
+  background:radial-gradient( #1683ff5c, #ffffff) ;
+  position: relative;
 }
 
 .banner svg {
   width: 100%;
+}
+
+.line-dash {
+  position: absolute;
+  top: 400px;
+}
+
+.line-dash-2 {
+  position: absolute;
+  top: -90px;
+  right: 160px;
+  z-index: -1;
+}
+
+.estrela-banner {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transform: scaleX(-1);
+}
+
+.estrela-banner-1 {
+  position: absolute;
+  top: 130px;
+  left: 70px;
+}
+
+.row {
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 70px;
+  text-align: center;
 }
 
 .background {
@@ -30,3 +85,35 @@ header ul a svg {
   transform: scaleX(-1);
 }
 
+.videoAulas {
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  width: 85%;
+  backdrop-filter: blur(200px);
+  border-radius: 10vh;
+  background:radial-gradient( #1683ff5c, #ffffff) ;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  position: relative;
+}
+
+.videoAulas iframe {
+  border-radius: 3vh;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ffffff;
+}
+::-webkit-scrollbar {
+  width: 9px;
+  padding: 12px;
+}
+::-webkit-scrollbar-thumb {
+  background: #78bcff;
+  border-radius: 10vh;
+}

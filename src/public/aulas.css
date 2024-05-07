@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #EFFFE6;
+    background-color: #ffffff;
     padding-top: 50px;
     overflow-x: hidden;
 }
@@ -45,15 +45,31 @@ body {
     font-weight: 200;
 }
 
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 40px;
+}
+
 .banner {
-    margin-top: 10vh;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    text-align: right;
+    text-align: left;
     margin-bottom: 10vh;
-}
+    width: 80%;
+    backdrop-filter: blur(200px);
+    padding: 40px;
+    border-radius: 10vh;
+    position: relative;
+    z-index: 7;
+    background:radial-gradient( #08d4784b, #ffffff) ;
+    position: relative;
+  }
+  
 
 .verde {
     color: #135c6ce0;
@@ -231,6 +247,34 @@ a {
     margin-top: 14vh;
 }
 
+.videoAulas {
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    width: 85%;
+    backdrop-filter: blur(200px);
+    border-radius: 10vh;
+    background:radial-gradient( #2A8B5B5c, #ffffff) ;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    position: relative;
+}
+
+.videoAulas iframe {
+    border-radius: 3vh;
+}
+
+.line-dash {
+    position: absolute;
+    top: 625px;
+    right: 0vh;
+    z-index: -1;
+  }
+
 .video-aulas {
     width: 100%;
     border-radius: 40px;
@@ -267,15 +311,27 @@ a {
     font-size: 1.4em;
     width: 100%;
 }
-
+/* 
 .video-aulas iframe {
     width: 100%;
     height: 40vh;
     margin-right: 3vh;
     border-radius: 20px;
-}
+} */
 
 .mais-conteudo {
     display: none;
     transition: .5s ease-in-out;
 }
+
+::-webkit-scrollbar-track {
+    background-color: #ffffff;
+  }
+  ::-webkit-scrollbar {
+    width: 9px;
+    padding: 12px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #34ff85d5;
+    border-radius: 10vh;
+  }

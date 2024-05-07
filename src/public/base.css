@@ -35,6 +35,10 @@ header {
   align-items: center;
   justify-content: space-between;
 }
+/* 
+header ul a  svg{
+  filter: drop-shadow(0 0 1rem rgb(117, 117, 117));
+} */
 
 ul {
   display: flex;
@@ -292,7 +296,7 @@ nav hr {
 }
 
 .titulo-1-cor-azul {
-  color: #135c6caf;
+  color: #0c79eeaf;
     font-size: 65px;
 }
 

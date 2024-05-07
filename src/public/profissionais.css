@@ -4,10 +4,6 @@ body {
   padding-top: 50px;
 }
 
-header ul a svg {
-  filter: drop-shadow(0 0 1.5rem rgb(220, 20, 210));
-}
-
 section {
   display: flex;
   justify-content: center;
@@ -16,6 +12,7 @@ section {
   padding-left: 120px;
   padding-right: 120px;
   position: relative;
+  padding-top: 30px;
 }
 
 .background {
@@ -27,11 +24,19 @@ section {
 
 .banner {
   display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: space-between;
-  width: 100%;
+  align-items: center;
   text-align: left;
+  margin-bottom: 10vh;
+  width: 80%;
+  backdrop-filter: blur(200px);
+  padding: 40px;
+  border-radius: 10vh;
+  position: relative;
+  z-index: 7;
+  background:radial-gradient( #ff00c33a, #ffffff) ;
+  position: relative;
+  text-align: center;
 }
 
 #container-slider {
@@ -319,4 +324,16 @@ color: #000;
   color: #A6A6A6;
   cursor: pointer;
   font-size: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ffffff;
+}
+::-webkit-scrollbar {
+  width: 9px;
+  padding: 12px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ff34dd81;
+  border-radius: 10vh;
 }

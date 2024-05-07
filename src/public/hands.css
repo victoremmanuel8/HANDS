@@ -1,9 +1,9 @@
 
 body {
-  background-color: #FFF7EC;
-  padding-top: 50px;
+  background-color: #ffffff;
   overflow-x: hidden;
   transition: .5s ease-in-out;
+  padding-top: 50px;
   overflow-x: hidden;
   position: relative;
 }
@@ -23,11 +23,11 @@ body {
 }
 
 section {
-  margin-top: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding-top: 30px;
 }
 
 .background {
@@ -64,23 +64,76 @@ section {
   text-align: left;
   margin-bottom: 10vh;
   width: 80%;
+  backdrop-filter: blur(200px);
+  padding: 40px;
+  border-radius: 10vh;
+  position: relative;
+  z-index: 7;
+  background:radial-gradient( #ffdc165c, #ffffff) ;
+  position: relative;
+}
+
+.estrela-banner {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+}
+
+.estrela-banner-3 {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transform: scaleX(-1);
+}
+
+.banner h2, .banner h3 {
+  text-align: center;
+}
+
+.line-dash {
+  position: absolute;
+  top: 725px;
+  left: 40vh;
+  z-index: -1;
+}
+
+.line-dash-1 {
+  position: absolute;
+  top: 1181.5px;
+  right: 40vh;
+  z-index: -1;
+  transform: scaleX(-1);
+}
+
+.line-dash-2 {
+  position: absolute;
+  top: 925px;
+  left: 60vh;
+  z-index: -1;
+  transform: scaleY(-1);
 }
 
 .banner2 {
   width: 80%;
-  margin-top: 20vh;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-around;
+  align-items: center;
   position: relative;
-  text-align: right;
+  text-align: right; 
+  backdrop-filter: blur(200px);
+  padding: 40px;
+  border-radius: 10vh;
+  background:radial-gradient( #ffb8055c, #ffffff);
+  text-align: center;
 }
 
-.banner2 img {
-  -moz-transform: scaleX(-1);
-  -o-transform: scaleX(-1);
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
+.banner3 {
+  backdrop-filter: blur(200px);
+  padding: 40px;
+  padding-bottom: 0px;
+  border-radius: 10vh;
+  background:radial-gradient( #ffb8055c, #ffffff) ;
 }
 
 .banner svg {
@@ -118,14 +171,6 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.banner-2 img {
-  height: 21vh;
-  position: absolute;
-  right: 10px;
-  opacity: 91%;
-  bottom: 0px;
 }
 
 #container-slider {
@@ -274,7 +319,6 @@ section {
     font-size: 65px;
 }
 
-
 .aula-teste {
   margin-top: 20vh;
   display: flex;
@@ -305,13 +349,26 @@ section {
   right: -40px
 }
 
-.objetivos {
+.objetivos-blur {
+  background:radial-gradient( #ffb8055c, #ffffff);
+  backdrop-filter: blur(200px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 15vh;
+  border-radius: 10vh;
   width: 80%;
+  padding: 50px;
+  margin-bottom: 20px;
+}
+
+.objetivos {
   height: auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 40px;
+  gap: 70px;
   text-align: center;
   font-size: 1.3em;
 }
@@ -328,7 +385,7 @@ section {
   position: relative;
   margin-top: 10vh;
   margin-bottom: 5vh;
-  transition: .6s ease-in-out;
+  transition: .4s ease-in-out;
 }
 
 .primeiro svg {
@@ -337,7 +394,7 @@ section {
 }
 
 .primeiro:hover {
-  transform: scale(1.1);
+  transform: scale(1.07);
 }
 
 @media screen and (max-width: 900px) {
@@ -373,4 +430,16 @@ section {
   .banner-2 > img {
     display: none;
   }
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #ffffff;
+  }
+  ::-webkit-scrollbar {
+    width: 9px;
+    padding: 12px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #ffbb34d5;
+    border-radius: 10vh;
   }
