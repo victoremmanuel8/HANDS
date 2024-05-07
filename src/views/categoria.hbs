@@ -24,7 +24,6 @@
                 {{/if}}
                 {{!-- <li><a href="/"><span class="login-aulas">Log in</span></a></li> --}}
                 {{!-- <li><a href="cadastro"><span class="sing-aulas">Usuário Premium</span></a></li> --}}
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <a href="/perfil">
                 <svg width="90" height="90" viewBox="0 0 309 294" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <rect width="309" height="294" fill="url(#pattern0_721_265)"/>
@@ -36,7 +35,6 @@
                 </defs>
                 </svg>
                 </a>
-                </svg>
             </ul>
         </header>
          <div class="background">
@@ -124,10 +122,13 @@
                         {{#each file}}
                             <li>
                                 <div class="categoria">
-                                Categoria: {{ this.categoria }}
+                                    <div class="txt-center">
+                                     <h2 class="titulo-2"> Categoria: {{ this.categoria }} </h2>
+                                    </div>
+                                <br><br>
                                 </div>
                                 {{#if video}} <!-- Verifica se é um vídeo -->
-                                    <video controls>
+                                     <video controls>
                                         <source src="{{ url }}" type='video/mp4'>
                                         Seu navegador não suporta o elemento de vídeo.
                                     </video>
