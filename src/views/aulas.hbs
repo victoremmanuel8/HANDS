@@ -115,7 +115,9 @@
                 <li><a href="kids">KIDS</a></li>
                 <li><a class="atual" href="aulas">Aulas</a></li>
                 <li><a href="profissionais">Profissionais</a></li>
-                <li><a href="upload">Upload</a></li>
+              {{#if (eq user.nm_nivel "Avancado")}}
+    <li><a href="upload">Upload</a></li>
+{{/if}}
                 <li><a href="#">Sobre</a></li>
                 {{!-- <li><a href="/"><span class="login-aulas">Log in</span></a></li> --}}
                 {{!-- <li><a href="pesquisa"><span class="sing-aulas">Usuário Premium</span></a></li> --}}

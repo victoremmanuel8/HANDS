@@ -5,7 +5,7 @@ const path = require('path');
 const mysql = require('mysql2');
 const dotenv = require('dotenv');
 require("dotenv").config();
-const hbs = require('express-hbs/lib/hbs');
+const hbs = require('hbs');
 const multer = require('multer');
 //definindo o swiper
 const Swiper = require('swiper/js/swiper.js').default;
@@ -55,6 +55,11 @@ app.use(cookieParser());
 app.use((req, res, next) => {
   console.log(req.cookies);
   next();
+});
+
+//mexendo com partials de eq
+hbs.registerHelper('eq', function(a, b) {
+  return a === b;
 });
 
 app.set('views', path.join(__dirname, 'src/views'));

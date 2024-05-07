@@ -168,8 +168,10 @@ router.get('/index', checkAuthenticated,/*verificaAutenticacao,*/ (req, res) => 
 });
 
 router.get("/kids", checkAuthenticated, (req, res) => {
-  res.render("kids"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
-});
+  if(req.session.user) {
+    res.render('kids', { user: req.session.user });
+  }
+}); 
 
 router.get("/profissionais", checkAuthenticated, (req, res) => {
   res.render("profissionais"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).

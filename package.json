@@ -25,6 +25,7 @@
         "express-validator": "^7.0.1",
         "fetch": "^1.1.0",
         "fs": "^0.0.1-security",
+        "handlebars-helpers": "^0.10.0",
         "hbs": "^4.2.0",
         "jsonwebtoken": "^9.0.2",
         "mime-types": "^2.1.35",
