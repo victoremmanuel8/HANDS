@@ -22,6 +22,15 @@
   position: absolute;
 }
 
+.barra {
+  position: absolute;
+  bottom: -20px;
+  left: -5px;
+  width: 50px;
+  height: 4px;
+  background-color: #52a0ff;
+}
+
 .banner-center {
   width: 100%;
   display: flex;
@@ -104,7 +113,7 @@ scroll-behavior: auto;
   margin: 1.2vh;
   object-fit: contain;
   /* user-select: none; */
-  width: calc(100% / 2.14);
+  width: calc(100% / 1.18);
   border-radius: 25px;
 }
 
@@ -135,4 +144,15 @@ nav ul {
 
 .azul {
   color: #066799;
+}
+
+.txt-center {
+  position: relative;
+}
+
+.txt-center svg{
+  position: absolute;
+  top: -160px;
+  left: -10px;
+  z-index: -1;
 }

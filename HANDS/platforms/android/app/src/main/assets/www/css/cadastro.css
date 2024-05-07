@@ -257,6 +257,13 @@ header {
     color: #1C8394;
 }
 
+.login1 a {
+    color: #ffffff;
+    text-decoration: none;
+    
+}
+
+
 textarea:focus, input:focus, select:focus {
     outline: 0;
 }

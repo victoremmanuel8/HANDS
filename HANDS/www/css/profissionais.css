@@ -23,6 +23,15 @@
   position: absolute;
 }
 
+.barra {
+  position: absolute;
+  bottom: -20px;
+  left: -5px;
+  width: 110px;
+  height: 4px;
+  background-color: #FF6D9C;
+}
+
 /* .banner {
     width: 100%;
     height: 70px;
@@ -38,7 +47,11 @@
 .banner {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+}
+
+.banner .titulo-1 {
+  font-size: 1.6em;
 }
 
 .banner svg{
