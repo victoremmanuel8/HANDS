@@ -10,7 +10,22 @@ const Post = require('../models/Post')
 const cl_views = require('../models/View')
 
 
-  //function do middleware (de sessão)
+//function do middleware (de sessão do prof)
+function checkAuthenticated_Prof(req, res, next) {
+  if (req.session.user) {
+    if (req.session.user.nm_nivel === "Avancado") {
+      return next();
+    } else {
+      // Redirecionar usuários que não são "Avancado" para outra página
+      res.redirect('/index');
+    }
+  } else {
+    res.redirect('/');
+  }
+}
+
+
+  //function do middleware (de sessão do usuario)
   function checkAuthenticated(req, res, next) {
     if (req.session.user) {
       next();
@@ -223,7 +238,7 @@ router.get("/cadastro", (req, res) => {
         }
     }); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 
-    router.get("/upload", checkAuthenticated, (req, res) => {
+    router.get("/upload", checkAuthenticated_Prof, (req, res) => {
       res.render('upload')
     })
 
