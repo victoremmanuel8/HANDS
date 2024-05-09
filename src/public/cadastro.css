@@ -44,8 +44,61 @@ a {
     position: relative;
     padding: 17px 12px;
     color: #000;
-    display: none;
     z-index: 1;
+}
+
+.balao2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 20px;
+    width: 650px;
+    height: auto;
+    position: relative;
+    padding: 17px 12px;
+    color: #000;
+    z-index: 1;
+}
+
+.balao2:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #fff;
+    bottom: -15px;
+    left: 15%;
+}
+
+.balao2 input {
+    background: transparent;
+    padding: 6px;
+    padding-left: 25px;
+    height: 30px;
+    border-radius: 15px;
+    border: none;
+    margin-left: 0px;
+    width: calc(90%);
+    color: #000000;
+    border: solid 1.4px #000000;
+}
+
+.balao2 button {
+    border: none;
+    padding: 17px 19px;
+    border-radius: 10vh;
+    background-color:#1C8394;
+    transition: .5s ease;
+    box-shadow: 0px 4px 1px #0d5562;
+    color: #fff;
+}
+
+.balao2 label {
+    color: #000;
 }
 
 .balao1 {
@@ -62,7 +115,6 @@ a {
     position: absolute;
     z-index: 888;
     color: #000;
-    display: none;
 }
 
 #step0 .balao {
