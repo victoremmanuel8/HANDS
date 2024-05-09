@@ -23,7 +23,7 @@ router.post("/login_prof", authControllerlogprof.login)
 //validações do login
                 'auth/login'
 router.post("/login", (req, res) => {
-    const { email, senha } = req.body; 
+    const { email, senha, step} = req.body; 
   
     const erros = [];
   
@@ -44,25 +44,49 @@ router.post("/login", (req, res) => {
     }
   });
 
-  'auth/login'
-  router.post("/cadastro", (req, res) => {
-      const { senha, Confir_Senha} = req.body; 
+//   'auth/cadastro'
+//   router.post("/cadastro", (req, res) => {
+//       const { senha, Confir_Senha, step} = req.body; 
     
-      const erros = [];
+//       const erros = [];
     
-      if (!senha || typeof senha === 'undefined' || senha === null) {
-        erros.push({ text: "Senha da categoria muito pequena" });
-      }  if (senha.length < 8) {
-        erros.push({ text: "Senha da categoria muito pequena" });
-    }  else if (Confir_Senha.length < 8) {
-        erros.push({ text: "Senha da categoria muito pequena" });
-      }
-      if (erros.length > 0) {
-          res.render("cadastro", { erros: erros });
-      } else {
-        authControllerregister.register(req, res);
-      }
-    });
+//       if (!senha || typeof senha === 'undefined' || senha === null) {
+//         erros.push({ text: "Senha da categoria muito pequena" });
+//       }  if (senha.length < 8) {
+//         erros.push({ text: "Senha da categoria muito pequena" });
+//     }  else if (Confir_Senha.length < 8) {
+//         erros.push({ text: "Senha da categoria muito pequena" });
+//       }
+//       if (erros.length > 0) {
+//           res.render("cadastro", { erros: erros, step:step });
+//       } else {
+//         authControllerregister.register(req, res);
+//       }
+//     });
 
+
+    router.post("/cadastro", (req, res) => {
+        const { senha, Confir_Senha, step } = req.body; 
+      
+        const erros = [];
+      
+        if (!senha || typeof senha === 'undefined' || senha === null) {
+          erros.push({ text: "Senha da categoria muito pequena" });
+        } 
+        if (senha.length < 8) {
+          erros.push({ text: "Senha da categoria muito pequena" });
+        } 
+        if (Confir_Senha.length < 8) {
+          erros.push({ text: "Senha da categoria muito pequena" });
+        }
+      
+        if (erros.length > 0) {
+          if (step === '1') {
+            console.log('')
+          }
+        } else {
+          authControllerregister.register(req, res);
+        }
+      });
 
 module.exports = router;

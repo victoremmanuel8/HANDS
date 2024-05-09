@@ -1,3 +1,4 @@
+
 // Obtém todos os inputs, a div com a classe "row", a div com a classe "g-recaptcha", o input com a classe "btn-primary", o label com a classe "nascimento" e o elemento com a classe "row1"
 var inputs = document.querySelectorAll('.input');
 var rowDiv = document.querySelector('.row');
@@ -67,18 +68,40 @@ inputs.forEach(function(input, index) {
         smoothScroll(inputs[inputs.length - 1], scrollOffset);
     });
 });
-document.getElementById('Form').addEventListener('submit', function(event) {
-    var senha = document.getElementById('senha').value;
-    if (senha.length < 8) {
-        alert('Senha de categoria muito pequena');
-        event.preventDefault(); // Impede o envio do formulário
-    }
-     else {
-        alert('Cadastro concluído com sucesso!');   
 
-        // Ocultar o alerta após alguns segundos
-        setTimeout(function() {
-            alert('Cadastro concluído com sucesso!');   // Limpar o alerta
-        }, 2000);
-    }
-});
+  
+// document.getElementById('Form').addEventListener('submit', function(event) {
+//     var erros = [];
+
+//     var senha = document.getElementById('senha').value;
+//     if (senha.length < 8) {
+//         erros.push('Senha de categoria muito pequena');
+//         event.preventDefault(); 
+//     }
+//     if (erros.length > 0) {
+//         event.preventDefault();
+//     }
+// });
+
+// document.getElementById('Form').addEventListener('submit', function(event) {
+
+//     var erros = [];
+  
+//     var email = document.getElementById('email').value;
+//     var senha = document.getElementById('senha').value;
+//     var confirSenha = document.getElementById('confirmarSenha').value;
+  
+//     // Validação
+//     if (email_exist(email)) {
+//       alert('Email já em uso');
+//     } 
+//     if (senha !== confirSenha) {
+//       alert('As senhas não correspondem');
+//     }
+  
+//     if (erros.length > 0) {
+//       event.preventDefault(); // Impede o envio do formulário
+//       // Exibe os erros na página (você precisará implementar esta função)
+//       exibirErros(erros);
+//     }
+//   });
