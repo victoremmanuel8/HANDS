@@ -71,7 +71,6 @@ flex-direction: row;
 gap: 15px;
 align-items: center;
 border-radius: 20px;
-width: 80%;
 box-shadow: 0 0 20px #b3b3b333;
 padding: 10px;
 cursor: pointer;
@@ -135,4 +134,8 @@ font-size: 1.3em;
 
 .titulo-cor-vermelho a{
     color: #fc0808ef;
+  }
+
+  .config a {
+    width: 80%;
   }
