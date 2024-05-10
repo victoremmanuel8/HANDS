@@ -18,6 +18,9 @@ router.post("/cadastro_prof", authControllerprof.register)
 'authlogin/login_prof'
 router.post("/login_prof", authControllerlogprof.login)
 
+                'auth/cadastro'
+router.post("/cadastro", authControllerregister.register)
+
 
 //validações do login
                 'auth/login'
@@ -62,30 +65,5 @@ router.post("/login", (req, res) => {
 //         authControllerregister.register(req, res);
 //       }
 //     });
-
-
-    router.post("/cadastro", (req, res) => {
-        const { senha, Confir_Senha, step } = req.body; 
-      
-        const erros = [];
-      
-        if (!senha || typeof senha === 'undefined' || senha === null) {
-          erros.push({ text: "Senha da categoria muito pequena" });
-        } 
-        if (senha.length < 8) {
-          erros.push({ text: "Senha da categoria muito pequena" });
-        } 
-        if (Confir_Senha.length < 8) {
-          erros.push({ text: "Senha da categoria muito pequena" });
-        }
-      
-        if (erros.length > 0) {
-          if (step === '1') {
-            console.log('')
-          }
-        } else {
-          authControllerregister.register(req, res);
-        }
-      });
 
 module.exports = router;

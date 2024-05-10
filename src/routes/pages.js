@@ -44,6 +44,14 @@ function checkAuthenticated_Prof(req, res, next) {
        }
     });
  });
+
+ //rotas do back para o insomnia
+router.get('/usuario', ControllerUsuario.getAllusuarios)
+router.put('/usuario/id/:id_usuario', ControllerUsuario.editusuarioById)
+router.post('/usuario/criar', ControllerUsuario.createNewusuario)
+router.delete('/usuario/:id_usuario', ControllerUsuario.deleteusuarioById)
+
+router.get("/pesquisa/:nm_usuario", ControllerUsuario.getUsuarioByName);
  
 
  //rota para visualizar todos os arquivos que estão no mongo DB em json
@@ -153,16 +161,6 @@ router.delete('/posts/:id', async (req, res) => {
   }
 });
 
-
-//rotas do back para o insomnia
-router.get('/usuario', ControllerUsuario.getAllusuarios)
-router.put('/usuario/id/:id_usuario', ControllerUsuario.editusuarioById)
-router.post('/usuario/criar', ControllerUsuario.createNewusuario)
-router.delete('/usuario/:id_usuario', ControllerUsuario.deleteusuarioById)
-
-router.get("/pesquisa/:nm_usuario", ControllerUsuario.getUsuarioByName);
-
-  
 //aqui a função get e render vai pegar a url e renderizar ela no site
 
 // a pagina inicial que irá aparecer ao entrar no server

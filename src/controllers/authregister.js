@@ -16,10 +16,12 @@ exports.register = async (req, res) => {
 
   // Verificação do email
   const Exist_usuario= await tb_usuario.findOne({ where: { ds_email: email}});
-  if (Exist_usuario) {
-      return res.render('cadastro', { message: "Email já em uso" });
+  if (Exist_usuario) {  
+      req.flash('success_msg', 'Email já em uso'); //irei trocar os erros por error_msg
+      return res.redirect('/cadastro')
     } else if (senha !== Confir_Senha) {
-      return res.render('cadastro', { message: "As senhas não correspondem" });
+      req.flash('success_msg', 'As senhas não correspondem');
+      return res.redirect('/cadastro')
     }
 
   // Criptografia da senha
