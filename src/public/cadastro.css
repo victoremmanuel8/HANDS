@@ -1,11 +1,10 @@
 body {
-    background-color: #7c37fc;
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
     margin: 0px;
     font-family: Arial, Helvetica, sans-serif; /*fonte temporaria*/
     padding: 0px;
-    overflow: hidden;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     width: 100%;
     height: 100vh;
@@ -18,7 +17,7 @@ a {
 }
 
 .alert-text {
-    position: relative;
+    position: absolute;
     top: 80px;
 }
 
@@ -36,7 +35,7 @@ a {
     align-items: center;
     flex-direction: column;
     gap: 60px;
-    background: #fff;
+    background: #3b97ff;
     border-radius: 20px;
     width: 350px;
     height: auto;
@@ -44,6 +43,7 @@ a {
     padding: 17px 12px;
     color: #000;
     z-index: 1;
+    display: none;
 }
 
 .balao2 {
@@ -100,6 +100,14 @@ a {
     color: #000;
 }
 
+label {
+    color: #000;
+}
+
+.termos {
+    color: #3b97ff;
+}
+
 .balao1 {
     display: flex;
     justify-content: center;
@@ -122,7 +130,7 @@ a {
     align-items: center;
     flex-direction: column;
     gap: 60px;
-    background: #fff;
+    background: #3b97ff;
     border-radius: 20px;
     width: 350px;
     height: auto;
@@ -134,7 +142,7 @@ a {
 #step1 .balao {
     display: flex;
     flex-direction: column;
-    background: #fff;
+    background: #3b97ff;
     border-radius: 20px;
     width: 350px;
     height: auto;
@@ -155,7 +163,7 @@ a {
     position: absolute;
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
-    border-top: 20px solid #fff;
+    border-top: 20px solid #3b97ff;
     bottom: -15px;
     left: 15%;
 }
@@ -176,7 +184,7 @@ a {
     #step1 .balao {
         display: flex;
         flex-direction: column;
-        background: #fff;
+        background: #3b97ff;
         border-radius: 20px;
         width: 350px;
         height: auto;
@@ -218,7 +226,7 @@ a {
 header {
     width: 100%;
     height: 100px;
-    background-color: #7c37fc
+    background-color: #ffffff
 }
 
 .titulo-1 {
@@ -228,7 +236,7 @@ header {
 }
 
 .titulo-2 {
-    color: #A5A5A5;
+    color: #000000;
     /* font-family: inika-bold; */
 }
 
@@ -274,18 +282,17 @@ header {
 }
 
 .input {
-    background: transparent;
-    padding: 15px;
+    background: #fff;
+    padding: 10px;
     padding-left: 25px;
-    height: 30px;
+    height: 15px;
     border-radius: 15px;
     border: none;
     margin: 10px;
     margin-left: 0px;
     width: calc(90%);
-    color: #fff;
-    border: solid 1.4px #fff;
-    display: none
+    color: #000000;
+    /* display: none; */
 }
 
 .nascimento {
@@ -311,7 +318,7 @@ header {
 }
 
 .login {
-    color: #1C8394;
+    color: #ffffff;
 }
 
 textarea:focus, input:focus, select:focus {
@@ -319,25 +326,25 @@ textarea:focus, input:focus, select:focus {
 }
 
 ::-webkit-input-placeholder {
-    color: #fff;
+    color: #000000;
     /* font-family: inika-bold; */
     font-size: 1.2em;
  }
  
  :-moz-placeholder { /* Firefox 18- */
-    color: #fff;
+    color: #000000;
  }
  
  ::-moz-placeholder {  /* Firefox 19+ */
-    color: #fff;
+    color: #000000;
  }
  
  :-ms-input-placeholder {  
-    color: #fff;
+    color: #000000;
  }
 
  .date {
-    color: #fff;
+    color: #000000;
     /* font-family: inika-bold; */
     font-size: 1.1em;
  }
@@ -382,10 +389,10 @@ button {
     padding: 16px;
     font-size: larger;
     border-radius: 10vh;
-    background-color:#1C8394;
+    background-color:#1c5094;
     transition: .5s ease;
     color: #fff;
-    box-shadow: 0px 6px 1px #0d5562;
+    box-shadow: 0px 6px 1px #0d2462;
     cursor: pointer;
  }
 
@@ -394,10 +401,10 @@ button {
     font-size: larger;
     padding: 16px;
     border-radius: 10vh;
-    background-color:#1C8394;
+    background-color:#1c5094;
     transition: .5s ease;
     color: #fff;
-    box-shadow: 0px 0px 0px #0c424c;
+    box-shadow: 0px 0px 0px #0d2462;
     transform: translate3d(0px, 5px, 0); /* Move o elemento 50px para a direita, 100px para baixo e não muda a posição na profundidade (eixo Z) */
 }
 
@@ -405,23 +412,24 @@ button {
     border: none;
     padding: 7px 19px;
     border-radius: 10vh;
-    background-color:#1C8394;
+    background-color:#ffffff;
     display: none;
     transition: .5s ease;
     scale: 1.5;
-    box-shadow: 0px 4px 1px #0d5562;
-    color: #fff;
+    box-shadow: 0px 4px 1px #e0e0e0;
+    color: #000000;
+    font-weight: 600;
 }
 
 #btn-cadastro:hover{
     border: none;
     padding: 7px 19px;
     border-radius: 10vh;
-    background-color:#1C8394;
+    background-color:#ffffff;
     display: none;
     transition: .5s ease;
     scale: 1.5;
-    box-shadow: 0px 0px 0px #0c424c;
+    box-shadow: 0px 0px 0px #e0e0e0;
     transform: translate3d(0px, 5px, 0); /* Move o elemento 50px para a direita, 100px para baixo e não muda a posição na profundidade (eixo Z) */
 }
 
@@ -440,7 +448,7 @@ button {
 
 .texto {
     font-size: 20px;
-    color: #000;
+    color: #fff;
     text-align: center;
     font-weight: 600;
 }
@@ -505,7 +513,6 @@ form {
 
 #texto3 {
     padding: 10px;
-    background-color: #fff;
     border-radius: 10px;
     width: 200px;
     height: 150px;
@@ -546,4 +553,11 @@ form {
     position: relative;
     left: -5vh;
     rotate: 45deg;
+}
+
+.passo1 {
+    backdrop-filter: blur(120px);
+    border-radius: 30px;
+    background: radial-gradient(#3b97ff, #fff);
+    padding: 20px;
 }

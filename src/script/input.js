@@ -11,7 +11,7 @@ var row1Div = document.querySelector('.row1');
 inputs[0].style.display = 'inline-block';
 
 // Calcula o deslocamento de rolagem para 1/6 da altura da tela
-var scrollOffset = window.innerHeight / 6;
+var scrollOffset = window.innerHeight / 4;
 
 // Função para rolar a página suavemente
 function smoothScroll(element, offset) {

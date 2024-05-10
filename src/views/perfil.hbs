@@ -2,7 +2,6 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
@@ -104,7 +103,21 @@
                 </svg>
                 <div class="config">
                 <h2 class="txt-center">Gerais</h2>
-                    <a href="#">
+                 <div class="modal" id="modal-B">
+                        <div class="modal-content">
+                            <span class="close" onclick="closeModal('modal-B')">&times;</span>
+                                <div class="balao2">
+                                    <form action="/auth/muda_senha" method="post">
+                                    <label for="senha-atual">Nova Senhaaaa:</label>
+                                    <input type="password" id="senha-atual" name="New_Pass" required>
+                                    <label for="nova-senha">Confirmar Senha:</label>
+                                    <input type="password" id="nova-senha" name="Confir_Pass" required>
+                                    <input  class="button" type="submit" id= "submit"/>
+                                    </form>
+                                </div>
+                        </div>
+                    </div>
+                    <button onclick="openModal('modal-B')">
                         <div class="config-div">
                         <div class="icon-config">
                             <svg width="21" height="23" viewBox="0 0 21 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -116,8 +129,23 @@
                             <p class="titulo-3-6">Atualize e modifique seu perfil</p>
                         </div>
                     </div>
-                    </a>
-                    <a href="muda_senha">
+                    </button>
+                     <div class="modal" id="modal-A">
+                        <div class="modal-content">
+                            <span class="close" onclick="closeModal('modal-A')">&times;</span>
+                                <div class="balao2">
+                                    <form action="/auth/muda_senha" method="post">
+                                    <h1 class="titulo-2">Mudar senha</h1>
+                                    <label for="senha-atual">Nova Senha:</label>
+                                    <input type="password" id="senha-atual" name="New_Pass" required>
+                                    <label for="nova-senha">Confirmar Senha:</label>
+                                    <input type="password" id="nova-senha" name="Confir_Pass" required>
+                                    <input  class="button" type="submit" id= "submit"/>
+                                    </form>
+                                </div>
+                        </div>
+                    </div>
+                    <button onclick="openModal('modal-A')">
                         <div class="config-div">
                             <div class="icon-priv">
                                 <svg width="23" height="27" viewBox="0 0 23 27" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -129,7 +157,8 @@
                                 <p class="titulo-3-6">Mude sua senha</p>
                             </div>
                         </div>
-                    </a>
+                    </button>
+            <script src="/modal.js"></script>
                 </div>
             </section>
             <script src="/carrossel.js"></script>

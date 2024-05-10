@@ -139,3 +139,64 @@ font-size: 1.3em;
   .config a {
     width: 80%;
   }
+
+  .balao2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 20px;
+    width: 650px;
+    height: 400px;
+    padding: 17px 12px;
+    color: #000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+.balao2 form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 20px;
+  position: relative;
+}
+
+.preto-direita {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+
+.balao2 form input {
+  border-radius: 10vh;
+  padding: 6px 10px;
+  background: #fff;
+  border: 1px #000 solid;
+  color: #000;
+}
+
+.config button {
+  border: none !important;
+  background-color: transparent;
+  width: 100%;
+  color: #907a85;
+  text-align: left;
+}
+
+.balao2:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #fff;
+    bottom: -15px;
+    left: 15%;
+}

@@ -37,7 +37,7 @@ function startRegistration() {
                     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Verifica o formato do email
 
                     // Lista de palavras de baixo calão
-                    var palavrasProibidas = ['pau', 'mãe', 'pai', 'vo', 'vó', 'vô', 'tia', 'tio', 'prima', 'primo', 'irmã', 'safada', 'fds', 'pika', 'piroca', 'buceta', 'bct', 'vagina', 'xana', 'xereca', 'larisinha', 'cu', 'uc', 'cool', 'cookie', 'porra', 'poha', 'caralho', 'cona', 'foda', 'foda-se', 'foder', 'fodido', 'fodida', 'fodidos', 'fodidas', 'fodemos', 'fodem', 'foda', 'fodilhão', 'fodilhona', 'fodona', 'fode', 'foderes', 'fodes', 'fodendo', 'fodesse', 'cona', 'foda', 'foda-se', 'fodido', 'fodida', 'fodidos', 'fodidas', 'fodemos', 'fodem', 'foda', 'fode', 'foder', 'foderes', 'fodes', 'fodendo', 'fodesse', 'caralho'];
+                    var palavrasProibidas = ['pau', 'biscate', 'mãe', 'pai', 'vo', 'vó', 'vô', 'tia', 'tio', 'prima', 'primo', 'irmã', 'safada', 'fds', 'pika', 'piroca', 'buceta', 'bct', 'vagina', 'xana', 'xereca', 'larisinha', 'cu', 'uc', 'cool', 'cookie', 'porra', 'poha', 'caralho', 'cona', 'foda', 'foda-se', 'foder', 'fodido', 'fodida', 'fodidos', 'fodidas', 'fodemos', 'fodem', 'foda', 'fodilhão', 'fodilhona', 'fodona', 'fode', 'foderes', 'fodes', 'fodendo', 'fodesse', 'cona', 'foda', 'foda-se', 'fodido', 'fodida', 'fodidos', 'fodidas', 'fodemos', 'fodem', 'foda', 'fode', 'foder', 'foderes', 'fodes', 'fodendo', 'fodesse', 'caralho'];
 
                     // Lista de palavras permitidas
                     var palavrasPermitidas = ['paulo', 'pietra', 'pietro']; // Adicione aqui as palavras permitidas
