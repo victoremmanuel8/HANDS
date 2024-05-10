@@ -229,8 +229,10 @@ router.get("/cadastro", (req, res) => {
      });
 
     router.get("/muda_senha", checkAuthenticated, (req,res) => {
-      res.render('muda_senha');
-    });
+      if(req.session.user) {
+        res.render('muda_senha', { user: req.session.user });
+      }
+  })
   
   
      router.get("/perfil", checkAuthenticated,(req, res) => {

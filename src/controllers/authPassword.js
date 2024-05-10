@@ -7,42 +7,51 @@ const smtpconfig = require("../config/smtpConfig.js");
 const nodemailer = require("nodemailer");
 const {tb_usuario} = require('../models/usu_model.js')
 
-//exportando os registros no route auth.js
 exports.pass = async (req, res) => {
   console.log(req.body);
+  console.log(req.session.user);
 
-  //declarando as variaveis presentes no forms de cadastro do usuario
-  const { email, New_Pass, Confir_Pass } = req.body;
+  const {New_Pass, Confir_Pass } = req.body;
 
   try {
-  // Verificação do email
-  const db_usu = await tb_usuario.findOne({ where: { ds_email: email}});
-  if (!db_usu ) {
-      return res.render('redef_senha', { message: "Usuário não encontrado" });
+    // Verifique se o usuário está logado
+    if (!req.session.user) {
+      req.flash('error_msg', 'Nenhum usuário logado');
+      return res.redirect('/login');
     }
 
-  // Verificar se a nova senha e a confirmação da nova senha são iguais
-  if (New_Pass !== Confir_Pass) {
-    return res.render('redef_senha', { message: "A nova senha e a confirmação da nova senha não correspondem" });
-  }
-  
-  // Criptografia da nova senha
-  const hashedPassword = await bcrypt.hash(New_Pass, 8);
-  console.log(hashedPassword);
+    // Busque o usuário no banco de dados usando o ID armazenado na sessão
+    const db_usu = await tb_usuario.findOne({ where: { id_usuario: req.session.user.id_usuario }});
+    if (!db_usu) {
+      req.flash('error_msg', 'Usuário não encontrado');
+      return res.redirect('/muda_senha');
+    }
 
-  // Atualização da senha do usuário no banco de dados
-    const Pass_New = await tb_usuario.update({
+    // Verifique se a nova senha e a confirmação da nova senha são iguais
+    if (New_Pass !== Confir_Pass) {
+      req.flash('error_msg', 'Senha não corresponde');
+      return res.redirect('/muda_senha');
+    }
+    
+    // Criptografe a nova senha
+    const hashedPassword = await bcrypt.hash(New_Pass, 8);
+    console.log(hashedPassword);
+
+    // Atualize a senha do usuário no banco de dados
+    await db_usu.update({
       nr_senha: hashedPassword,
     }, {
       where: {
-        ds_email: email
+        id_usuario: req.session.user.id_usuario
       }
     });
-
-    console.log(Pass_New);
-    return res.redirect('/');
+    
+    console.log('Senha atualizada com sucesso');
+    req.flash('success_msg', 'Senha atualizada com sucesso');
+    return res.redirect('/index');
   } catch (error) {
     console.log(error);
-    return res.redirect('redef_senha');
+    req.flash('error_msg', 'Ocorreu um erro ao tentar atualizar a senha');
+    return res.redirect('/muda_senha');
   }
 };

@@ -9,9 +9,8 @@ const authControllerPassword = require('../controllers/authPassword')
 
 //aqui a função get e render vai pegar a url e renderizar ela no site
 
-router.post('/muda_senha', async (req, res) => {
-    // Lógica para processar a mudança de senha
-  });
+                  'auth/muda_senha'
+router.post('/muda_senha', authControllerPassword.pass)
 
                 'auth/cadastro_prof'
 router.post("/cadastro_prof", authControllerprof.register)

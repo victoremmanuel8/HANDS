@@ -9,19 +9,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/logo.png">
     <link rel="stylesheet" href="/base.css">
+    <link rel="stylesheet" href="/hands.css">
     <link rel="stylesheet" href="/cadastro.css">
     <title>HANDS</title>
 </head>
 <body>
+     <div class="alert-text">
+                        {{#if success_msg}}
+                            <div id='success'class="alert alert-success">{{success_msg}}</div>
+                        {{/if}}
+                        {{#if error_msg}}
+                            <div id="erro" class="alert alert-danger">{{error_msg}}</div>
+                        {{/if}}
+                    </div>
        <div class="balao2">
-         <form action="/muda_senha" method="post">
-            <label for="senha-atual">Senha Atual:</label>
-            <input type="password" id="senha-atual" name="senhaAtual">
-            <label for="nova-senha">Nova Senha:</label>
-            <input type="password" id="nova-senha" name="novaSenha">
-            <button type="submit">Mudar Senha</button>
+         <form action="/auth/muda_senha" method="post">
+            <label for="senha-atual">Nova Senha:</label>
+            <input type="password" id="senha-atual" name="New_Pass" required>
+            <label for="nova-senha">Confirmar Senha:</label>
+            <input type="password" id="nova-senha" name="Confir_Pass" required>
+            <input  class="button" type="submit" id= "submit"/>
         </form>
-        <script src="/muda_senha.js"></script>
        </div>
 </body>
 </html>
