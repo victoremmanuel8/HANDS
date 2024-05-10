@@ -197,6 +197,11 @@ router.get("/cadastro", (req, res) => {
  
  });
 
+ router.get("/cadastro1", (req, res) => {
+  res.render("cadastro1"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+  
+  });
+
  router.get("/cadastro_prof",  (req, res) => {
   res.render("cadastro_prof"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
   

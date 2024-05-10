@@ -1,6 +1,5 @@
 body {
     background-color: #ffffff;
-    display: flex;
     flex-direction: column;
     margin: 0px;
     font-family: Arial, Helvetica, sans-serif; /*fonte temporaria*/
@@ -8,8 +7,6 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     width: 100%;
     height: 100vh;
-    justify-content: center;
-    align-items: center;
 }
 
 a {
@@ -229,9 +226,13 @@ header {
     background-color: #ffffff
 }
 
+.cinza {
+    color: #898989;
+}
+
 .titulo-1 {
     color: #000;
-    font-size: 1.6em;
+    font-size: 2em;
     margin-bottom: 10px;
 }
 
@@ -292,7 +293,7 @@ header {
     margin-left: 0px;
     width: calc(90%);
     color: #000000;
-    /* display: none; */
+    /* display: none;    */
 }
 
 .nascimento {
@@ -488,13 +489,14 @@ button {
 
 form {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    max-height: 70vh;
-    width: 400px;
-    padding: 40px;
+    width: 100%;
     gap: 40px;
     color: #fff;
     transition: .5s ease-in-out;
+    margin-top: 2vh;
 }
 
 ::-webkit-scrollbar-track {
@@ -529,13 +531,13 @@ form {
 .row1{
     display: flex;
     flex-direction: row;
-    display: none;
+    /* display: none; */
 }
 
 .g-recaptcha {
     display: flex;
     justify-content: center;
-    display: none;
+    /* display: none; */
 }
 
 .fixed1 {
@@ -555,9 +557,81 @@ form {
     rotate: 45deg;
 }
 
+.back {
+    position: absolute;
+    z-index: -1;
+    filter: blur(60px);
+}
+
 .passo1 {
+    width: 300px;
+    background-color: #fff;
+    height: 250px;
     backdrop-filter: blur(120px);
     border-radius: 30px;
-    background: radial-gradient(#3b97ff, #fff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
     padding: 20px;
+    margin-right: 20vh;
+}
+
+.passo2 {
+    backdrop-filter: blur(120px);
+    background-color: #fff;
+    border-radius: 30px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    top: -5vh;
+    right: -70vh;
+    margin-right: 20vh;
+}
+
+.passo3{
+    backdrop-filter: blur(120px);
+    border-radius: 30px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff;
+    width: 800px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.passo4 {
+    backdrop-filter: blur(120px);
+    border-radius: 30px;
+    padding: 20px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 800px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.txt-center {
+    text-align: center;
+}
+
+.areacadastro {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
