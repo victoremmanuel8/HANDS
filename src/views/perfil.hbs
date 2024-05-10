@@ -107,13 +107,15 @@
                         <div class="modal-content">
                             <span class="close" onclick="closeModal('modal-B')">&times;</span>
                                 <div class="balao2">
-                                    <form action="/auth/muda_senha" method="post">
-                                    <label for="senha-atual">Nova Senhaaaa:</label>
-                                    <input type="password" id="senha-atual" name="New_Pass" required>
-                                    <label for="nova-senha">Confirmar Senha:</label>
-                                    <input type="password" id="nova-senha" name="Confir_Pass" required>
-                                    <input  class="button" type="submit" id= "submit"/>
-                                    </form>
+                                    {{!-- <form action="/auth/muda_senha" method="post">
+                                <label for="senha-atual">Senha Atual:</label>
+                                <input type="password" id="" name="Atual_Pass" required>
+                                <label for="senha-nova">Nova Senha:</label>
+                                <input type="password" id="" name="New_Pass" required>
+                                <label for="confir_senha">Confirmar Senha:</label>
+                                <input type="password" id="" name="Confir_Pass" required>
+                                <input  class="button" type="submit" id= "submit"/>
+                            </form> --}}
                                 </div>
                         </div>
                     </div>
@@ -134,14 +136,23 @@
                         <div class="modal-content">
                             <span class="close" onclick="closeModal('modal-A')">&times;</span>
                                 <div class="balao2">
-                                    <form action="/auth/muda_senha" method="post">
-                                    <h1 class="titulo-2">Mudar senha</h1>
-                                    <label for="senha-atual">Nova Senha:</label>
-                                    <input type="password" id="senha-atual" name="New_Pass" required>
-                                    <label for="nova-senha">Confirmar Senha:</label>
-                                    <input type="password" id="nova-senha" name="Confir_Pass" required>
-                                    <input  class="button" type="submit" id= "submit"/>
-                                    </form>
+                                    <div class="alert-text">
+                                    {{#if success_msg}}
+                                        <div id='success'class="alert alert-success">{{success_msg}}</div>
+                                    {{/if}}
+                                    {{#if error_msg}}
+                                        <div id="erro" class="alert alert-danger">{{error_msg}}</div>
+                                    {{/if}}
+                                </div>
+                                     <form action="/auth/perfil" method="post">
+                                <label for="senha-atual">Senha Atual:</label>
+                                <input type="password" id="" name="Atual_Pass" required>
+                                <label for="senha-nova">Nova Senha:</label>
+                                <input type="password" id="" name="New_Pass" required>
+                                <label for="confir_senha">Confirmar Senha:</label>
+                                <input type="password" id="" name="Confir_Pass" required>
+                                <input  class="button" type="submit" id= "submit"/>
+                            </form>
                                 </div>
                         </div>
                     </div>
@@ -163,5 +174,13 @@
             </section>
             <script src="/carrossel.js"></script>
             <script src="/menu.js"></script>
+            <script>
+window.onload = function() {
+    if (document.getElementById("success").textContent.trim().length > 0) {
+        document.getElementById("modal-A").style.display = "block";
+    }
+};
+</script>
+</script>
     </body>
 </html>

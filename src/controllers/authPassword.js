@@ -11,26 +11,38 @@ exports.pass = async (req, res) => {
   console.log(req.body);
   console.log(req.session.user);
 
-  const {New_Pass, Confir_Pass } = req.body;
+  const {Atual_Pass, New_Pass, Confir_Pass } = req.body;
 
   try {
     // Verifique se o usuário está logado
     if (!req.session.user) {
-      req.flash('error_msg', 'Nenhum usuário logado');
-      return res.redirect('/login');
+      req.flash('success_msg', 'Nenhum usuário logado');
+      return res.redirect('/');
     }
 
-    // Busque o usuário no banco de dados usando o ID armazenado na sessão
+    // Usuario da sessão
     const db_usu = await tb_usuario.findOne({ where: { id_usuario: req.session.user.id_usuario }});
     if (!db_usu) {
-      req.flash('error_msg', 'Usuário não encontrado');
-      return res.redirect('/muda_senha');
+      // req.flash('error_msg', 'Usuário não encontrado');
+      return res.redirect('/perfil');
     }
 
-    // Verifique se a nova senha e a confirmação da nova senha são iguais
+    if (!(await bcrypt.compare(Atual_Pass, db_usu.nr_senha))) {
+      req.flash('success_msg', 'Senha atual inválida');
+      return res.redirect('/perfil');
+    }
+    if (New_Pass.length < 8) {
+      req.flash('success_msg', 'A nova senha deve ter pelo menos 8 caracteres.');
+      return res.redirect('/perfil');
+  }
+  if (Confir_Pass.length < 8) {
+    req.flash('success_msg', 'A nova senha deve ter pelo menos 8 caracteres.');
+      return res.redirect('/perfil');
+  }
+    
     if (New_Pass !== Confir_Pass) {
-      req.flash('error_msg', 'Senha não corresponde');
-      return res.redirect('/muda_senha');
+      req.flash('success_msg', 'Senha não corresponde');
+      return res.redirect('/perfil');
     }
     
     // Criptografe a nova senha
@@ -51,7 +63,7 @@ exports.pass = async (req, res) => {
     return res.redirect('/index');
   } catch (error) {
     console.log(error);
-    req.flash('error_msg', 'Ocorreu um erro ao tentar atualizar a senha');
-    return res.redirect('/muda_senha');
+    req.flash('success_msg', 'Ocorreu um erro ao tentar atualizar a senha');
+    return res.redirect('/perfil');
   }
 };

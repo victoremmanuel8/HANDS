@@ -10,7 +10,7 @@ const authControllerPassword = require('../controllers/authPassword')
 //aqui a função get e render vai pegar a url e renderizar ela no site
 
                   'auth/muda_senha'
-router.post('/muda_senha', authControllerPassword.pass)
+router.post('/perfil', authControllerPassword.pass)
 
                 'auth/cadastro_prof'
 router.post("/cadastro_prof", authControllerprof.register)
@@ -22,7 +22,7 @@ router.post("/login_prof", authControllerlogprof.login)
 //validações do login
                 'auth/login'
 router.post("/login", (req, res) => {
-    const { email, senha, step} = req.body; 
+    const { email, senha} = req.body; 
   
     const erros = [];
   
