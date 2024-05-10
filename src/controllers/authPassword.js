@@ -8,8 +8,6 @@ const nodemailer = require("nodemailer");
 const {tb_usuario} = require('../models/usu_model.js')
 
 exports.pass = async (req, res) => {
-  console.log(req.body);
-  console.log(req.session.user);
 
   const {Atual_Pass, New_Pass, Confir_Pass } = req.body;
 

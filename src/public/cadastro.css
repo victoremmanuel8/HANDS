@@ -16,10 +16,24 @@ a {
     text-decoration: none;
 }
 
-.alert-text {
+.alert.alert-success {
+    color: #000000;
+    background-color: #d7f8dc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+  
+  .alert-text {
+    position: absolute; left: 50%; top: 5%;
+    transform: translate(-50%, -50%);
+    gap: 20px;
+  }
+
+/* .alert-text {
     position: absolute;
     top: 80px;
-}
+} */
 
 .area-cadastro {
     display: flex;
