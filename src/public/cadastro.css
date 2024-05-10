@@ -277,8 +277,8 @@ header {
     margin: 10px;
     margin-left: 0px;
     width: calc(90%);
-    color: #fff;
-    border: solid 1.4px #fff;
+    color: #000000;
+    border: solid 1.4px #000000;
 }
 
 .input {
