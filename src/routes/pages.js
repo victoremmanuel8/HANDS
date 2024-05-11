@@ -230,6 +230,11 @@ router.get("/cadastro", (req, res) => {
        res.render("termos-uso"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
           
         });
+
+        router.get("/h",(req, res) => {
+          res.render("h"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+             
+           });
         
   router.get("/pesquisa", (req, res) => {
     res.render("pesquisa"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
