@@ -45,6 +45,9 @@ function checkAuthenticated_Prof(req, res, next) {
     });
  });
 
+
+
+
  //rotas do back para o insomnia
 router.get('/usuario', ControllerUsuario.getAllusuarios)
 router.put('/usuario/id/:id_usuario', ControllerUsuario.editusuarioById)

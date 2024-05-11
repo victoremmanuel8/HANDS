@@ -22,11 +22,19 @@
         <link rel="icon" type="image/x-icon" href="/logo.png">
     </head>
     <body>
-             <div class="alert-text">
+            <div class="alert-text">
         {{#each erros}}
         <div class="alert alert-danger">{{text}}</div>
          {{/each}}
         </div> 
+        {{!-- <div class="alert-text">
+            {{#if success_msg}}
+                <div id='success'class="alert alert-success">{{success_msg}}</div>
+            {{/if}}
+                {{#if error_msg}}
+                <div id="erro" class="alert alert-danger">{{error_msg}}</div>
+            {{/if}}
+            </div> --}}
           <div class="row">
               <div class="fixed1">
                 <div class="fixed">
