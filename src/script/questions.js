@@ -30,7 +30,7 @@ export default [
       ],
     },
     {
-      question: "Quanto é 7 x 7?",
+      question: "O quão lindo é o Luan?",
       svg: "d.png", 
       answers: [
         { option: "Q", correct: false },

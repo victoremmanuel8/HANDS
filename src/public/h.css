@@ -15,6 +15,29 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+.alert.alert-success {
+    color: #000000;
+    background-color: #d7f8dc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+  
+.alert.alert-danger {
+    color: #000000;
+    background-color: #d3503e;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.alert-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
 body h2 {
     color: #fff;
 }

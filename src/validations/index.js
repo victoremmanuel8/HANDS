@@ -7,7 +7,7 @@ const app = express();
 app.post('/login',
     body('email').isEmail().normalizeEmail(),
     body('password').isLength({
-        min: 6
+        min: 8
     }),
     (req, res) => {
         const errors = validationResult(req);

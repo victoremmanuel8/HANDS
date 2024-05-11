@@ -13,6 +13,20 @@ a {
     text-decoration: none;
 }
 
+.alert.alert-danger {
+    color: #000000;
+    background-color: #d3503e;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+  
+  .alert-text {
+    position: absolute; left: 50%; top: 5%;
+    transform: translate(-50%, -50%);
+    gap: 20px;
+  }
+
 header {
     display: flex;
     justify-content: space-between;

@@ -231,7 +231,7 @@ router.get("/cadastro", (req, res) => {
           
         });
 
-        router.get("/h",(req, res) => {
+        router.get("/h", checkAuthenticated,(req, res) => {
           res.render("h"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
              
            });

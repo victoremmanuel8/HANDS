@@ -43,21 +43,18 @@ exports.login = async (req, res) => {
         return res.redirect('/index');
       }
       else {
-        erros.push({ text: "Senha/Email inválida" });
-        return res.render('login', {erros: erros
-        });
+        req.flash('error_msg', 'Senha/Email inválida')
+          return res.redirect('/')
       }
     } else {
-      erros.push({ text: "Usuario não encontrado" });
-      return res.render('login', {erros: erros
-      });
+      req.flash('error_msg', 'Usuario não encontrado')
+        return res.redirect('/')
     }
   } catch (error) {
     console.log(error);
-    erros.push({ text: "Senha/Email inválida" });
-    return res.render('login', {erros: erros
-  })
-}
+    req.flash('error.msg', 'Senha/Email inválida')
+      return res.redirect('/')
+  }
 };
 
 

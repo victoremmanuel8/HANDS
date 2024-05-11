@@ -6,8 +6,12 @@ const authControllerlogin = require('../controllers/authlogin');
 const authControllerprof = require('../controllers/authregister_prof');
 const authControllerlogprof = require('../controllers/authlogin_prof');
 const authControllerPassword = require('../controllers/authPassword')
-
+const authControllerUpgrade = require('../controllers/authUpdate_nv');
 //aqui a função get e render vai pegar a url e renderizar ela no site
+
+
+              'auth/h'
+router.put('/h', authControllerUpgrade.update_nv);
 
                   'auth/muda_senha'
 router.post('/perfil', authControllerPassword.pass)
@@ -24,27 +28,27 @@ router.post("/cadastro", authControllerregister.register)
 
 //validações do login
                 'auth/login'
-router.post("/login", (req, res) => {
-    const { email, senha} = req.body; 
+router.post("/login", authControllerlogin.login)
+//     const { email, senha} = req.body; 
   
-    const erros = [];
+//     const erros = [];
   
-    if (!email || typeof email === 'undefined' || email === null) {
-        erros.push({ text: "Email Inválido" });
-    }
+//     if (!email || typeof email === 'undefined' || email === null) {
+//         erros.push({ text: "Email Inválido" });
+//     }
   
-    if (!senha || typeof senha === 'undefined' || senha === null) {
-        erros.push({ text: "Senha inválida" });
-    } else if (senha.length < 8) {
-        erros.push({ text: "Senha da categoria muito pequena" });
-    }
+//     if (!senha || typeof senha === 'undefined' || senha === null) {
+//         erros.push({ text: "Senha inválida" });
+//     } else if (senha.length < 8) {
+//         erros.push({ text: "Senha da categoria muito pequena" });
+//     }
   
-    if (erros.length > 0) {
-        res.render("login", { erros: erros });
-    } else {
-        authControllerlogin.login(req, res);
-    }
-  });
+//     if (erros.length > 0) {
+//         res.render("login", { erros: erros });
+//     } else {
+//         authControllerlogin.login(req, res);
+//     }
+//   });
 
 //   'auth/cadastro'
 //   router.post("/cadastro", (req, res) => {

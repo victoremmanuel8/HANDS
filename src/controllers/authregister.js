@@ -18,18 +18,25 @@ exports.register = async (req, res) => {
     req.session.formData = req.body;
 
     //Validação do campo da senha
-    const senha_Segura = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\-_=+\\|[\]{};:'",.<>/?]).{8,}$/;
+  // const senha_Segura = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\-_=+\\|[\]{};:'",.<>/?]).{8,}$/;
+
   // Verificação do email
   const Exist_usuario= await tb_usuario.findOne({ where: { ds_email: email}});
   if (Exist_usuario) {  
-      req.flash('error_msg', 'Email já em uso'); //irei trocar os erros por error_msg
+      req.flash('error_msg', 'Email já em uso'); 
       return res.redirect('/cadastro')
+  }else if (/\d/.test(nome)) {
+    req.flash('error_msg', 'O nome não deve conter números');
+    return res.redirect('/cadastro');
+  }else if (/\d/.test(sobrenome)) {
+    req.flash('error_msg', 'O sobrenome não deve conter números');
+    return res.redirect('/cadastro');
   } else if (senha.length < 8) {
-    req.flash('error_msg', 'Senha menor que 8 caracteres'); 
+    req.flash('error_msg', 'Senha minimo 8 caractéres'); 
     return res.redirect('/cadastro')
-  } else if (!senha_Segura.test(senha)) {
-    req.flash('error_msg', 'Senha não atende aos requisitos de segurança');
-    return res.redirect('/cadastro')
+  // // } else if (!senha_Segura.test(senha)) {
+  // //   req.flash('error_msg', 'Senha não atende aos requisitos de segurança');
+  //   return res.redirect('/cadastro')
     } else if (senha !== Confir_Senha) {
       req.flash('error_msg', 'As senhas não correspondem');
       return res.redirect('/cadastro')

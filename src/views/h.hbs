@@ -5,8 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>asdfasdfasd</title>
     <link rel="stylesheet" href="/h.css">
+     <script>
+          setTimeout(function () {
+        document.getElementById("success").style.transitionDuration = ".3s"; 
+              setTimeout(function () {
+        document.getElementById("success").style.opacity = "0"; // Define a opacidade como 0
+                  setTimeout(function () {
+        document.getElementById("success").style.display = "none"; 
+                  }, 300)
+                        }, 500); // 500 milissegundos para a transição
+                             }, 2000);
+</script>
+        <script>
+          setTimeout(function () {
+        document.getElementById("erro").style.transitionDuration = ".3s"; 
+              setTimeout(function () {
+        document.getElementById("erro").style.opacity = "0"; // Define a opacidade como 0
+                  setTimeout(function () {
+        document.getElementById("erro").style.display = "none"; 
+                  }, 300)
+                        }, 500); // 500 milissegundos para a transição
+                             }, 2000);
+        </script>
 </head>
 <body>
+        <div class="alert-text">
+        {{#if success_msg}}
+            <div id='success'class="alert alert-success">{{success_msg}}</div>
+        {{/if}}
+        {{#if error_msg}}
+            <div id="erro" class="alert alert-danger">{{error_msg}}</div>
+        {{/if}}
+    </div>
     <h2>quiz</h2>
     <main>
         <div class="content">

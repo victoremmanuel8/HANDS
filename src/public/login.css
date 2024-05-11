@@ -4,8 +4,17 @@ body {
     flex-direction: column;
 }
 
+.alert.alert-success {
+    color: #000000;
+    background-color: #d7f8dc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+  
 .alert.alert-danger {
-    color: #721c24;
+    color: #000000;
+    background-color: #d3503e;
     padding: 10px;
     margin-bottom: 10px;
 }

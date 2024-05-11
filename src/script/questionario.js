@@ -34,10 +34,21 @@ function nextQuestion(e) {
   }
 }
 
+// 
+
 function finish() {
   textFinish.innerHTML = `Você acertou ${questionsCorrect} de ${questions.length}`;
   content.style.display = "none";
   contentFinish.style.display = "flex";
+
+  if (questionsCorrect === questions.length) {
+    fetch('/auth/h', {
+      method: 'PUT',
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch((error) => console.error('Error:', error));
+  }
 }
 
 function loadQuestion() {
