@@ -13,7 +13,39 @@ a {
     text-decoration: none;
 }
 
-.alert.alert-success {
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 2vh;
+    margin-top: 50px;
+    margin-bottom: 2vh;
+}
+
+header div a{
+    padding: 8px 19px;
+    border-radius: 10vh;
+    color: #000;
+    font-weight: 700;
+}
+
+header div .prof {
+    padding: 12px 19px;
+    border-radius: 10vh;
+    color: #ffffff;
+    font-weight: 700;
+    background: linear-gradient(110deg, #6B9BFD, #02F2CA);
+}
+
+header div .prof1 {
+    padding: 12px 19px;
+    border-radius: 10vh;
+    color: #ffffff;
+    font-weight: 700;
+    background: linear-gradient(110deg, #fdcf6b, #f29202);
+}
+
+/*.alert.alert-success {
     color: #000000;
     background-color: #d7f8dc;
     padding: 10px;
@@ -57,12 +89,13 @@ a {
     background: #3b97ff;
     border-radius: 20px;
     width: 350px;
-    height: auto;
+    height: 280px;
     position: relative;
     padding: 17px 12px;
     color: #000;
     z-index: 1;
-    display: none;
+    margin-top: 10vh;
+    /* display: none; */
 }
 
 .balao2 {
@@ -272,21 +305,6 @@ label {
     flex-direction: column;
 }
 
-
-.input-block{
-    background: transparent;
-    padding: 15px;
-    padding-left: 25px;
-    height: 30px;
-    border-radius: 15px;
-    border: none;
-    margin: 10px;
-    margin-left: 0px;
-    width: calc(90%);
-    color: #000000;
-    border: solid 1.4px #000000;
-}
-
 .input {
     background: #fff;
     padding: 10px;
@@ -386,18 +404,6 @@ button {
     display: none;
  }
 
-.button {
-    border: none;
-    padding: 16px;
-    font-size: larger;
-    border-radius: 10vh;
-    background-color:#1c5094;
-    transition: .5s ease;
-    color: #fff;
-    box-shadow: 0px 6px 1px #0d2462;
-    cursor: pointer;
- }
-
  .g-recaptcha {
     border-radius: 2vh;
     overflow: hidden;
@@ -428,9 +434,9 @@ button {
     border-radius: 10vh;
     background-color:#ffffff;
     display: none;
-    transition: .5s ease;
+    transition: .5s;
     scale: 1.5;
-    box-shadow: 0px 4px 1px #e0e0e0;
+    box-shadow: 0px 4px 0px #e0e0e0;
     color: #000000;
     font-weight: 600;
 }
@@ -441,7 +447,7 @@ button {
     border-radius: 10vh;
     background-color:#ffffff;
     display: none;
-    transition: .5s ease;
+    transition: .5s;
     scale: 1.5;
     box-shadow: 0px 0px 0px #e0e0e0;
     transform: translate3d(0px, 5px, 0); /* Move o elemento 50px para a direita, 100px para baixo e não muda a posição na profundidade (eixo Z) */
@@ -660,10 +666,10 @@ form {
     padding: 16px;
     font-size: larger;
     border-radius: 10vh;
-    background-color:#ff9100;
+    background-color:#ffa52f;
     transition: .5s ease;
     color: #fff;
-    box-shadow: 0px 6px 1px #be700a;
+    box-shadow: 0px 5px 1px #fd9309;
     cursor: pointer;
 }
 
@@ -672,11 +678,11 @@ form {
     font-size: larger;
     padding: 16px;
     border-radius: 10vh;
-    background-color:#ff9100;
+    background-color:#ffa52f;
     transition: .5s ease;
     color: #fff;
-    box-shadow: 0px 0px 0px #be700a;
-    transform: translate3d(0px, 5px, 0); /* Move o elemento 50px para a direita, 100px para baixo e não muda a posição na profundidade (eixo Z) */
+    box-shadow: 0px 0px 0px #fd9309;
+    transform: translate3d(0px, 5px, 0); 
 }
 
 .passo4 .cor {
@@ -689,7 +695,7 @@ form {
 
 .liz {
     position: absolute;
-    top: 15vh;
+    top: 25vh;
     right: 30vh;
     /* display: none; */
 }
@@ -713,11 +719,104 @@ form {
     border-radius: 10px;
     margin: 20px;
     position: relative;
-  }
+}
+
   #progress {
     width: 0%;
     height: 100%;
-    background-color: #eeea14ef;
     border-radius: 10px;
     transition: width 0.5s ease-in-out;
-  }
+}
+
+::-webkit-scrollbar-track {
+    background-color: #ffffff;
+}
+  ::-webkit-scrollbar {
+    width: 9px;
+    padding: 12px;
+}
+  ::-webkit-scrollbar-thumb {
+    background: #ffffffd5;
+    border-radius: 10vh;
+}
+
+.row{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginForm {
+    width: 30%;
+    padding: 30px;
+    border-radius: 8vh;
+    backdrop-filter: blur(90px);
+    overflow: hidden;
+    box-shadow: 0 0 40px #fff;
+    margin-bottom: 20vh;
+}
+
+.input-block{
+    background-color: #ffffff;
+    padding: 10px;
+    padding-left: 25px;
+    height: 30px;
+    border-radius: 10vh;
+    border: none;
+    margin-left: 0px;
+    width: 90%;
+    color: #000000;
+}
+
+.loginForm .button {
+    border: none;
+    padding: 13px 35px;
+    font-size: larger;
+    border-radius: 10vh;
+    background-color:#FC9404;
+    transition: .5s ease;
+    color: #fff;
+    box-shadow: 0px 6px 1px #be7508;
+    cursor: pointer;
+ }
+
+ .loginForm .button:hover{
+    border: none;
+    font-size: larger;
+    padding: 13px 35px;
+    border-radius: 10vh;
+    background-color:#FC9404;
+    transition: .5s ease;
+    color: #fff;
+    box-shadow: 0px 0px 0px #be7508;
+    transform: translate3d(0px, 6px, 0); /* Move o elemento 50px para a direita, 100px para baixo e não muda a posição na profundidade (eixo Z) */
+}
+
+ .line-dash {
+    position: absolute;
+    z-index: -1;
+ }
+
+ .cadastro1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+ }
+
+ .cadastro1 img {
+    position: absolute;
+    top: 70vh;
+ }
+
+ .hands1 {
+    position: relative;
+    left: 5vh;
+    margin-top: 6vh;
+}
+
+.cadastro1-body {
+    overflow: hidden;
+}

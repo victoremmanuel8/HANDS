@@ -20,7 +20,7 @@ const elementos = document.querySelectorAll('.texto');
 
 function exibirTexto(index) {
     if (index < textos.length) {
-        escreverTexto(textos[index], elementos[index], 100, () => {
+        escreverTexto(textos[index], elementos[index], 70, () => {
             exibirTexto(index + 1);
         });
     }
