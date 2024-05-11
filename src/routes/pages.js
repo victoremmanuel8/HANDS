@@ -230,13 +230,6 @@ router.get("/cadastro", (req, res) => {
     res.render("pesquisa"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 
      });
-
-    router.get("/muda_senha", checkAuthenticated, (req,res) => {
-      if(req.session.user) {
-        res.render('muda_senha', { user: req.session.user });
-      }
-  })
-  
   
      router.get("/perfil", checkAuthenticated,(req, res) => {
         if(req.session.user) {

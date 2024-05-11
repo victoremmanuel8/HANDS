@@ -73,6 +73,44 @@ section {
   position: relative;
 }
 
+.banner:after {
+  content:"";
+  width: 180px;
+  height: 0px;
+  position: absolute;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 30px solid #fff;
+  top: -1px;
+  left: 15%;
+}
+
+.banner2:after {
+  content:"";
+  width: 180px;
+  height: 0px;
+  position: absolute;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 30px solid #fff;
+  top: -1px;
+  left: 15%;
+}
+
+.objetivos:after {
+  content:"";
+  width: 300px;
+  height: 0px;
+  position: absolute;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-top: 50px solid #fff;
+  rotate: -90deg;
+  transform: scaleX(-1);
+  top: 50%;
+  left: -180px;
+}
+
 .estrela-banner {
   position: absolute;
   top: 20px;

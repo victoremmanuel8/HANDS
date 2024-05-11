@@ -73,7 +73,7 @@ a {
 }
 
 .balao2:after {
-    content: "";
+    content:"";
     width: 0;
     height: 0;
     position: absolute;
@@ -179,18 +179,7 @@ label {
     left: 15%;
 }
 
-.liz {
-    position: absolute;
-    bottom: -90px;
-    z-index: 5;
-}
-
 @media screen and (max-height: 900px) {
-    .liz {
-        width: 100px;
-        position: absolute;
-        bottom: -90px;
-    }
 
     #step1 .balao {
         display: flex;
@@ -228,16 +217,9 @@ label {
     flex-direction: column;
 }
 
-.area-cadastro .hands {
-    position: fixed;
-    top: 5vh;
+ .hands {
+    position: relative;
     left: 5vh;
-}
-
-header {
-    width: 100%;
-    height: 100px;
-    background-color: #ffffff
 }
 
 .cinza {
@@ -248,6 +230,7 @@ header {
     color: #000;
     font-size: 2em;
     margin-bottom: 10px;
+    font-weight: 700;
 }
 
 .titulo-2 {
@@ -308,10 +291,6 @@ header {
     width: calc(90%);
     color: #000000;
     /* display: none;    */
-}
-
-.nascimento {
-    display: none;
 }
 
 .pulsating {
@@ -409,6 +388,18 @@ button {
     color: #fff;
     box-shadow: 0px 6px 1px #0d2462;
     cursor: pointer;
+ }
+
+ .g-recaptcha {
+    border-radius: 2vh;
+    overflow: hidden;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 296px;
+    border: solid 1px #fc950449;
+    box-shadow: 0 0 10px #fc95042f;
  }
 
  .button:hover{
@@ -545,13 +536,13 @@ form {
 .row1{
     display: flex;
     flex-direction: row;
-    /* display: none; */
+    align-items: center;
+    gap: 20px;
 }
 
 .g-recaptcha {
     display: flex;
     justify-content: center;
-    /* display: none; */
 }
 
 .fixed1 {
@@ -574,7 +565,7 @@ form {
 .back {
     position: absolute;
     z-index: -1;
-    filter: blur(60px);
+    filter: blur(80px);
 }
 
 .passo1 {
@@ -589,7 +580,11 @@ form {
     flex-direction: column;
     overflow: hidden;
     padding: 20px;
-    margin-right: 20vh;
+    margin-top: 5vh;
+}
+
+.passo1 .cor {
+    color: #2053dd;
 }
 
 .passo2 {
@@ -606,8 +601,12 @@ form {
     overflow: hidden;
     position: relative;
     top: -5vh;
-    right: -70vh;
-    margin-right: 20vh;
+    right: -5vh;
+    margin-right: 50vh;
+}
+
+.passo2 .cor {
+    color: #dd209e;
 }
 
 .passo3{
@@ -624,10 +623,19 @@ form {
     overflow: hidden;
 }
 
+.passo3 input {
+    width: 45%;
+}
+
+.passo3 .cor {
+    color: #14daa9;
+}
+
 .passo4 {
     backdrop-filter: blur(120px);
     border-radius: 30px;
     padding: 20px;
+    padding-top: 30px;
     background-color: #fff;
     display: flex;
     justify-content: center;
@@ -636,6 +644,46 @@ form {
     width: 800px;
     height: 300px;
     overflow: hidden;
+    margin-bottom: 5vh;
+}
+
+.passo4 .button {
+    border: none;
+    padding: 16px;
+    font-size: larger;
+    border-radius: 10vh;
+    background-color:#ff9100;
+    transition: .5s ease;
+    color: #fff;
+    box-shadow: 0px 6px 1px #be700a;
+    cursor: pointer;
+}
+
+.passo4 .button:hover{
+    border: none;
+    font-size: larger;
+    padding: 16px;
+    border-radius: 10vh;
+    background-color:#ff9100;
+    transition: .5s ease;
+    color: #fff;
+    box-shadow: 0px 0px 0px #be700a;
+    transform: translate3d(0px, 5px, 0); /* Move o elemento 50px para a direita, 100px para baixo e não muda a posição na profundidade (eixo Z) */
+}
+
+.passo4 .cor {
+    color: #dd9b20;
+}
+
+.num {
+    margin-right: 20px;
+}
+
+.liz {
+    position: absolute;
+    top: 15vh;
+    right: 30vh;
+    /* display: none; */
 }
 
 .txt-center {
@@ -649,3 +697,19 @@ form {
     align-items: center;
     flex-direction: column;
 }
+
+#progress-bar {
+    width: 300px;
+    height: 20px;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    margin: 20px;
+    position: relative;
+  }
+  #progress {
+    width: 0%;
+    height: 100%;
+    background-color: #eeea14ef;
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out;
+  }
