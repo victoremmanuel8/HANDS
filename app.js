@@ -38,6 +38,12 @@ app.use(session({
   cookie: { maxAge: 60 * 60 * 2300 }
 }))
 
+//Limpar Cache da navegação
+app.use(function(req, res, next) {
+  res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+  next();
+});
+
 //Flash
 app.use(flash())
 //middleware

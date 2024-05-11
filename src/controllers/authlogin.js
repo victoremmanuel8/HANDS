@@ -40,8 +40,8 @@ exports.login = async (req, res) => {
         return res.redirect('/index');
       }
       else {
-          erros.push({ text: "Senha/Email inválida" });
-          return res.render('login', {erros: erros
+        erros.push({ text: "Senha/Email inválida" });
+        return res.render('login', {erros: erros
         });
       }
     } else {
