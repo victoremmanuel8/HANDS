@@ -168,8 +168,9 @@ router.delete('/posts/:id', async (req, res) => {
 
 // a pagina inicial que irá aparecer ao entrar no server
 router.get("/",  (req, res) => {
-  
-  res.render("login"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+  const formData = req.session.formData || {};
+  req.session.formData = null; // Limpe os dados do formulário da sessão
+  res.render('login', { formData: formData });  //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 });
 
 router.get("/login_prof", (req, res) => {
@@ -194,8 +195,9 @@ router.get("/profissionais", checkAuthenticated, (req, res) => {
 });
 
 router.get("/cadastro", (req, res) => {
- res.render("cadastro"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
- 
+  const formData = req.session.formData || {};
+    req.session.formData = null; // Limpe os dados do formulário da sessão
+    res.render('cadastro', { formData: formData });  //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
  });
 
  router.get("/cadastro1", (req, res) => {

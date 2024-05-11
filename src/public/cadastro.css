@@ -13,13 +13,13 @@ a {
     text-decoration: none;
 }
 
-/*.alert.alert-success {
+.alert.alert-success {
     color: #000000;
     background-color: #d7f8dc;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 4px;
-  } */
+  }
 
   .alert.alert-danger {
     color: #000000;

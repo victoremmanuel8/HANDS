@@ -14,15 +14,27 @@ exports.register = async (req, res) => {
   //declarando as variaveis presentes no forms de cadastro usuario 
   const { nome, sobrenome, email, senha, Confir_Senha, dt_nascimento } = req.body;
 
+    //sessão para armazenar os dados
+    req.session.formData = req.body;
+
+    //Validação do campo da senha
+    const senha_Segura = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\-_=+\\|[\]{};:'",.<>/?]).{8,}$/;
   // Verificação do email
   const Exist_usuario= await tb_usuario.findOne({ where: { ds_email: email}});
   if (Exist_usuario) {  
-      req.flash('success_msg', 'Email já em uso'); //irei trocar os erros por error_msg
+      req.flash('error_msg', 'Email já em uso'); //irei trocar os erros por error_msg
       return res.redirect('/cadastro')
+  } else if (senha.length < 8) {
+    req.flash('error_msg', 'Senha menor que 8 caracteres'); 
+    return res.redirect('/cadastro')
+  } else if (!senha_Segura.test(senha)) {
+    req.flash('error_msg', 'Senha não atende aos requisitos de segurança');
+    return res.redirect('/cadastro')
     } else if (senha !== Confir_Senha) {
-      req.flash('success_msg', 'As senhas não correspondem');
+      req.flash('error_msg', 'As senhas não correspondem');
       return res.redirect('/cadastro')
     }
+
 
   // Criptografia da senha
   const hashedPassword = await bcrypt.hash(senha, 8);
@@ -87,7 +99,8 @@ exports.register = async (req, res) => {
     sendmail();
 
     console.log(Add_usuario);
-    return res.redirect('/cadastro');
+    req.flash('success_msg', "Usuário cadastrado com sucesso")
+    return res.redirect('/');
   } catch (error) {
     console.log(error);
     return res.status(500).send("Erro ao cadastrar usuário");

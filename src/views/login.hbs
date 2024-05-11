@@ -18,23 +18,36 @@
                 VMasker(cpfField).maskPattern("999.999.999-99");
             }
         </script>
+        <script>
+          setTimeout(function () {
+        document.getElementById("erro").style.transitionDuration = ".3s"; 
+
+              setTimeout(function () {
+        document.getElementById("erro").style.opacity = "0"; // Define a opacidade como 0
+    // Oculta o alerta após 2 segundos
+                  setTimeout(function () {
+        document.getElementById("erro").style.display = "none"; 
+                  }, 300)
+                        }, 500); // 500 milissegundos para a transição
+                             }, 2000);
+</script>
         <title>HANDS</title>
         <link rel="icon" type="image/x-icon" href="/logo.png">
     </head>
     <body>
             <div class="alert-text">
         {{#each erros}}
-        <div class="alert alert-danger">{{text}}</div>
+        <div class="alert alert-danger" id="erro">{{text}}</div>
          {{/each}}
         </div> 
-        {{!-- <div class="alert-text">
+        <div class="alert-text">
             {{#if success_msg}}
                 <div id='success'class="alert alert-success">{{success_msg}}</div>
             {{/if}}
                 {{#if error_msg}}
                 <div id="erro" class="alert alert-danger">{{error_msg}}</div>
             {{/if}}
-            </div> --}}
+            </div> 
           <div class="row">
               <div class="fixed1">
                 <div class="fixed">
@@ -50,7 +63,7 @@
                 <input class="input-block" type="password" name="senha" id="password"  placeholder="Senha" maxlength="20">
                 <div id="icon" onclick="showHide()"></div>
                 <input  class="button" type="submit" id= "submit" class="btn btn-primary"/>
-                <p class="titulo-3">Não possui conta? <a href="/cadastro1">Cadastre-se</a></p>
+                <p class="titulo-3">Não possui conta? <a href="/cadastro">Cadastre-se</a></p>
             </form>
             </div>
             <script src="/login.js"></script>

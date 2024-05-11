@@ -14,6 +14,9 @@ exports.login = async (req, res) => {
   //declarando as variaveis presentes no forms de login do usuario
   const {email, senha } = req.body;
 
+    //sessão para armazenar os dados
+    // req.session.formData = req.body;
+
   const erros = [];
 // Selecionando o usuario correspondente do banco de dados
   try {

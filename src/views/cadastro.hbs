@@ -36,6 +36,19 @@
             return true; // Permite o envio do formulário
         }
 </script>
+<script>
+          setTimeout(function () {
+        document.getElementById("erro").style.transitionDuration = ".3s"; 
+
+              setTimeout(function () {
+        document.getElementById("erro").style.opacity = "0"; // Define a opacidade como 0
+    // Oculta o alerta após 2 segundos
+                  setTimeout(function () {
+        document.getElementById("erro").style.display = "none"; 
+                  }, 300)
+                        }, 500); // 500 milissegundos para a transição
+                             }, 2000);
+</script>
         <title>HANDS</title>
           <link rel="icon" type="image/x-icon" href="/logo.png">
     </head>
@@ -151,9 +164,9 @@
                                 <div class="passo1">
                                 <p class="titulo-1">Primeiro <span class="cor">passo</span></p> <br>
                                     {{!-- <label for="nome" id="nome">Nome:</label> --}}
-                                <input class="input" type="text" name="nome" id="name" placeholder="Nome" required> 
+                                <input class="input" type="text" name="nome" id="name" placeholder="Nome" value="{{formData.nome}}"required> 
                                 {{!-- <label for="sobrenome">Sobrenome:</label> --}}
-                                <input class="input" type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome" required>
+                                <input class="input" type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome" value="{{formData.sobrenome}}" required>
                                 <div class="back">
                                     <svg width="434" height="361" viewBox="0 0 434 361" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="50" cy="50" r="50" fill="#16F1FF"/>
@@ -191,9 +204,9 @@
                                 <div class="passo2">
                                 <p class="titulo-1">Segundo <span class="cor">passo</span></p><br>
                                 <label class="nascimento" for="nascimento">Data de nascimento:</label>
-                                <input class="input" type="date" name="dt_nascimento" id="dt_nascimento" placeholder="Data de nascimento" required maxlength="10" min="1930-01-01" max="2024-04-29"> 
+                                <input class="input" type="date" name="dt_nascimento" id="dt_nascimento" placeholder="Data de nascimento" value="{{formData.dt_nascimento}}" required maxlength="10" min="1930-01-01" max="2024-04-29"> 
                                 {{!-- <label for="email">Email:</label> --}}
-                                <input class="input" type="email" name="email" id="email" placeholder="E-mail" required>
+                                <input class="input" type="email" name="email" id="email" placeholder="E-mail" value="{{formData.email}}"required>
                                 <div class="back">
                                     <svg width="434" height="361" viewBox="0 0 434 361" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="50" cy="50" r="50" fill="#FF0052"/>
@@ -216,7 +229,7 @@
                                 <div id="progress"></div>
                             </div>
                             <div id="confetti"></div>
-                            <input class="input" type="password" name="senha" id="senha" placeholder="Senha" onkeyup="updateProgressBar()" required>
+                            <input class="input" type="password" name="senha" id="senha" placeholder="Senha" onkeyup="updateProgressBar()"  value="{{formData.senha}}" required>
                             {{!-- <label for="confirmarSenha">Confirmar Senha:</label> --}}
                             <input class="input" type="password" name="Confir_Senha" id="confirmarSenha" placeholder="Confirmação de senha" required>
                             <div class="back">
