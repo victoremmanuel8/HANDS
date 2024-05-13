@@ -6,13 +6,16 @@
 
 body {
     height: 100vh;
+    gap: 5px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    overflow: hidden;
+}
+
+.atividades {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    gap: 5px;
-    background-color: blueviolet;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .alert.alert-success {
@@ -39,19 +42,27 @@ body {
 }
 
 body h2 {
-    color: #fff;
+    color: #000000;
 }
+
+.line-dash {
+    position: absolute;
+    z-index: -1;
+    transform: scale(-1);
+ }
 
 main {
     background-color: #fff;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 20px;
+    border-radius: 30px;
     width: 100%;
-    max-width: 300px;
-    min-height: 200px;
+    max-width: 450px;
+    height: 550px;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 0 20px #00000024;
+    text-align: center;
 }
 
 .content {
@@ -77,15 +88,14 @@ main {
 }
 
 .answers button{
-    width: 120px;
+    width: 190px;
     height: 70px;
     border: none;
-    border-radius: 5px;
-    background-color: #008CCC;
+    border-radius: 15px;
+    background-color: #ff9d00;
     cursor: pointer;
     color: #fff;
     text-align: center;
-    font-weight: 700;
 }
 
 .btnRestart {
@@ -95,7 +105,7 @@ main {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #008CCC;
+    background-color: #ff9d00;
     color: #fff;
 }
 
@@ -106,7 +116,7 @@ main {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #008CCC;
+    background-color: #ff9d00;
     color: #fff;
     text-decoration: none;
 }
@@ -114,9 +124,13 @@ main {
 .finish {
     display: none;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
 }
 
-.finish button, .finish a {
+.finish button, .finish span{
+    width: 50%;
     text-align: center;
 }
+

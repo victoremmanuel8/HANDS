@@ -1,13 +1,14 @@
 const question = document.querySelector(".question");
 const answers = document.querySelector(".answers");
 const spnQtd = document.querySelector(".spnQtd");
-const svgImage = document.querySelector(".svg-image"); 
+const svgImage = document.querySelector(".svg-image");
+const successGif = document.querySelector(".success-gif");
 const textFinish = document.querySelector(".finish span");
 const content = document.querySelector(".content");
 const contentFinish = document.querySelector(".finish");
-const btnRestart = document.querySelector(".btnRestart"); 
+const btnRestart = document.querySelector(".btnRestart");
 
-import questions from "./questions.js";
+import questions from "./questoes.js";
 
 let currentIndex = 0;
 let questionsCorrect = 0;
@@ -30,11 +31,13 @@ function nextQuestion(e) {
     currentIndex++;
     loadQuestion();
   } else {
-    finish();
+    if (questionsCorrect === questions.length) {
+      finishWithSuccess();
+    } else {
+      finish();
+    }
   }
 }
-
-// 
 
 function finish() {
   textFinish.innerHTML = `Você acertou ${questionsCorrect} de ${questions.length}`;
@@ -48,7 +51,17 @@ function finish() {
     .then(response => response.json())
     .then(data => console.log(data))
     .catch((error) => console.error('Error:', error));
-  }
+}
+}
+
+function finishWithSuccess() {
+  textFinish.innerHTML = `Parabéns! Você acertou todas as ${questions.length} questões! Você subiu de nível`;
+  content.style.display = "none";
+  successGif.style.display = "block";
+  setTimeout(() => {
+    successGif.style.display = "none";
+    contentFinish.style.display = "flex";
+  }, 2000); // 2 segundos
 }
 
 function loadQuestion() {
@@ -57,7 +70,7 @@ function loadQuestion() {
   answers.innerHTML = "";
   question.innerHTML = item.question;
 
-  svgImage.src = item.svg; 
+  svgImage.src = item.svg;
 
   item.answers.forEach((answer) => {
     const div = document.createElement("div");

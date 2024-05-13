@@ -52,89 +52,16 @@
   z-index: 2;
 }
 
-#container-slider {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 6vh;
-  width: 100%;
-  height: 320px;
-  margin-bottom: 3vh;
-}
-
-.carousel {
-  width: 100%;
-}
-
-.wrapper{
-display: flex;
-position: absolute;
-margin-left: 2vh;
-margin-right: 2vh;
-z-index: 3;
-overflow: hidden;
-width: 100%;
-}
-
-.wrapper .item{
-font-size: 0px;
-cursor: pointer;
-overflow: hidden;
-white-space: nowrap;
-scroll-behavior: smooth;
-background-color: #000;
-}
-.carousel.dragging{
-cursor: grab;
-scroll-behavior: auto;
-}
-
-/* @media screen and (max-width: 900px) {
-.carousel .item{
-  width: calc(100% / 2);
-}
-}
-
-@media screen and (max-width: 550px) {
-.carousel .item{
-  width: 100% calc(100% / 2);
-}
-} */
-
-.carousel {
-  overflow-x: scroll;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch; 
-  scroll-behavior: smooth;
-}
-
-.carousel .item {
-  display: inline-block;
-  margin: 1.2vh;
-  object-fit: contain;
-  /* user-select: none; */
-  width: calc(100% / 1.18);
-  border-radius: 25px;
-}
-
-.carousel iframe {
-  width: 100%;
-  height: 320px;
-}
-
-.wrapper .carousel .item .p {
-  font-size: 20px;
-  color: #000;
-  text-align: center;
-}
-
-.categoria {
-font-size: 14px;
-}
-
-.p svg {
-position: absolute;
-top: 10px;
+.banner:after {
+  content:"";
+  width: 180px;
+  height: 0px;
+  position: absolute;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 30px solid #fff;
+  top: -1px;
+  left: 15%;
 }
 
 nav ul {
@@ -148,11 +75,4 @@ nav ul {
 
 .txt-center {
   position: relative;
-}
-
-.txt-center svg{
-  position: absolute;
-  top: -160px;
-  left: -10px;
-  z-index: -1;
 }
