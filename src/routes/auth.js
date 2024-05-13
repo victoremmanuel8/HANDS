@@ -7,11 +7,18 @@ const authControllerprof = require('../controllers/authregister_prof');
 const authControllerlogprof = require('../controllers/authlogin_prof');
 const authControllerPassword = require('../controllers/authPassword')
 const authControllerUpgrade = require('../controllers/authUpdate_nv');
+const authControllerDelete = require('../controllers/authDelete')
+const authControllerEdit = require('../controllers/authEdit')
 //aqui a função get e render vai pegar a url e renderizar ela no site
 
+                  'auth/edit'
+router.post("/#", authControllerEdit.edit);
 
-              'auth/h'
-router.put('/h', authControllerUpgrade.update_nv);
+                  'auth/delete'
+router.post("/delete", authControllerDelete.delete);
+
+              'auth/atividades'
+router.put('/atividades', authControllerUpgrade.update_nv);
 
                   'auth/muda_senha'
 router.post('/perfil', authControllerPassword.pass)

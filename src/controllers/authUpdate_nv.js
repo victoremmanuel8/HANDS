@@ -1,6 +1,5 @@
 const mysql = require("mysql2");
 const db = require('../../app.js');
-const jwt = require('jsonwebtoken');
 const {tb_usuario} = require('../models/usu_model.js');
 
 exports.update_nv = async (req, res) => {
@@ -18,6 +17,6 @@ exports.update_nv = async (req, res) => {
   } catch (error) {
     console.log(error);
     req.flash('error_msg', 'Erro ao subir de nível');
-    return res.redirect('/h')
+    return res.redirect('/atividades')
   }
 };

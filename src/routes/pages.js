@@ -205,6 +205,10 @@ router.get("/cadastro", (req, res) => {
   
   });
 
+  router.get("/delete", checkAuthenticated, (req, res) => {
+    res.render("delete")
+  })
+
  router.get("/cadastro_prof",  (req, res) => {
   res.render("cadastro_prof"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
   

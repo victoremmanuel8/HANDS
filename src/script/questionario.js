@@ -45,7 +45,7 @@ function finish() {
   contentFinish.style.display = "flex";
 
   if (questionsCorrect === questions.length) {
-    fetch('/auth/h', {
+    fetch('/auth/atividades', {
       method: 'PUT',
     })
     .then(response => response.json())
@@ -58,10 +58,15 @@ function finishWithSuccess() {
   textFinish.innerHTML = `Parabéns! Você acertou todas as ${questions.length} questões! Você subiu de nível`;
   content.style.display = "none";
   successGif.style.display = "block";
+  if (questionsCorrect === questions.length) {
+    fetch('/auth/atividades', {
+      method: 'PUT',
+    })
   setTimeout(() => {
     successGif.style.display = "none";
     contentFinish.style.display = "flex";
   }, 2000); // 2 segundos
+  }
 }
 
 function loadQuestion() {
