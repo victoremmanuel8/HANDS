@@ -7,8 +7,17 @@
   <title>Document</title>
 </head>
 <body>
+   <div class="alert-text">
+            {{#if success_msg}}
+                <div id='success'class="alert alert-success">{{success_msg}}</div>
+            {{/if}}
+            {{#if error_msg}}
+                <div id="erro" class="alert alert-danger">{{error_msg}}</div>
+            {{/if}}
+        </div>
       <div class="campos">  
         <form class="loginForm" action="/auth/delete" method="post">
+        <input type="password" name="senha_usu" placeholder="Senha" required/>
           <button type="submit" class="button">Excluir Conta</button>
         </form>
       </div>
