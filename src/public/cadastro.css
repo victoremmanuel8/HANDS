@@ -316,7 +316,17 @@ label {
 
 .campos {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+}
+
+.campos input {
+    display: flex;
     flex-direction: column;
+    border-radius: 10vh;
+    padding: 6px 10px;
+    border: 1px #000 solid;
 }
 
 .input {
