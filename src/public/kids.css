@@ -24,6 +24,18 @@ section {
   position: relative;
 }
 
+.banner1:after {
+  content:"";
+  width: 180px;
+  height: 0px;
+  position: absolute;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 30px solid #fff;
+  top: -3px;
+  left: 25%;
+}
+
 .banner2 {
   display: flex;
   width: 600px;
@@ -35,6 +47,18 @@ section {
   border-radius: 10vh;
   background:radial-gradient( #1683ff5c, #ffffff) ;
   position: relative;
+}
+
+.banner2:after {
+  content:"";
+  width: 180px;
+  height: 0px;
+  position: absolute;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 30px solid #fff;
+  top: -3px;
+  right: -10px;
 }
 
 .banner svg {

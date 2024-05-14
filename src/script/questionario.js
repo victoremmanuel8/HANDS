@@ -55,7 +55,7 @@ function finish() {
 }
 
 function finishWithSuccess() {
-  textFinish.innerHTML = `Parabéns! Você acertou todas as ${questions.length} questões! Você subiu de nível`;
+  textFinish.innerHTML = `Parabéns! Você acertou todas as ${questions.length} questões!`;
   content.style.display = "none";
   successGif.style.display = "block";
   if (questionsCorrect === questions.length) {

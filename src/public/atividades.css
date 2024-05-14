@@ -5,10 +5,10 @@
 }
 
 body {
-    height: 100vh;
-    gap: 5px;
+    gap: 15px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     overflow: hidden;
+    padding-top: 50px;
 }
 
 .atividades {
@@ -130,7 +130,7 @@ main {
 }
 
 .finish button, .finish span{
-    width: 50%;
+    width: 70%;
     text-align: center;
 }
 

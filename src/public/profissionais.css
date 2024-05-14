@@ -39,6 +39,18 @@ section {
   text-align: center;
 }
 
+.banner:after {
+  content:"";
+  width: 280px;
+  height: 0px;
+  position: absolute;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 30px solid #fff;
+  top: -3px;
+  left: 15%;
+}
+
 #container-slider {
   display: flex;
   justify-content: center;
