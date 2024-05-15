@@ -28,7 +28,7 @@ const tb_usuario = connSequelize.define('tb_usuario', {
     },
     nm_nivel: {
       type: DataTypes.ENUM('Basico', 'Intermediario', 'Avancado'),
-      defaultValue: 'Basico',
+      defaultValue: 'Avancado',
     },
     sg_sexo: {
       type: DataTypes.ENUM('M', 'F')
