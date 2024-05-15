@@ -1,7 +1,6 @@
 body {
   padding-top: 50px;
   overflow-x: hidden;
-  background-color: #ffffff;
 }
 
 section {
@@ -36,7 +35,7 @@ section {
   left: 25%;
 }
 
-.banner2 {
+.banner2-1 {
   display: flex;
   width: 600px;
   flex-direction: column;
@@ -49,7 +48,7 @@ section {
   position: relative;
 }
 
-.banner2:after {
+.banner2-1:after {
   content:"";
   width: 180px;
   height: 0px;

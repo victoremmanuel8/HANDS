@@ -6,7 +6,7 @@
     <title>Hands</title>
     <link rel="icon" type="image/x-icon" href="/logo.png">
     <link rel="stylesheet" href="/aulas.css">
-    <link rel="stylesheet" href="/base.css">
+    <link id="theme-link" rel="stylesheet" href="/base.css">
 </head>
     <body>
         <style> @font-face{
@@ -114,7 +114,7 @@
                 <li><a href="index">Home</a></li>
                 <li><a href="kids">KIDS</a></li>
                 <li><a href="profissionais">Profissionais</a></li>
-                <li><a href="aulas">Aulas</a></li>
+                <li><a class="atual" href="aulas">Aulas</a></li>
                  {{#if (eq user.nm_nivel 'Basico')}}
                 <li><a href="atividades">Atividades</a></li>
                 {{/if}}
@@ -140,7 +140,7 @@
         </header>
         <section>
             
-        <div class="banner">
+        <div class="bannerAulas">
             <svg width="912" height="628" viewBox="0 0 912 668" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect width="1000" height="668" transform="matrix(-1 0 0 1 912 0)" fill="url(#pattern0_328_7)"/>
             <path d="M112.118 141.754C111.515 135.955 115.98 130.872 121.808 130.723L492.125 121.24C497.397 121.105 501.868 125.087 502.341 130.34L524.63 377.844C525.115 383.225 521.239 388.017 515.876 388.668L152.6 432.774C147.05 433.448 142.026 429.441 141.448 423.881L112.118 141.754Z" fill="#F2FFEB"/>
@@ -258,8 +258,8 @@
             </defs>
             </svg>
                 <div>
-                    <h2 class="titulo-1">Videoaulas <br> <span class="verde">eficientes,</span></h2>
-                    <h3 class="titulo-2">uma jornada essencial, para <br> enriquecer a experiência do <br> aprencizado.</h3>
+                    <h2 class="titulo-1">Videoaulas <br> <span class="verdeAulas">eficientes,</span></h2>
+                    <h3 class="titulo-2">uma jornada essencial, para  enriquecer a experiência do <br> aprencizado.</h3>
                 </div>
         </div>
         <svg class="line-dash" width="2044" height="3158" viewBox="0 0 2044 3158" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -272,9 +272,9 @@
         </defs>
         </svg>
         <div class="progresso">
-            <h2 class="titulo-1">Acompanhe seu <span class="verde">progresso</span></h2>
+            <h2 class="titulo-1">Acompanhe seu <span class="verdeAulas">progresso</span></h2>
             <br><br>
-            <h3 class="titulo-2">Oferecemos um sistema capaz de registrar o seu avanço para <br> um melhor desenvolvimento.</h3>
+            <h3 class="titulo-2">Oferecemos um sistema capaz de registrar o seu avanço para um melhor desenvolvimento.</h3>
             <div class="nivel-porcentagem-atividade">
                 <div class="nivel">
                     <h2 class="titulo-3">Nível</h2>
@@ -301,7 +301,7 @@
         <div class="videoaulas">
             <h2 class="titulo-1">Videoaulas</h2>
             <h3 class="titulo-2">Flexibilidade e acessibilidade aos estudantes.</h3>
-                <div class="videoAulas">
+                <div class="videoAulasAulas">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/IoRkuWWliFM?si=l7QPpDYBwrSgIHxy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/ZeSJQtD3rV0?si=D_K2zXcBQwzFABAh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/vZkXAPsYkA0?si=CMqP6UWlG6uiVTpF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -328,5 +328,6 @@
             </svg>
         </div> --}}
         </section>
+        <script src="/dark.js"></script>
     </body>
 </html>

@@ -7,8 +7,9 @@
 body {
     gap: 15px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    overflow: hidden;
+    overflow-x: hidden;
     padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 .atividades {
@@ -52,7 +53,8 @@ body h2 {
  }
 
 main {
-    background-color: #fff;
+    backdrop-filter: blur(140px);
+    background: radial-gradient(#ff9d0032, #fff);
     padding: 20px;
     border-radius: 30px;
     width: 100%;
@@ -72,6 +74,14 @@ main {
     gap: 10px;
     text-align: center;
     font-weight: 700;
+}
+
+.content img {
+    border-radius: 7vh;
+}
+
+main .success-gif {
+    border-radius: 8vh;
 }
 
 .spnQtd {

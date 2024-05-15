@@ -26,12 +26,12 @@ section {
     height: 100vh;
 }
 
-.banner {
+.bannerUpload {
     display: flex;
     margin-bottom: 6vh;
 }
 
-.banner .bannerSvg {
+.bannerUpload .bannerSvg {
     position: absolute;
     top: 50%;
     left: 55%;

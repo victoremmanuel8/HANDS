@@ -5,7 +5,6 @@
 }
 
 body {
-    background-color: #ffffff;
     padding-top: 50px;
     overflow-x: hidden;
 }
@@ -53,7 +52,7 @@ section {
     padding-top: 40px;
 }
 
-.banner {
+.bannerAulas {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -68,9 +67,9 @@ section {
     z-index: 7;
     background:radial-gradient( #08d4784b, #ffffff) ;
     position: relative;
-  }
+}
   
-  .banner:after {
+  .bannerAulas:after {
     content:"";
     width: 280px;
     height: 0px;
@@ -80,9 +79,9 @@ section {
     border-top: 30px solid #fff;
     top: -3px;
     left: 35%;
-  }
+}
 
-.verde {
+.verdeAulas {
     color: #135c6ce0;
 }
 
@@ -258,7 +257,7 @@ a {
     margin-top: 14vh;
 }
 
-.videoAulas {
+.videoAulasAulas {
     margin-top: 10vh;
     display: flex;
     flex-direction: row;
@@ -275,7 +274,7 @@ a {
     position: relative;
 }
 
-.videoAulas iframe {
+.videoAulasAulas iframe {
     border-radius: 3vh;
 }
 
@@ -298,7 +297,7 @@ a {
     margin-top: 10vh;
 }
 
-.banner .video-aulas .titulo-1 {
+.bannerAulas .video-aulas .titulo-1 {
     color: #000;
 }
 

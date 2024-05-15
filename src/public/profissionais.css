@@ -1,5 +1,4 @@
 body {
-  background-color: #fff;
   overflow-x: hidden;
   padding-top: 50px;
 }
@@ -22,7 +21,7 @@ section {
   width: 100%;
 }
 
-.banner {
+.bannerProf {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,7 +38,7 @@ section {
   text-align: center;
 }
 
-.banner:after {
+.bannerProf:after {
   content:"";
   width: 280px;
   height: 0px;
@@ -254,13 +253,6 @@ color: #000;
   top: 660px;
   right: -10px;
   z-index: -1;
-}
-
-.branco {
-  width: 100%;
-  background-color: #fff;
-  height: 300px;
-  
 }
 
 .sing-aulas {

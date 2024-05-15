@@ -6,20 +6,12 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
         <meta name="color-scheme" content="light dark">
-        <link rel="stylesheet" href="/base.css">
         <link rel="icon" type="image/x-icon" href="/logo.png">
         <link rel="stylesheet" href="/perfil.css">
+        <link id="theme-link" rel="stylesheet" href="/base.css">
         <title>HANDS</title>
     </head>
     <body>
-        {{!-- <div class="background">
-            <div class="b51D49C"></div>
-            <div class="bFF6D9C"></div>
-            <svg class="estrela" width="318" height="98" viewBox="0 0 318 98" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M16.6705 1.23154C16.7743 3.85468 17.017 6.88975 17.2629 8.64034C17.7132 11.8451 18.5835 13.9493 19.9632 15.1695C20.4603 15.6091 21.5289 16.232 22.2351 16.494C23.4766 16.9544 25.3357 17.322 27.5837 17.5514C29.0032 17.6963 31.9413 17.9062 32.5489 17.9062C32.797 17.9062 33 17.9362 33 17.9728C33 18.0095 32.4754 18.064 31.8342 18.0939C30.32 18.1646 27.3161 18.4217 26.2206 18.5743C19.5596 19.5027 17.8153 21.523 17.0419 29.2051C16.9061 30.5546 16.7355 33.0955 16.6705 34.7373C16.6436 35.4147 16.5992 35.9688 16.5717 35.9688C16.5441 35.9688 16.4997 35.4147 16.4729 34.7373C16.2773 29.795 15.8464 26.2169 15.1951 24.1286C14.9634 23.3854 14.3868 22.2153 13.9891 21.681C12.7296 19.989 10.6172 19.065 6.88686 18.5745C5.21247 18.3543 1.57442 18.0636 0.484123 18.0629C0.217827 18.0628 -0.000118256 18.0326 -0.000118256 17.996C-0.000118256 17.9593 0.524441 17.9053 1.16565 17.8759C4.22648 17.7356 7.21062 17.414 8.93143 17.039C12.9788 16.157 14.6248 14.5173 15.5622 10.4342C15.9632 8.68749 16.3209 5.07278 16.4729 1.23154C16.4997 0.554154 16.5441 0 16.5717 0C16.5992 0 16.6436 0.554154 16.6705 1.23154Z" fill="white"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M305.302 70.9576C305.383 72.9973 305.572 75.3574 305.763 76.7186C306.113 79.2106 306.79 80.8468 307.863 81.7955C308.249 82.1374 309.08 82.6218 309.629 82.8255C310.595 83.1835 312.04 83.4693 313.788 83.6477C314.892 83.7604 317.177 83.9236 317.649 83.9236C317.842 83.9236 318 83.947 318 83.9754C318 84.0039 317.592 84.0463 317.094 84.0695C315.916 84.1245 313.58 84.3244 312.728 84.4431C307.549 85.165 306.193 86.7359 305.591 92.7095C305.486 93.7588 305.353 95.7346 305.302 97.0112C305.282 97.5379 305.247 97.9688 305.226 97.9688C305.204 97.9688 305.17 97.5379 305.149 97.0112C304.997 93.1682 304.662 90.3859 304.155 88.762C303.975 88.1842 303.527 87.2743 303.217 86.8588C302.238 85.5431 300.595 84.8247 297.695 84.4432C296.393 84.272 293.564 84.046 292.716 84.0455C292.509 84.0453 292.34 84.0219 292.34 83.9934C292.34 83.9649 292.747 83.9229 293.246 83.9C295.626 83.7909 297.947 83.5409 299.285 83.2493C302.432 82.5634 303.712 81.2885 304.441 78.1135C304.752 76.7553 305.031 73.9445 305.149 70.9576C305.17 70.4309 305.204 70 305.226 70C305.247 70 305.282 70.4309 305.302 70.9576Z" fill="white"/>
-            </svg>                
-        </div> --}}
         <header>
             <ul>
                 <a href="index">
@@ -76,11 +68,11 @@
                         <path d="M144.619 112.367C144.275 107.197 143.733 102.122 142.887 97.0132C142.525 94.8286 140.785 88.4095 141.286 90.5662C142.619 96.2967 144.535 101.874 146.685 107.346C147.749 110.052 148.962 112.704 149.916 115.452C150.242 116.391 150.172 118.915 150.92 118.261C151.48 117.771 151.299 116.806 151.299 116.063C151.299 113.393 150.709 110.77 149.916 108.233C148.117 102.479 145.174 97.4683 140.137 93.9716C134.911 90.3437 128.588 87.4622 122.236 86.6078C121.712 86.5373 119.749 86.7149 119.253 86.3604C118.541 85.852 120.76 85.4604 121.567 85.1234C123.296 84.4016 125 83.8023 126.835 83.4352C127.665 83.2692 126.925 83.2299 126.457 83.1733C124.274 82.9092 122.082 82.722 119.893 82.5184C119.663 82.4969 115.872 82.4789 115.484 81.9217C115.407 81.8119 115.646 81.6999 115.76 81.6307C116.402 81.2428 117.796 80.7548 118.38 80.5537C122.98 78.9688 126.79 79.4904 131.026 82.0236C135.326 84.5944 137.406 87.8956 138.856 92.5745C139.495 94.6369 139.947 96.7224 140.384 98.8323C140.523 99.5024 140.627 100.528 141.505 99.7346C148.379 93.5256 137.642 88.4589 132.831 86.4331" stroke="#F490A8" stroke-width="3.22703" stroke-linecap="round"/>
                         <rect width="145.269" height="156.839" transform="matrix(-1 0 0 1 191.269 35)" fill="url(#pattern0_0_1)"/>
                         <defs>
-                        <filter id="filter0_f_0_1" x="0.841034" y="0.980133" width="236.171" height="236.171" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        {{!-- <filter id="filter0_f_0_1" x="0.841034" y="0.980133" width="236.171" height="236.171" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
                         <feFlood flood-opacity="0" result="BackgroundImageFix"/>
                         <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
                         <feGaussianBlur stdDeviation="22.7429" result="effect1_foregroundBlur_0_1"/>
-                        </filter>
+                        </filter> --}}
                         <pattern id="pattern0_0_1" patternContentUnits="objectBoundingBox" width="1" height="1">
                         <use xlink:href="#image0_0_1" transform="matrix(0.00176106 0 0 0.00163115 -0.353982 -0.5)"/>
                         </pattern>
@@ -111,17 +103,14 @@
                 <h2 class="txt-center">Gerais</h2>
                  <div class="modal" id="modal-B">
                         <div class="modal-content">
-                            <span class="close" onclick="closeModal('modal-B')">&times;</span>
-                                <div class="balao2">
-                                    {{!-- <form action="/auth/muda_senha" method="post">
-                                <label for="senha-atual">Senha Atual:</label>
-                                <input type="password" id="" name="Atual_Pass" required>
-                                <label for="senha-nova">Nova Senha:</label>
-                                <input type="password" id="" name="New_Pass" required>
-                                <label for="confir_senha">Confirmar Senha:</label>
-                                <input type="password" id="" name="Confir_Pass" required>
-                                <input  class="button" type="submit" id= "submit"/>
-                            </form> --}}
+                                <div class="balao3">
+                                    <div class="row-perfil">
+                                        <label class="switch">
+                                        <input type="checkbox" id="theme-toggle">
+                                        <span class="slider"></span>
+                                    </label>
+                                    Modo Escuro
+                                    </div>
                                 </div>
                         </div>
                     </div>
@@ -138,10 +127,9 @@
                         </div>
                     </div>
                     </button>
-                     <div class="modal" id="modal-A">
+                    <div class="modal" id="modal-A">
                         <div class="modal-content">
-                            <span class="close" onclick="closeModal('modal-A')">&times;</span>
-                                <div class="balao2">
+                                <div class="balao3">
                                     <div class="alert-text">
                                     {{#if success_msg}}
                                         <div id='success'class="alert alert-success">{{success_msg}}</div>
@@ -150,7 +138,10 @@
                                         <div id="erro" class="alert alert-danger">{{error_msg}}</div>
                                     {{/if}}
                                 </div>
-                                     <form action="/auth/perfil" method="post">
+                                <svg class="line-dash" width="1695" height="543" viewBox="0 0 1695 543" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M152.453 5.72381C142.395 5.72381 128.772 3.25387 119.485 7.65277C91.1822 21.0596 64.8828 55.6638 49.517 82.0051C13.0846 144.461 -8.99186 225.788 17.777 296.47C65.1665 421.599 179.867 510.807 310.802 527.593C419.466 541.525 527.319 548.161 628.904 499.36C765.807 433.593 860.068 302.198 973.135 205.283C1021.59 163.75 1077.08 128.059 1134.11 99.5411C1201.4 65.8981 1262.37 47.5639 1338.06 51.3173C1404.2 54.5968 1462.3 69.8055 1516.75 107.432C1543.4 125.849 1567.14 147.591 1591.8 168.457C1629.74 200.555 1654.96 242.487 1689.65 277.18" stroke="#FDA51C" stroke-width="10" stroke-linecap="round" stroke-dasharray="20 20"/>
+                                </svg>
+                                <form action="/auth/perfil" method="post">
                                 <label for="senha-atual">Senha Atual:</label>
                                 <input type="password" id="" name="Atual_Pass" required>
                                 <label for="senha-nova">Nova Senha:</label>
@@ -175,8 +166,46 @@
                             </div>
                         </div>
                     </button>
+                    <div class="modal" id="modal-C">
+                        <div class="modal-content">
+                                <div class="balao3">
+                                    <div class="alert-text">
+                                    {{#if success_msg}}
+                                        <div id='success'class="alert alert-success">{{success_msg}}</div>
+                                    {{/if}}
+                                    {{#if error_msg}}
+                                        <div id="erro" class="alert alert-danger">{{error_msg}}</div>
+                                    {{/if}}
+                                </div>
+                                 <svg class="line-dash" width="1695" height="543" viewBox="0 0 1695 543" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M152.453 5.72381C142.395 5.72381 128.772 3.25387 119.485 7.65277C91.1822 21.0596 64.8828 55.6638 49.517 82.0051C13.0846 144.461 -8.99186 225.788 17.777 296.47C65.1665 421.599 179.867 510.807 310.802 527.593C419.466 541.525 527.319 548.161 628.904 499.36C765.807 433.593 860.068 302.198 973.135 205.283C1021.59 163.75 1077.08 128.059 1134.11 99.5411C1201.4 65.8981 1262.37 47.5639 1338.06 51.3173C1404.2 54.5968 1462.3 69.8055 1516.75 107.432C1543.4 125.849 1567.14 147.591 1591.8 168.457C1629.74 200.555 1654.96 242.487 1689.65 277.18" stroke="#FDA51C" stroke-width="10" stroke-linecap="round" stroke-dasharray="20 20"/>
+                                </svg>
+                                <div>
+                                    <p>tem certeza que deseja deletar sua conta? Você irá perder todo seu desempenho dentro do HANDS, poderá usar o e-mail novamente para um novo cadastro, mas não terá as suas conquistas passadas.</p>
+                                </div>
+                                <form class="loginForm" action="/auth/delete" method="post">
+                                    <input type="password" name="senha_usu" placeholder="Senha" required/>
+                                    <input  class="button" type="submit" id= "submit" value="Excluir conta"/>
+                                </form>
+                                </div>
+                        </div>
+                    </div>
+                    <button onclick="openModal('modal-C')">
+                        <div class="config-div">
+                            <div class="icon-excluir">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" fill="#ff2a2a" class="bi bi-trash3" viewBox="0 0 16 16">
+                                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+                                </svg>                            
+                            </div>
+                            <div>
+                                <p class="titulo-2">Excluir conta</p>
+                                <p class="titulo-3-6">Apague a sua conta dentro do HANDS</p>
+                            </div>
+                        </div>
+                    </button>
             <script src="/modal.js"></script>
                 </div>
+            <script src="/dark.js"></script>
             </section>
             <script src="/carrossel.js"></script>
             <script src="/menu.js"></script>
@@ -186,7 +215,7 @@ window.onload = function() {
         document.getElementById("modal-A").style.display = "block";
     }
 };
-</script>
+            </script>
 </script>
     </body>
 </html>

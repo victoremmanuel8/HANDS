@@ -14,7 +14,7 @@ const textos = [
     "Olá, novamente 🤩🥰"
 ];
 
-const elementos = document.getElementById('texto1');
+const elementos = document.getElementById('texto10');
 
 function exibirTexto(index) {
     if (index < textos.length) {
