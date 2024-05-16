@@ -1,13 +1,81 @@
-const express = require('express')
-const router = express.Router()
-const multer = require('multer')
-const multerConfig = require('../config/multer')
-const fs = require('fs')
-const path = require('path')
-const ControllerUsuario= require('../controllers/consultaback')
-const session = require("express-session")
-const Post = require('../models/Post')
-const cl_views = require('../models/View')
+const express = require('express');
+const db = require('../../app');
+const router = express.Router();
+const multer = require('multer');
+const multerConfig = require('../config/multer');
+const fs = require('fs');
+const path = require('path');
+const ControllerUsuario = require('../controllers/consultaback');
+const {tb_usuario} = require('../models/usu_model')
+const moment = require('moment');
+
+router.use(express.json());
+
+//function do middleware (de sessão do usuario)
+function checkAuthenticated(req, res, next) {
+  if (req.session.user) {
+    next();
+  } else {
+    res.redirect('/');
+  }
+}
+// Middleware para calcular o tempo de sessão
+async function calculateSessionTime(req, res, next) {
+  if (req.session.user) {
+    const currentTime = new Date().getTime();
+    const startTime = req.cookies.startTime || currentTime; // Use a hora atual se startTime não estiver definido
+    const elapsedTime = currentTime - startTime;
+    let formattedTime = convertMillisecondsToTime(elapsedTime);
+
+    // Salvar o tempo de sessão no banco de dados e recuperar o tempo anterior, se existir
+    try {
+      const previousSessionTime = await getUserPreviousSessionTime(req.session.user.id_usuario);
+      if (previousSessionTime) {
+        console.log('Tempo de sessão anterior:', previousSessionTime);
+        const totalMilliseconds = timeToMilliseconds(previousSessionTime) + elapsedTime;
+        formattedTime = convertMillisecondsToTime(totalMilliseconds);
+        console.log('Tempo total de sessão:', formattedTime);
+        await updateUserSessionTime(req.session.user.id_usuario, formattedTime);
+        console.log('Tempo de sessão atualizado no banco de dados com sucesso.');
+      }
+    } catch (error) {
+      console.error('Erro ao salvar/recuperar o tempo de sessão no banco de dados:', error);
+    }
+
+    res.cookie(`sessionTime_${req.session.user.id_usuario}`, formattedTime, { maxAge: elapsedTime, httpOnly: true });
+    res.cookie('startTime', currentTime, { httpOnly: true });
+
+    // Adicione o tempo formatado ao objeto de sessão para ser usado nas visualizações
+    req.session.formattedSessionTime = formattedTime;
+  }
+  next();
+}
+// Função para converter milissegundos em HH:MM:SS
+function convertMillisecondsToTime(milliseconds) {
+  const seconds = Math.floor(milliseconds / 1000);
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const remainingSeconds = seconds % 60;
+  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+}
+
+// Função para converter uma string de tempo (HH:MM:SS) em milissegundos
+function timeToMilliseconds(time) {
+  const [hours, minutes, seconds] = time.split(':').map(Number);
+  return (hours * 3600 + minutes * 60 + seconds) * 1000;
+}
+
+// Função para recuperar o tempo de sessão anterior do usuário do banco de dados
+async function getUserPreviousSessionTime(userId) {
+  const user = await tb_usuario.findByPk(userId);
+  return user ? user.sessionTime : null;
+}
+
+// Função para atualizar o tempo de sessão do usuário no banco de dados
+async function updateUserSessionTime(userId, sessionTime) {
+  // Atualize o tempo de sessão do usuário no banco de dados
+  await tb_usuario.update({ sessionTime }, { where: { id_usuario: userId } });
+}
 
 
 //function do middleware (de sessão do prof)
@@ -24,171 +92,159 @@ function checkAuthenticated_Prof(req, res, next) {
   }
 }
 
-
-  //function do middleware (de sessão do usuario)
-  function checkAuthenticated(req, res, next) {
-    if (req.session.user) {
-      next();
+//destroy da sessão (encerrar a sessão do usuário)
+router.get('/logout', function(req, res) {
+  req.session.destroy(function(err) {
+    if (err) {
+      console.log(err);
     } else {
+      res.clearCookie('sessionTime');
+      res.clearCookie('startTime');
       res.redirect('/');
     }
-  }
+  });
+});
 
-  //destroy da sessão (encerrar a sessão do usuário)
-  router.get('/logout', function(req, res){
-    req.session.destroy(function(err){
-       if(err){
-          console.log(err);
-       } else {
-          res.redirect('/');
-       }
-    });
- });
-
-
-
-
- //rotas do back para o insomnia
-router.get('/usuario', ControllerUsuario.getAllusuarios)
-router.put('/usuario/id/:id_usuario', ControllerUsuario.editusuarioById)
-router.post('/usuario/criar', ControllerUsuario.createNewusuario)
-router.delete('/usuario/:id_usuario', ControllerUsuario.deleteusuarioById)
+//rotas do back para o insomnia
+router.get('/usuario', ControllerUsuario.getAllusuarios);
+router.put('/usuario/id/:id_usuario', ControllerUsuario.editusuarioById);
+router.post('/usuario/criar', ControllerUsuario.createNewusuario);
+router.delete('/usuario/:id_usuario', ControllerUsuario.deleteusuarioById);
 
 router.get("/pesquisa/:nm_usuario", ControllerUsuario.getUsuarioByName);
- 
 
- //rota para visualizar todos os arquivos que estão no mongo DB em json
-router.get('/posts', async (req, res) => {
+//rota para visualizar todos os arquivos que estão no mongo DB em json
+router.get('/posts', async(req, res) => {
   const posts = await Post.find();
-    return res.json(posts);
+  return res.json(posts);
 });
 
 //rota do multer para ver através do back
-  router.post("/posts", multer(multerConfig).single('file'), async (req, res) =>{
-    const { originalname: name, size, key, location: url= ''} = req.file;
-    const { categoria, nivel } = req.body;
+router.post("/posts", multer(multerConfig).single('file'), async(req, res) => {
+  const { originalname: name, size, key, location: url = '' } = req.file;
+  const { categoria, nivel } = req.body;
 
-    const post = await Post.create({
-      name,
-      size,
-      key,
-      url,
-      categoria,
-      nivel,
-    });
-    console.log(req.file); 
-    // return res.json(post);
-    return res.redirect("/upload")
+  const post = await Post.create({
+    name,
+    size,
+    key,
+    url,
+    categoria,
+    nivel,
   });
+  console.log(req.file);
+  // return res.json(post);
+  return res.redirect("/upload");
+});
 
 //rota para visualizar os videos/imagens de acordo com a categoria e nivel do usuário
-router.get('/upload/:categoria', async (req, res) => {
+router.get('/upload/:categoria', async(req, res) => {
   const { categoria } = req.params;
-  
+
   try {
-      // Verifica se o usuário está autenticado
-      if (!req.session.user) {
-          return res.redirect('/'); 
+    // Verifica se o usuário está autenticado
+    if (!req.session.user) {
+      return res.redirect('/');
+    }
+
+    // Obtém o nível do usuário da sessão do usuário
+    const nv_usu = req.session.user.nm_nivel;
+
+    const files = await Post.find({ categoria });
+
+    // Filtra os arquivos com base no nível do usuário
+    const files_permitidos = files.filter(file => {
+      if (nv_usu === 'Basico') {
+        // Se o usuário for 'Basico', retorna apenas os arquivos 'Basico'
+        return file.nivel === 'Basico';
+      } else if (nv_usu === 'Intermediario') {
+        // Se o usuário for 'Intermediário', retorna arquivos 'Basico' e 'Intermediário'
+        return file.nivel === 'Basico' || file.nivel === 'Intermediario';
+      } else {
+        // Se o usuário for 'Avançado', retorna todos os arquivos
+        return true;
       }
-      
-      // Obtém o nível do usuário da sessão do usuário
-      const nv_usu = req.session.user.nm_nivel; 
+    });
+    console.log('Nível do usuário:', nv_usu);
 
-      const files = await Post.find({ categoria });
-
-      // Filtra os arquivos com base no nível do usuário
-      const files_permitidos = files.filter(file => {
-          if (nv_usu === 'Basico') {
-              // Se o usuário for 'Basico', retorna apenas os arquivos 'Basico'
-              return file.nivel === 'Basico';
-          } else if (nv_usu === 'Intermediario') {
-              // Se o usuário for 'Intermediário', retorna arquivos 'Basico' e 'Intermediário'
-              return file.nivel === 'Basico' || file.nivel === 'Intermediario';
-          } else {
-              // Se o usuário for 'Avançado', retorna todos os arquivos
-              return true;
-          }
-      });
-      console.log('Nível do usuário:', nv_usu);
-      
-      // Renderiza o arquivo de modelo com os arquivos permitidos encontrados
-      res.render('categoria', { file: files_permitidos }); 
+    // Renderiza o arquivo de modelo com os arquivos permitidos encontrados
+    res.render('categoria', { file: files_permitidos });
   } catch (error) {
-      console.error('Erro ao buscar arquivos:', error);
-      res.status(500).send('Erro interno');
+    console.error('Erro ao buscar arquivos:', error);
+    res.status(500).send('Erro interno');
   }
 });
 
-router.post('/upload/:videoId/visualizado', async (req, res) => {
+router.post('/upload/:videoId/visualizado', async(req, res) => {
   const { videoId } = req.params;
   const userId = req.session.id;
 
   try {
-      // Verifica se o usuário já assistiu ao vídeo anteriormente
-      const video_view = await cl_views.findOne({ videoId, userId });
+    // Verifica se o usuário já assistiu ao vídeo anteriormente
+    const video_view = await cl_views.findOne({ videoId, userId });
 
-      if (video_view) {
-          console.log('Este vídeo já foi assistido pelo usuário anteriormente.');
-             return res.render('categoria', { assistido: true });
-      }
-
-      // Cria um novo registro na coleção de vídeos assistidos
-      const new_video_view = new cl_views({
-          videoId,
-          userId
-      });
-
-      await new_video_view.save();
-
-      console.log('Vídeo assistido registrado com sucesso.');
-      
+    if (video_view) {
+      console.log('Este vídeo já foi assistido pelo usuário anteriormente.');
       return res.render('categoria', { assistido: true });
+    }
+
+    // Cria um novo registro na coleção de vídeos assistidos
+    const new_video_view = new cl_views({
+      videoId,
+      userId
+    });
+
+    await new_video_view.save();
+
+    console.log('Vídeo assistido registrado com sucesso.');
+
+    return res.render('categoria', { assistido: true });
   } catch (error) {
-      console.error('Erro ao registrar vídeo assistido:', error);
-      res.status(500).send('Erro interno');
+    console.error('Erro ao registrar vídeo assistido:', error);
+    res.status(500).send('Erro interno');
   }
 });
 
 //rota para deletar os posts com base no id do arquivo
-router.delete('/posts/:id', async (req, res) => {
+router.delete('/posts/:id', async(req, res) => {
   try {
-      const post = await Post.findOneAndDelete({ _id: req.params.id });
-      if (!post) {
-          return res.status(404).send({ error: 'Post não encontrado' });
-      }
+    const post = await Post.findOneAndDelete({ _id: req.params.id });
+    if (!post) {
+      return res.status(404).send({ error: 'Post não encontrado' });
+    }
 
-      return res.status(200).send({ message: 'Post deletado com sucesso' });
+    return res.status(200).send({ message: 'Post deletado com sucesso' });
   } catch (error) {
-      console.error('Error deleting post:', error);
-      return res.status(500).send({ error: 'Erro interno' });
+    console.error('Error deleting post:', error);
+    return res.status(500).send({ error: 'Erro interno' });
   }
 });
 
 //aqui a função get e render vai pegar a url e renderizar ela no site
 
 // a pagina inicial que irá aparecer ao entrar no server
-router.get("/",  (req, res) => {
+router.get("/", (req, res) => {
   const formData = req.session.formData || {};
   req.session.formData = null; // Limpe os dados do formulário da sessão
-  res.render('login', { formData: formData });  //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+  res.render('login', { formData: formData }); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 });
 
 router.get("/login_prof", (req, res) => {
   res.render("login_prof"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
-  
-  });
+
+});
 
 
 // Rota que requer autenticação
-router.get('/index', checkAuthenticated,/*verificaAutenticacao,*/ (req, res) => {
+router.get('/index', checkAuthenticated, calculateSessionTime, /*verificaAutenticacao,*/ (req, res) => {
   res.render('index');
 });
 
 router.get("/kids", checkAuthenticated, (req, res) => {
-  if(req.session.user) {
+  if (req.session.user) {
     res.render('kids', { user: req.session.user });
   }
-}); 
+});
 
 router.get("/profissionais", checkAuthenticated, (req, res) => {
   res.render("profissionais"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
@@ -196,70 +252,72 @@ router.get("/profissionais", checkAuthenticated, (req, res) => {
 
 router.get("/cadastro", (req, res) => {
   const formData = req.session.formData || {};
-    req.session.formData = null; // Limpe os dados do formulário da sessão
-    res.render('cadastro', { formData: formData });  //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
- });
+  req.session.formData = null; // Limpe os dados do formulário da sessão
+  res.render('cadastro', { formData: formData }); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+});
 
- router.get("/cadastro1", (req, res) => {
+router.get("/cadastro1", (req, res) => {
   res.render("cadastro1"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
-  
-  });
 
-  router.get("/delete", checkAuthenticated, (req, res) => {
-    res.render("delete")
-  })
+});
 
- router.get("/cadastro_prof",  (req, res) => {
+router.get("/delete", checkAuthenticated, (req, res) => {
+  res.render("delete")
+})
+
+router.get("/cadastro_prof", (req, res) => {
   res.render("cadastro_prof"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
-  
-  });
 
-  router.get("/cat-num", checkAuthenticated,(req, res) => {
-    res.render("cat-num"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
-    
-    });
+});
 
-  router.get("/aulas", checkAuthenticated,(req, res) => {
-    if(req.session.user) {
-      res.render('aulas', { user: req.session.user });
+router.get("/cat-num", checkAuthenticated, (req, res) => {
+  res.render("cat-num"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+
+});
+
+router.get("/aulas", checkAuthenticated, calculateSessionTime, (req, res) => {
+  if (req.session.user) {
+    res.render('aulas', {
+      user: req.session.user, formattedSessionTime: req.session.formattedSessionTime })
     }
+  })
+  //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+
+router.get("/header", checkAuthenticated, (req, res) => {
+  res.render("header"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+
+});
+
+router.get("/termos-uso", (req, res) => {
+  res.render("termos-uso"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+
+});
+
+router.get("/atividades", checkAuthenticated, (req, res) => {
+  res.render("atividades"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+
+});
+
+router.get("/pesquisa", (req, res) => {
+  res.render("pesquisa"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+
+});
+
+router.get("/perfil", checkAuthenticated, (req, res) => {
+  if (req.session.user) {
+    res.render('perfil', { user: req.session.user });
+  }
 }); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 
-  router.get("/header", checkAuthenticated,(req, res) => {
-      res.render("header"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
-        
-      });
+router.get("/upload", checkAuthenticated_Prof, (req, res) => {
+  res.render('upload')
+})
 
-  router.get("/termos-uso",(req, res) => {
-       res.render("termos-uso"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
-          
-        });
+router.get('/categoria', checkAuthenticated, (req, res) => {
+  res.render('categoria')
+})
 
-  router.get("/atividades", checkAuthenticated,(req, res) => {
-    res.render("atividades"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
-        
-      });
-        
-  router.get("/pesquisa", (req, res) => {
-    res.render("pesquisa"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
-
-     });
-  
-     router.get("/perfil", checkAuthenticated,(req, res) => {
-        if(req.session.user) {
-          res.render('perfil', { user: req.session.user });
-        }
-    }); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
-
-    router.get("/upload", checkAuthenticated_Prof, (req, res) => {
-      res.render('upload')
-    })
-
-    router.get('/categoria', checkAuthenticated, (req,res) => {
-      res.render('categoria')
-    })
-
-   // Rota para servir os vídeos e demonstrar (para fins de teste. Não vai ser utilizado)
+// Rota para servir os vídeos e demonstrar (para fins de teste. Não vai ser utilizado)
 router.get('/videos/:filename', (req, res) => {
   const { filename } = req.params;
   const filePath = path.join(__dirname, '..', '..', 'tmp', 'uploads', filename);
@@ -275,45 +333,5 @@ router.get('/videos/:filename', (req, res) => {
     res.sendFile(filePath);
   });
 });
+
 module.exports = router;
-
-  // filtro para encontrar as categorias especificas
-//   router.get('/upload/:categoria', checkAuthenticated, async (req, res) => {
-//     const { categoria } = req.params;
-
-//     try {
-//         // Consulta no banco de dados MongoDB para recuperar os arquivos da categoria especificada
-//         const file = await Post.find({ categoria });
-
-//         // Renderiza o arquivo de modelo com os arquivos encontrados
-//         res.render('categoria', { file }); // Supondo que o arquivo de modelo se chame 'index.hbs' e está na pasta 'views'
-//     } catch (error) {
-//         console.error('Erro ao buscar arquivos:', error);
-//         res.status(500).send('Erro interno');
-//     }
-// });
-
-
-// router.post('/video/:videoId/visualizado', async (req, res) => {
-//   const { videoId } = req.params;
-//   const userId = req.session.id; 
-
-//   try {
-//       // Verifique se o usuário já assistiu ao vídeo anteriormente
-//       const video_view = await cl_views.findOne({ videoId, userId });
-
-//       if (!video_view) {
-//           // Crie um novo registro na coleção de vídeos assistidos
-//           const new_video_view = new cl_views({
-//               videoId,
-//               userId
-//           });
-//           await new_video_view.save();
-//       }
-
-//       res.sendStatus(200); // Responda com sucesso
-//   } catch (error) {
-//       console.error('Erro ao registrar visualização do vídeo:', error);
-//       res.status(500).send('Erro interno');
-//   }
-// });

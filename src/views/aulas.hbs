@@ -295,7 +295,8 @@
                 <hr>
                 <div class="atividade">
                     <h2 class="titulo-3">atividade</h2>
-                    <p id="tempoDecorrido">00:00:00</p>
+                    <div class="session-info">
+                    <p>Seu tempo de sessão atual é: <span id="sessionTimeDisplay">{{ formattedSessionTime }}</span></p>
                     <script src="/tempo.js"></script>
                 </div>
             </div>
@@ -331,4 +332,18 @@
         </div> --}}
         </section>
     </body>
+<script>
+    // Função para atualizar o tempo de sessão a cada segundo
+    setInterval(() => {
+      const sessionTimeElement = document.getElementById('sessionTime');
+      if (sessionTimeElement) {
+        fetch('/api/sessionTime') // Endpoint para obter o tempo de sessão do usuário
+          .then(response => response.json())
+          .then(data => {
+            sessionTimeElement.innerText = data.sessionTime;
+          })
+          .catch(error => console.error('Erro ao obter o tempo de sessão:', error));
+      }
+    }, 1000); // Atualizar a cada segundo
+  </script>
 </html>

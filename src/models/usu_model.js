@@ -30,6 +30,9 @@ const tb_usuario = connSequelize.define('tb_usuario', {
       type: DataTypes.ENUM('Basico', 'Intermediario', 'Avancado'),
       defaultValue: 'Avancado',
     },
+  sessionTime: {
+    type: DataTypes.TIME,
+  },
     sg_sexo: {
       type: DataTypes.ENUM('M', 'F')
     },
