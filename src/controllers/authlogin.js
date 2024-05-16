@@ -5,20 +5,20 @@ const db = require('../../app.js');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const moment = require('moment')
-const { tb_usuario } = require('../models/usu_model.js'); 
+const { tb_usuario } = require('../models/usu_model.js');
 
 //exportando os registros no route auth.js
 exports.login = async (req, res) => {
   console.log(req.body);
 
   //declarando as variaveis presentes no forms de login do usuario
-  const {email, senha } = req.body;
+  const { email, senha } = req.body;
 
-    //sessão para armazenar os dados
-    // req.session.formData = req.body;
+  //sessão para armazenar os dados
+  // req.session.formData = req.body;
 
   const erros = [];
-// Selecionando o usuario correspondente do banco de dados
+  // Selecionando o usuario correspondente do banco de dados
   try {
     const db_usu = await tb_usuario.findOne({ where: { ds_email: email } });
 
@@ -28,32 +28,32 @@ exports.login = async (req, res) => {
       if (compare) {
         // Calcula a idade do usuário
         const idade = moment().diff(db_usu.dt_nascimento, 'years');
-            db_usu.nr_idade = idade; // Atribui a idade calculada ao campo nr_idade
+        db_usu.nr_idade = idade; // Atribui a idade calculada ao campo nr_idade
         await db_usu.save(); // Salva a alteração no banco de dados
         const token = jwt.sign({ id: db_usu.id }, 'JANX7AWB12BAKX');
-            res.cookie('token', token, { httpOnly: true, secure: true });
-            req.session.user = db_usu; // Armazena o usuário na sessão
-            req.flash("success_msg", `Seja bem-vindo(a), ${db_usu.nm_usuario}`)
+        res.cookie('token', token, { httpOnly: true, secure: true });
+        req.session.user = db_usu; // Armazena o usuário na sessão
+        req.flash("success_msg", `Seja bem-vindo(a), ${db_usu.nm_usuario}`)
         try {
           const decoded_tk = jwt.verify(token, 'JANX7AWB12BAKX');
           console.log(decoded_tk);
-        } catch(err) {
+        } catch (err) {
           console.log('O token é inválido ou expirou');
         }
         return res.redirect('/index');
       }
       else {
         req.flash('error_msg', 'Senha/Email inválida')
-          return res.redirect('/')
+        return res.redirect('/')
       }
     } else {
       req.flash('error_msg', 'Usuario não encontrado')
-        return res.redirect('/')
+      return res.redirect('/')
     }
   } catch (error) {
     console.log(error);
     req.flash('error.msg', 'Senha/Email inválida')
-      return res.redirect('/')
+    return res.redirect('/')
   }
 };
 

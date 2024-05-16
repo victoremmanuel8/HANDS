@@ -3,7 +3,7 @@ const mysql = require("mysql2");
 const db = require('../../app.js');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const {tb_profissional} = require('../models/prof_model.js')
+const { tb_profissional } = require('../models/prof_model.js')
 
 //exportando os registros no route auth.js
 exports.register = async (req, res) => {
@@ -25,7 +25,7 @@ exports.register = async (req, res) => {
 
   // Inserção do profissional ao banco de dados
   try {
-    const Add_prof= await tb_profissional.create({
+    const Add_prof = await tb_profissional.create({
       nm_prof: nome,
       nm_sobrenome: sobrenome,
       ds_email: email,

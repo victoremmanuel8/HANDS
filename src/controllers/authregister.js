@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const smtpconfig = require("../config/smtpConfig.js");
 const nodemailer = require("nodemailer");
-const {tb_usuario} = require('../models/usu_model.js')
+const { tb_usuario } = require('../models/usu_model.js')
 
 //exportando os registros no route auth.js
 exports.register = async (req, res) => {
@@ -14,33 +14,33 @@ exports.register = async (req, res) => {
   //declarando as variaveis presentes no forms de cadastro usuario 
   const { nome, sobrenome, email, senha, Confir_Senha, dt_nascimento } = req.body;
 
-    //sessão para armazenar os dados
-    req.session.formData = req.body;
+  //sessão para armazenar os dados
+  req.session.formData = req.body;
 
-    //Validação do campo da senha
+  //Validação do campo da senha
   // const senha_Segura = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\-_=+\\|[\]{};:'",.<>/?]).{8,}$/;
 
   // Verificação do email
-  const Exist_usuario= await tb_usuario.findOne({ where: { ds_email: email}});
-  if (Exist_usuario) {  
-      req.flash('error_msg', 'Email já em uso'); 
-      return res.redirect('/cadastro')
-  }else if (/\d/.test(nome)) {
+  const Exist_usuario = await tb_usuario.findOne({ where: { ds_email: email } });
+  if (Exist_usuario) {
+    req.flash('error_msg', 'Email já em uso');
+    return res.redirect('/cadastro')
+  } else if (/\d/.test(nome)) {
     req.flash('error_msg', 'O nome não deve conter números');
     return res.redirect('/cadastro');
-  }else if (/\d/.test(sobrenome)) {
+  } else if (/\d/.test(sobrenome)) {
     req.flash('error_msg', 'O sobrenome não deve conter números');
     return res.redirect('/cadastro');
   } else if (senha.length < 8) {
-    req.flash('error_msg', 'Senha minimo 8 caractéres'); 
+    req.flash('error_msg', 'Senha minimo 8 caractéres');
     return res.redirect('/cadastro')
-  // // } else if (!senha_Segura.test(senha)) {
-  // //   req.flash('error_msg', 'Senha não atende aos requisitos de segurança');
-  //   return res.redirect('/cadastro')
-    } else if (senha !== Confir_Senha) {
-      req.flash('error_msg', 'As senhas não correspondem');
-      return res.redirect('/cadastro')
-    }
+    // // } else if (!senha_Segura.test(senha)) {
+    // //   req.flash('error_msg', 'Senha não atende aos requisitos de segurança');
+    //   return res.redirect('/cadastro')
+  } else if (senha !== Confir_Senha) {
+    req.flash('error_msg', 'As senhas não correspondem');
+    return res.redirect('/cadastro')
+  }
 
 
   // Criptografia da senha

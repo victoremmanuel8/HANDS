@@ -5,11 +5,11 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const smtpconfig = require("../config/smtpConfig.js");
 const nodemailer = require("nodemailer");
-const {tb_usuario} = require('../models/usu_model.js')
+const { tb_usuario } = require('../models/usu_model.js')
 
 exports.pass = async (req, res) => {
 
-  const {Atual_Pass, New_Pass, Confir_Pass } = req.body;
+  const { Atual_Pass, New_Pass, Confir_Pass } = req.body;
 
   try {
     // Verifique se o usuário está logado
@@ -19,7 +19,7 @@ exports.pass = async (req, res) => {
     }
 
     // Usuario da sessão
-    const db_usu = await tb_usuario.findOne({ where: { id_usuario: req.session.user.id_usuario }});
+    const db_usu = await tb_usuario.findOne({ where: { id_usuario: req.session.user.id_usuario } });
     if (!db_usu) {
       // req.flash('error_msg', 'Usuário não encontrado');
       return res.redirect('/perfil');
@@ -32,17 +32,17 @@ exports.pass = async (req, res) => {
     if (New_Pass.length < 8) {
       req.flash('success_msg', 'A nova senha deve ter pelo menos 8 caracteres.');
       return res.redirect('/perfil');
-  }
-  if (Confir_Pass.length < 8) {
-    req.flash('success_msg', 'A nova senha deve ter pelo menos 8 caracteres.');
+    }
+    if (Confir_Pass.length < 8) {
+      req.flash('success_msg', 'A nova senha deve ter pelo menos 8 caracteres.');
       return res.redirect('/perfil');
-  }
-    
+    }
+
     if (New_Pass !== Confir_Pass) {
       req.flash('success_msg', 'Senha não corresponde');
       return res.redirect('/perfil');
     }
-    
+
     // Criptografe a nova senha
     const hashedPassword = await bcrypt.hash(New_Pass, 8);
     console.log(hashedPassword);
@@ -55,7 +55,7 @@ exports.pass = async (req, res) => {
         id_usuario: req.session.user.id_usuario
       }
     });
-    
+
     console.log('Senha atualizada com sucesso');
     req.flash('success_msg', 'Senha atualizada com sucesso');
     return res.redirect('/index');

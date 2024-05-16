@@ -12,8 +12,8 @@ const Swiper = require('swiper/js/swiper.js').default;
 const axios = require('axios'); //vê a utlidade futuramente
 const fetch = require('fetch')
 const { connSequelize, nmDB } = require('./src/config/bdConnection.js');
-dotenv.config({path: './.env'});
-const appBack = express()  
+dotenv.config({ path: './.env' });
+const appBack = express()
 const app = express();
 // const { Query } = require('./Querys/QuerySelects.js');
 const UsuarioRoutes = require('./src/routes/pages.js')
@@ -25,10 +25,10 @@ const morgan = require("morgan")
 const mongoose = require("mongoose");
 //const video = require ('./src/assets/index.js')
 
-mongoose.connect( process.env.MONGO_URL, {
+mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  });
+});
 
 //Sessão
 app.use(session({
@@ -39,7 +39,7 @@ app.use(session({
 }))
 
 //Limpar Cache da navegação
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private');
   next();
 });
@@ -48,13 +48,13 @@ app.use(function(req, res, next) {
 app.use(flash())
 //middleware
 app.use((req, res, next) => {
-    res.locals.success_msg = req.flash("success_msg")
-    res.locals.error_msg = req.flash("error_msg")
-    next()
+  res.locals.success_msg = req.flash("success_msg")
+  res.locals.error_msg = req.flash("error_msg")
+  next()
 })
 
 app.use(morgan('dev'))
-app.use('/files', express.static(path.resolve(__dirname, './tmp/uploads' )));
+app.use('/files', express.static(path.resolve(__dirname, './tmp/uploads')));
 
 app.use(cookieParser());
 
@@ -64,15 +64,15 @@ app.use((req, res, next) => {
 });
 
 //mexendo com partials de eq
-hbs.registerHelper('eq', function(a, b) {
+hbs.registerHelper('eq', function (a, b) {
   return a === b;
 });
 
 app.set('views', path.join(__dirname, 'src/views'));
 
-const scripthbsDirectory = path.join(__dirname, 'src/script'); 
-app.use(express.static(scripthbsDirectory)); 
- 
+const scripthbsDirectory = path.join(__dirname, 'src/script');
+app.use(express.static(scripthbsDirectory));
+
 //criada para acessar a pasta public e acessar seu diretório CSS
 const publicDirectory = path.join(__dirname, 'src/public'); //views // ./public
 app.use(express.static(publicDirectory));
@@ -115,18 +115,18 @@ app.use(express.json());
 
 app.set('view engine', 'hbs'),
 
- // Conexão com o Sequelize
-connSequelize.sync()
+  // Conexão com o Sequelize
+  connSequelize.sync()
 connSequelize.authenticate().then(() => {
-    console.log(`Conexao bem sucedida do Sequelize com o MySQL de nome ${nmDB}`)
+  console.log(`Conexao bem sucedida do Sequelize com o MySQL de nome ${nmDB}`)
 }).catch(erroConn => {
-    console.error(`Incapaz de conectar-se ao banco MySQL de nome ${nmDB}`, erroConn)
+  console.error(`Incapaz de conectar-se ao banco MySQL de nome ${nmDB}`, erroConn)
 })
 
-  //rotas da consulta 
-  appBack.use(express.json())
+//rotas da consulta 
+appBack.use(express.json())
 
-  appBack.get('/usuario', (req, resp) => {
+appBack.get('/usuario', (req, resp) => {
 })
 
 appBack.put('/atualizar', (req, resp) => {
@@ -140,17 +140,17 @@ appBack.delete('/delete', (req, resp) => {
 appBack.use('/prof', UsuarioRoutes)
 
 
-  //Definir as rotas (Routes)
-  app.use('/', require('./src/routes/pages.js'));
-  app.use('/auth', require('./src/routes/auth.js'));
-  
-  //middleware
-  // app.use('/' , require('./src/middleware/auth.js'))
-  // app.use('/' , require('./src/middleware/index.js'))
+//Definir as rotas (Routes)
+app.use('/', require('./src/routes/pages.js'));
+app.use('/auth', require('./src/routes/auth.js'));
 
-  app.listen(5000, async () => {
-    console.log("Server startado na porta 5000");
-  
-  });
+//middleware
+// app.use('/' , require('./src/middleware/auth.js'))
+// app.use('/' , require('./src/middleware/index.js'))
+
+app.listen(5000, async () => {
+  console.log("Server startado na porta 5000");
+
+});
 
 
