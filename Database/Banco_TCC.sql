@@ -1,4 +1,3 @@
-
 create database hands_db;
 
 use hands_db;
@@ -13,7 +12,8 @@ nr_senha VARCHAR(100),
 dt_nascimento DATE,
 nr_idade INT,
 nm_nivel ENUM('Basico', 'Intermediario', 'Avancado'),
-sg_sexo ENUM ('M', 'F')
+sg_sexo ENUM ('M', 'F'),
+sessionTime time
 );
           
 create table tb_profissional (
@@ -42,9 +42,13 @@ CREATE TABLE tb_aula (
     id_profissional INT,
     dt_publicacao DATE,
     #preco DECIMAL(10, 2), -- Preço da aula
-    publica BOOLEAN DEFAULT true, -- Indica se a aula é pública (gratuita)
      FOREIGN KEY (id_profissional) REFERENCES tb_profissional(id_profissional),
      FOREIGN KEY (id_categoria) REFERENCES tb_categoria(id_categoria)
+);
+
+CREATE TABLE tb_aula_privada (
+id_aula INT PRIMARY KEY, 
+FOREIGN KEY (id_aula) REFERENCES tb_aula(id_aula)
 );
 
 -- Tabela para gerenciar as tarefas dos usuários
@@ -104,8 +108,8 @@ insert into tb_categoria(nm_categoria)values
 ('Dia a dia');
 
 
-INSERT INTO tb_aula (ds_titulo, ds_descricao, ds_conteudo, id_categoria, id_profissional, dt_publicacao, publica)
-VALUES ('Ensino De Libras', 'Aprendendo o Alfabeto', 'Alfabeto do A - Z de maneira clara.', 1, 1, '2024-03-20', true);
+INSERT INTO tb_aula (ds_titulo, ds_descricao, ds_conteudo, id_categoria, id_profissional, dt_publicacao)
+VALUES ('Ensino De Libras', 'Aprendendo o Alfabeto', 'Alfabeto do A - Z de maneira clara.', 1, 1, '2024-03-20');
 
 
 /* INSERT INTO tb_premium (id_usuario, dt_inicio, dt_fim, status)

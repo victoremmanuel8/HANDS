@@ -296,7 +296,7 @@
                 <div class="atividade">
                     <h2 class="titulo-3">atividade</h2>
                     <div class="session-info">
-                    <p>Seu tempo de sessão atual é: <span id="sessionTimeDisplay">{{ formattedSessionTime }}</span></p>
+                    <p><span id="sessionTimeDisplay">{{ formattedSessionTime }}</span></p>
                     <script src="/tempo.js"></script>
                 </div>
             </div>
@@ -333,17 +333,44 @@
         </section>
     </body>
 <script>
-    // Função para atualizar o tempo de sessão a cada segundo
-    setInterval(() => {
-      const sessionTimeElement = document.getElementById('sessionTime');
-      if (sessionTimeElement) {
-        fetch('/api/sessionTime') // Endpoint para obter o tempo de sessão do usuário
-          .then(response => response.json())
-          .then(data => {
-            sessionTimeElement.innerText = data.sessionTime;
-          })
-          .catch(error => console.error('Erro ao obter o tempo de sessão:', error));
-      }
-    }, 1000); // Atualizar a cada segundo
-  </script>
+    // Função para atualizar o tempo de sessão
+    function atualizarTempoSessao() {
+        // Obtém o elemento onde o tempo de sessão é exibido
+        var sessionTimeDisplay = document.getElementById("sessionTimeDisplay");
+
+        // Obtém o tempo de sessão atual do elemento
+        var formattedSessionTime = sessionTimeDisplay.textContent;
+
+        // Divide o tempo de sessão em horas, minutos e segundos
+        var tempo = formattedSessionTime.split(":");
+        var horas = parseInt(tempo[0]);
+        var minutos = parseInt(tempo[1]);
+        var segundos = parseInt(tempo[2]);
+
+        // Incrementa o tempo de sessão em 1 segundo
+        segundos++;
+        if (segundos >= 60) {
+            segundos = 0;
+            minutos++;
+            if (minutos >= 60) {
+                minutos = 0;
+                horas++;
+            }
+        }
+
+        // Formata o novo tempo de sessão
+        formattedSessionTime = pad(horas) + ":" + pad(minutos) + ":" + pad(segundos);
+
+        // Atualiza o valor do cronômetro na página
+        sessionTimeDisplay.textContent = formattedSessionTime;
+    }
+
+    // Função para adicionar um zero à esquerda se o número for menor que 10
+    function pad(numero) {
+        return numero < 10 ? "0" + numero : numero;
+    }
+
+    // Atualiza o tempo de sessão a cada segundo
+    setInterval(atualizarTempoSessao, 1000);
+</script>
 </html>
