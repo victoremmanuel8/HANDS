@@ -45,13 +45,13 @@ function finish() {
   contentFinish.style.display = "flex";
 
   if (questionsCorrect === questions.length) {
-    fetch('/auth/atividades', {
-      method: 'PUT',
+    fetch("/auth/atividades", {
+      method: "PUT",
     })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch((error) => console.error('Error:', error));
-}
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error("Error:", error));
+  }
 }
 
 function finishWithSuccess() {
@@ -59,13 +59,13 @@ function finishWithSuccess() {
   content.style.display = "none";
   successGif.style.display = "block";
   if (questionsCorrect === questions.length) {
-    fetch('/auth/atividades', {
-      method: 'PUT',
-    })
-  setTimeout(() => {
-    successGif.style.display = "none";
-    contentFinish.style.display = "flex";
-  }, 2000); // 2 segundos
+    fetch("/auth/atividades", {
+      method: "PUT",
+    });
+    setTimeout(() => {
+      successGif.style.display = "none";
+      contentFinish.style.display = "flex";
+    }, 2000); // 2 segundos
   }
 }
 

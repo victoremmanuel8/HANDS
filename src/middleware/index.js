@@ -1,1 +1,0 @@
-//reservado para o cadastro do google

@@ -1,27 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/login.css">
+  <title>Perfil</title>
 </head>
+  <script>
+          setTimeout(function () {
+        document.getElementById("success").style.transitionDuration = ".3s"; 
+              setTimeout(function () {
+        document.getElementById("success").style.opacity = "0"; // Define a opacidade como 0
+                  setTimeout(function () {
+        document.getElementById("success").style.display = "none"; 
+                  }, 300)
+                        }, 500); // 500 milissegundos para a transição
+                             }, 2000);
+</script>
+        <script>
+          setTimeout(function () {
+        document.getElementById("erro").style.transitionDuration = ".3s"; 
+              setTimeout(function () {
+        document.getElementById("erro").style.opacity = "0"; // Define a opacidade como 0
+                  setTimeout(function () {
+        document.getElementById("erro").style.display = "none"; 
+                  }, 300)
+                        }, 500); // 500 milissegundos para a transição
+                             }, 2000);
+</script>
 <body>
-    <form action="/profile" method="POST" enctype="multipart/form-data">
-                    <input id="escolha" type="file" name="file" accept="image/*">
-                        <button type="submit">Troca de Perfil</button>
-                    </form>
-                      {{#if file.length}}
-                    <ul>
-                        {{#each file}}
-                            <li>
-                                {{#if image}} 
-                                    <img src="{{ url }}" alt="{{ name }}" height="150px" width="280px">
-                                {{/if}}
-                            </li>
-                        {{/each}}
-                    </ul>
-                {{else}}
-                    <p>Nenhum vídeo ou imagem encontrado nesta categoria 😔</p>
-                {{/if}}        
+  <div class="alert-text">
+            {{#if success_msg}}
+                <div id='success'class="alert alert-success">{{success_msg}}</div>
+            {{/if}}
+            {{#if error_msg}}
+                <div id="erro" class="alert alert-danger">{{error_msg}}</div>
+            {{/if}}
+        </div>
+  <h2>Perfil do Usuário</h2>
+  <form action="/profile" method="post" enctype="multipart/form-data">
+    <input type="file" name="profileImage" accept="image/*"required>
+    <button type="submit">Atualizar Foto</button>
+    </form><br><br>
+    <form action="/profile-delete" method="post">
+    <button type="submit">Excluir foto</button>
+  </form>
 </body>
 </html>

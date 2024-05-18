@@ -1,46 +1,99 @@
-const express = require('express');
+const express = require("express");
 const req = require("../../node_modules/req/node_modules/mime");
 const router = express.Router();
-const authControllerregister = require('../controllers/authregister');
-const authControllerlogin = require('../controllers/authlogin');
-const authControllerprof = require('../controllers/authregister_prof');
-const authControllerlogprof = require('../controllers/authlogin_prof');
-const authControllerPassword = require('../controllers/authPassword');
-const authControllerUpgrade = require('../controllers/authUpdate_nv');
-const authControllerDelete = require('../controllers/authDelete');
-const authControllerEdit = require('../controllers/authEdit');
-const authControllerFoto = require('../controllers/authControllerFoto');
+const authControllerregister = require("../controllers/authregister");
+const authControllerlogin = require("../controllers/authlogin");
+const authControllerprof = require("../controllers/authregister_prof");
+const authControllerlogprof = require("../controllers/authlogin_prof");
+const authControllerPassword = require("../controllers/authPassword");
+const authControllerUpgrade = require("../controllers/authUpdate_nv");
+const authControllerDelete = require("../controllers/authDelete");
+const authControllerEdit = require("../controllers/authEdit");
+// const uploadMiddleware = require("../../middleware/photo_multer");
+// const fotoPerfilController = require('../controllers/authControllerFoto');
 //aqui a função get e render vai pegar a url e renderizar ela no site
 
 //                 'auth/foto'
 // router.post('/foto', authControllerFoto.profile);
 
-'auth/edit'
+// router.post('/upload/imgPerfil',
+//     _multer_ProfImgUpload.single('image'),
+//     fotoPerfilController.uploadFotoPerfil
+// )
+
+("auth/edit");
 router.post("/#", authControllerEdit.edit);
 
-'auth/delete'
+("auth/delete");
 router.post("/delete", authControllerDelete.delete);
 
-'auth/atividades'
-router.put('/atividades', authControllerUpgrade.update_nv);
+("auth/atividades");
+router.put("/atividades", authControllerUpgrade.update_nv);
 
-'auth/muda_senha'
-router.post('/perfil', authControllerPassword.pass)
+("auth/muda_senha");
+router.post("/perfil", authControllerPassword.pass);
 
-'auth/cadastro_prof'
-router.post("/cadastro_prof", authControllerprof.register)
+("auth/cadastro_prof");
+router.post("/cadastro_prof", authControllerprof.register);
 
-'authlogin/login_prof'
-router.post("/login_prof", authControllerlogprof.login)
+("authlogin/login_prof");
+router.post("/login_prof", authControllerlogprof.login);
 
-'auth/cadastro'
-router.post("/cadastro", authControllerregister.register)
+("auth/cadastro");
+router.post("/cadastro", authControllerregister.register);
 
+// router.post(
+//   "/profile",
+//   uploadMiddleware.single("profileImage"),
+//   async (req, res) => {
+
+//     try {
+//       const profileImagePath = req.file.path;
+//       const userId = req.session.user.id_usuario;
+
+//       const exist_profile = await Profile.findOne({ userId });
+
+//       if (exist_profile) {
+
+//         await promisify(fs.unlink)(
+//           path.resolve(
+//             __dirname,
+//             "..",
+//             "..",
+//             "res",
+//             "photo",
+//             "profile",
+//             "tmp",
+//             exist_profile.key
+//           )
+//         );
+
+//         await Profile.deleteOne({ userId });
+//       }
+
+//       const profile = new Profile({
+//         userId,
+//         name: req.file.originalname,
+//         size: req.file.size,
+//         key: req.file.filename,
+//         url: `http://localhost:5000/image/${req.file.filename}`,
+//       });
+
+//       await profile.save();
+
+//       req.flash("success_msg", "Imagem alterada com sucesso")
+//       res.redirect("/profile")
+//     } catch (error) {
+//       req.flash("error_msg", "Imagem não alterada")
+//       return res.redirect("/profile")
+//     }
+//   }
+// );
 
 //validações do login
-'auth/login'
-router.post("/login", authControllerlogin.login)
-//     const { email, senha} = req.body; 
+("auth/login");
+router.post("/login", authControllerlogin.login);
+//     const { email, senha} = req.body;
 
 //     const erros = [];
 
@@ -63,7 +116,7 @@ router.post("/login", authControllerlogin.login)
 
 //   'auth/cadastro'
 //   router.post("/cadastro", (req, res) => {
-//       const { senha, Confir_Senha, step} = req.body; 
+//       const { senha, Confir_Senha, step} = req.body;
 
 //       const erros = [];
 

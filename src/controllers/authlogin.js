@@ -1,11 +1,11 @@
 //conexão com o banco de dados
-const express = require('express')
+const express = require("express");
 const mysql = require("mysql2");
-const db = require('../../app.js');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
-const moment = require('moment')
-const { tb_usuario } = require('../models/usu_model.js');
+const db = require("../../app.js");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+const moment = require("moment");
+const { tb_usuario } = require("../models/usu_model.js");
 
 //exportando os registros no route auth.js
 exports.login = async (req, res) => {
@@ -27,36 +27,33 @@ exports.login = async (req, res) => {
 
       if (compare) {
         // Calcula a idade do usuário
-        const idade = moment().diff(db_usu.dt_nascimento, 'years');
+        const idade = moment().diff(db_usu.dt_nascimento, "years");
         db_usu.nr_idade = idade; // Atribui a idade calculada ao campo nr_idade
         await db_usu.save(); // Salva a alteração no banco de dados
-        const token = jwt.sign({ id: db_usu.id }, 'JANX7AWB12BAKX');
-        res.cookie('token', token, { httpOnly: true, secure: true });
+        const token = jwt.sign({ id: db_usu.id }, "JANX7AWB12BAKX");
+        res.cookie("token", token, { httpOnly: true, secure: true });
         req.session.user = db_usu; // Armazena o usuário na sessão
-        req.flash("success_msg", `Seja bem-vindo(a), ${db_usu.nm_usuario}`)
+        req.flash("success_msg", `Seja bem-vindo(a), ${db_usu.nm_usuario}`);
         try {
-          const decoded_tk = jwt.verify(token, 'JANX7AWB12BAKX');
+          const decoded_tk = jwt.verify(token, "JANX7AWB12BAKX");
           console.log(decoded_tk);
         } catch (err) {
-          console.log('O token é inválido ou expirou');
+          console.log("O token é inválido ou expirou");
         }
-        return res.redirect('/index');
-      }
-      else {
-        req.flash('error_msg', 'Senha/Email inválida')
-        return res.redirect('/')
+        return res.redirect("/index");
+      } else {
+        req.flash("error_msg", "Senha/Email inválida");
+        return res.redirect("/");
       }
     } else {
-      req.flash('error_msg', 'Usuario não encontrado')
-      return res.redirect('/')
+      req.flash("error_msg", "Usuario não encontrado");
+      return res.redirect("/");
     }
   } catch (error) {
     console.log(error);
-    req.flash('error.msg', 'Senha/Email inválida')
-    return res.redirect('/')
+    req.flash("error.msg", "Senha/Email inválida");
+    return res.redirect("/");
   }
 };
-
-
 
 //analisar o exports

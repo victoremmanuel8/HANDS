@@ -1,18 +1,19 @@
 //conexão com o banco de dados
 const mysql = require("mysql2");
-const db = require('../../app.js');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
+const db = require("../../app.js");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 const smtpconfig = require("../config/smtpConfig.js");
 const nodemailer = require("nodemailer");
-const { tb_usuario } = require('../models/usu_model.js')
+const { tb_usuario } = require("../models/usu_model.js");
 
 //exportando os registros no route auth.js
 exports.register = async (req, res) => {
   console.log(req.body);
 
-  //declarando as variaveis presentes no forms de cadastro usuario 
-  const { nome, sobrenome, email, senha, Confir_Senha, dt_nascimento } = req.body;
+  //declarando as variaveis presentes no forms de cadastro usuario
+  const { nome, sobrenome, email, senha, Confir_Senha, dt_nascimento } =
+    req.body;
 
   //sessão para armazenar os dados
   req.session.formData = req.body;
@@ -21,32 +22,32 @@ exports.register = async (req, res) => {
   // const senha_Segura = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\-_=+\\|[\]{};:'",.<>/?]).{8,}$/;
 
   // Verificação do email
-  const Exist_usuario = await tb_usuario.findOne({ where: { ds_email: email } });
+  const Exist_usuario = await tb_usuario.findOne({
+    where: { ds_email: email },
+  });
   if (Exist_usuario) {
-    req.flash('error_msg', 'Email já em uso');
-    return res.redirect('/cadastro')
+    req.flash("error_msg", "Email já em uso");
+    return res.redirect("/cadastro");
   } else if (/\d/.test(nome)) {
-    req.flash('error_msg', 'O nome não deve conter números');
-    return res.redirect('/cadastro');
+    req.flash("error_msg", "O nome não deve conter números");
+    return res.redirect("/cadastro");
   } else if (/\d/.test(sobrenome)) {
-    req.flash('error_msg', 'O sobrenome não deve conter números');
-    return res.redirect('/cadastro');
+    req.flash("error_msg", "O sobrenome não deve conter números");
+    return res.redirect("/cadastro");
   } else if (senha.length < 8) {
-    req.flash('error_msg', 'Senha minimo 8 caractéres');
-    return res.redirect('/cadastro')
+    req.flash("error_msg", "Senha minimo 8 caractéres");
+    return res.redirect("/cadastro");
     // // } else if (!senha_Segura.test(senha)) {
     // //   req.flash('error_msg', 'Senha não atende aos requisitos de segurança');
     //   return res.redirect('/cadastro')
   } else if (senha !== Confir_Senha) {
-    req.flash('error_msg', 'As senhas não correspondem');
-    return res.redirect('/cadastro')
+    req.flash("error_msg", "As senhas não correspondem");
+    return res.redirect("/cadastro");
   }
-
 
   // Criptografia da senha
   const hashedPassword = await bcrypt.hash(senha, 8);
   console.log(hashedPassword);
-
 
   // Inserção do usuário ao banco de dados
   try {
@@ -55,7 +56,7 @@ exports.register = async (req, res) => {
       nm_sobrenome: sobrenome,
       ds_email: email,
       nr_senha: hashedPassword,
-      dt_nascimento: dt_nascimento
+      dt_nascimento: dt_nascimento,
     });
 
     const htmlContent = `
@@ -106,8 +107,8 @@ exports.register = async (req, res) => {
     sendmail();
 
     console.log(Add_usuario);
-    req.flash('success_msg', "Usuário cadastrado com sucesso")
-    return res.redirect('/');
+    req.flash("success_msg", "Usuário cadastrado com sucesso");
+    return res.redirect("/");
   } catch (error) {
     console.log(error);
     return res.status(500).send("Erro ao cadastrar usuário");
