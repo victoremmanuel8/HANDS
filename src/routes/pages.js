@@ -204,10 +204,10 @@ router.post(
       await profile.save();
 
       req.flash("success_msg", "Imagem alterada com sucesso");
-      res.redirect("/profile");
+      res.redirect("/perfil");
     } catch (error) {
       req.flash("error_msg", "Imagem não alterada");
-      return res.redirect("/profile");
+      return res.redirect("/perfil");
     }
   }
 );
@@ -220,7 +220,7 @@ router.post("/profile-delete", async (req, res) => {
 
     if (!exist_profile) {
       req.flash("Foto de usuario não encontrada");
-      return res.redirect("/profile");
+      return res.redirect("/perfil");
     }
 
     await promisify(fs.unlink)(
@@ -239,10 +239,10 @@ router.post("/profile-delete", async (req, res) => {
     await Profile.deleteOne({ userId });
 
     req.flash("success_msg", "Perfil deletado com sucesso");
-    return res.redirect("/profile");
+    return res.redirect("/perfil");
   } catch (error) {
     req.flash("error_msg", "Perfil deletado com sucesso");
-    return res.redirect("/profile");
+    return res.redirect("/perfil");
   }
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -437,6 +437,10 @@ router.get("/categoria", checkAuthenticated, (req, res) => {
 
 router.get("/profile", checkAuthenticated, (req, res) => {
   res.render("profile");
+});
+
+router.get("/profilePerfil", checkAuthenticated, (req, res) => {
+  res.render("profilePerfil");
 });
 
 // Rota para servir os vídeos e demonstrar (para fins de teste. Não vai ser utilizado)

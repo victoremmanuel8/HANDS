@@ -30,7 +30,7 @@ const tb_usuario = connSequelize.define(
     },
     nm_nivel: {
       type: DataTypes.ENUM("Basico", "Intermediario", "Avancado"),
-      defaultValue: "Avancado",
+      defaultValue: "Basico",
     },
     sessionTime: {
       type: DataTypes.TIME,

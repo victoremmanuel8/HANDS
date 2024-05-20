@@ -404,3 +404,10 @@ ul a svg .s{
   overflow: auto;
   background-color: rgba(0,0,0,0.5);
 }
+
+.img-perfil-profile img {
+  margin: 20px;
+  border-radius: 100%;
+  width: 70px;
+  height: 70px;
+}

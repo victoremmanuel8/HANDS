@@ -32,19 +32,22 @@
                              }, 2000);
 </script>
 <body class="configuracao">
+    <svg class="line-dash" width="2662" height="2067" viewBox="0 0 1962 1067" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M232.5 29C219.5 10.9753 178.517 9.94968 148.262 10.9753C108.089 12.3371 71.4461 35.4243 46.1768 66.3742C-7.29748 131.87 -3.1579 244.97 32.697 317.231C56.41 365.022 100.045 407.368 152.701 422.111C186.744 431.643 222.656 431.938 257.745 430.824C292.806 429.711 325.064 413.327 356.543 399.097C475.892 345.144 574.872 260.665 676.114 179.802C785.818 92.1816 912.95 35.6842 1051.91 14.0987C1205.4 -9.74515 1372.6 19.2622 1516.8 73.7717C1581.57 98.2579 1643.29 131.067 1694.5 178.323C1741.83 221.995 1773.05 259.782 1811.38 312.957C1867.69 391.083 1917.59 475.536 1939.61 570.39C1958.39 651.303 1964.78 712.293 1939.61 792C1921.66 848.825 1865.89 916.973 1816.31 945.36C1755.62 980.117 1688.95 1001.55 1622.01 1020.65C1531.13 1046.58 1442.36 1060.35 1347.81 1061.25C1296.02 1061.75 1244.02 1060.89 1192.62 1054.19C1187.08 1053.46 1179.37 1054.47 1176.84 1049.42" stroke="#1C83FD" stroke-width="10" stroke-linecap="round" stroke-dasharray="20 20"/>
+    </svg>
   <div class="row-config">
       <div class="opcoes">
         <h2 class="titulo-config">
           Configurações
         </h2>
     <ul>
-          <a>
+        <a href="/profile">
         <button>
             <li>Tema</li>
             <p>Estilize o seu HANDS</p>
         </button>
           </a>
-          <a href="/profilePerfil">
+          <a>
         <button>
             <li>Editar perfil</li>
             <p>Deixe o seu HANDS com a sua cara</p>
@@ -53,9 +56,6 @@
       </ul>
   </div>
   <div class="conteudo">
-    <svg class="line-dash" width="2662" height="2067" viewBox="0 0 1962 1067" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M232.5 29C219.5 10.9753 178.517 9.94968 148.262 10.9753C108.089 12.3371 71.4461 35.4243 46.1768 66.3742C-7.29748 131.87 -3.1579 244.97 32.697 317.231C56.41 365.022 100.045 407.368 152.701 422.111C186.744 431.643 222.656 431.938 257.745 430.824C292.806 429.711 325.064 413.327 356.543 399.097C475.892 345.144 574.872 260.665 676.114 179.802C785.818 92.1816 912.95 35.6842 1051.91 14.0987C1205.4 -9.74515 1372.6 19.2622 1516.8 73.7717C1581.57 98.2579 1643.29 131.067 1694.5 178.323C1741.83 221.995 1773.05 259.782 1811.38 312.957C1867.69 391.083 1917.59 475.536 1939.61 570.39C1958.39 651.303 1964.78 712.293 1939.61 792C1921.66 848.825 1865.89 916.973 1816.31 945.36C1755.62 980.117 1688.95 1001.55 1622.01 1020.65C1531.13 1046.58 1442.36 1060.35 1347.81 1061.25C1296.02 1061.75 1244.02 1060.89 1192.62 1054.19C1187.08 1053.46 1179.37 1054.47 1176.84 1049.42" stroke="#1C83FD" stroke-width="10" stroke-linecap="round" stroke-dasharray="20 20"/>
-    </svg>
     <header>
             <ul>
                 <a href="index">
@@ -83,23 +83,41 @@
                 </a>
             </ul>
     </header>
-    <h2 class="titulo-2">Deixe o seu HANDS no modo escuro</h2>
-        <div class="row-perfil">
-            <label class="switch">
-            <input type="checkbox" id="theme-toggle">
-            <span class="slider"></span>
-            </label>
-        Modo Escuro
+      <div class="alert-text">
+            {{#if success_msg}}
+                <div id='success'class="alert alert-success">{{success_msg}}</div>
+            {{/if}}
+            {{#if error_msg}}
+                <div id="erro" class="alert alert-danger">{{error_msg}}</div>
+            {{/if}}
         </div>
+  <h2>Perfil do Usuário</h2>
+  <div class="row-perfil">
+    <div class="img-perfil-profile">
+            {{#if profile.url}}
+                    <img src="{{profile.url}}"  width="145.269" height="156.839" alt="Foto de perfil de {{user.nm_usuario}}" />
+                {{else}}
+                    <p><img src="a.png" alt="Foto de perfil de {{user.nm_usuario}}"/></p>
+                {{/if}}
+    </div>
+    <div>
+        {{!-- <h2 class="titulo-3">{{user.nm_usuario}} {{user.nm_sobrenome }}</h2> --}}
+        {{!-- <h2 class="titulo-3">{{user.nr_idade}} Anos</h2> --}}
+        <p>NOMEZINHO DO USUARIO</p>
+        <p>QUANDO O USUARINHO NASCEU</p>
+    </div>
+  </div>
+  <div class="row-config">
+    <form action="/profile" method="post" enctype="multipart/form-data">
+    <input type="file" name="profileImage" accept="image/*"required>
+    <button type="submit">Atualizar Foto</button>
+    </form><br><br>
+    <form action="/profile-delete" method="post">
+    <button type="submit">Excluir foto</button>
+  </form>
   </div>
   </div>
   </div>
   <script src="/modal.js"></script>
 </body>
 </html>
-
-
-
-
-
-
