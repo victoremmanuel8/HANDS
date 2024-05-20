@@ -64,6 +64,12 @@ a {
   color: #907a85;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .premium-usuario {
     display: flex;
     align-items: center;
@@ -410,4 +416,14 @@ ul a svg .s{
   border-radius: 100%;
   width: 70px;
   height: 70px;
+}
+
+.row-categorias a {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  background-color: #f5fff5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
