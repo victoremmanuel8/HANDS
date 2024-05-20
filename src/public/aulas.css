@@ -336,12 +336,22 @@ a {
 
 ::-webkit-scrollbar-track {
     background-color: #ffffff;
-  }
-  ::-webkit-scrollbar {
+}
+::-webkit-scrollbar {
     width: 9px;
     padding: 12px;
-  }
-  ::-webkit-scrollbar-thumb {
+}
+::-webkit-scrollbar-thumb {
     background: #34ff85d5;
     border-radius: 10vh;
-  }
+}
+
+.row-categorias {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 25px;
+    justify-content: center;
+    margin-top: 5vh;
+}
+

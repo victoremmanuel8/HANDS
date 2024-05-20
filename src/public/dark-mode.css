@@ -523,3 +523,17 @@ input[type=file] {
   color: #fff;
   margin-left: 15px;
 }
+
+.row-categorias a {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  background-color: #3c6a3c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.row-categorias svg path{
+  fill: #e5e5e5;
+}

@@ -367,7 +367,7 @@ input:checked + .slider:before {
 
 .opcoes button {
   border: none;
-  width: 300px;
+  width: 90%;
   height: 70px;
   border-radius: 15px;
   border: solid 1px #000;
@@ -421,6 +421,7 @@ input:checked + .slider:before {
   color: #77787C;
 }
 
-.opcoes ul a {
-  color: #fff;
+.opcoes ul a button{
+  color: #000000;
+  margin-left: 15px;
 }
