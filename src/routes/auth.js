@@ -22,7 +22,7 @@ const authControllerEdit = require("../controllers/authEdit");
 // )
 
 ("auth/edit");
-router.post("/#", authControllerEdit.edit);
+router.post("/edit", authControllerEdit.edit);
 
 ("auth/delete");
 router.post("/delete", authControllerDelete.delete);

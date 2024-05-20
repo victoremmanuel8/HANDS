@@ -204,10 +204,10 @@ router.post(
       await profile.save();
 
       req.flash("success_msg", "Imagem alterada com sucesso");
-      res.redirect("/perfil");
+      res.redirect("/index");
     } catch (error) {
       req.flash("error_msg", "Imagem não alterada");
-      return res.redirect("/perfil");
+      return res.redirect("/index");
     }
   }
 );
@@ -238,18 +238,21 @@ router.post("/profile-delete", async (req, res) => {
 
     await Profile.deleteOne({ userId });
 
-    req.flash("success_msg", "Perfil deletado com sucesso");
-    return res.redirect("/perfil");
+    req.flash("success_msg", "Foto de perfil  deletado com sucesso");
+    return res.redirect("/index");
   } catch (error) {
-    req.flash("error_msg", "Perfil deletado com sucesso");
-    return res.redirect("/perfil");
+    req.flash("error_msg", "Foto de perfil não deletado");
+    return res.redirect("/index");
   }
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //rota para visualizar os videos/imagens de acordo com a categoria e nivel do usuário
 router.get("/upload/:categoria", async (req, res) => {
+  
   const { categoria } = req.params;
+    const userId = req.session.user.id_usuario; 
+  const profile = await Profile.findOne({ userId: userId });
 
   try {
     // Verifica se o usuário está autenticado
@@ -278,12 +281,13 @@ router.get("/upload/:categoria", async (req, res) => {
     console.log("Nível do usuário:", nv_usu);
 
     // Renderiza o arquivo de modelo com os arquivos permitidos encontrados
-    res.render("categoria", { file: files_permitidos });
+    res.render("categoria", { file: files_permitidos, user: req.session.user,  profile: profile,});
   } catch (error) {
     console.error("Erro ao buscar arquivos:", error);
     res.status(500).send("Erro interno");
   }
 });
+
 
 router.post("/upload/:videoId/visualizado", async (req, res) => {
   const { videoId } = req.params;
@@ -344,23 +348,49 @@ router.get("/login_prof", (req, res) => {
 });
 
 // Rota que requer autenticação
-router.get(
-  "/index",
-  checkAuthenticated,
-  calcul_time,
-  /*verificaAutenticacao,*/ (req, res) => {
-    res.render("index");
-  }
-);
+router.get( "/index", checkAuthenticated, calcul_time, async(req, res) => {
+  try {
+    const userId = req.session.user.id_usuario; 
+    const profile = await Profile.findOne({ userId: userId });
 
-router.get("/kids", checkAuthenticated, (req, res) => {
-  if (req.session.user) {
-    res.render("kids", { user: req.session.user });
+    res.render('index', {
+      user: req.session.user,
+      profile: profile,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Erro ao carregar perfil");
   }
 });
 
-router.get("/profissionais", checkAuthenticated, (req, res) => {
-  res.render("profissionais"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+router.get("/kids", checkAuthenticated, async (req, res) => {
+  try {
+    const userId = req.session.user.id_usuario; 
+    const profile = await Profile.findOne({ userId: userId });
+
+    res.render('kids', {
+      user: req.session.user,
+      profile: profile,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Erro ao carregar perfil");
+  }
+});
+
+router.get("/profissionais", checkAuthenticated, async (req, res) => {
+  try {
+    const userId = req.session.user.id_usuario; 
+    const profile = await Profile.findOne({ userId: userId });
+
+    res.render('profissionais', {
+      user: req.session.user,
+      profile: profile,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Erro ao carregar perfil");
+  }
 });
 
 router.get("/cadastro", (req, res) => {
@@ -381,19 +411,36 @@ router.get("/cadastro_prof", (req, res) => {
   res.render("cadastro_prof"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 });
 
-router.get("/cat-num", checkAuthenticated, (req, res) => {
-  res.render("cat-num"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
-});
+router.get("/cat-num", checkAuthenticated, async(req, res) => {
+  try {
+    const userId = req.session.user.id_usuario; 
+    const profile = await Profile.findOne({ userId: userId });
 
-router.get("/aulas", checkAuthenticated, calcul_time, (req, res) => {
-  if (req.session.user) {
-    res.render("aulas", {
+    res.render('cat-num', {
       user: req.session.user,
-      formattedSessionTime: req.session.formattedSessionTime,
+      profile: profile,
     });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Erro ao carregar perfil");
   }
 });
-//aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+
+router.get("/aulas", checkAuthenticated, calcul_time, async(req, res) => {
+  try {
+    const userId = req.session.user.id_usuario; 
+    const profile = await Profile.findOne({ userId: userId });
+
+    res.render('aulas', {
+      user: req.session.user,
+      profile: profile,
+      formattedSessionTime: req.session.formattedSessionTime,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Erro ao carregar perfil");
+  }
+});
 
 router.get("/header", checkAuthenticated, (req, res) => {
   res.render("header"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
@@ -403,9 +450,21 @@ router.get("/termos-uso", (req, res) => {
   res.render("termos-uso"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 });
 
-router.get("/atividades", checkAuthenticated, (req, res) => {
-  res.render("atividades"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+router.get("/atividades", checkAuthenticated, async(req, res) => {
+  try {
+    const userId = req.session.user.id_usuario; 
+    const profile = await Profile.findOne({ userId: userId });
+
+    res.render('atividades', {
+      user: req.session.user,
+      profile: profile,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Erro ao carregar perfil");
+  }
 });
+
 
 router.get("/pesquisa", (req, res) => {
   res.render("pesquisa"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
@@ -427,21 +486,52 @@ router.get("/perfil", checkAuthenticated, async (req, res) => {
 });
 //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 
-router.get("/upload", checkAuthenticated_Prof, (req, res) => {
-  res.render("upload");
+router.get("/upload", checkAuthenticated_Prof,  async (req, res) => {
+  try {
+    const userId = req.session.user.id_usuario; 
+    const profile = await Profile.findOne({ userId: userId });
+
+    res.render("perfil", {
+      user: req.session.user,
+      profile: profile,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Erro ao carregar perfil");
+  }
 });
 
-router.get("/categoria", checkAuthenticated, (req, res) => {
-  res.render("categoria");
+router.get("/profile", checkAuthenticated, async(req, res) => {
+  try {
+    const userId = req.session.user.id_usuario; 
+    const profile = await Profile.findOne({ userId: userId });
+
+    res.render('profile', {
+      user: req.session.user,
+      profile: profile,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Erro ao carregar perfil");
+  }
 });
 
-router.get("/profile", checkAuthenticated, (req, res) => {
-  res.render("profile");
+
+router.get("/profilePerfil", checkAuthenticated, async(req, res) => {
+  try {
+    const userId = req.session.user.id_usuario; 
+    const profile = await Profile.findOne({ userId: userId });
+
+    res.render('profilePerfil', {
+      user: req.session.user,
+      profile: profile,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Erro ao carregar perfil");
+  }
 });
 
-router.get("/profilePerfil", checkAuthenticated, (req, res) => {
-  res.render("profilePerfil");
-});
 
 // Rota para servir os vídeos e demonstrar (para fins de teste. Não vai ser utilizado)
 router.get("/videos/:filename", (req, res) => {

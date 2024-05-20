@@ -76,6 +76,7 @@ nav ul {
 .atual {
   font-size: 1.16em;
   color: #000;
+  position: relative;
 }
 
 .titulo-1 {
