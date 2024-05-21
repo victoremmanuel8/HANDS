@@ -35,7 +35,7 @@ app.use(
     secret: "hands",
     resave: true,
     saveUninitialized: true,
-    cookie: { maxAge: 240 * 60 * 1000 },
+    cookie: { maxAge: 180 * 60 * 1000 },
   })
 );
 
