@@ -412,10 +412,18 @@ ul a svg .s{
 }
 
 .img-perfil-profile img {
-  margin: 20px;
   border-radius: 100%;
   width: 70px;
   height: 70px;
+}
+
+.img-perfil-profile1 img {
+  border-radius: 100%;
+  position: relative;
+}
+
+.img-perfil-profile1 path {
+  fill: black;
 }
 
 .row-categorias a {

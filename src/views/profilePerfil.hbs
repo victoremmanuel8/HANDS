@@ -91,37 +91,47 @@
                 <div id="erro" class="alert alert-danger">{{error_msg}}</div>
             {{/if}}
         </div>
-  <h2>Perfil do Usuário</h2>
-  <div class="row-perfil">
-    <div class="img-perfil-profile">
+  <h2>Perfil do Usuário</h2> <br><br><br><br>
+  <div class="row-add-del">
+    <div class="form-add-del">
+      <form action="/profile" method="post" enctype="multipart/form-data">
+    <label for="picture__input" class="picture" tabindex="0">
+      <span class="picture__image">
+        <div class="img-perfil-profile1">
             {{#if profile.url}}
                     <img src="{{profile.url}}"  width="145.269" height="156.839" alt="Foto de perfil de {{user.nm_usuario}}" />
                 {{else}}
                     <p><img src="default-profile.png" alt="Foto de perfil de {{user.nm_usuario}}"/></p>
                 {{/if}}
-    </div>
-    <div>
-        <p>{{user.nm_usuario}} {{user.nm_sobrenome }}</p>
-        <p>{{user.nr_idade}} Anos</p>
-    </div>
-  </div>
-  <div class="row-config">
-    <form action="/profile" method="post" enctype="multipart/form-data">
-    <input type="file" name="profileImage" accept="image/*"required>
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                <path fill-rule="" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                </svg>
+      </div>
+      </span>
+    </label>
+
+    <input type="file" name="profileImage" id="picture__input" accept="image/*"required>
     <button type="submit">Atualizar Foto</button>
-    </form><br><br>
+    </form><br>
     <form action="/profile-delete" method="post">
     <button type="submit">Excluir foto</button>
+    </div>
     <br>
     </form>
-  <div class="row-config-1">
+  {{!-- <div class="row-config-1">
     <form action="/auth/edit" method="post">
     <input type="email" name="email" placeholder="email">
     <input type="text" name="nome" placeholder="nome">
     <button type="submit">Atualizar Dados</button>
       </form>
+  </div> --}}
+    <div>
+        <p>{{user.nm_usuario}} {{user.nm_sobrenome }}</p>
+        <p>{{user.nr_idade}} Anos</p>
+    </div>
   </div>
-  </div>
+  <script src="/preview.js"></script>
   </div>
   </div>
   <script src="/modal.js"></script>

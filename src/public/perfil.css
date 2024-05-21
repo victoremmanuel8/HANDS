@@ -425,3 +425,56 @@ input:checked + .slider:before {
   color: #000000;
   margin-left: 15px;
 }
+
+#picture__input {
+  display: none;
+}
+
+.picture {
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 100%;
+  display: flex;
+  color: #000;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: .4s ease-in-out;
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+
+.picture__image {
+  transition: .4s ease-in-out;
+}
+
+.picture__image{
+  transform:  scale(100%);
+}
+
+.img-perfil-profile1 svg {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+form button[type=submit] {
+  width: 120px;
+}
+
+.form-add-del {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.row-add-del {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: center;
+  font-size:larger;
+  font-weight: 600;
+}
