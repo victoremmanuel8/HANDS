@@ -418,11 +418,11 @@ ul a svg .s{
 }
 
 .img-perfil-profile1 img {
-  border-radius: 100%;
+  border-radius: 100vh;
   position: relative;
 }
 
-.img-perfil-profile1 path {
+.picture path {
   fill: black;
 }
 

@@ -8,8 +8,16 @@ inputFile.addEventListener('change', function(e) {
     const file = inputTarget.files[0];
 
     if(file) {
-        pictureImage.innerHTML = 'image selected';
-    } else {
-        alert = "asdasdasdads";
+        const reader = new FileReader();
+        reader.addEventListener('load', function(e) {
+            const readerTarget = e.target;
+            const img = document.createElement('img');
+            img.src = readerTarget.result;
+            img.classList.add('picture__img');
+            pictureImage.innerHTML = ' ';
+
+            pictureImage.appendChild(img);
+        });
+        reader.readAsDataURL(file);
     }
 });

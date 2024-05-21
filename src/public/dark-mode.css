@@ -518,12 +518,18 @@ input[type=file] {
   height: 70px;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .img-perfil-profile1 img {
   border-radius: 100%;
   position: relative;
 }
 
-.img-perfil-profile1 path {
+.picture path {
   fill: white;
 }
 
