@@ -426,6 +426,13 @@ ul a svg .s{
   fill: black;
 }
 
+.picture .borderSvg {
+  width: 36px;
+  height: 36px;
+  background-color: #cacaca;
+  border-radius: 100%;
+}
+
 .row-categorias a {
   width: 80px;
   height: 80px;
@@ -434,4 +441,18 @@ ul a svg .s{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.row-perfil-profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: auto;
+  gap: 40px;
+  font-size: 1.2em;
+  font-weight: 600;
+  backdrop-filter: blur(20px);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: inset 0 0 20px #cacaca;
 }
