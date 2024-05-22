@@ -586,15 +586,3 @@ input[type=file] {
   box-shadow: inset 0 0 20px #5e5e5e;
   width: 800px;
 }
-
-.img-perfil-profile img {
-  filter: invert(100%);
-}
-
-.img-perfil img {
-  filter: invert(100%);
-}
-
-.img-perfil-profile1 {
-  filter: invert(100%);
-}
