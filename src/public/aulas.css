@@ -355,3 +355,19 @@ a {
     margin-top: 5vh;
 }
 
+.questoes {
+    margin: 40px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.questoes a {
+    padding: 20px 30px;
+    border-radius: 10vh;
+    background-color: #34ad71;
+    color: #fff;
+}

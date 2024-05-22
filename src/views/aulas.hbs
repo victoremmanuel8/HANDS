@@ -117,12 +117,6 @@
                 <li><a href="kids">KIDS</a></li>
                 <li><a href="profissionais">Profissionais</a></li>
                 <li><a class="atual" href="aulas">Aulas</a></li>
-                 {{#if (eq user.nm_nivel 'Basico')}}
-                <li><a href="atividades">Atividades</a></li>
-                {{/if}}
-                 {{#if (eq user.nm_nivel 'Intermediario')}}
-                <li><a href="atividades">Atividades</a></li>
-                {{/if}}
                 {{#if (eq user.nm_nivel 'Avancado')}}
                 <li><a href="upload">Upload</a></li>
                 {{/if}}
@@ -132,8 +126,7 @@
                     {{#if profile.url}}
                             <img src="{{profile.url}}"  width="145.269" height="156.839" alt="Foto de perfil de {{user.nm_usuario}}" />
                         {{else}}
-                            <p><img src="default-profile.png" alt="Foto de perfil de {{user.nm_usuario}}"/></p>
-                        {{/if}}
+                            <p><img class="padrão" src="default-profile.png" alt="Foto de perfil de {{user.nm_usuario}}"/></p>                        {{/if}}
                 </div>
                 </a>
             </ul>
@@ -161,7 +154,8 @@
             <ellipse cx="40.9105" cy="41.556" rx="40.9105" ry="41.556" transform="matrix(0.997138 0.0755975 -0.0647442 0.997902 179.475 316.724)" fill="#16B0FF"/>
             </g>
             <g opacity="0.5" filter="url(#filter3_f_328_7)">
-            <ellipse cx="196.965" cy="349.587" rx="22.9653" ry="27.4188" fill="#02F2CA"/>
+            <ellipse cx="196.965" cy="349.587" rx="22.9653" ry="27
+            .4188" fill="#02F2CA"/>
             </g>
             <g opacity="0.5" filter="url(#filter4_f_328_7)">
             <ellipse cx="475.635" cy="153.519" rx="32.6352" ry="36.5187" fill="#BDFCF1"/>
@@ -271,6 +265,19 @@
         </linearGradient>
         </defs>
         </svg>
+        <div class="videoAulasAulas">
+             <div class="questoes">
+                    <p class="titulo-4">Teste o seu conhecimento</p>
+                    <br><br>
+                        {{#if (eq user.nm_nivel 'Basico')}}
+                        <li><a href="atividades">Atividades</a></li>
+                        {{/if}}
+                        {{#if (eq user.nm_nivel 'Intermediario')}}
+                        <li><a href="atividades">Atividades</a></li>
+                        {{/if}}
+                </div>
+        </div>
+        <br><br><br><br>
         <div class="progresso">
             <h2 class="titulo-1">Acompanhe seu <span class="verdeAulas">progresso</span></h2>
             <br><br>
