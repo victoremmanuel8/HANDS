@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             if (password_verify($nr_senha, $row['nr_senha'])) {
                 echo "Acessado!";
                 // Redirecionar o usuário para a página inicial
-                header('Location: /HANDS/HANDS/HANDS/www/index.html');
+                header('Location: /HANDS/www/views/index.html');
                 exit(); 
             } else {
                 echo "Senha incorreta.";

@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($stmt->execute()) {
             $stmt->close();
             $conn->close();
-            header('Location: /HANDS/HANDS/HANDS/www/index.html');
+            header('Location: /HANDS/www/views/index.html');
             exit(); // Importante sair após o redirecionamento
         } else {
             echo "Erro ao inserir registro: " . $conn->error;
