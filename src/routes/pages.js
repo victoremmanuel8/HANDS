@@ -9,6 +9,7 @@ const ControllerUsuario = require("../controllers/consultaback");
 const Post = require("../models/Post");
 const Profile = require("../models/Profile");
 const cl_views = require("../models/View");
+const Theme = require('../models/Theme');
 const { tb_usuario } = require("../models/usu_model");
 const uploadMiddleware = require("../../middleware/photo_multer");
 // const moment = require('moment');
@@ -18,6 +19,7 @@ router.use(express.json());
 //function do middleware (de sessão do usuario)
 function checkAuthenticated(req, res, next) {
   if (req.session.user) {
+    req.session.themeSettings = req.session.themeSettings || {};
     next();
   } else {
     res.redirect("/");
@@ -142,6 +144,44 @@ router.delete("/usuario/:id_usuario", ControllerUsuario.deleteusuarioById);
 router.get("/pesquisa/:nm_usuario", ControllerUsuario.getUsuarioByName);
 
 //rota para visualizar todos os arquivos que estão no mongo DB em json
+
+router.post('/profile/theme', async (req, res) => {
+  try {
+    const userId = req.session.user.id_usuario;
+    const { theme_pref} = req.body;
+
+    let user_theme = await Theme.findOne({ userId });
+    if (!user_theme) {
+      user_theme = new Theme({ userId });
+    }
+
+    user_theme.theme_pref= theme_pref;
+    await user_theme.save();
+
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Erro ao atualizar preferência de tema:', error);
+    res.status(500).json({ error: 'Erro interno ao atualizar preferência de tema' });
+  }
+});
+router.get('/profile/theme', async (req, res) => {
+  try {
+    const userId = req.session.user.id_usuario;
+
+    const user_theme = await Theme.findOne({ userId });
+
+    if (!user_theme) {
+      return res.status(404).json({ error: 'Tema não encontrado' });
+    }
+
+    res.json({ theme_pref: user_theme.theme_pref});
+  } catch (error) {
+    console.error('Erro ao recuperar preferência de tema:', error);
+    res.status(500).json({ error: 'Erro interno ao recuperar preferência de tema' });
+  }
+});
+
+
 router.get("/posts", async (req, res) => {
   const posts = await Post.find();
   return res.json(posts);
