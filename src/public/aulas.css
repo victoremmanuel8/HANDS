@@ -44,6 +44,11 @@ body {
     font-weight: 200;
 }
 
+.titulo-5 {
+    font-size: 45px;
+    font-weight: 600;
+}
+
 section {
     display: flex;
     justify-content: center;
@@ -362,12 +367,52 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 85%;
+    backdrop-filter: blur(200px);
+    border-radius: 10vh;
+    background:radial-gradient( #2A8B5B5c, transparent) ;
+    padding-top: 40px;
+    position: relative;
+    padding-bottom: 40px;
+}
+
+.questoes1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
 }
 
+.questoes1 .titulo-5 {
+    font-size: 65px;
+}
+
+.lizQuestoes {
+    width: 400px;
+    height: 400px;
+    padding: 20px 10px 0px 10px;
+    border-radius: 100%;
+    background-color: #2A8B5B;
+    margin-right: 90px;
+}
+
+.questoes:after {
+    content:"";
+    width: 280px;
+    height: 0px;
+    position: absolute;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-top: 30px solid #fff;
+    top: 3%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .questoes a {
-    padding: 20px 30px;
+    padding: 10px 30px;
     border-radius: 10vh;
-    background-color: #34ad71;
+    font-size: 35px;
+    background-color: #34AD71;
     color: #fff;
 }

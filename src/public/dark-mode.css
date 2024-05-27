@@ -407,6 +407,10 @@ ul a svg:hover {
     background:radial-gradient( #08d4784b, #222) ;
 }
 
+.questoes:after {
+  border-top: 30px solid #222;
+}
+
 /* ATIVIDADES */
 
 main {
