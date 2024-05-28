@@ -1,9 +1,9 @@
 <?php
 $server = "localhost";
 $user = "root";
-$password = "root";
+$password = "27010206";
 $database = "hands_db";
-$port = 3307;
+$port = 3306;
 
 // Criar conexão
 $conn = new mysqli($server, $user, $password, $database, $port);
