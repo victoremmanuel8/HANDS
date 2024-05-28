@@ -8,7 +8,7 @@
     width: 100%;
     height: 40px;
     /* background: linear-gradient(90deg, #ADECFA, #16B0FF); */
-    background-color: #fff3e1;
+    background-color: #EFFFE5;
     margin-bottom: 2.5vh;
     border-radius: 10vh;
     display: flex;
@@ -22,7 +22,7 @@
 }
 
 .icon {
-    background-color: #FFBB5E;
+    background-color: #00BD9E;
     height: 45px;
     width: 45px;
     border-radius: 100vh;
@@ -42,6 +42,29 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.alert.alert-success {
+    color: #000000;
+    background-color: #d7f8dc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+  
+.alert.alert-danger {
+    color: #000000;
+    background-color: #d3503e;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.alert-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
 body h2 {
@@ -104,7 +127,7 @@ main .success-gif {
     height: 70px;
     border: none;
     border-radius: 15px;
-    background-color: #ffb007;
+    background-color: #14b657;
     cursor: pointer;
     color: #fff;
     text-align: center;
@@ -117,7 +140,7 @@ main .success-gif {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #ffb007;
+    background-color: #14b657;
     color: #fff;
 }
 
@@ -128,7 +151,7 @@ main .success-gif {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #ffb007;
+    background-color: #14b657;
     color: #fff;
     text-decoration: none;
 }

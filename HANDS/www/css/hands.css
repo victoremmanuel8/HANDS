@@ -64,7 +64,6 @@ body {
   margin-bottom: 13vh;
   display: flex;
   flex-direction: row;
-  gap: 40px;
   position: relative;
 }
 
@@ -73,16 +72,15 @@ body {
   margin-left: 2vh;
 }
 
-.texto-esqueda {
-  font-size: 1.2em;
-}
-
 .esquerda .liz {
   position: absolute;
   top: -50px;
   right: -2vh;
 }
 
+.texto-esquerda .btn-aula-teste {
+  font-size: 2.7em;
+}
 
 .direita {
   width: 100%;
@@ -130,7 +128,7 @@ body {
 
 .esquerda .btn-aula-teste {
   color: #594A3F;
-  font-size: 0.8em;
+  font-size: 1em;
   padding: 5px 15px;
   border-radius: 10vh;
   background-color: #fff;

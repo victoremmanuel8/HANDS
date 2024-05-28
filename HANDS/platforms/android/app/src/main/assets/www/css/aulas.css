@@ -264,6 +264,34 @@ nav {
     margin-top: 2px;
 }
 
+.atividade {
+    width: 100%;
+    height: 100px;
+    margin-top: 1.5vh;
+    border-radius: 20px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    background-color: #4ae2b4;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.atividade .titulo-1 {
+    font-size: 1.15em;
+    font-weight: 600;
+}
+
+.atividade a {
+    padding: 8px 10px;
+    border-radius: 10vh;
+    background:linear-gradient(90deg, #00BD9E, #2fceb4);
+    color: #ffffff;
+    width: 30%;
+}
+
 .aula video {
     width: 150px;
     border: solid 1px #000;
