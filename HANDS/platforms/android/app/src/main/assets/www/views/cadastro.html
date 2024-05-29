@@ -88,11 +88,11 @@
                     </svg>
                 </header>
                 <div class="cadastro-mobile">
-                    <form action="http://10.67.112.56/HANDS/HANDS/HANDS/server/cadastro.php" method="post">
+                    <form action="https://192.168.1.5/HANDS/server/cadastro.php" method="post">
                             <div class="passo1">
                             <p class="titulo-1">Primeiro <span class="cor">passo</span></p> <br>
-                            <input class="input" type="text" name="nome" id="name" placeholder="Nome" required> 
-                            <input class="input" type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome" required>
+                            <input class="input" type="text" name="nm_nome" id="name" placeholder="Nome" required> 
+                            <input class="input" type="text" name="nm_sobrenome" id="sobrenome" placeholder="Sobrenome" required>
                             <div class="back">
                                 <svg width="434" height="361" viewBox="0 0 434 361" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="50" cy="50" r="50" fill="#16F1FF"/>
@@ -109,7 +109,7 @@
                             <label class="nascimento" for="nascimento">Data de nascimento:</label>
                             <input class="input" type="date" name="dt_nascimento" id="dt_nascimento" placeholder="Data de nascimento" value="{{formData.dt_nascimento}}" required maxlength="10" min="1930-01-01" max="2024-04-29"> 
                             <!-- {{!-- <label for="email">Email:</label> --}} -->
-                            <input class="input" type="email" name="email" id="email" placeholder="E-mail" required>
+                            <input class="input" type="email" name="ds_email" id="email" placeholder="E-mail" required>
                             <div class="back">
                                 <svg width="434" height="361" viewBox="0 0 434 361" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="50" cy="50" r="50" fill="#FF0052"/>
@@ -127,7 +127,7 @@
                             <div id="progress"></div>
                         </div>
                         <div id="confetti"></div>
-                        <input class="input" type="password" name="senha" id="senha" placeholder="Senha" onkeyup="updateProgressBar()" required>
+                        <input class="input" type="password" name="nr_senha" id="senha" placeholder="Senha" onkeyup="updateProgressBar()" required>
                         <!-- {{!-- <label for="confirmarSenha">Confirmar Senha:</label> --}} -->
                         <input class="input" type="password" name="Confir_Senha" id="confirmarSenha" placeholder="Confirmação de senha" required>
                         <div class="back">

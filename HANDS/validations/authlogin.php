@@ -1,6 +1,7 @@
 <?php
 
 include 'connection.php';
+header("Access-Control-Allow-Origin: *"); 
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $ds_email = $_GET['ds_email'] ?? '';

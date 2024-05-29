@@ -56,7 +56,7 @@
 }
 
 .verde {
-    color: #136c41ba;
+    color: #03180eba;
   }
 
 .video-aulas {
@@ -202,7 +202,7 @@ nav {
     left: -15px;
 }
 
-.blur-verde {
+.progresso-1 .blur-verde {
     width: 150px;
     height: 150px;
     border-radius: 100%;
@@ -273,8 +273,21 @@ nav {
     padding-bottom: 14px;
     background-color: #4ae2b4;
     display: flex;
-    flex-direction: column;
     gap: 10px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.atividade .lizQuestoes {
+    padding: 7px 7px 0px 7px;
+    background-color: #1280319c;
+    border-radius: 100%;
+}
+
+.atividade-collun {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -284,12 +297,30 @@ nav {
     font-weight: 600;
 }
 
-.atividade a {
-    padding: 8px 10px;
+.atividade-collun a {
+    padding: 8px 20px;
     border-radius: 10vh;
-    background:linear-gradient(90deg, #00BD9E, #2fceb4);
+    background-color: #00BD9E;
     color: #ffffff;
-    width: 30%;
+}
+
+.atividade .estrela {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    filter: drop-shadow(0 0 20px #19c962);
+}
+
+.atividade .blur-verde-atividade {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    position: absolute;
+    top: 10px;
+    right: -22px;
+    filter: blur(50px);
+    background-color: #05f378c4;
+    z-index: -1;
 }
 
 .aula video {

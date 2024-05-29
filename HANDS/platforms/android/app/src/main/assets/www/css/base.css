@@ -79,6 +79,15 @@ nav ul {
   position: relative;
 }
 
+.titulo {
+  font-size: 2.2em;
+}
+
+.hamburger, .usuario {
+  position: relative;
+  z-index: 99;
+}
+
 .titulo-1 {
   font-size: 1.5em;
   margin-bottom: 10px;
