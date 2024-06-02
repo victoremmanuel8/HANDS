@@ -20,7 +20,7 @@ function drawCircle(progress) {
   var endAngle = startAngle + (progress / 100) * 2 * Math.PI;
   context.beginPath();
   context.arc(centerX, centerY, radius, startAngle, endAngle, false);
-  context.strokeStyle = "#232323";
+  context.strokeStyle = "#444";
   context.lineWidth = 7;
   context.stroke();
 }

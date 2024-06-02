@@ -466,3 +466,11 @@ ul a svg .s{
   border-radius: 19px;
   overflow: hidden;
 }
+
+.liz-azul, .liz-rosa {
+  display: none;
+}
+
+.questoes svg circle {
+  fill: #35af6a;
+}

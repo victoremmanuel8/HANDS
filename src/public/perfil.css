@@ -76,11 +76,11 @@ background-color: #fff;
 }
 
 .line-dash {
-    position: absolute;
-    right: 6vh;
-    top: 260px;
-    z-index: -1;
-    rotate: 10deg;
+  position: absolute;
+  right: 6vh;
+  top: 260px;
+  z-index: -1;
+  rotate: 10deg;
 }
 
 .icon-config {

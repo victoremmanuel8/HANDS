@@ -299,6 +299,10 @@ ul a svg:hover {
     background:radial-gradient( #a38d117e, #222);
 }
 
+.liz-azul {
+  display: none;
+}
+
 .verde {
     background: linear-gradient(45deg, #d47c00, #d47c00);
     -webkit-background-clip: text; 
@@ -409,6 +413,10 @@ ul a svg:hover {
 
 .questoes:after {
   border-top: 30px solid #222;
+}
+
+.questoes svg circle {
+  fill: #35af6a;
 }
 
 /* ATIVIDADES */
