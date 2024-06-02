@@ -370,7 +370,7 @@ input:checked + .slider:before {
   width: 90%;
   height: 70px;
   border-radius: 15px;
-  border: solid 1px #000;
+  background: #4f4f4f24;
   text-align: left;
   padding-left: 20px;
   cursor: pointer;
@@ -386,6 +386,11 @@ input:checked + .slider:before {
   gap: 30px;
   position: relative;
   top: -50px;
+}
+
+.conteudo button {
+  background: transparent;
+  border: none;
 }
 
 .conteudo header {
@@ -496,4 +501,17 @@ form button[type=submit] {
   justify-content: center;
   align-items: center;
   gap: 15px;
+}
+
+.temas {
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.temas button {
+  cursor: pointer;
 }

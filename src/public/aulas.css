@@ -386,7 +386,6 @@ a {
 
 .questoes1 .titulo-5 {
     font-size: 7vh;
-    text-shadow: 0px 4px 7px #6d6d6d;
 }
 
 .lizQuestoes {
@@ -406,7 +405,7 @@ a {
     border-left: 30px solid transparent;
     border-right: 30px solid transparent;
     border-top: 30px solid #fff;
-    top: 3%;
+    top: 2%;
     left: 50%;
     transform: translate(-50%, -50%);
 }

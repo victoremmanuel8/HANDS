@@ -6,9 +6,12 @@
   <title>HANDS</title>
   <link rel="icon" type="image/x-icon" href="/logo.png">
   <link rel="stylesheet" href="/upload.css">
-  <link id="theme-link-dark" rel="stylesheet" href="/dark-mode.css">
   <link id="theme-link-light" rel="stylesheet" href="/base.css">
-<script src="/dark.js"></script>
+  <link id="theme-link-dark" rel="stylesheet" href="/dark-mode.css" disabled>
+  <link id="theme-link-blue" rel="stylesheet" href="/blue-mode.css" disabled>
+  <link id="theme-link-full-black" rel="stylesheet" href="/full-black-mode.css" disabled>
+  <link id="theme-link-pink" rel="stylesheet" href="/pink-mode.css" disabled>
+  <script src="/dark.js"></script>
 </head>
 <body data-anime="stop">
   <header>
@@ -23,7 +26,7 @@
                 <li><a href="profissionais">Profissionais</a></li>
                 <li><a href="aulas">Aulas</a></li>
                 {{#if (eq user.nm_nivel 'Avancado')}}
-                <li><a href="upload">Upload</a></li>
+                <li><a href="upload" class="atual">Upload</a></li>
                 {{/if}}
                 {{!-- <li><a href="/"><span class="login-aulas">Log in</span></a></li> --}}
                 {{!-- <li><a href="cadastro"><span class="sing-aulas">Usuário Premium</span></a></li> --}}

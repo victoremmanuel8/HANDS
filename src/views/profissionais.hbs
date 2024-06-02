@@ -10,8 +10,11 @@
         <link rel="stylesheet" href="/profissionais.css">
         <link rel="icon" type="image/x-icon" href="/logo.png">
         <title>HANDS</title>
-        <link id="theme-link-dark" rel="stylesheet" href="/dark-mode.css">
         <link id="theme-link-light" rel="stylesheet" href="/base.css">
+        <link id="theme-link-dark" rel="stylesheet" href="/dark-mode.css" disabled>
+        <link id="theme-link-blue" rel="stylesheet" href="/blue-mode.css" disabled>
+        <link id="theme-link-full-black" rel="stylesheet" href="/full-black-mode.css" disabled>
+        <link id="theme-link-pink" rel="stylesheet" href="/pink-mode.css" disabled>
         <script src="/dark.js"></script>
     </head>
     <body data-anime="stop">
@@ -26,9 +29,6 @@
                 <li><a href="kids">KIDS</a></li>
                 <li><a  class="atual" href="profissionais">Profissionais</a></li>
                 <li><a href="aulas">Aulas</a></li>
-                {{#if (eq user.nm_nivel 'Avancado')}}
-                <li><a href="upload">Upload</a></li>
-                {{/if}}
                 {{!-- <li><a href="cadastro"><span class="sing-aulas">Usuário Premium</span></a></li> --}}
                 <a href="/perfil">
                  <div class="img-perfil-profile">
@@ -69,8 +69,6 @@
                     </defs>
                 </svg>
             </div>
-        </section>
-        <section class="sec-2">
              <div class="background">
                     {{!-- <div class="C2D9F4"></div>
                     <div class="FFABD5"></div>

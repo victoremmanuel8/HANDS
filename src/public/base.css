@@ -310,7 +310,7 @@ nav hr {
 
 [data-anime] {
   opacity: 0;
-  transition: .3s ease-in-out; 
+  transition: .5s ease-in-out; 
 }
 
 [data-anime="left"] {
@@ -459,4 +459,10 @@ ul a svg .s{
   padding: 20px;
   border-radius: 20px;
   box-shadow: inset 0 0 20px #cacaca;
+}
+
+.temas #theme-toggle-light svg {
+  border: 2px solid #16B0FF;
+  border-radius: 19px;
+  overflow: hidden;
 }

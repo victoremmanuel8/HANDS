@@ -56,15 +56,16 @@ form input, button, select{
     border-radius: 50px;
     border: none !important;
     cursor: pointer;
+    transition: .5s ease;
 }
 
 button {
+    transition: .5s ease-in-out;
     background: linear-gradient(90deg, #e1e1e1, #e1e1e1);
-    transition: 1s ease-in-out;
 }
 
 button:hover {
-    transition: 1s ease-in-out;
+    transition: .5s ease-in-out;
     background: linear-gradient(90deg,#9E1322, #EB291E, #FE713B, #8F7455, 
     #234747, #19242A);
     color: #fff;
@@ -89,37 +90,36 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
+}
   
-  ul {
+ul {
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: space-evenly;
     width: 100%;
-  }
+}
   
-  li {
+li {
     list-style: none;
     /* font-family: kumbh-regular; */ 
     font-size: 2.1vh;
-  }
+}
   
   /* a:hover {
      font-family: kumbh-medium;
   } */
   
-  a {
+a {
     text-decoration: none;
     color: #907a85;
-  }
+}
   
-  .premium-usuario {
-      display: flex;
-      align-items: center;
-  }
+.premium-usuario {
+    display: flex;
+    align-items: center;
+}
   
-  .usuario {
-      padding-left: 10px;
-  }
-  
+.usuario {
+    padding-left: 10px;
+}

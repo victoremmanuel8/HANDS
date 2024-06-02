@@ -531,13 +531,13 @@ router.get("/upload", checkAuthenticated_Prof,  async (req, res) => {
     const userId = req.session.user.id_usuario; 
     const profile = await Profile.findOne({ userId: userId });
 
-    res.render("perfil", {
+    res.render("upload", {
       user: req.session.user,
       profile: profile,
     });
   } catch (err) {
     console.error(err);
-    res.status(500).send("Erro ao carregar perfil");
+    res.status(500).send("Erro ao carregar upload");
   }
 });
 
