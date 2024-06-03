@@ -75,6 +75,14 @@ hbs.registerHelper("eq", function (a, b) {
   return a === b;
 });
 
+hbs.registerHelper("and", function (a, b, options) {
+  if (a && b) {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+});
+
 app.set("views", path.join(__dirname, "src/views"));
 
 const scripthbsDirectory = path.join(__dirname, "src/script");

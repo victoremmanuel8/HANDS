@@ -131,7 +131,23 @@
     <div class="row-perfil-profile">
     <form class="form-trocar-email" action="/auth/edit" method="post">
     <input class="input" type="email" name="email" placeholder="email" required>
-    <input class="input" type="text" name="nome" placeholder="nome" required> <br><br>
+    <button type="submit">Atualizar Dados</button>
+    </form>
+    </div>
+    <h2>Alterar Nome</h2>
+    <div class="row-perfil-profile">
+    <form class="form-trocar-email" action="/auth/edit" method="post">
+    <input class="input" type="text" name="nome" placeholder="nome" required>
+    <button type="submit">Atualizar Dados</button>
+    </form>
+    </div>
+    <h2>Alterar o Estado</h2>
+    <div class="row-perfil-profile">
+    <form class="form-trocar-email" action="/auth/edit" method="post" required>
+    <select  name="estado" id="estado">
+    <option value="SP">SP - São Paulo</option required>
+    <option value="RJ">RJ - Rio de Janeiro</option required>
+      </select>
     <button type="submit">Atualizar Dados</button>
     </form>
     </div>

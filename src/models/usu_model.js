@@ -38,6 +38,9 @@ const tb_usuario = connSequelize.define(
     sg_sexo: {
       type: DataTypes.ENUM("M", "F"),
     },
+      nm_estado: {
+        type: DataTypes.ENUM("SP", "RJ")
+      }
   },
   _padraoTableDBExistente("tb_usuario")
 );

@@ -12,7 +12,7 @@ exports.register = async (req, res) => {
   console.log(req.body);
 
   //declarando as variaveis presentes no forms de cadastro usuario
-  const { nome, sobrenome, email, senha, Confir_Senha, dt_nascimento } =
+  const { nome, sobrenome, email, senha, Confir_Senha, dt_nascimento, nm_estado } =
     req.body;
 
   //sessão para armazenar os dados
@@ -57,6 +57,7 @@ exports.register = async (req, res) => {
       ds_email: email,
       nr_senha: hashedPassword,
       dt_nascimento: dt_nascimento,
+      nm_estado: nm_estado,
     });
 
     const htmlContent = `

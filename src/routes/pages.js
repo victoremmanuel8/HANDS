@@ -505,6 +505,21 @@ router.get("/atividades", checkAuthenticated, async(req, res) => {
   }
 });
 
+router.get("/atividades-rj", checkAuthenticated, async(req, res) => {
+  try {
+    const userId = req.session.user.id_usuario; 
+    const profile = await Profile.findOne({ userId: userId });
+
+    res.render('atividades-rj', {
+      user: req.session.user,
+      profile: profile,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Erro ao carregar perfil");
+  }
+});
+
 
 router.get("/pesquisa", (req, res) => {
   res.render("pesquisa"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
