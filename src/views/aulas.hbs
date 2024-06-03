@@ -212,12 +212,18 @@
                 <div class="questoes1">
                     <p class="titulo-5">Teste o seu <span class="verdeAulas">conhecimento</span></p>
                     <br><br>
-                    {{#if (eq user.nm_nivel 'Basico')}}
+                    {{#and (eq user.nm_nivel 'Basico') (eq user.nm_estado 'SP')}}
                     <li><a href="atividades">Começar</a></li>
-                    {{/if}}
-                    {{#if (eq user.nm_nivel 'Intermediario')}}
+                {{/and}}
+                {{#and (eq user.nm_nivel 'Basico') (eq user.nm_estado 'RJ')}}
+                    <li><a href="atividades-rj">Começar</a></li>
+                {{/and}}
+                 {{#and (eq user.nm_nivel 'Intermedario') (eq user.nm_estado 'SP')}}
                     <li><a href="atividades">Começar</a></li>
-                    {{/if}}
+                {{/and}}
+                {{#and (eq user.nm_nivel 'Intermedario') (eq user.nm_estado 'RJ')}}
+                    <li><a href="atividades-rj">Começar</a></li>
+                {{/and}}
                 </div>
             </div>
         <br><br><br><br>
