@@ -14,22 +14,6 @@
     <script src="/dark.js"></script>
 </head>
     <body data-anime="stop">
-        <style> @font-face{
-            font-family: kumbh-medium;
-            src: url(/KumbhSans-Medium.ttf) format('truetype');
-            } </style>
-        <style> @font-face{
-            font-family: kumbh-light;
-            src: url(/KumbhSans-Light.ttf) format('truetype');;
-            } </style>
-        <style> @font-face{
-                font-family: kumbh-regular;
-                src: url(/KumbhSans-Regular.ttf) format('truetype');;
-            } </style>
-        <style> @font-face{
-                font-family: kumbh-bold;
-                src: url(/KumbhSans-Bold.ttf) format('truetype');;
-             } </style>
         <header>
             <ul>
                 <a href="index">
@@ -246,7 +230,7 @@
                     <h2 class="titulo-3">Nível</h2>
                     <p class="titulo-2">{{user.nm_nivel}}</p>
                 </div>
-                <hr>
+                {{!-- <hr>
                 <div class="porcentagem">
                     <canvas id="progressCircle" width="220" height="220"></canvas>
                     <div class="num-circ">
@@ -256,7 +240,7 @@
                 <script src="js/progresso.js"></script>
                 <script src="/circ.js"></script>
                 </div>
-                <hr>
+                <hr> --}}
                 <div class="atividade">
                     <h2 class="titulo-3">atividade</h2>
                     <div class="session-info">

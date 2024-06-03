@@ -299,7 +299,7 @@ ul a svg:hover {
     background:radial-gradient( #a38d117e, #222);
 }
 
-.liz-azul {
+.liz-azul, .liz-rosa {
   display: none;
 }
 

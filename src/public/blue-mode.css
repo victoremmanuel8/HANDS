@@ -171,6 +171,11 @@ nav hr {
 
 .txt-center {
   text-align: center;
+  color: #fff;
+}
+
+button .txt-center {
+  font-size: 1.2em;
 }
 
 .titulo-2 {
