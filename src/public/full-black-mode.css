@@ -332,6 +332,10 @@ ul a svg:hover {
     transition: .4s ease-in-out;
 }
 
+.liz-azul, .liz-rosa {
+  display: none;
+}
+
 /* KIDS */
 
 .banner1 {

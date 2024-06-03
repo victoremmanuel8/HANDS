@@ -58,7 +58,7 @@ li {
 
 a {
   text-decoration: none;
-  color: #907a85;
+  color: #ffffff;
 }
 
 .premium-usuario {
@@ -126,8 +126,8 @@ nav ul {
 
 .atual {
     font-size: 1.16em;
-    color: #a1a1a1;
-    font-weight: 500;
+    color: #1665c6;
+    font-weight:bolder;
 }
 
 .titulo-1 {
@@ -272,6 +272,10 @@ ul a svg:hover {
   height: 100%;
   overflow: auto;
   background-color: rgba(0,0,0,0.5);
+}
+
+header ul a svg path {
+  fill: #ffffff;
 }
 
 /* HOME */
