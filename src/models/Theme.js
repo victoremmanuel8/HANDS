@@ -8,7 +8,7 @@ const ThemeSchema = new mongoose.Schema({
   },
   theme_pref: {
     type: String,
-    enum: ['light', 'dark'],
+    enum: ['light', 'dark', 'blue', 'full-dark', 'pink'],
     default: 'light'
   }
 });
