@@ -5,7 +5,7 @@ use hands_db;
 #registro de cadastro
 create table tb_usuario (
 id_usuario INT primary key auto_increment,
-nm_usuario VARCHAR (100) not null,
+nm_usuario VARCHAR (100) not null,\
 nm_sobrenome VARCHAR (100) not null,
 ds_email VARCHAR(100) not null UNIQUE,
 nr_senha VARCHAR(100),

@@ -50,13 +50,13 @@
             <p>Estilize o seu HANDS</p>
         </button>
           </a>
-          <a>
+          <a href="/profilePerfil">
         <button>
             <li>Editar perfil</li>
             <p>Deixe o seu HANDS com a sua cara</p>
         </button>
           </a>
-          <a href="/profileSenha">
+          <a>
         <button>
             <li>Segurança</li>
             <p>Mude sua senha</p>
@@ -98,62 +98,40 @@
             {{#if error_msg}}
                 <div id="erro" class="alert alert-danger">{{error_msg}}</div>
             {{/if}}
-        </div>
-  <h2>Alterar foto de usuário</h2>
-        <div class="row-perfil-profile">
-    <label for="picture__input" class="picture" tabindex="0">
-      <span class="picture__image">
-        <div class="img-perfil-profile1">
-            {{#if profile.url}}
-                    <img src="{{profile.url}}"  width="145.269" height="156.839" alt="Foto de perfil de {{user.nm_usuario}}" />
-                {{else}}
-                    <p><img class="padrão" src="default-profile.png" alt="Foto de perfil de {{user.nm_usuario}}"/></p>
-                {{/if}}
-        </div>
-      </span>
-      <div class="borderSvg">
-        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-      <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-      <path fill-rule="" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-      </svg>
       </div>
-    </label>
-     <div>
-        <p>{{user.nm_usuario}} {{user.nm_sobrenome }}</p>
-        <p>{{user.nr_idade}} Anos</p>
-    </div>
-    <div class="row-add-del">
-      <form action="/profile" method="post" enctype="multipart/form-data">
-    <input type="file" name="profileImage" id="picture__input" accept="image/*,image/gif"required>
-    <button type="submit">Atualizar Foto</button>
-    </form><br>
-    <form action="/profile-delete" method="post">
-    <button type="submit">Excluir foto</button>
-    <br>
-    </form>
-    </div>
-      </div>
-    <h2>Alterar Nome</h2>
+    <h2>Alterar E-mail </h2>
     <div class="row-perfil-profile">
     <form class="form-trocar-email" action="/auth/edit" method="post">
-    <input class="input" type="text" name="nome" placeholder="nome" required>
+    <input class="input" type="email" name="email" placeholder="email" required>
     <button type="submit">Atualizar Dados</button>
     </form>
     </div>
-    <h2>Alterar o Estado</h2>
-    <div class="row-perfil-profile">
-    <form class="form-trocar-email" action="/auth/edit" method="post" required>
-    <select class="inputSelect" name="estado" id="estado">
-    <option value="SP">SP - São Paulo</option required>
-    <option value="RJ">RJ - Rio de Janeiro</option required>
-      </select>
-    <button type="submit">Atualizar Dados</button>
-    </form>
-    </div>
+      <div class="alert-text">
+          {{#if success_msg}}
+              <div id='success'class="alert alert-success">{{success_msg}}</div>
+          {{/if}}
+          {{#if error_msg}}
+              <div id="erro" class="alert alert-danger">{{error_msg}}</div>
+          {{/if}}
+      </div>
+      <div class="row-perfil-profile-senha">
+        <form action="/auth/perfil" method="post">
+            <div id="progress-bar">
+              <div id="progress"></div>
+            </div>
+            <p id="class"></p>
+            <label for="senha-atual">Senha Atual:</label>
+            <input class="input" type="password" id="" name="Atual_Pass" required> <br><br>
+            <label for="senha-nova">Nova Senha:</label>
+            <input class="input" type="password" id="senha" name="New_Pass" onkeyup="updateProgressBar()" required> <br><br>
+            <p id="Nigual"></p>
+            <label for="confir_senha">Confirmar Senha:</label>
+            <input class="input" type="password" id="confi" name="Confir_Pass" required> <br><br>
+            <button class="button" type="submit" id= "submit">Mudar</button>
+            <script src="/progressTroca.js"></script>
+        </form>
+      </div>
 </div>
-  </div>
-  <script src="/preview.js"></script>
-  </div>
   </div>
   <script src="/modal.js"></script>
   <script src="/troca-pag.js"></script>

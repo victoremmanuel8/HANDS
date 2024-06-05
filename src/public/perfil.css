@@ -46,6 +46,22 @@ header ul rect {
   font-size: 1.3em;
 }
 
+#progress-bar {
+  width: 300px;
+  height: 20px;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  margin: 20px;
+  position: relative;
+}
+
+#progress {
+  width: 0%;
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.5s ease-in-out;
+}
+
 .row-perfil hr {
   height: 30px;
   border-color: #d48907;
@@ -216,15 +232,6 @@ font-size: 1.3em;
   border: 1px #000 solid;
   color: #000;
 }
-
-.balao3 form input {
-  border-radius: 10vh;
-  padding: 6px 10px;
-  background: #fff;
-  border: 1px #000 solid;
-  color: #000;
-}
-
 
 .config button {
   border: none !important;
@@ -514,4 +521,21 @@ form button[type=submit] {
 
 .temas button {
   cursor: pointer;
+}
+
+.inputSelect {
+  padding: 6px;
+  border-radius: 15px;
+  border: none;
+  margin-top: 10px;
+  margin-left: -10px;
+  width: calc(100% + 10px);
+  color: #000000;
+  cursor: pointer;
+  font-size: 1.1em;  /*tira dps da banca*/
+  transition: .5s ease-in-out;
+}
+
+.inputSelect:hover {
+  border: 1px solid #1C83FD;
 }

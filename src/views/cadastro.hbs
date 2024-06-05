@@ -211,11 +211,13 @@
                                 <input class="input" type="date" name="dt_nascimento" id="dt_nascimento" placeholder="Data de nascimento" value="{{formData.dt_nascimento}}" required maxlength="10" min="1930-01-01" max="2024-04-29"> 
                                 {{!-- <label for="email">Email:</label> --}}
                                 <input class="input" type="email" name="email" id="email" placeholder="E-mail" value="{{formData.email}}"required>
-                                <select  name="nm_estado" id="estado">
-                                    <option value="">Selecione seu Estado</option>
-                                <option value="SP">SP - São Paulo</option required>
-                                <option value="RJ">RJ - Rio de Janeiro</option required>
-                            </select>
+                                <select class="inputSelect"  name="nm_estado" id="estado">
+                                    <div class="op">
+                                        <option value="">Selecione seu Estado</option>
+                                    <option value="SP">SP - São Paulo</option required>
+                                    <option value="RJ">RJ - Rio de Janeiro</option required>
+                                    </div>
+                                </select>
                                 <div class="back">
                                     <svg width="434" height="361" viewBox="0 0 434 361" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="50" cy="50" r="50" fill="#FF0052"/>
@@ -237,7 +239,6 @@
                             <div id="progress-bar">
                                 <div id="progress"></div>
                             </div>
-                            <div id="confetti"></div>
                             <input class="input" type="password" name="senha" id="senha" placeholder="Senha" onkeyup="updateProgressBar()" required>
                             {{!-- <label for="confirmarSenha">Confirmar Senha:</label> --}}
                             <input class="input" type="password" name="Confir_Senha" id="confirmarSenha" placeholder="Confirmação de senha" required>

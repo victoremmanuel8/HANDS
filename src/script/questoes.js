@@ -1,12 +1,12 @@
 export default [
   {
     question: "Qual é esse sinal?",
-    svg: "a.png",
+    svg: "c.png",
     answers: [
-      { option: "B", correct: false },
-      { option: "A", correct: true },
       { option: "E", correct: false },
-      { option: "G", correct: false },
+      { option: "C", correct: true },
+      { option: "R", correct: false },
+      { option: "O", correct: false },
     ],
   },
   {
@@ -17,16 +17,6 @@ export default [
       { option: "B", correct: true },
       { option: "F", correct: false },
       { option: "U", correct: false },
-    ],
-  },
-  {
-    question: "Qual é esse sinal?",
-    svg: "c.png",
-    answers: [
-      { option: "E", correct: false },
-      { option: "C", correct: true },
-      { option: "R", correct: false },
-      { option: "O", correct: false },
     ],
   },
   {
@@ -71,6 +61,16 @@ export default [
   },
   {
     question: "Qual é esse sinal?",
+    svg: "a.png",
+    answers: [
+      { option: "B", correct: false },
+      { option: "A", correct: true },
+      { option: "E", correct: false },
+      { option: "G", correct: false },
+    ],
+  }, 
+  {
+    question: "Qual é esse sinal?",
     svg: "g.png",
     answers: [
       { option: "C", correct: false },
@@ -81,12 +81,12 @@ export default [
   },
   {
     question: "Qual o significado da palavra?",
-    svg: "longe.png",
+    svg: "magro.png",
     answers: [
-      { option: "Mais tarde", correct: false },
-      { option: "Longe", correct: true },
-      { option: "Amanhã", correct: false },
-      { option: "Lá", correct: false },
+      { option: "Baixo", correct: false },
+      { option: "Magro", correct: true },
+      { option: "Descer", correct: false },
+      { option: "Cair", correct: false },
     ],
   },
   {
@@ -107,6 +107,16 @@ export default [
       { option: "I", correct: true },
       { option: "E", correct: false },
       { option: "K", correct: false },
+    ],
+  },
+  {
+    question: "Qual o significado da palavra?",
+    svg: "longe.png",
+    answers: [
+      { option: "Mais tarde", correct: false },
+      { option: "Longe", correct: true },
+      { option: "Amanhã", correct: false },
+      { option: "Lá", correct: false },
     ],
   },
 ];

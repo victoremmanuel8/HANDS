@@ -32,7 +32,6 @@ function checkAuthenticated_Prof(req, res, next) {
 //function do middleware (de sessão do usuario)
 function checkAuthenticated(req, res, next) {
   if (req.session.user || req.session.prof) {
-    req.session.themeSettings = req.session.themeSettings || {};
     next();
   } else {
     res.redirect("/");
@@ -706,6 +705,31 @@ router.get("/profilePerfil", checkAuthenticated, async(req, res) => {
     const profile = await Profile.findOne({ userId: userId });
 
     res.render('profilePerfil', {
+      user: userType === 'user' ? req.session.user : req.session.prof,
+      profile: profile,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Erro ao carregar perfil");
+  }
+});
+
+router.get("/profileSenha", checkAuthenticated, async(req, res) => {
+  try {
+    let userId;
+    let userType;
+
+    if (req.session.user) {
+      userId = req.session.user.id_usuario;
+      userType = 'user';
+    } else if (req.session.prof) {
+      userId = req.session.prof.id_prof;
+      userType = 'prof';
+    }
+
+    const profile = await Profile.findOne({ userId: userId });
+
+    res.render('profileSenha', {
       user: userType === 'user' ? req.session.user : req.session.prof,
       profile: profile,
     });
