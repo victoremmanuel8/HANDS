@@ -13,7 +13,8 @@ dt_nascimento DATE,
 nr_idade INT,
 nm_nivel ENUM('Basico', 'Intermediario', 'Avancado'),
 sg_sexo ENUM ('M', 'F'),
-sessionTime time
+sessionTime time,
+nm_estado ENUM("SP", "RJ")
 );
           
 create table tb_profissional (
@@ -24,6 +25,8 @@ cd_rg CHAR (12) not null UNIQUE,
 ds_email VARCHAR(100) not null UNIQUE,
 nr_senha VARCHAR(255) not null,
 dt_nascimento DATE,
+nm_nivel ENUM ("Profissional"),
+sessionTime time,
 sg_sexo ENUM ('M', 'F')
 );
 
@@ -119,7 +122,10 @@ VALUES ('Ensino De Libras', 'Aprendendo o Alfabeto', 'Alfabeto do A - Z de manei
                     (4, '2024-01-01', '2025-01-01', 'cancelado'),
                     (5, '2024-01-01', '2025-02-01', 'cancelado'); */
 
-select * from tb_usuario;
+select * from tb_usuario;	
+
+
+select * from tb_profissional;
 
 select tb_usuario.nm_usuario As "nome do usuario",
 tb_usuario.dt_nascimento AS "Data de Nascimento do Usuario",

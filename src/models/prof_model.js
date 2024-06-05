@@ -28,6 +28,13 @@ const tb_profissional = connSequelize.define(
     dt_nascimento: {
       type: DataTypes.DATE,
     },
+    nm_nivel: {
+      type: DataTypes.ENUM("Profissional"),
+      defaultValue: "Profissional",
+    },
+    sessionTime: {
+      type: DataTypes.TIME,
+    },
     sg_sexo: {
       type: DataTypes.ENUM("M", "F"),
     },

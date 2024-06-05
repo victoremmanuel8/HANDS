@@ -14,27 +14,26 @@ const { tb_usuario } = require("../models/usu_model");
 const uploadMiddleware = require("../../middleware/photo_multer");
 // const moment = require('moment');
 
+
+//analisar a questão do perfil para o profissional e a exibição do nome
+//analisar a questão da sessão
+
 router.use(express.json());
 
-//function do middleware (de sessão do usuario)
-function checkAuthenticated(req, res, next) {
-  if (req.session.user) {
-    req.session.themeSettings = req.session.themeSettings || {};
+//function do middleware (de sessão do profissional)
+function checkAuthenticated_Prof(req, res, next) {
+  if (req.session.prof) {
     next();
   } else {
-    res.redirect("/");
+    res.redirect("/index");
   }
 }
 
-//function do middleware (de sessão do prof)
-function checkAuthenticated_Prof(req, res, next) {
-  if (req.session.user) {
-    if (req.session.user.nm_nivel === "Avancado") {
-      return next();
-    } else {
-      // Redirecionar usuários que não são "Avancado" para outra página
-      res.redirect("/index");
-    }
+//function do middleware (de sessão do usuario)
+function checkAuthenticated(req, res, next) {
+  if (req.session.user || req.session.prof) {
+    req.session.themeSettings = req.session.themeSettings || {};
+    next();
   } else {
     res.redirect("/");
   }
@@ -147,8 +146,14 @@ router.get("/pesquisa/:nm_usuario", ControllerUsuario.getUsuarioByName);
 
 router.post('/profile/theme', async (req, res) => {
   try {
-    const userId = req.session.user.id_usuario;
+    let userId;
     const { theme_pref} = req.body;
+
+    if (req.session.user) {
+      userId = req.session.user.id_usuario;
+    } else if (req.session.prof) {
+      userId = req.session.prof.id_profissional;
+    }
 
     let user_theme = await Theme.findOne({ userId });
     if (!user_theme) {
@@ -166,7 +171,12 @@ router.post('/profile/theme', async (req, res) => {
 });
 router.get('/profile/theme', async (req, res) => {
   try {
-    const userId = req.session.user.id_usuario;
+    let userId;
+    if (req.session.user) {
+      userId = req.session.user.id_usuario;
+    } else if (req.session.prof) {
+      userId = req.session.prof.id_profissional;
+    }
 
     const user_theme = await Theme.findOne({ userId });
 
@@ -212,9 +222,15 @@ router.post(
   async (req, res) => {
     try {
       const profileImagePath = req.file.path;
-      const userId = req.session.user.id_usuario;
+      let userId;
 
-      const exist_profile = await Profile.findOne({ userId });
+      if (req.session.user) {
+        userId = req.session.user.id_usuario;
+      } else if (req.session.prof) {
+        userId = req.session.prof.id_profissional;
+      }
+
+      const exist_profile = await Profile.findOne({ userId});
 
       if (exist_profile) {
         await promisify(fs.unlink)(
@@ -388,13 +404,23 @@ router.get("/login_prof", (req, res) => {
 });
 
 // Rota que requer autenticação
-router.get( "/index", checkAuthenticated, calcul_time, async(req, res) => {
+router.get( "/index", calcul_time, checkAuthenticated, async(req, res) => {
   try {
-    const userId = req.session.user.id_usuario; 
+    let userId;
+    let userType;
+
+    if (req.session.user) {
+      userId = req.session.user.id_usuario;
+      userType = 'user';
+    } else if (req.session.prof) {
+      userId = req.session.prof.id_prof;
+      userType = 'prof';
+    }
+
     const profile = await Profile.findOne({ userId: userId });
 
     res.render('index', {
-      user: req.session.user,
+      user: userType === 'user' ? req.session.user : req.session.prof,
       profile: profile,
     });
   } catch (err) {
@@ -403,13 +429,24 @@ router.get( "/index", checkAuthenticated, calcul_time, async(req, res) => {
   }
 });
 
+
 router.get("/kids", checkAuthenticated, async (req, res) => {
   try {
-    const userId = req.session.user.id_usuario; 
+    let userId;
+    let userType;
+
+    if (req.session.user) {
+      userId = req.session.user.id_usuario;
+      userType = 'user';
+    } else if (req.session.prof) {
+      userId = req.session.prof.id_prof;
+      userType = 'prof';
+    }
+
     const profile = await Profile.findOne({ userId: userId });
 
     res.render('kids', {
-      user: req.session.user,
+      user: userType === 'user' ? req.session.user : req.session.prof,
       profile: profile,
     });
   } catch (err) {
@@ -420,11 +457,21 @@ router.get("/kids", checkAuthenticated, async (req, res) => {
 
 router.get("/profissionais", checkAuthenticated, async (req, res) => {
   try {
-    const userId = req.session.user.id_usuario; 
+    let userId;
+    let userType;
+
+    if (req.session.user) {
+      userId = req.session.user.id_usuario;
+      userType = 'user';
+    } else if (req.session.prof) {
+      userId = req.session.prof.id_prof;
+      userType = 'prof';
+    }
+
     const profile = await Profile.findOne({ userId: userId });
 
     res.render('profissionais', {
-      user: req.session.user,
+      user: userType === 'user' ? req.session.user : req.session.prof,
       profile: profile,
     });
   } catch (err) {
@@ -432,7 +479,6 @@ router.get("/profissionais", checkAuthenticated, async (req, res) => {
     res.status(500).send("Erro ao carregar perfil");
   }
 });
-
 router.get("/cadastro", (req, res) => {
   const formData = req.session.formData || {};
   req.session.formData = null; // Limpe os dados do formulário da sessão
@@ -453,11 +499,21 @@ router.get("/cadastro_prof", (req, res) => {
 
 router.get("/cat-num", checkAuthenticated, async(req, res) => {
   try {
-    const userId = req.session.user.id_usuario; 
+    let userId;
+    let userType;
+
+    if (req.session.user) {
+      userId = req.session.user.id_usuario;
+      userType = 'user';
+    } else if (req.session.prof) {
+      userId = req.session.prof.id_prof;
+      userType = 'prof';
+    }
+
     const profile = await Profile.findOne({ userId: userId });
 
     res.render('cat-num', {
-      user: req.session.user,
+      user: userType === 'user' ? req.session.user : req.session.prof,
       profile: profile,
     });
   } catch (err) {
@@ -468,19 +524,31 @@ router.get("/cat-num", checkAuthenticated, async(req, res) => {
 
 router.get("/aulas", checkAuthenticated, calcul_time, async(req, res) => {
   try {
-    const userId = req.session.user.id_usuario; 
+    let userId;
+    let userType;
+
+    if (req.session.user) {
+      userId = req.session.user.id_usuario;
+      userType = 'user';
+    } else if (req.session.prof) {
+      userId = req.session.prof.id_prof;
+      userType = 'prof';
+    }
+
     const profile = await Profile.findOne({ userId: userId });
 
     res.render('aulas', {
-      user: req.session.user,
-      profile: profile,
+      user: userType === 'user' ? req.session.user : req.session.prof,
       formattedSessionTime: req.session.formattedSessionTime,
+      profile: profile,
     });
   } catch (err) {
     console.error(err);
     res.status(500).send("Erro ao carregar perfil");
   }
 });
+      
+  
 
 router.get("/header", checkAuthenticated, (req, res) => {
   res.render("header"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
@@ -492,11 +560,21 @@ router.get("/termos-uso", (req, res) => {
 
 router.get("/atividades", checkAuthenticated, async(req, res) => {
   try {
-    const userId = req.session.user.id_usuario; 
+    let userId;
+    let userType;
+
+    if (req.session.user) {
+      userId = req.session.user.id_usuario;
+      userType = 'user';
+    } else if (req.session.prof) {
+      userId = req.session.prof.id_prof;
+      userType = 'prof';
+    }
+
     const profile = await Profile.findOne({ userId: userId });
 
     res.render('atividades', {
-      user: req.session.user,
+      user: userType === 'user' ? req.session.user : req.session.prof,
       profile: profile,
     });
   } catch (err) {
@@ -507,11 +585,21 @@ router.get("/atividades", checkAuthenticated, async(req, res) => {
 
 router.get("/atividades-rj", checkAuthenticated, async(req, res) => {
   try {
-    const userId = req.session.user.id_usuario; 
+    let userId;
+    let userType;
+
+    if (req.session.user) {
+      userId = req.session.user.id_usuario;
+      userType = 'user';
+    } else if (req.session.prof) {
+      userId = req.session.prof.id_prof;
+      userType = 'prof';
+    }
+
     const profile = await Profile.findOne({ userId: userId });
 
     res.render('atividades-rj', {
-      user: req.session.user,
+      user: userType === 'user' ? req.session.user : req.session.prof,
       profile: profile,
     });
   } catch (err) {
@@ -527,11 +615,21 @@ router.get("/pesquisa", (req, res) => {
 
 router.get("/perfil", checkAuthenticated, async (req, res) => {
   try {
-    const userId = req.session.user.id_usuario; // Certifique-se de que este ID está correto
+    let userId;
+    let userType;
+
+    if (req.session.user) {
+      userId = req.session.user.id_usuario;
+      userType = 'user';
+    } else if (req.session.prof) {
+      userId = req.session.prof.id_prof;
+      userType = 'prof';
+    }
+
     const profile = await Profile.findOne({ userId: userId });
 
-    res.render("perfil", {
-      user: req.session.user,
+    res.render('perfil', {
+      user: userType === 'user' ? req.session.user : req.session.prof,
       profile: profile,
     });
   } catch (err) {
@@ -543,26 +641,46 @@ router.get("/perfil", checkAuthenticated, async (req, res) => {
 
 router.get("/upload", checkAuthenticated_Prof,  async (req, res) => {
   try {
-    const userId = req.session.user.id_usuario; 
+    let userId;
+    let userType;
+
+    if (req.session.user) {
+      userId = req.session.user.id_usuario;
+      userType = 'user';
+    } else if (req.session.prof) {
+      userId = req.session.prof.id_prof;
+      userType = 'prof';
+    }
+
     const profile = await Profile.findOne({ userId: userId });
 
-    res.render("upload", {
-      user: req.session.user,
+    res.render('upload', {
+      user: userType === 'user' ? req.session.user : req.session.prof,
       profile: profile,
     });
   } catch (err) {
     console.error(err);
-    res.status(500).send("Erro ao carregar upload");
+    res.status(500).send("Erro ao carregar perfil");
   }
 });
 
 router.get("/profile", checkAuthenticated, async(req, res) => {
   try {
-    const userId = req.session.user.id_usuario; 
+    let userId;
+    let userType;
+
+    if (req.session.user) {
+      userId = req.session.user.id_usuario;
+      userType = 'user';
+    } else if (req.session.prof) {
+      userId = req.session.prof.id_prof;
+      userType = 'prof';
+    }
+
     const profile = await Profile.findOne({ userId: userId });
 
     res.render('profile', {
-      user: req.session.user,
+      user: userType === 'user' ? req.session.user : req.session.prof,
       profile: profile,
     });
   } catch (err) {
@@ -574,11 +692,21 @@ router.get("/profile", checkAuthenticated, async(req, res) => {
 
 router.get("/profilePerfil", checkAuthenticated, async(req, res) => {
   try {
-    const userId = req.session.user.id_usuario; 
+    let userId;
+    let userType;
+
+    if (req.session.user) {
+      userId = req.session.user.id_usuario;
+      userType = 'user';
+    } else if (req.session.prof) {
+      userId = req.session.prof.id_prof;
+      userType = 'prof';
+    }
+
     const profile = await Profile.findOne({ userId: userId });
 
     res.render('profilePerfil', {
-      user: req.session.user,
+      user: userType === 'user' ? req.session.user : req.session.prof,
       profile: profile,
     });
   } catch (err) {

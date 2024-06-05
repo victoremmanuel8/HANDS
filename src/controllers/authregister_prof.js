@@ -12,14 +12,39 @@ exports.register = async (req, res) => {
   const { nome, sobrenome, email, rg, senha, Confir_Senha, dt_nascimento } =
     req.body;
 
+  //sessão para armazenar os dados
+  req.session.formData = req.body;
+
   // Verificação do email
   const Exist_prof = await tb_profissional.findOne({
-    where: { ds_email: email },
+    where: { ds_email: email},
   });
   if (Exist_prof) {
-    return res.render("cadastro", { message: "Este email já está em uso" });
+    req.flash("error_msg", "Email já em uso");
+    return res.redirect("/cadastro_prof");
+  } else if (/\d/.test(nome)) {
+    req.flash("error_msg", "O nome não deve conter números");
+    return res.redirect("/cadastro_prof");
+  } else if (/\d/.test(sobrenome)) {
+    req.flash("error_msg", "O sobrenome não deve conter números");
+    return res.redirect("/cadastro_prof");
+  }else if (senha.length < 8) {
+    req.flash("error_msg", "Senha minimo 8 caractéres");
+    return res.redirect("/cadastro_prof");
+    // // } else if (!senha_Segura.test(senha)) {
+    // //   req.flash('error_msg', 'Senha não atende aos requisitos de segurança');
+    //   return res.redirect('/cadastro')
   } else if (senha !== Confir_Senha) {
-    return res.render("cadastro", { message: "As senhas não correspondem" });
+    req.flash("error_msg", "As senhas não correspondem");
+    return res.redirect("/cadastro_prof");
+  }
+
+  const Exist_rg = await tb_profissional.findOne({
+    where: {cd_rg : rg},
+  });
+  if (Exist_rg) {
+    req.flash("RG já em uso")
+    return res.redirect("/cadastro_prof");
   }
 
   // Criptografia da senha
@@ -37,7 +62,8 @@ exports.register = async (req, res) => {
       dt_nascimento: dt_nascimento,
     });
     console.log(Add_prof);
-    return res.redirect("/index");
+    req.flash("success_msg", "Profissional cadastrado com sucesso");
+    return res.redirect("/login_prof");
   } catch (error) {
     console.log(error);
     return res.status(500).send("Erro ao cadastrar usuário");

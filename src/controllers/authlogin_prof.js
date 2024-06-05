@@ -1,6 +1,4 @@
 //conexão com o banco de dados
-const mysql = require("mysql2");
-const db = require("../../app.js");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const { tb_profissional } = require("../models/prof_model.js");
@@ -18,23 +16,39 @@ exports.login = async (req, res) => {
       where: { ds_email: email, cd_rg: rg },
     });
 
-    if (db_prof) {
+    if (!db_prof) {
+      req.flash("error_msg", "Usuario não encontrado");
+      return res.redirect("/login_prof");
+    } else if (db_prof.cd_rg !== rg) {
+      req.flash("error_msg", "RG Incorreto");
+      return res.redirect("/login_prof");
+    } else {
       const compare = await bcrypt.compare(senha, db_prof.nr_senha);
 
-      if (compare) {
-        return res.redirect("/index");
+      if (!compare) {
+        req.flash("error_msg", "Senha/Email inválida");
+        return res.redirect("/login_prof");
       } else {
-        return res.render("login_prof", {
-          message: "Senha incorreta",
-        });
+        // const idade = moment().diff(db_prof.dt_nascimento, "years");
+        // db_prof.nr_idade = idade; // Atribui a idade calculada ao campo nr_idade
+        // await db_usu.save(); // Salva a alteração no banco de dados
+        const token = jwt.sign({ id: db_prof.id }, "JANX7AWB12BAZX");
+        res.cookie("token_prof", token, { httpOnly: true, secure: true });
+        req.session.prof = db_prof; // Armazena o usuário na sessão
+        console.log(req.session.prof);
+        req.flash("success_msg", `Seja bem-vindo(a), ${db_prof.nm_prof}`);
+        try {
+          const decoded_tk = jwt.verify(token, "JANX7AWB12BAZX");
+          console.log(decoded_tk);
+        } catch (err) {
+          console.log("O token é inválido ou expirou");
+        }
+        return res.redirect("/index");
       }
-    } else {
-      return res.render("login_prof", {
-        message: "Usuário não encontrado",
-      });
     }
   } catch (error) {
     console.log(error);
-    return res.status(500).send("Erro ao fazer login");
+    req.flash("error_msg", "Erro ao fazer login");
+    return res.redirect("/login_prof");
   }
 };

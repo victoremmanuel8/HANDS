@@ -1,21 +1,21 @@
 const bcrypt = require("bcryptjs");
-const { tb_usuario } = require("../models/usu_model.js");
+const { tb_profissional } = require("../models/prof_model.js");
 
 exports.pass = async (req, res) => {
   const { Atual_Pass, New_Pass, Confir_Pass } = req.body;
 
   try {
     // Verifique se o usuário está logado
-    if (!req.session.user) {
+    if (!req.session.prof) {
       req.flash("success_msg", "Nenhum usuário logado");
       return res.redirect("/");
     }
 
     // Usuario da sessão
-    const db_usu = await tb_usuario.findOne({
-      where: { id_usuario: req.session.user.id_usuario },
+    const db_prof = await tb_profissional.findOne({
+      where: { id_prof: req.session.prof.id_prof },
     });
-    if (!db_usu) {
+    if (!db_prof) {
       // req.flash('error_msg', 'Usuário não encontrado');
       return res.redirect("/perfil");
     }
@@ -49,13 +49,13 @@ exports.pass = async (req, res) => {
     console.log(hashedPassword);
 
     // Atualize a senha do usuário no banco de dados
-    await db_usu.update(
+    await db_prof.update(
       {
         nr_senha: hashedPassword,
       },
       {
         where: {
-          id_usuario: req.session.user.id_usuario,
+          id_prof: req.session.prof.id_prof,
         },
       }
     );
