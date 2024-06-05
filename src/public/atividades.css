@@ -7,9 +7,9 @@
 body {
     gap: 15px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    overflow-x: hidden;
     padding-top: 50px;
     padding-bottom: 50px;
+    overflow: hidden;
 }
 
 .atividades {
@@ -50,11 +50,10 @@ body h2 {
     position: absolute;
     z-index: -1;
     transform: scale(-1);
+    top: 30vh;
  }
 
 main {
-    backdrop-filter: blur(140px);
-    background: radial-gradient(#ff9d0032, #fff);
     padding: 20px;
     border-radius: 30px;
     width: 100%;
@@ -63,7 +62,6 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 20px #00000024;
     text-align: center;
 }
 
@@ -77,11 +75,12 @@ main {
 }
 
 .content img {
-    border-radius: 7vh;
+    border-radius: 4vh;
 }
 
 main .success-gif {
-    border-radius: 8vh;
+    border-radius: 4vh;
+    transition: .5s ease-in-out;
 }
 
 .spnQtd {
@@ -137,10 +136,21 @@ main .success-gif {
     justify-content: center;
     align-items: center;
     gap: 10px;
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(70px);
 }
 
 .finish button, .finish span{
     width: 70%;
     text-align: center;
+}
+
+.row-atv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
 }
 

@@ -483,8 +483,41 @@ header ul a svg path {
 /* ATIVIDADES */
 
 main {
-  background:radial-gradient( #092056c9, #090C2F);
     color: #fff;
+}
+
+.answers button{
+  width: 190px;
+  height: 70px;
+  border: none;
+  border-radius: 15px;
+  background-color: #0A60C5;
+  cursor: pointer;
+  color: #fff;
+  text-align: center;
+}
+
+.btnRestart {
+  width: 100%;
+  text-align: start;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #0A60C5;
+  color: #fff;
+}
+
+.finish a {
+  width: 100%;
+  text-align: start;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #0A60C5;
+  color: #fff;
+  text-decoration: none;
 }
 
 /* PERFIL */
