@@ -8,15 +8,15 @@ const { promisify } = require("util");
 const ControllerUsuario = require("../controllers/consultaback");
 const Post = require("../models/Post");
 const Profile = require("../models/Profile");
+const Profile_prof = require("../models/Profile_prof");
 const cl_views = require("../models/View");
-const Theme = require('../models/Theme');
+const Theme = require("../models/Theme");
+const Theme_prof = require("../models/Theme_prof");
 const { tb_usuario } = require("../models/usu_model");
 const uploadMiddleware = require("../../middleware/photo_multer");
 // const moment = require('moment');
 
-
-//analisar a questão do perfil para o profissional e a exibição do nome
-//analisar a questão da sessão
+//analisar a questão do perfil para o profissional e a exibição do nome e a aparição da foto
 
 router.use(express.json());
 
@@ -143,53 +143,79 @@ router.get("/pesquisa/:nm_usuario", ControllerUsuario.getUsuarioByName);
 
 //rota para visualizar todos os arquivos que estão no mongo DB em json
 
-router.post('/profile/theme', async (req, res) => {
+//tema para o usuário
+router.post("/profile/theme", async (req, res) => {
   try {
+    const { theme_pref } = req.body;
     let userId;
-    const { theme_pref} = req.body;
+    let profId;
 
     if (req.session.user) {
       userId = req.session.user.id_usuario;
     } else if (req.session.prof) {
-      userId = req.session.prof.id_profissional;
+      profId = req.session.prof.id_profissional;
     }
 
-    let user_theme = await Theme.findOne({ userId });
-    if (!user_theme) {
-      user_theme = new Theme({ userId });
+    if (userId) {
+      let user_theme = await Theme.findOne({ userId });
+      if (!user_theme) {
+        user_theme = new Theme({ userId });
+      }
+      user_theme.theme_pref = theme_pref;
+      await user_theme.save();
     }
 
-    user_theme.theme_pref= theme_pref;
-    await user_theme.save();
+    if (profId) {
+      let prof_theme = await Theme_prof.findOne({ profId });
+      if (!prof_theme) {
+        prof_theme = new Theme_prof({ profId });
+      }
+      prof_theme.theme_pref = theme_pref;
+      await prof_theme.save();
+    }
 
     res.json({ success: true });
   } catch (error) {
-    console.error('Erro ao atualizar preferência de tema:', error);
-    res.status(500).json({ error: 'Erro interno ao atualizar preferência de tema' });
+    console.error("Erro ao atualizar preferência de tema:", error);
+    res
+      .status(500)
+      .json({ error: "Erro interno ao atualizar preferência de tema" });
   }
 });
-router.get('/profile/theme', async (req, res) => {
+
+router.get("/profile/theme", async (req, res) => {
   try {
     let userId;
+    let profId;
+
     if (req.session.user) {
       userId = req.session.user.id_usuario;
     } else if (req.session.prof) {
-      userId = req.session.prof.id_profissional;
+      profId = req.session.prof.id_profissional;
     }
 
-    const user_theme = await Theme.findOne({ userId });
+    let theme;
 
-    if (!user_theme) {
-      return res.status(404).json({ error: 'Tema não encontrado' });
+    if (userId) {
+      theme = await Theme.findOne({ userId });
+    } else if (profId) {
+      theme = await Theme_prof.findOne({ profId });
     }
 
-    res.json({ theme_pref: user_theme.theme_pref});
+    if (!theme) {
+      return res.status(404).json({ error: "Tema não encontrado" });
+    }
+
+    res.json({ theme_pref: theme.theme_pref });
   } catch (error) {
-    console.error('Erro ao recuperar preferência de tema:', error);
-    res.status(500).json({ error: 'Erro interno ao recuperar preferência de tema' });
+    console.error("Erro ao recuperar preferência de tema:", error);
+    res
+      .status(500)
+      .json({ error: "Erro interno ao recuperar preferência de tema" });
   }
 });
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 router.get("/posts", async (req, res) => {
   const posts = await Post.find();
@@ -222,42 +248,69 @@ router.post(
     try {
       const profileImagePath = req.file.path;
       let userId;
+      let profId;
 
       if (req.session.user) {
         userId = req.session.user.id_usuario;
       } else if (req.session.prof) {
-        userId = req.session.prof.id_profissional;
+        profId = req.session.prof.id_profissional;
       }
+      if (userId) {
+        let exist_profile = await Profile.findOne({ userId });
+        if (exist_profile) {
+          await promisify(fs.unlink)(
+            path.resolve(
+              __dirname,
+              "..",
+              "..",
+              "res",
+              "photo",
+              "profile",
+              "tmp",
+              exist_profile.key
+            )
+          );
 
-      const exist_profile = await Profile.findOne({ userId});
+          await Profile.deleteOne({ userId });
+        }
+        const profile = new Profile({
+          userId,
+          name: req.file.originalname,
+          size: req.file.size,
+          key: req.file.filename,
+          url: `http://localhost:5000/image/${req.file.filename}`,
+        });
 
-      if (exist_profile) {
-        await promisify(fs.unlink)(
-          path.resolve(
-            __dirname,
-            "..",
-            "..",
-            "res",
-            "photo",
-            "profile",
-            "tmp",
-            exist_profile.key
-          )
-        );
-
-        await Profile.deleteOne({ userId });
+        await profile.save();
       }
+      if (profId) {
+        let exist_profile = await Profile_prof.findOne({ profId });
+        if (exist_profile) {
+          await promisify(fs.unlink)(
+            path.resolve(
+              __dirname,
+              "..",
+              "..",
+              "res",
+              "photo",
+              "profile",
+              "tmp",
+              exist_profile.key
+            )
+          );
 
-      const profile = new Profile({
-        userId,
-        name: req.file.originalname,
-        size: req.file.size,
-        key: req.file.filename,
-        url: `http://localhost:5000/image/${req.file.filename}`,
-      });
+          await Profile_prof.deleteOne({ profId });
+        }
+        const profile_prof = new Profile_prof({
+          profId,
+          name: req.file.originalname,
+          size: req.file.size,
+          key: req.file.filename,
+          url: `http://localhost:5000/image/${req.file.filename}`,
+        });
 
-      await profile.save();
-
+        await profile_prof.save();
+      }
       req.flash("success_msg", "Imagem alterada com sucesso");
       res.redirect("/index");
     } catch (error) {
@@ -269,44 +322,74 @@ router.post(
 
 router.post("/profile-delete", async (req, res) => {
   try {
-    const userId = req.session.user.id_usuario;
+    let userId;
 
-    const exist_profile = await Profile.findOne({ userId });
-
-    if (!exist_profile) {
-      req.flash("Foto de usuario não encontrada");
-      return res.redirect("/perfil");
+    if (req.session.user) {
+      userId = req.session.user.id_usuario;
+    } else if (req.session.prof) {
+      userId = req.session.prof.id_profissional;
     }
 
-    await promisify(fs.unlink)(
-      path.resolve(
-        __dirname,
-        "..",
-        "..",
-        "res",
-        "photo",
-        "profile",
-        "tmp",
-        exist_profile.key
-      )
-    );
+    if (userId) {
+      const exist_profile = await Profile.findOne({ userId });
 
-    await Profile.deleteOne({ userId });
+      if (!exist_profile) {
+        req.flash("error_msg", "Foto de perfil não encontrada");
+        return res.redirect("/perfil");
+      }
 
-    req.flash("success_msg", "Foto de perfil  deletado com sucesso");
+      await promisify(fs.unlink)(
+        path.resolve(
+          __dirname,
+          "..",
+          "..",
+          "res",
+          "photo",
+          "profile",
+          "tmp",
+          exist_profile.key
+        )
+      );
+
+      await Profile.deleteOne({ userId });
+    }
+    if (profId) {
+      const exist_profile = await Profile.findOne({ profId });
+
+      if (!exist_profile) {
+        req.flash("error_msg", "Foto de perfil não encontrada");
+        return res.redirect("/perfil");
+      }
+
+      await promisify(fs.unlink)(
+        path.resolve(
+          __dirname,
+          "..",
+          "..",
+          "res",
+          "photo",
+          "profile",
+          "tmp",
+          exist_profile.key
+        )
+      );
+
+      await Profile_prof.deleteOne({ profId });
+    }
+    req.flash("success_msg", "Foto de perfil deletada com sucesso");
     return res.redirect("/index");
   } catch (error) {
-    req.flash("error_msg", "Foto de perfil não deletado");
+    req.flash("error_msg", "Foto de perfil não deletada");
     return res.redirect("/index");
   }
 });
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //rota para visualizar os videos/imagens de acordo com a categoria e nivel do usuário
 router.get("/upload/:categoria", async (req, res) => {
-  
   const { categoria } = req.params;
-    const userId = req.session.user.id_usuario; 
+  const userId = req.session.user.id_usuario;
   const profile = await Profile.findOne({ userId: userId });
 
   try {
@@ -336,13 +419,16 @@ router.get("/upload/:categoria", async (req, res) => {
     console.log("Nível do usuário:", nv_usu);
 
     // Renderiza o arquivo de modelo com os arquivos permitidos encontrados
-    res.render("categoria", { file: files_permitidos, user: req.session.user,  profile: profile,});
+    res.render("categoria", {
+      file: files_permitidos,
+      user: req.session.user,
+      profile: profile,
+    });
   } catch (error) {
     console.error("Erro ao buscar arquivos:", error);
     res.status(500).send("Erro interno");
   }
 });
-
 
 router.post("/upload/:videoId/visualizado", async (req, res) => {
   const { videoId } = req.params;
@@ -403,23 +489,23 @@ router.get("/login_prof", (req, res) => {
 });
 
 // Rota que requer autenticação
-router.get( "/index", calcul_time, checkAuthenticated, async(req, res) => {
+router.get("/index", calcul_time, checkAuthenticated, async (req, res) => {
   try {
     let userId;
     let userType;
 
     if (req.session.user) {
       userId = req.session.user.id_usuario;
-      userType = 'user';
+      userType = "user";
     } else if (req.session.prof) {
       userId = req.session.prof.id_prof;
-      userType = 'prof';
+      userType = "prof";
     }
 
     const profile = await Profile.findOne({ userId: userId });
 
-    res.render('index', {
-      user: userType === 'user' ? req.session.user : req.session.prof,
+    res.render("index", {
+      user: userType === "user" ? req.session.user : req.session.prof,
       profile: profile,
     });
   } catch (err) {
@@ -428,7 +514,6 @@ router.get( "/index", calcul_time, checkAuthenticated, async(req, res) => {
   }
 });
 
-
 router.get("/kids", checkAuthenticated, async (req, res) => {
   try {
     let userId;
@@ -436,16 +521,16 @@ router.get("/kids", checkAuthenticated, async (req, res) => {
 
     if (req.session.user) {
       userId = req.session.user.id_usuario;
-      userType = 'user';
+      userType = "user";
     } else if (req.session.prof) {
       userId = req.session.prof.id_prof;
-      userType = 'prof';
+      userType = "prof";
     }
 
     const profile = await Profile.findOne({ userId: userId });
 
-    res.render('kids', {
-      user: userType === 'user' ? req.session.user : req.session.prof,
+    res.render("kids", {
+      user: userType === "user" ? req.session.user : req.session.prof,
       profile: profile,
     });
   } catch (err) {
@@ -461,16 +546,16 @@ router.get("/profissionais", checkAuthenticated, async (req, res) => {
 
     if (req.session.user) {
       userId = req.session.user.id_usuario;
-      userType = 'user';
+      userType = "user";
     } else if (req.session.prof) {
       userId = req.session.prof.id_prof;
-      userType = 'prof';
+      userType = "prof";
     }
 
     const profile = await Profile.findOne({ userId: userId });
 
-    res.render('profissionais', {
-      user: userType === 'user' ? req.session.user : req.session.prof,
+    res.render("profissionais", {
+      user: userType === "user" ? req.session.user : req.session.prof,
       profile: profile,
     });
   } catch (err) {
@@ -496,23 +581,23 @@ router.get("/cadastro_prof", (req, res) => {
   res.render("cadastro_prof"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 });
 
-router.get("/cat-num", checkAuthenticated, async(req, res) => {
+router.get("/cat-num", checkAuthenticated, async (req, res) => {
   try {
     let userId;
     let userType;
 
     if (req.session.user) {
       userId = req.session.user.id_usuario;
-      userType = 'user';
+      userType = "user";
     } else if (req.session.prof) {
       userId = req.session.prof.id_prof;
-      userType = 'prof';
+      userType = "prof";
     }
 
     const profile = await Profile.findOne({ userId: userId });
 
-    res.render('cat-num', {
-      user: userType === 'user' ? req.session.user : req.session.prof,
+    res.render("cat-num", {
+      user: userType === "user" ? req.session.user : req.session.prof,
       profile: profile,
     });
   } catch (err) {
@@ -521,23 +606,23 @@ router.get("/cat-num", checkAuthenticated, async(req, res) => {
   }
 });
 
-router.get("/aulas", checkAuthenticated, calcul_time, async(req, res) => {
+router.get("/aulas", checkAuthenticated, calcul_time, async (req, res) => {
   try {
     let userId;
     let userType;
 
     if (req.session.user) {
       userId = req.session.user.id_usuario;
-      userType = 'user';
+      userType = "user";
     } else if (req.session.prof) {
       userId = req.session.prof.id_prof;
-      userType = 'prof';
+      userType = "prof";
     }
 
     const profile = await Profile.findOne({ userId: userId });
 
-    res.render('aulas', {
-      user: userType === 'user' ? req.session.user : req.session.prof,
+    res.render("aulas", {
+      user: userType === "user" ? req.session.user : req.session.prof,
       formattedSessionTime: req.session.formattedSessionTime,
       profile: profile,
     });
@@ -546,8 +631,6 @@ router.get("/aulas", checkAuthenticated, calcul_time, async(req, res) => {
     res.status(500).send("Erro ao carregar perfil");
   }
 });
-      
-  
 
 router.get("/header", checkAuthenticated, (req, res) => {
   res.render("header"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
@@ -557,23 +640,23 @@ router.get("/termos-uso", (req, res) => {
   res.render("termos-uso"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 });
 
-router.get("/atividades", checkAuthenticated, async(req, res) => {
+router.get("/atividades", checkAuthenticated, async (req, res) => {
   try {
     let userId;
     let userType;
 
     if (req.session.user) {
       userId = req.session.user.id_usuario;
-      userType = 'user';
+      userType = "user";
     } else if (req.session.prof) {
       userId = req.session.prof.id_prof;
-      userType = 'prof';
+      userType = "prof";
     }
 
     const profile = await Profile.findOne({ userId: userId });
 
-    res.render('atividades', {
-      user: userType === 'user' ? req.session.user : req.session.prof,
+    res.render("atividades", {
+      user: userType === "user" ? req.session.user : req.session.prof,
       profile: profile,
     });
   } catch (err) {
@@ -582,23 +665,23 @@ router.get("/atividades", checkAuthenticated, async(req, res) => {
   }
 });
 
-router.get("/atividades-rj", checkAuthenticated, async(req, res) => {
+router.get("/atividades-rj", checkAuthenticated, async (req, res) => {
   try {
     let userId;
     let userType;
 
     if (req.session.user) {
       userId = req.session.user.id_usuario;
-      userType = 'user';
+      userType = "user";
     } else if (req.session.prof) {
       userId = req.session.prof.id_prof;
-      userType = 'prof';
+      userType = "prof";
     }
 
     const profile = await Profile.findOne({ userId: userId });
 
-    res.render('atividades-rj', {
-      user: userType === 'user' ? req.session.user : req.session.prof,
+    res.render("atividades-rj", {
+      user: userType === "user" ? req.session.user : req.session.prof,
       profile: profile,
     });
   } catch (err) {
@@ -606,7 +689,6 @@ router.get("/atividades-rj", checkAuthenticated, async(req, res) => {
     res.status(500).send("Erro ao carregar perfil");
   }
 });
-
 
 router.get("/pesquisa", (req, res) => {
   res.render("pesquisa"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
@@ -615,46 +697,53 @@ router.get("/pesquisa", (req, res) => {
 router.get("/perfil", checkAuthenticated, async (req, res) => {
   try {
     let userId;
+    let profId;
     let userType;
 
     if (req.session.user) {
       userId = req.session.user.id_usuario;
-      userType = 'user';
+      userType = "user";
     } else if (req.session.prof) {
-      userId = req.session.prof.id_prof;
-      userType = 'prof';
+      profId = req.session.prof.id_prof;
+      userType = "prof";
     }
 
-    const profile = await Profile.findOne({ userId: userId });
+    let profile;
+    if (userId) {
+      profile = await Profile.findOne({ userId });
+    } else if (profId) {
+      profile = await Profile_prof.findOne({ profId });
+    }
 
-    res.render('perfil', {
-      user: userType === 'user' ? req.session.user : req.session.prof,
-      profile: profile,
+    res.render("perfil", {
+      user: userType === "user" ? req.session.user : req.session.prof,
+      profile,
     });
   } catch (err) {
     console.error(err);
     res.status(500).send("Erro ao carregar perfil");
   }
 });
+
 //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 
-router.get("/upload", checkAuthenticated_Prof,  async (req, res) => {
+router.get("/upload", checkAuthenticated_Prof, async (req, res) => {
   try {
     let userId;
     let userType;
 
     if (req.session.user) {
       userId = req.session.user.id_usuario;
-      userType = 'user';
+      userType = "user";
     } else if (req.session.prof) {
       userId = req.session.prof.id_prof;
-      userType = 'prof';
+      userType = "prof";
     }
 
     const profile = await Profile.findOne({ userId: userId });
 
-    res.render('upload', {
-      user: userType === 'user' ? req.session.user : req.session.prof,
+    res.render("upload", {
+      user: userType === "user" ? req.session.user : req.session.prof,
       profile: profile,
     });
   } catch (err) {
@@ -663,23 +752,23 @@ router.get("/upload", checkAuthenticated_Prof,  async (req, res) => {
   }
 });
 
-router.get("/profile", checkAuthenticated, async(req, res) => {
+router.get("/profile", checkAuthenticated, async (req, res) => {
   try {
     let userId;
     let userType;
 
     if (req.session.user) {
       userId = req.session.user.id_usuario;
-      userType = 'user';
+      userType = "user";
     } else if (req.session.prof) {
       userId = req.session.prof.id_prof;
-      userType = 'prof';
+      userType = "prof";
     }
 
     const profile = await Profile.findOne({ userId: userId });
 
-    res.render('profile', {
-      user: userType === 'user' ? req.session.user : req.session.prof,
+    res.render("profile", {
+      user: userType === "user" ? req.session.user : req.session.prof,
       profile: profile,
     });
   } catch (err) {
@@ -688,24 +777,23 @@ router.get("/profile", checkAuthenticated, async(req, res) => {
   }
 });
 
-
-router.get("/profilePerfil", checkAuthenticated, async(req, res) => {
+router.get("/profilePerfil", checkAuthenticated, async (req, res) => {
   try {
     let userId;
     let userType;
 
     if (req.session.user) {
       userId = req.session.user.id_usuario;
-      userType = 'user';
+      userType = "user";
     } else if (req.session.prof) {
       userId = req.session.prof.id_prof;
-      userType = 'prof';
+      userType = "prof";
     }
 
     const profile = await Profile.findOne({ userId: userId });
 
-    res.render('profilePerfil', {
-      user: userType === 'user' ? req.session.user : req.session.prof,
+    res.render("profilePerfil", {
+      user: userType === "user" ? req.session.user : req.session.prof,
       profile: profile,
     });
   } catch (err) {
