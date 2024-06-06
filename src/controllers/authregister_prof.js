@@ -9,7 +9,7 @@ const { tb_profissional } = require("../models/prof_model.js");
 exports.register = async (req, res) => {
   console.log(req.body);
 
-  const { nome, sobrenome, email, rg, senha, Confir_Senha, dt_nascimento } =
+  const { nome, sobrenome, email, rg, senha, Confir_Senha, dt_nascimento, nm_estado } =
     req.body;
 
   //sessão para armazenar os dados
@@ -60,6 +60,7 @@ exports.register = async (req, res) => {
       cd_rg: rg,
       nr_senha: hashedPassword,
       dt_nascimento: dt_nascimento,
+      nm_estado: nm_estado,
     });
     console.log(Add_prof);
     req.flash("success_msg", "Profissional cadastrado com sucesso");

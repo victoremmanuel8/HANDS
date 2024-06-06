@@ -5,7 +5,8 @@ const multerConfig = require("../config/multer");
 const fs = require("fs");
 const path = require("path");
 const { promisify } = require("util");
-const ControllerUsuario = require("../controllers/consultaback");
+const ControllerUsuario = require("../controllers/consultaback_usu");
+const ControllerProf = require("../controllers/consultaback_prof");
 const Post = require("../models/Post");
 const Profile = require("../models/Profile");
 const Profile_prof = require("../models/Profile_prof");
@@ -140,6 +141,14 @@ router.post("/usuario/criar", ControllerUsuario.createNewusuario);
 router.delete("/usuario/:id_usuario", ControllerUsuario.deleteusuarioById);
 
 router.get("/pesquisa/:nm_usuario", ControllerUsuario.getUsuarioByName);
+
+//consulta do profissional
+router.get("/profissional", ControllerProf.getAllprofissional);
+router.put("/profissional/id/:id_profissional", ControllerProf.editprofissionalById);
+router.post("/profissional/criar", ControllerProf.createNewprofissional);
+router.delete("/profissional/:id_profissional", ControllerProf.deleteprofissionalById);
+
+router.get("/pesquisa/:nm_prof", ControllerProf.getprofissionalByName);
 
 //rota para visualizar todos os arquivos que estão no mongo DB em json
 
