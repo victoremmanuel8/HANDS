@@ -32,11 +32,14 @@ const tb_profissional = connSequelize.define(
       type: DataTypes.ENUM("Profissional"),
       defaultValue: "Profissional",
     },
+    nm_estado: {
+      type: DataTypes.ENUM("SP", "RJ"),
+    },
+    nr_idade: {
+      type: DataTypes.INTEGER,
+    },
     sessionTime: {
       type: DataTypes.TIME,
-    },
-    sg_sexo: {
-      type: DataTypes.ENUM("M", "F"),
     },
   },
   _padraoTableDBExistente("tb_profissional")

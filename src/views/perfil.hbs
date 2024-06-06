@@ -34,15 +34,17 @@
                  {{#if (eq user.nm_nivel 'Intermediario')}}
                 <li><a href="atividades">Atividades</a></li>
                 {{/if}} --}}
-                {{#if (eq user.nm_nivel 'Profissional')}}
+                {{#if (eq prof.nm_nivel 'Profissional')}}
                 <li><a href="upload">Upload</a></li>
                 {{/if}}
                 {{!-- <li><a href="cadastro"><span class="sing-aulas">Usuário Premium</span></a></li> --}}
                 <div class="img-perfil-profile">
-                    {{#if profile.url}}
-                            <img src="{{profile.url}}"  width="145.269" height="156.839" alt="Foto de perfil de {{user.nm_usuario}}" />
+                   {{#if user_profile}}
+                        <img src="{{user_profile.url}}" width="145.269" height="156.839" alt="Foto de perfil de {{user.nm_usuario}}" />
+                        {{else if prof_profile}}
+                        <img src="{{prof_profile.url}}" width="145.269" height="156.839" alt="Foto de perfil de {{user.nm_prof}}" />
                         {{else}}
-                            <p><img class="padrão" src="default-profile.png" alt="Foto de perfil de {{user.nm_usuario}}"/></p>
+                        <p><img class="padrão" src="default-profile.png" alt="Foto de perfil padrão" /></p>
                         {{/if}}
                 </div>
             </ul>
@@ -53,12 +55,15 @@
                 <div class="perfil">
                     <a class="titulo-cor-vermelho" href="/logout">Sair</a>
                     <div class="img-perfil">
-                         {{#if profile.url}}
-                                    <img src="{{profile.url}}"  width="145.269" height="156.839" alt="Foto de perfil de {{user.nm_usuario}}" />
-                                {{else}}
-                                    <p><img class="padrão" src="default-profile.png" alt="Foto de perfil de {{user.nm_usuario}}"/></p>
-                                {{/if}}
+                        {{#if user_profile}}
+                        <img src="{{user_profile.url}}" width="145.269" height="156.839" alt="Foto de perfil de {{user.nm_usuario}}" />
+                        {{else if prof_profile}}
+                        <img src="{{prof_profile.url}}" width="145.269" height="156.839" alt="Foto de perfil de {{user.nm_prof}}" />
+                        {{else}}
+                        <p><img class="padrão" src="default-profile.png" alt="Foto de perfil padrão" /></p>
+                        {{/if}}
                     </div>
+                    {{#if user}}
                     <div>
                         <h2 class="titulo-2">{{user.nm_usuario}} {{user.nm_sobrenome }}</h2> <br>
                         <div class="row-perfil">
@@ -71,6 +76,20 @@
                         <br>
                         {{!-- <p class="titulo-3-5">Descrição: Aprendo Libras pela inclusão</p> --}}
                     </div>
+                    {{else if prof}}
+                    <div>
+                        <h2 class="titulo-2">{{prof.nm_prof}} {{prof.nm_sobrenome }}</h2> <br>
+                        <div class="row-perfil">
+                            <p>{{prof.nr_idade}} Anos</p>
+                            <hr>
+                            <p>Nível: {{prof.nm_nivel}}</p>
+                            <hr>
+                            <p>{{prof.nm_estado}}</p> 
+                        </div>
+                        <br>
+                        {{!-- <p class="titulo-3-5">Descrição: Aprendo Libras pela inclusão</p> --}}
+                    </div>
+                    {{/if}}
                 </div>
                 <svg class="line-dash" width="1695" height="543" viewBox="0 0 1695 543" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M152.453 5.72381C142.395 5.72381 128.772 3.25387 119.485 7.65277C91.1822 21.0596 64.8828 55.6638 49.517 82.0051C13.0846 144.461 -8.99186 225.788 17.777 296.47C65.1665 421.599 179.867 510.807 310.802 527.593C419.466 541.525 527.319 548.161 628.904 499.36C765.807 433.593 860.068 302.198 973.135 205.283C1021.59 163.75 1077.08 128.059 1134.11 99.5411C1201.4 65.8981 1262.37 47.5639 1338.06 51.3173C1404.2 54.5968 1462.3 69.8055 1516.75 107.432C1543.4 125.849 1567.14 147.591 1591.8 168.457C1629.74 200.555 1654.96 242.487 1689.65 277.18" stroke="#FDA51C" stroke-width="10" stroke-linecap="round" stroke-dasharray="20 20"/>

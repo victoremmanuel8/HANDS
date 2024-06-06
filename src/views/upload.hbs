@@ -32,10 +32,12 @@
                 {{!-- <li><a href="cadastro"><span class="sing-aulas">Usuário Premium</span></a></li> --}}
                 <a href="/perfil">
                 <div class="img-perfil-profile">
-                    {{#if profile.url}}
-                            <img src="{{profile.url}}"  width="145.269" height="156.839" alt="Foto de perfil de {{user.nm_usuario}}" />
+                     {{#if user_profile}}
+                        <img src="{{user_profile.url}}" width="145.269" height="156.839" alt="Foto de perfil de {{user.nm_usuario}}" />
+                        {{else if prof_profile}}
+                        <img src="{{prof_profile.url}}" width="145.269" height="156.839" alt="Foto de perfil de {{user.nm_prof}}" />
                         {{else}}
-                            <p><img class="padrão" src="default-profile.png" alt="Foto de perfil de {{user.nm_usuario}}"/></p>
+                        <p><img class="padrão" src="default-profile.png" alt="Foto de perfil padrão" /></p>
                         {{/if}}
                 </div>
                 </a>
