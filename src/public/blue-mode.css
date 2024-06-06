@@ -677,8 +677,7 @@ input[type=file] {
   align-items: center;
   justify-content: center;
   height: auto;
-  gap: 10px;
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: 600;
   backdrop-filter: blur(20px);
   padding: 20px;

@@ -172,6 +172,10 @@ nav hr {
   text-align: center;
 }
 
+.txt-center p {
+  color: #fff;
+}
+
 .titulo-2 {
     /* font-family: kumbh-regular; */ 
     font-weight: 300;
