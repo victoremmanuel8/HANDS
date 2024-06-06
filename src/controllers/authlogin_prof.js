@@ -2,6 +2,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const { tb_profissional } = require("../models/prof_model.js");
+const moment = require("moment");
 
 //exportando os registros no route auth.js
 exports.login = async (req, res) => {
@@ -29,9 +30,9 @@ exports.login = async (req, res) => {
         req.flash("error_msg", "Senha/Email inválida");
         return res.redirect("/login_prof");
       } else {
-        // const idade = moment().diff(db_prof.dt_nascimento, "years");
-        // db_prof.nr_idade = idade; // Atribui a idade calculada ao campo nr_idade
-        // await db_usu.save(); // Salva a alteração no banco de dados
+        const idade = moment().diff(db_prof.dt_nascimento, "years");
+        db_prof.nr_idade = idade; // Atribui a idade calculada ao campo nr_idade
+        await db_prof.save(); // Salva a alteração no banco de dados
         const token = jwt.sign({ id: db_prof.id }, "JANX7AWB12BAZX");
         res.cookie("token_prof", token, { httpOnly: true, secure: true });
         req.session.prof = db_prof; // Armazena o usuário na sessão

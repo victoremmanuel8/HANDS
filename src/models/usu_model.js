@@ -35,9 +35,6 @@ const tb_usuario = connSequelize.define(
     sessionTime: {
       type: DataTypes.TIME,
     },
-    sg_sexo: {
-      type: DataTypes.ENUM("M", "F"),
-    },
       nm_estado: {
         type: DataTypes.ENUM("SP", "RJ")
       }
