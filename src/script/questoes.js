@@ -10,6 +10,16 @@ export default [
     ],
   },
   {
+    question: "Qual o significado da palavra?",
+    svg: "muitoLonge.png",
+    answers: [
+      { option: "Não", correct: false },
+      { option: "Muito Longe", correct: true },
+      { option: "Saia", correct: false },
+      { option: "Lá", correct: false },
+    ],
+  },
+  {
     question: "Qual é esse sinal?",
     svg: "b.png",
     answers: [

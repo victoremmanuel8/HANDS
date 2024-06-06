@@ -602,6 +602,20 @@ input[type=file] {
   width: 800px;
 }
 
+.row-perfil-profile-senha form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  font-size: 1.1em;
+  font-weight: 600;
+  backdrop-filter: blur(20px);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: inset 0 0 20px #5e5e5e;
+  width: 800px;
+}
 
 .img-perfil-profile .padrão {
   filter: invert(100%);
