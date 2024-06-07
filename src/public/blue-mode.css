@@ -298,6 +298,10 @@ header ul a svg path {
     border-top: 30px solid #090C2F;
 }
 
+.intuito::after {
+  border-top: 30px solid #090C2F;
+}
+
 .banner2:after {
     border-top: 30px solid #090C2F;
 }
@@ -307,7 +311,7 @@ header ul a svg path {
 }
 
 .banner2 {
-  background:radial-gradient( #092056c9, #090C2F);
+  background:radial-gradient( #0a2c7cc9, #090C2F);
 }
 
 .banner3 {
@@ -329,6 +333,11 @@ header ul a svg path {
 
 .objetivos-blur {
   background:radial-gradient( #092056c9, #090C2F);
+  color: #ffffff;
+}
+
+.intuito {
+  background:radial-gradient( #0a2c7cc9, #090C2F);
   color: #ffffff;
 }
 
@@ -364,7 +373,7 @@ header ul a svg path {
   display: none;
 }
 
-.line-dash path, .line-dash-2 path, .line-dash-1 path {
+.line-dash path, .line-dash-2 path, .line-dash-1 path, .line-dash-3 path {
   stroke: #52DAFF;
 }
 

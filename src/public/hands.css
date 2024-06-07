@@ -71,6 +71,21 @@ section {
   position: relative;
 }
 
+.banner p a {
+  text-decoration: underline;
+}
+
+.banner .map {
+  position: relative;
+  right: -40px;
+}
+
+.titulo-2-5 {
+  font-weight: 300;
+ font-size: 30px;
+ color: #ffffff;
+}
+
 .banner:after {
   content:"";
   width: 180px;
@@ -145,6 +160,21 @@ section {
   position: absolute;
   top: 925px;
   left: 60vh;
+  z-index: -1;
+  transform: scaleY(-1);
+}
+
+.line-dash-3 {
+  position: absolute;
+  top: 1825px;
+  left: 60vh;
+  z-index: -1;
+  transform: scaleY(-1);
+}
+
+.line-dash-4 {
+  position: absolute;
+  top: 4025px;
   z-index: -1;
   transform: scaleY(-1);
 }
@@ -236,6 +266,32 @@ section {
   width: 80%;
   padding: 50px;
   margin-bottom: 20px;
+}
+
+.intuito {
+  background:radial-gradient( #ffb8055c, #ffffff);
+  backdrop-filter: blur(200px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 15vh;
+  border-radius: 10vh;
+  width: 80%;
+  height: 500px;
+  margin-bottom: 20px;
+}
+
+.intuito:after {
+  content:"";
+  width: 280px;
+  height: 0px;
+  position: absolute;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 30px solid #fff;
+  top: -1px;
+  left: 15%;
 }
 
 .objetivos {
