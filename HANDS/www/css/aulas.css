@@ -173,7 +173,8 @@ nav {
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: auto;
+    /* width: auto; */
+    width: 100%;
     justify-content: space-between;
 }
 
@@ -223,6 +224,7 @@ nav {
     flex-direction: column;
     align-content: space-evenly;
     justify-content: center;
+    align-items: center;
 }
 
 .nivel hr {

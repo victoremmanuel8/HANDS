@@ -712,3 +712,7 @@ input[type=file] {
     border-radius: 19px;
     overflow: hidden;
 }
+
+.cont {
+  background: linear-gradient(to top, #06376f, transparent);
+}
