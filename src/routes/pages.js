@@ -14,6 +14,7 @@ const cl_views = require("../models/View");
 const Theme = require("../models/Theme");
 const Theme_prof = require("../models/Theme_prof");
 const { tb_usuario } = require("../models/usu_model");
+const { tb_profissional } = require("../models/prof_model");
 const uploadMiddleware = require("../../middleware/photo_multer");
 // const moment = require('moment');
 
@@ -54,42 +55,69 @@ router.get("/logout", function (req, res) {
 
 // Middleware para calcular o tempo de sessão
 async function calcul_time(req, res, next) {
-  if (req.session.user) {
-    try {
-      const user = await tb_usuario.findByPk(req.session.user.id_usuario);
+  try {
+    let user, userId;
 
-      if (user) {
-        const previous_time = user.sessionTime || "00:00:00";
-
-        // Obter o tempo decorrido desde o último acesso
-        const current_time = new Date().getTime();
-        const start_time = req.cookies.start_time || current_time;
-        const elapsed_time = current_time - start_time;
-        const formatted_elpsed_time = convert_milli(elapsed_time);
-
-        // Somar o tempo decorrido com o tempo anterior
-        const formatted_time = sum_time(previous_time, formatted_elpsed_time);
-
-        // Atualizar o tempo de sessão no banco de dados
-        await update_time(req.session.user.id_usuario, formatted_time);
-
-        // Configurar cookies e sessão
-        res.cookie(
-          `sessionTime_${req.session.user.id_usuario}`,
-          formatted_time,
-          { maxAge: elapsed_time, httpOnly: true }
-        );
-        res.cookie("start_time", current_time, { httpOnly: true });
-        req.session.formattedSessionTime = formatted_time;
-      } else {
-        console.error("Usuário não encontrado");
-      }
-    } catch (error) {
-      console.error("Erro ao calcular o tempo de sessão:", error);
+    if (req.session.user) {
+      user = req.session.user;
+      userId = user.id_usuario;
+    } else if (req.session.prof) {
+      user = req.session.prof;
+      userId = user.id_profissional;
+    } else {
+      console.error("Usuário ou profissional não encontrado na sessão");
+      return next(); // Continua para o próximo middleware
     }
+
+    const previous_time = user.sessionTime || "00:00:00";
+    const current_time = new Date().getTime();
+    const start_time = req.cookies.start_time || current_time;
+    const elapsed_time = current_time - start_time;
+    const formatted_elapsed_time = convert_milli(elapsed_time);
+    const formatted_time = sum_time(previous_time, formatted_elapsed_time);
+
+    if (req.session.user) {
+      await update_time(userId, formatted_time, "usuario");
+    } else if (req.session.prof) {
+      await update_time(userId, formatted_time, "profissional");
+    }
+
+    res.cookie(`sessionTime_${userId}`, formatted_time, {
+      maxAge: elapsed_time,
+      httpOnly: true,
+    });
+    res.cookie("start_time", current_time, { httpOnly: true });
+    req.session.formattedSessionTime = formatted_time;
+  } catch (error) {
+    console.error("Erro ao calcular o tempo de sessão:", error);
+    next(error); // Avança para o próximo middleware com o erro
   }
   next();
 }
+
+async function update_time(userId, sessionTime, userType) {
+  try {
+    if (userType === "usuario") {
+      await tb_usuario.update(
+        { sessionTime },
+        { where: { id_usuario: userId } }
+      );
+    } else if (userType === "profissional") {
+      await tb_profissional.update(
+        { sessionTime },
+        { where: { id_profissional: userId } }
+      );
+    } else {
+      console.error(
+        "Tipo de entidade desconhecido ao atualizar tempo de sessão"
+      );
+    }
+  } catch (error) {
+    console.error("Erro ao atualizar tempo de sessão:", error);
+    throw error; // Lança o erro para ser capturado no bloco try
+  }
+}
+
 // Função para somar dois tempos no formato HH:MM:SS
 function sum_time(time1, time2) {
   const [hours1, minutes1, seconds1] = time1.split(":").map(Number);
@@ -127,9 +155,21 @@ function convert_milli(milliseconds) {
     .toString()
     .padStart(2, "0")}:${remaining_seconds.toString().padStart(2, "0")}`;
 }
-async function update_time(userId, sessionTime) {
-  await tb_usuario.update({ sessionTime }, { where: { id_usuario: userId } });
-}
+
+/* async function calcul_time(req, res, next) {
+  if (req.session.user || req.session.prof) {
+    const userId = req.session.user ? req.session.user.id_usuario : null;
+    const profId = req.session.prof ? req.session.prof.id_profissional : null;
+
+    if (userId) {
+      await calculateAndSetSessionTime(userId, false, req, res);
+    }
+    if (profId) {
+      await calculateAndSetSessionTime(profId, true, req, res);
+    }
+  }
+  next();
+}*/
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -144,9 +184,15 @@ router.get("/pesquisa/:nm_usuario", ControllerUsuario.getUsuarioByName);
 
 //consulta do profissional
 router.get("/profissional", ControllerProf.getAllprofissional);
-router.put("/profissional/id/:id_profissional", ControllerProf.editprofissionalById);
+router.put(
+  "/profissional/id/:id_profissional",
+  ControllerProf.editprofissionalById
+);
 router.post("/profissional/criar", ControllerProf.createNewprofissional);
-router.delete("/profissional/:id_profissional", ControllerProf.deleteprofissionalById);
+router.delete(
+  "/profissional/:id_profissional",
+  ControllerProf.deleteprofissionalById
+);
 
 router.get("/pesquisa/:nm_prof", ControllerProf.getprofissionalByName);
 
@@ -397,48 +443,62 @@ router.post("/profile-delete", async (req, res) => {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //rota para visualizar os videos/imagens de acordo com a categoria e nivel do usuário
+//revisar
 router.get("/upload/:categoria", async (req, res) => {
-  const { categoria } = req.params;
-  const userId = req.session.user.id_usuario;
-  const profile = await Profile.findOne({ userId: userId });
-
   try {
-    // Verifica se o usuário está autenticado
-    if (!req.session.user) {
+    const userId = req.session.user.id_usuario;
+    const profId = req.session.prof;//.id_profissional;
+    const { categoria } = req.params;
+    const profile = await Profile.findOne({ userId: userId });
+
+    if (!req.session.user && !req.session.prof) {
       return res.redirect("/");
     }
 
-    // Obtém o nível do usuário da sessão do usuário
-    const nv_usu = req.session.user.nm_nivel;
+    let files_permitidos = [];
+    let nv_usu = "";
 
-    const files = await Post.find({ categoria });
-
-    // Filtra os arquivos com base no nível do usuário
-    const files_permitidos = files.filter((file) => {
-      if (nv_usu === "Basico") {
-        // Se o usuário for 'Basico', retorna apenas os arquivos 'Basico'
-        return file.nivel === "Basico";
-      } else if (nv_usu === "Intermediario") {
-        // Se o usuário for 'Intermediário', retorna arquivos 'Basico' e 'Intermediário'
-        return file.nivel === "Basico" || file.nivel === "Intermediario";
-      } else {
-        // Se o usuário for 'Avançado', retorna todos os arquivos
-        return true;
-      }
-    });
-    console.log("Nível do usuário:", nv_usu);
-
-    // Renderiza o arquivo de modelo com os arquivos permitidos encontrados
+    if (userId) {
+      nv_usu = req.session.user.nm_nivel;
+      const files = await Post.find({ categoria });
+      files_permitidos = files.filter((file) => {
+        if (nv_usu === "Basico") {
+          return file.nivel === "Basico";
+        } else if (nv_usu === "Intermediario") {
+          return file.nivel === "Basico" || file.nivel === "Intermediario";
+        } else {
+          return true;
+        }
+      });
+    }
+    if (profId) {
+      nv_usu = req.session.prof.nm_nivel;
+      const files = await Post.find({ categoria });
+      files_permitidos = files.filter((file) => {
+        if (nv_usu === "Profissional") {
+          return (
+            file.nivel === "Basico" ||
+            file.nivel === "Intermediario" ||
+            file.nivel === "Avancado"
+          );
+        } else {
+          return true;
+        }
+      });
+    }
     res.render("categoria", {
       file: files_permitidos,
       user: req.session.user,
+      prof: req.session.prof,
       profile: profile,
     });
+
   } catch (error) {
     console.error("Erro ao buscar arquivos:", error);
     res.status(500).send("Erro interno");
   }
 });
+
 
 router.post("/upload/:videoId/visualizado", async (req, res) => {
   const { videoId } = req.params;
@@ -522,9 +582,13 @@ router.get("/index", calcul_time, checkAuthenticated, async (req, res) => {
     let prof_profile;
 
     if (req.session.user) {
-      user_profile = await Profile.findOne({ userId: req.session.user.id_usuario });
+      user_profile = await Profile.findOne({
+        userId: req.session.user.id_usuario,
+      });
     } else if (req.session.prof) {
-      prof_profile = await Profile_prof.findOne({ profId: req.session.prof.id_profissional });
+      prof_profile = await Profile_prof.findOne({
+        profId: req.session.prof.id_profissional,
+      });
     }
 
     res.render("index", {
@@ -539,17 +603,19 @@ router.get("/index", calcul_time, checkAuthenticated, async (req, res) => {
   }
 });
 
-
-
 router.get("/kids", checkAuthenticated, async (req, res) => {
   try {
     let user_profile;
     let prof_profile;
 
     if (req.session.user) {
-      user_profile = await Profile.findOne({ userId: req.session.user.id_usuario });
+      user_profile = await Profile.findOne({
+        userId: req.session.user.id_usuario,
+      });
     } else if (req.session.prof) {
-      prof_profile = await Profile_prof.findOne({ profId: req.session.prof.id_profissional });
+      prof_profile = await Profile_prof.findOne({
+        profId: req.session.prof.id_profissional,
+      });
     }
 
     res.render("kids", {
@@ -570,9 +636,13 @@ router.get("/profissionais", checkAuthenticated, async (req, res) => {
     let prof_profile;
 
     if (req.session.user) {
-      user_profile = await Profile.findOne({ userId: req.session.user.id_usuario });
+      user_profile = await Profile.findOne({
+        userId: req.session.user.id_usuario,
+      });
     } else if (req.session.prof) {
-      prof_profile = await Profile_prof.findOne({ profId: req.session.prof.id_profissional });
+      prof_profile = await Profile_prof.findOne({
+        profId: req.session.prof.id_profissional,
+      });
     }
 
     res.render("profissionais", {
@@ -593,9 +663,13 @@ router.get("/cat-num", checkAuthenticated, async (req, res) => {
     let prof_profile;
 
     if (req.session.user) {
-      user_profile = await Profile.findOne({ userId: req.session.user.id_usuario });
+      user_profile = await Profile.findOne({
+        userId: req.session.user.id_usuario,
+      });
     } else if (req.session.prof) {
-      prof_profile = await Profile_prof.findOne({ profId: req.session.prof.id_profissional });
+      prof_profile = await Profile_prof.findOne({
+        profId: req.session.prof.id_profissional,
+      });
     }
 
     res.render("cat-num", {
@@ -616,9 +690,13 @@ router.get("/aulas", checkAuthenticated, calcul_time, async (req, res) => {
     let prof_profile = null;
 
     if (req.session.user) {
-      user_profile = await Profile.findOne({ userId: req.session.user.id_usuario });
+      user_profile = await Profile.findOne({
+        userId: req.session.user.id_usuario,
+      });
     } else if (req.session.prof) {
-      prof_profile = await Profile_prof.findOne({ profId: req.session.prof.id_profissional });
+      prof_profile = await Profile_prof.findOne({
+        profId: req.session.prof.id_profissional,
+      });
     }
 
     res.render("aulas", {
@@ -648,9 +726,13 @@ router.get("/atividades", checkAuthenticated, async (req, res) => {
     let prof_profile;
 
     if (req.session.user) {
-      user_profile = await Profile.findOne({ userId: req.session.user.id_usuario });
+      user_profile = await Profile.findOne({
+        userId: req.session.user.id_usuario,
+      });
     } else if (req.session.prof) {
-      prof_profile = await Profile_prof.findOne({ profId: req.session.prof.id_profissional });
+      prof_profile = await Profile_prof.findOne({
+        profId: req.session.prof.id_profissional,
+      });
     }
 
     res.render("atividades", {
@@ -671,9 +753,13 @@ router.get("/atividades-rj", checkAuthenticated, async (req, res) => {
     let prof_profile;
 
     if (req.session.user) {
-      user_profile = await Profile.findOne({ userId: req.session.user.id_usuario });
+      user_profile = await Profile.findOne({
+        userId: req.session.user.id_usuario,
+      });
     } else if (req.session.prof) {
-      prof_profile = await Profile_prof.findOne({ profId: req.session.prof.id_profissional });
+      prof_profile = await Profile_prof.findOne({
+        profId: req.session.prof.id_profissional,
+      });
     }
 
     res.render("atividades-rj", {
@@ -698,9 +784,13 @@ router.get("/perfil", checkAuthenticated, async (req, res) => {
     let prof_profile;
 
     if (req.session.user) {
-      user_profile = await Profile.findOne({ userId: req.session.user.id_usuario });
+      user_profile = await Profile.findOne({
+        userId: req.session.user.id_usuario,
+      });
     } else if (req.session.prof) {
-      prof_profile = await Profile_prof.findOne({ profId: req.session.prof.id_profissional });
+      prof_profile = await Profile_prof.findOne({
+        profId: req.session.prof.id_profissional,
+      });
     }
 
     res.render("perfil", {
@@ -722,9 +812,13 @@ router.get("/upload", checkAuthenticated_Prof, async (req, res) => {
     let prof_profile;
 
     if (req.session.user) {
-      user_profile = await Profile.findOne({ userId: req.session.user.id_usuario });
+      user_profile = await Profile.findOne({
+        userId: req.session.user.id_usuario,
+      });
     } else if (req.session.prof) {
-      prof_profile = await Profile_prof.findOne({ profId: req.session.prof.id_profissional });
+      prof_profile = await Profile_prof.findOne({
+        profId: req.session.prof.id_profissional,
+      });
     }
 
     res.render("upload", {
@@ -745,9 +839,13 @@ router.get("/profile", checkAuthenticated, async (req, res) => {
     let prof_profile;
 
     if (req.session.user) {
-      user_profile = await Profile.findOne({ userId: req.session.user.id_usuario });
+      user_profile = await Profile.findOne({
+        userId: req.session.user.id_usuario,
+      });
     } else if (req.session.prof) {
-      prof_profile = await Profile_prof.findOne({ profId: req.session.prof.id_profissional });
+      prof_profile = await Profile_prof.findOne({
+        profId: req.session.prof.id_profissional,
+      });
     }
 
     res.render("profile", {
@@ -768,9 +866,13 @@ router.get("/profilePerfil", checkAuthenticated, async (req, res) => {
     let prof_profile;
 
     if (req.session.user) {
-      user_profile = await Profile.findOne({ userId: req.session.user.id_usuario });
+      user_profile = await Profile.findOne({
+        userId: req.session.user.id_usuario,
+      });
     } else if (req.session.prof) {
-      prof_profile = await Profile_prof.findOne({ profId: req.session.prof.id_profissional });
+      prof_profile = await Profile_prof.findOne({
+        profId: req.session.prof.id_profissional,
+      });
     }
 
     res.render("profilePerfil", {
@@ -785,15 +887,19 @@ router.get("/profilePerfil", checkAuthenticated, async (req, res) => {
   }
 });
 
-router.get("/profileSenha", checkAuthenticated, async(req, res) => {
+router.get("/profileSenha", checkAuthenticated, async (req, res) => {
   try {
     let user_profile;
     let prof_profile;
 
     if (req.session.user) {
-      user_profile = await Profile.findOne({ userId: req.session.user.id_usuario });
+      user_profile = await Profile.findOne({
+        userId: req.session.user.id_usuario,
+      });
     } else if (req.session.prof) {
-      prof_profile = await Profile_prof.findOne({ profId: req.session.prof.id_profissional });
+      prof_profile = await Profile_prof.findOne({
+        profId: req.session.prof.id_profissional,
+      });
     }
 
     res.render("profileSenha", {
@@ -807,7 +913,6 @@ router.get("/profileSenha", checkAuthenticated, async(req, res) => {
     res.redirect("/login");
   }
 });
-
 
 // Rota para servir os vídeos e demonstrar (para fins de teste. Não vai ser utilizado)
 router.get("/videos/:filename", (req, res) => {

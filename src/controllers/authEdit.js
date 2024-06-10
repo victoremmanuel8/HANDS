@@ -2,6 +2,8 @@ const mysql = require("mysql2");
 const db = require("../../app.js");
 const { tb_usuario } = require("../models/usu_model.js");
 
+//revisar
+
 exports.edit = async (req, res) => {
   const { nome, email, estado} = req.body;
   const id_usu = req.session.user.id_usuario;

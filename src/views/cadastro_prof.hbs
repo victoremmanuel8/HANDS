@@ -145,12 +145,11 @@
                                 <div class="passo2">
                                 <p class="titulo-1">Segundo <span class="cor">passo</span></p><br>
                                 <label class="nascimento" for="nascimento">Data de nascimento:</label>
-                                <input class="input" type="date" name="dt_nascimento" id="dt_nascimento" placeholder="Data de nascimento" value="{{formData.dt_nascimento}}" required maxlength="10" min="1930-01-01" max="2024-04-29"> 
+                                <input class="input" type="date" name="dt_nascimento" id="dt_nascimento" placeholder="Data de nascimento" value="{{formData.dt_nascimento}}" required maxlength="10" min="1930-01-01" max="2005-01-01"> 
                                 {{!-- <label for="email">Email:</label> --}}
                                 <input class="input" type="email" name="email" id="email" placeholder="E-mail" value="{{formData.email}}"required>
                                 <select class="inputSelect"  name="nm_estado" id="estado">
                                     <div class="op">
-                                    <option value="">Selecione seu Estado</option>
                                     <option value="SP">SP - São Paulo</option required>
                                     <option value="RJ">RJ - Rio de Janeiro</option required>
                                     </div>
