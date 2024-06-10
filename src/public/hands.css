@@ -423,6 +423,10 @@ section {
   flex-direction: column;
 }
 
+.map .mapa{
+  fill: url(#paint0_linear_477_49);
+}
+
 .coment {
   flex-wrap: wrap;
   gap: 40px;
@@ -437,7 +441,7 @@ section {
   border-radius: 24px;
   backdrop-filter: blur(120px);
   padding: 30px;
-  background: linear-gradient(to top, #FC9404, transparent);
+  background: linear-gradient(to top, #ff820554, transparent);
 }
 
 .cont .row {

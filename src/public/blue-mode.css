@@ -377,6 +377,10 @@ header ul a svg path {
   stroke: #52DAFF;
 }
 
+.map .mapa {
+  fill: url(#paint0_linear_442_188);
+}
+
 /* KIDS */
 
 .banner1 {

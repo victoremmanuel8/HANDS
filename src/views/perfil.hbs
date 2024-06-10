@@ -122,44 +122,19 @@
                         </div>
                     </div>
                     </a>
-                    <div class="modal" id="modal-C">
-                        <div class="modal-content">
-                                <div class="balao3">
-                                    <div class="alert-text">
-                                    {{#if success_msg}}
-                                        <div id='success'class="alert alert-success">{{success_msg}}</div>
-                                    {{/if}}
-                                    {{#if error_msg}}
-                                        <div id="erro" class="alert alert-danger">{{error_msg}}</div>
-                                    {{/if}}
-                                </div>
-                                 <svg class="line-dash" width="1695" height="543" viewBox="0 0 1695 543" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M152.453 5.72381C142.395 5.72381 128.772 3.25387 119.485 7.65277C91.1822 21.0596 64.8828 55.6638 49.517 82.0051C13.0846 144.461 -8.99186 225.788 17.777 296.47C65.1665 421.599 179.867 510.807 310.802 527.593C419.466 541.525 527.319 548.161 628.904 499.36C765.807 433.593 860.068 302.198 973.135 205.283C1021.59 163.75 1077.08 128.059 1134.11 99.5411C1201.4 65.8981 1262.37 47.5639 1338.06 51.3173C1404.2 54.5968 1462.3 69.8055 1516.75 107.432C1543.4 125.849 1567.14 147.591 1591.8 168.457C1629.74 200.555 1654.96 242.487 1689.65 277.18" stroke="#FDA51C" stroke-width="10" stroke-linecap="round" stroke-dasharray="20 20"/>
-                                </svg>
-                                <div>
-                                    <p>tem certeza que deseja deletar sua conta? Você irá perder todo seu desempenho dentro do HANDS, poderá usar o e-mail novamente para um novo cadastro, mas não terá as suas conquistas passadas.</p>
-                                </div>
-                                <form class="loginForm" action="/auth/delete" method="post">
-                                    <input type="password" name="senha_usu" placeholder="Senha" required/>
-                                    <input  class="button" type="submit" id= "submit" value="Excluir conta"/>
-                                </form>
-                                </div>
+                    <a href="/delete">
+                        <div class="config-div">
+                        <div class="icon-excluir">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" fill="#ff2a2a" class="bi bi-trash3" viewBox="0 0 16 16">
+                            <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+                            </svg>                            
+                        </div>
+                        <div>
+                            <p class="titulo-2">Excluir conta</p>
+                            <p class="titulo-3-6">Apague a sua conta dentro do HANDS</p>
                         </div>
                     </div>
-                    <button onclick="openModal('modal-C')">
-                        <div class="config-div">
-                            <div class="icon-excluir">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" fill="#ff2a2a" class="bi bi-trash3" viewBox="0 0 16 16">
-                                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
-                                </svg>                            
-                            </div>
-                            <div>
-                                <p class="titulo-2">Excluir conta</p>
-                                <p class="titulo-3-6">Apague a sua conta dentro do HANDS</p>
-                            </div>
-                        </div>
-                    </button>
-            <script src="/modal.js"></script>
+                    </a>
                 </div>
             </section>
             <script src="/carrossel.js"></script>

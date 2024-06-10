@@ -186,7 +186,7 @@ nav hr {
 .titulo-3 {
     /* font-family: kumbh-light; */
    font-size: 50px;
-   color: #77787C;
+   color: #bcb4ae;
    font-weight: 100;
 }
 
@@ -295,6 +295,10 @@ ul a svg:hover {
     border-top: 50px solid #222;
 }
 
+.intuito:after {
+  border-top: 50px solid #222;
+}
+
 .banner2 {
     background:radial-gradient( #a38d117e, #222);
 }
@@ -320,6 +324,11 @@ ul a svg:hover {
     font-size: 65px;
 }
 
+.intuito {
+  background:radial-gradient( #a38d117e, #222);
+  color: #ffffff;
+}
+
 .objetivos-blur {
     background:radial-gradient( #a38d117e, #222);
     color: #ffffff;
@@ -338,6 +347,10 @@ ul a svg:hover {
     margin-top: 10vh;
     margin-bottom: 5vh;
     transition: .4s ease-in-out;
+}
+
+.map .mapa{
+  fill: url(#paint0_linear_477_49);
 }
 
 /* KIDS */
