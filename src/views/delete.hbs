@@ -90,7 +90,7 @@
                 {{!-- <li><a href="cadastro"><span class="sing-aulas">Usuário Premium</span></a></li> --}}
                 <a href="/perfil">
                 <div class="img-perfil-profile">
-                    {{#if user_profile}}
+                     {{#if user_profile}}
                         <img src="{{user_profile.url}}" width="145.269" height="156.839" alt="Foto de perfil de {{user.nm_usuario}}" />
                         {{else if prof_profile}}
                         <img src="{{prof_profile.url}}" width="145.269" height="156.839" alt="Foto de perfil de {{user.nm_prof}}" />
@@ -110,9 +110,6 @@
         <div id="erro" class="alert alert-danger">{{error_msg}}</div>
     {{/if}}
 </div>
-    <svg class="line-dash" width="1695" height="543" viewBox="0 0 1695 543" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M152.453 5.72381C142.395 5.72381 128.772 3.25387 119.485 7.65277C91.1822 21.0596 64.8828 55.6638 49.517 82.0051C13.0846 144.461 -8.99186 225.788 17.777 296.47C65.1665 421.599 179.867 510.807 310.802 527.593C419.466 541.525 527.319 548.161 628.904 499.36C765.807 433.593 860.068 302.198 973.135 205.283C1021.59 163.75 1077.08 128.059 1134.11 99.5411C1201.4 65.8981 1262.37 47.5639 1338.06 51.3173C1404.2 54.5968 1462.3 69.8055 1516.75 107.432C1543.4 125.849 1567.14 147.591 1591.8 168.457C1629.74 200.555 1654.96 242.487 1689.65 277.18" stroke="#FDA51C" stroke-width="10" stroke-linecap="round" stroke-dasharray="20 20"/>
-</svg>
 <div class="row-perfil-profile">
 <div class="txt-center">
     <p>tem certeza que deseja deletar sua conta? Você irá perder todo seu desempenho dentro do HANDS, poderá usar o e-mail novamente para um novo cadastro, mas não terá as suas conquistas passadas.</p>

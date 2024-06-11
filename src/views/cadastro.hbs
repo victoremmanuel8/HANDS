@@ -19,7 +19,7 @@
                 var cpfField = document.getElementById('cpf');
                 VMasker(cpfField).maskPattern("999.999.999-99");
             }
-        </script>
+        </script> 
            <script>
             //script para o captcha funcionar 
             function onSubmit(token) {
@@ -237,8 +237,10 @@
                             <div class="passo3">
                             <p class="titulo-1">Terceiro <span class="cor">passo</span></p><br>
                             <div id="progress-bar">
-                                <div id="progress"></div>
+                            <div id="progress"></div>
                             </div>
+                            <p id="class"></p> <br>
+                            <script src="/progressTroca.js"></script>
                             <input class="input" type="password" name="senha" id="senha" placeholder="Senha" onkeyup="updateProgressBar()" required>
                             {{!-- <label for="confirmarSenha">Confirmar Senha:</label> --}}
                             <input class="input" type="password" name="Confir_Senha" id="confirmarSenha" placeholder="Confirmação de senha" required>
@@ -259,7 +261,7 @@
                                 </svg>
                             </div>
                             {{!-- script da barra de progresso --}}
-                            <script> 
+                            {{!-- <script> 
                                 function updateProgressBar() {
                                 var senha = document.getElementById("senha").value;
                                 var progress = 0;
@@ -303,7 +305,7 @@
                                     progressBar.style.backgroundColor = "#169e93c9"; // Verde
                                 }
                                 }
-                            </script>
+                            </script> --}}
                             </div>
                             </div>
                             {{!-- <label for="senha">Senha:</label> --}}

@@ -360,6 +360,7 @@ label {
     margin-left: -10px;
     width: calc(100% + 10px);
     color: #000000;
+    background-color: #ffffff;
     cursor: pointer;
     font-size: 1.1em;  /*tira dps da banca*/
 }
@@ -672,6 +673,11 @@ form {
     color: #dd209e;
 }
 
+#class {
+    z-index: 999;
+    color: #000;
+}
+
 .passo3{
     backdrop-filter: blur(120px);
     border-radius: 30px;
@@ -682,7 +688,7 @@ form {
     flex-direction: column;
     background-color: #fff;
     width: 800px;
-    height: 300px;
+    height: 350px;
     overflow: hidden;
 }
 
@@ -768,14 +774,14 @@ form {
     border-radius: 10px;
     margin: 20px;
     position: relative;
-}
-
+  }
+  
   #progress {
     width: 0%;
     height: 100%;
     border-radius: 10px;
     transition: width 0.5s ease-in-out;
-}
+  }
 
 ::-webkit-scrollbar-track {
     background-color: #ffffff;

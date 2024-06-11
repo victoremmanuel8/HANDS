@@ -14,7 +14,7 @@ body {
 }
 
 .alert-text {
-  position: absolute; left: 50%; top: 5%;
+  position: absolute; left: 50%; top: 1%;
   transform: translate(-50%, -50%);
   gap: 20px;
 }
@@ -82,7 +82,7 @@ section {
 .titulo-2-5 {
   font-weight: 300;
  font-size: 30px;
- color: #ffffff;
+ color: #434343;
 }
 
 .banner:after {
@@ -441,7 +441,11 @@ section {
   border-radius: 24px;
   backdrop-filter: blur(120px);
   padding: 30px;
-  background: linear-gradient(to top, #ff820554, transparent);
+  background: radial-gradient(#ff820554, transparent);
+}
+
+.cont svg path {
+  fill:#FC9404;
 }
 
 .cont .row {

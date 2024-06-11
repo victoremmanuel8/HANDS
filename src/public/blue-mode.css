@@ -141,6 +141,10 @@ nav ul {
     color: #fff;
 }
 
+.titulo-2-5 {
+ color: #ffffff;
+}
+
 nav hr {
     margin-bottom: 2vh;
 }
@@ -380,6 +384,11 @@ header ul a svg path {
 .map .mapa {
   fill: url(#paint0_linear_442_188);
 }
+
+.coment > .cont svg path {
+  fill: #52DAFF;
+}
+
 
 /* KIDS */
 

@@ -23,3 +23,40 @@ header {
     z-index: -1;
     opacity: .3;
 }
+
+.videoCat {
+    width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.collun-cat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: auto;
+    height: auto;
+    gap: 40px;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 200px;
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+  
+  .collun-cat ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .collun-cat video {
+    width: 500px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  

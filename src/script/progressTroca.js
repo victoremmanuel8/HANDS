@@ -57,5 +57,5 @@ function muitoBoa() {
     txt.innerHTML = "Muito boa";
 }
 function excelente() {
-    txt.innerHTML = ' <a class="termos" href="/termos-uso">excelente </a> ';
+    txt.innerHTML = ' <a class="termos" href="https://youtube.com/watch?v=zosskhYNyHA">excelente </a> ';
 }
