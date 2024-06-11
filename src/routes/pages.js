@@ -446,10 +446,22 @@ router.post("/profile-delete", async (req, res) => {
 //revisar
 router.get("/upload/:categoria", async (req, res) => {
   try {
-    const userId = req.session.user.id_usuario;
-    const profId = req.session.prof;//.id_profissional;
+    let user_profile;
+    let prof_profile;
+
+    if (req.session.user) {
+      user_profile = await Profile.findOne({
+        userId: req.session.user.id_usuario,
+      });
+    } else if (req.session.prof) {
+      prof_profile = await Profile_prof.findOne({
+        profId: req.session.prof.id_profissional,
+      });
+    }
+    //verificar as const se está verificada
+    const userId = req.session.user ? req.session.user.id_usuario : null;
+    const profId = req.session.prof ? req.session.prof.id_profissional : null;
     const { categoria } = req.params;
-    const profile = await Profile.findOne({ userId: userId });
 
     if (!req.session.user && !req.session.prof) {
       return res.redirect("/");
@@ -490,7 +502,8 @@ router.get("/upload/:categoria", async (req, res) => {
       file: files_permitidos,
       user: req.session.user,
       prof: req.session.prof,
-      profile: profile,
+      user_profile,
+      prof_profile,
     });
 
   } catch (error) {

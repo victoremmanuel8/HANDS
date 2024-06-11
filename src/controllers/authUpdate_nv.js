@@ -1,5 +1,3 @@
-const mysql = require("mysql2");
-const db = require("../../app.js");
 const { tb_usuario } = require("../models/usu_model.js");
 
 exports.update_nv = async (req, res) => {

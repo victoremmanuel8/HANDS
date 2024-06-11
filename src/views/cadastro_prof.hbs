@@ -104,9 +104,9 @@
                                 <div class="passo1">
                                 <p class="titulo-1">Primeiro <span class="cor">passo</span></p> <br>
                                     {{!-- <label for="nome" id="nome">Nome:</label> --}}
-                                <input class="input" type="text" name="nome" id="name" placeholder="Nome" value="{{formData.nome}}"required> 
+                                <input class="input" type="text" name="nome" id="name" placeholder="Nome" value="{{formData.nome}}" onkeypress="return keys(event)"required> 
                                 {{!-- <label for="sobrenome">Sobrenome:</label> --}}
-                                <input class="input" type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome" value="{{formData.sobrenome}}" required>
+                                <input class="input" type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome" value="{{formData.sobrenome}}"onkeypress="return keys(event)" required>
                                 <input class="input" type="text" name="rg" id="rg" placeholder="RG" required>
                                 <div class="back">
                                     <svg width="434" height="361" viewBox="0 0 434 361" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -333,5 +333,6 @@
         <script src="cordova.js"></script>
         <script src="js/index.js"></script>
         <script src="js/carrossel.js"></script>
+        <script src="campos.js"></script>
         </body>
 </html>

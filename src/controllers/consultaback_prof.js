@@ -7,7 +7,9 @@ module.exports = {
     try {
       const Allprof = await tb_profissional.findAll();
       if (!Allprof)
-        return resp.status(404).json({ message: "Profissional não encontrado!" });
+        return resp
+          .status(404)
+          .json({ message: "Profissional não encontrado!" });
       return resp.status(200).json(Allprof);
     } catch (erro) {
       console.log("Erro na consulta: ", erro);
@@ -20,7 +22,9 @@ module.exports = {
       const profissional = await tb_profissional.findByPk(id_profissional);
 
       if (!profissional)
-        return resp.status(404).json({ message: "Profissional não encontrado!" });
+        return resp
+          .status(404)
+          .json({ message: "Profissional não encontrado!" });
       else return resp.status(200).json(profissional);
     } catch (erro) {
       console.log("Erro na consulta: ", erro);
@@ -48,13 +52,14 @@ module.exports = {
   editprofissionalById: async (req, resp) => {
     try {
       const { id_profissional } = req.params;
-      const { nm_prof, nm_sobrenome, email, senha, dt_nascimento } =
-        req.body;
+      const { nm_prof, nm_sobrenome, email, senha, dt_nascimento } = req.body;
 
       let profissional = await tb_profissional.findByPk(id_profissional);
 
       if (!profissional) {
-        return resp.status(404).json({ message: "Profissional não encontrado!" });
+        return resp
+          .status(404)
+          .json({ message: "Profissional não encontrado!" });
       }
 
       await profissional.update({
@@ -85,7 +90,9 @@ module.exports = {
       if (resultBusca.length == 0)
         return resp
           .status(404)
-          .json({ message: "Profissionals contendo contatos não encontrados!" });
+          .json({
+            message: "Profissionals contendo contatos não encontrados!",
+          });
       return resp.status(200).json(resultBusca);
     } catch (erro) {
       console.log("Erro na consulta: ", erro);
@@ -94,8 +101,7 @@ module.exports = {
   },
   createNewprofissional: async (req, resp) => {
     try {
-      const { nm_prof, nm_sobrenome, email, senha, dt_nascimento } =
-        req.body;
+      const { nm_prof, nm_sobrenome, email, senha, dt_nascimento } = req.body;
 
       const profissional_criado = await tb_profissional.create({
         nm_prof: nm_prof,
@@ -118,12 +124,16 @@ module.exports = {
       const profissional = await tb_profissional.findByPk(id_profissional);
 
       if (!profissional) {
-        return resp.status(404).json({ message: "Profissional não encontrado!" });
+        return resp
+          .status(404)
+          .json({ message: "Profissional não encontrado!" });
       }
 
       await profissional.destroy();
 
-      return resp.json({ message: `Profissional com id = ${id_profissional} deletado.` });
+      return resp.json({
+        message: `Profissional com id = ${id_profissional} deletado.`,
+      });
     } catch (erro) {
       console.error("Erro na consulta:", erro);
       return resp.status(400).json({ message: "Erro na consulta realizada!" });

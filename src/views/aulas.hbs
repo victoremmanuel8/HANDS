@@ -215,7 +215,7 @@
                 <div class="questoes1">
                     <p class="titulo-5">Teste o seu <span class="verdeAulas">conhecimento</span></p>
                     <br><br>
-                    {{#and (eq user.nm_nivel 'Basico') (eq user.nm_estado 'SP')}}
+                {{#and (eq user.nm_nivel 'Basico') (eq user.nm_estado 'SP')}}
                     <li><a href="atividades">Começar</a></li>
                 {{/and}}
                 {{#and (eq user.nm_nivel 'Basico') (eq user.nm_estado 'RJ')}}
@@ -227,6 +227,9 @@
                 {{#and (eq user.nm_nivel 'Intermedario') (eq user.nm_estado 'RJ')}}
                     <li><a href="atividades-rj">Começar</a></li>
                 {{/and}}
+                {{!-- {{#and (eq user.nm_nivel 'Profissional') (eq user.nm_estado 'RJ')}}
+                    <li><a href="atividades">Começar</a></li>
+                {{/and}} --}}
                 </div>
             </div>
         <br><br><br><br>
@@ -237,7 +240,11 @@
             <div class="nivel-porcentagem-atividade">
                 <div class="nivel">
                     <h2 class="titulo-3">Nível</h2>
+                    {{#if user_profile}}
                     <p class="titulo-2">{{user.nm_nivel}}</p>
+                    {{else if prof_profile}}
+                    <p class="titulo-2">{{prof.nm_nivel}}</p>
+                    {{/if}}
                 </div>
                 {{!-- <hr>
                 <div class="porcentagem">

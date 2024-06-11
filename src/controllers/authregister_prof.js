@@ -9,15 +9,23 @@ const { tb_profissional } = require("../models/prof_model.js");
 exports.register = async (req, res) => {
   console.log(req.body);
 
-  const { nome, sobrenome, email, rg, senha, Confir_Senha, dt_nascimento, nm_estado } =
-    req.body;
+  const {
+    nome,
+    sobrenome,
+    email,
+    rg,
+    senha,
+    Confir_Senha,
+    dt_nascimento,
+    nm_estado,
+  } = req.body;
 
   //sessão para armazenar os dados
   req.session.formData = req.body;
 
   // Verificação do email
   const Exist_prof = await tb_profissional.findOne({
-    where: { ds_email: email},
+    where: { ds_email: email },
   });
   if (Exist_prof) {
     req.flash("error_msg", "Email já em uso");
@@ -28,7 +36,7 @@ exports.register = async (req, res) => {
   } else if (/\d/.test(sobrenome)) {
     req.flash("error_msg", "O sobrenome não deve conter números");
     return res.redirect("/cadastro_prof");
-  }else if (senha.length < 8) {
+  } else if (senha.length < 8) {
     req.flash("error_msg", "Senha minimo 8 caractéres");
     return res.redirect("/cadastro_prof");
     // // } else if (!senha_Segura.test(senha)) {
@@ -40,10 +48,10 @@ exports.register = async (req, res) => {
   }
 
   const Exist_rg = await tb_profissional.findOne({
-    where: {cd_rg : rg},
+    where: { cd_rg: rg },
   });
   if (Exist_rg) {
-    req.flash("RG já em uso")
+    req.flash("RG já em uso");
     return res.redirect("/cadastro_prof");
   }
 
