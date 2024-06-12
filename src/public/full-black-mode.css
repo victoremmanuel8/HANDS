@@ -2,9 +2,9 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    color: #f3f3f3;
+    color: #000;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
-    background-color: #000;
+    background-color: #fff;
   }
   
   * {
@@ -58,7 +58,15 @@ li {
 
 a {
   text-decoration: none;
-  color: #907a85;
+  color: #000000;
+}
+
+header a svg path {
+  fill: #000;
+}
+
+.line-dash path, .line-dash-2 path, .line-dash-1 path, .line-dash-3 path {
+  stroke: #00000000;
 }
 
 .premium-usuario {
@@ -73,7 +81,7 @@ a {
 .line-temp {
     width: 27px;
     height: 2px;
-    background-color: #000;
+    background-color: #fff;
     border-radius: 10vh;
     margin: 5px;
     margin-right: 30px;
@@ -106,7 +114,7 @@ a {
 .input-pesq {
     border: none !important;
     outline: none;
-    color: #000;
+    color: #fff;
     font-size: 1.1em;
     width: 100%;
     height: 100%;
@@ -115,18 +123,9 @@ a {
     background: transparent;
 }
 
-nav ul {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    color: #A4A4A4;
-    list-style: none;
-    font-size: .9em;
-}
-
 .atual {
     font-size: 1.16em;
-    color: #a1a1a1;
+    color: #000000;
     font-weight: 500;
 }
 
@@ -276,27 +275,27 @@ ul a svg:hover {
 /* HOME */
 
 .banner {
-    background:radial-gradient( #a38d117e, #000);
+    background:radial-gradient( #a38d117e, #fff);
 }
 
 .banner:after {
-    border-top: 30px solid #000;
+    border-top: 30px solid #fff;
 }
 
 .banner2:after {
-    border-top: 30px solid #000;
+    border-top: 30px solid #fff;
 }
 
 .objetivos:after {
-    border-top: 50px solid #000;
+    border-top: 50px solid #fff;
 }
 
 .banner2 {
-    background:radial-gradient( #a38d117e, #000);
+    background:radial-gradient( #a38d117e, #fff);
 }
 
 .banner3 {
-    background:radial-gradient( #a38d117e, #000);
+    background:radial-gradient( #a38d117e, #fff);
 }
 
 .verde {
@@ -313,7 +312,7 @@ ul a svg:hover {
 }
 
 .objetivos-blur {
-    background:radial-gradient( #a38d117e, #000);
+    background:radial-gradient( #a38d117e, #fff);
     color: #ffffff;
 }
 
@@ -339,42 +338,42 @@ ul a svg:hover {
 /* KIDS */
 
 .banner1 {
-    background:radial-gradient( #0077ff5c, #000) ;
+    background:radial-gradient( #0077ff5c, #fff) ;
 }
   
   .banner1:after {
-    border-top: 30px solid #000;
+    border-top: 30px solid #fff;
 }
   
   .banner2-1 {
-    background:radial-gradient( #0077ff5c, #000) ;
+    background:radial-gradient( #0077ff5c, #fff) ;
 }
   
   .banner2-1:after {
-    border-top: 30px solid #000;
+    border-top: 30px solid #fff;
 }
 
 .videoAulas {
-    background:radial-gradient( #0077ff5c, #000) ;
+    background:radial-gradient( #0077ff5c, #fff) ;
 }
 
 /* PROFISSIONAIS */
 
 .bannerProf {
-    background:radial-gradient( #ff00c348, #000) ;
+    background:radial-gradient( #ff00c348, #fff) ;
 }
 
 .bannerProf:after {
-    border-top: 30px solid #000;    
+    border-top: 30px solid #fff;    
 }
 
 .btn-saiba {
-    background-color: #000;
+    background-color: #fff;
     color: #fff;
 }
 
 .sec-2 {
-    background: linear-gradient(180deg, #000, #000 , #00000098, #ffffff0c, #ffffff00);
+    background: linear-gradient(180deg, #fff, #fff , #ffffff98, #ffffff0c, #ffffff00);
 }
 
 .wrapper .carousel .item .p {
@@ -382,7 +381,7 @@ ul a svg:hover {
 }
 
   ::-webkit-scrollbar-track {
-    background-color: #000;
+    background-color: #fff;
 }
   ::-webkit-scrollbar {
     width: 9px;
@@ -396,29 +395,81 @@ ul a svg:hover {
 /* AULAS */
 
 .bannerAulas {
-    background:radial-gradient( #08d4784b, #000) ;
+    background:radial-gradient( #08d47800, #ffffff00) ;
+    text-align: right;
+    backdrop-filter: blur(0);
+}
+
+.formas {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+}
+
+.bannerAulas .titulo-1, .bannerAulas .titulo-2 {
+  color: #000000d2;
+}
+
+.bannerCirc {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: -1;
+}
+
+.progresso .titulo-1, .progresso .titulo-2 {
+  color: #000000d2;
+}
+
+.bannerAulas svg {
+  transform: scale(1.2);
 }
   
-  .bannerAulas:after {
-    border-top: 30px solid #000;
+.bannerAulas:after {
+  border-top: 30px solid #fff;
 }
 
 .verdeAulas {
-    color: #18af82e0;
+    color: #001e60c9;
 }
 
 .videoAulasAulas {
-    background:radial-gradient( #08d4784b, #000) ;
+    background:radial-gradient( #08d47800, #ffffff00) ;
+    backdrop-filter: blur(0);
+}
+
+.videoaulas .titulo-1, .videoaulas .titulo-2 {
+  color: #000000d2;
 }
 
 .questoes:after {
-  border-top: 30px solid #000;
+  border-top: 30px solid #fff;
+}
+
+.questoes {
+  background:radial-gradient( #00000000, #090c2f00);
+  padding-top: 20px;
+  padding-bottom: 0px;
+  backdrop-filter: blur(0);
+}
+
+.questoes1 {
+  text-align: right;
+}
+
+.questoes1 .titulo-2 {
+  color: #000;
+}
+
+.questoes a {
+  background-color: #FC9404;
+  color: #fff;
 }
 
 /* ATIVIDADES */
 
 main {
-    background: radial-gradient(#ff9d0032, #000);
+    background: radial-gradient(#ff9d0032, #fff);
     color: #fff;
 }
 
@@ -430,7 +481,7 @@ main {
 
 .config-div {
 box-shadow: 0 0 20px #93939333;
-background-color: #000;
+background-color: #fff;
 }
 
 ::-webkit-scrollbar-track {
@@ -462,12 +513,12 @@ background-color: #000;
 }
 
 .balao2 {
-    background-color: #000;
+    background-color: #fff;
     color: #ffffff;
 }
 
 .balao3 {
-    background-color: #000;
+    background-color: #fff;
     color: #ffffff;
 }
 
@@ -556,14 +607,14 @@ input[type=file] {
   width: 80px;
   height: 80px;
   border-radius: 100%;
-  background-color: #3c6a3c;
+  background-color:#ADECFA;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .row-categorias svg path{
-  fill: #e5e5e5;
+  fill: #202020;
 }
 
 .row-perfil {

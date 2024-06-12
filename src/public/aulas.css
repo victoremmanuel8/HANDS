@@ -109,6 +109,10 @@ section {
     width: 90%;
 }
 
+.nivel-porcentagem-atividade hr {
+    height: 20vh;
+}
+
 .aula-teste {
     margin-top: 20vh;
     display: flex;
