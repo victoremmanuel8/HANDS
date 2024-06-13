@@ -382,8 +382,7 @@ a {
 
 .questoes1 {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: end;
     flex-direction: column;
 }
 

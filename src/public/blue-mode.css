@@ -484,6 +484,10 @@ header ul a svg path {
   padding-bottom: 0px;
 }
 
+.cerebroQuestoes {
+  display: none;
+}
+
 .questoes:after {
   border-top: 30px solid #090C2F;
 }
