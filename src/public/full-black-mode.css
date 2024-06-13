@@ -381,14 +381,14 @@ ul a svg:hover {
 }
 
   ::-webkit-scrollbar-track {
-    background-color: #fff;
+    background-color: #000000;
 }
   ::-webkit-scrollbar {
     width: 9px;
     padding: 12px;
 }
   ::-webkit-scrollbar-thumb {
-    background: #ffffff81;
+    background: #00000081;
     border-radius: 10vh;
 }
 
@@ -426,7 +426,7 @@ ul a svg:hover {
 }
   
 .bannerAulas:after {
-  border-top: 30px solid #fff;
+  border-top: 30px solid #ffffff00;
 }
 
 .verdeAulas {
@@ -676,4 +676,101 @@ input[type=file] {
   border: 2px solid #16B0FF;
   border-radius: 19px;
   overflow: hidden;
+}
+
+
+
+
+.container-cat {
+  display: flex;
+  width: 100%;
+  height: 700px;
+  justify-content: center;
+  align-items: end;
+}
+
+.container-cat hr {
+  height: 500px;
+  margin-right: 15px;
+  margin-left: 15px;
+  margin-top: 3%;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  background-color: #a8ecff3d;
+  border-radius:  30px;
+  padding-top:  85px;
+  padding-bottom: 85px;
+}
+
+.buttons button {
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 10vh;
+  border: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 25px;
+  background-color: transparent;
+}
+
+.buttons button.active {
+  background-color: #A8ECFF;
+}
+
+.carousel-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border-radius:  30px;
+}
+
+.carousel {
+  display: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+  transition: transform 0.5s ease;
+}
+
+.carousel img {
+  min-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nav-button {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  margin: 5px 0;
+  border-radius: 100%;
+  position: relative;
+  left: 90%;
+  margin-bottom: 15px;
+}
+
+.prev {
+  background-color: #FEBD13;
+}
+
+.next {
+  background-color: #FF6D9C;
+}
+
+.carrossel-cat {
+  width: 65%;
+  height: auto;
 }
