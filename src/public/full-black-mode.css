@@ -5,6 +5,7 @@ body {
     color: #000;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
     background-color: #fff;
+    scroll-behavior: smooth;
   }
   
   * {
@@ -152,7 +153,7 @@ nav hr {
 
   .titulo-1 {
     /* font-family: kumbh-bold; */
-   color: #cbcbcbc2;
+   color: #000000dc;
    font-size: 75px;
 }
 
@@ -175,7 +176,7 @@ nav hr {
     /* font-family: kumbh-regular; */ 
     font-weight: 300;
    font-size: 35px;
-   color: #bcb4ae;
+   color: #000000dc;
 }
 
 .titulo-3 {
@@ -339,23 +340,108 @@ ul a svg:hover {
 
 .banner1 {
     background:radial-gradient( #0077ff5c, #fff) ;
+    display: none;
 }
-  
+
+.bannerKIDS {
+  width: 100%;
+  height: 120vh;
+  margin-top: -150px;
+  background-color: #D6F5FC;
+  z-index: -1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.txtBannerKIDS {
+  margin-left: 12vw;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  transform: scale(1.1);
+}
+
+.txtBannerKIDS .titulo-1 {
+  font-size: 3.5vw;
+}
+
+.txtBannerKIDS .titulo-2 {
+  font-size: 2vw;
+}
+
+.nuvem {
+  position: absolute;
+  bottom: -64vh;
+  z-index: 1;
+}
+
+.garotoBanner {
+  position: absolute;
+  right: -55px;
+  z-index: 0;
+  bottom: -15vh;
+}
+
   .banner1:after {
     border-top: 30px solid #fff;
+    display: none;
 }
   
   .banner2-1 {
     background:radial-gradient( #0077ff5c, #fff) ;
+    display: none;
 }
   
   .banner2-1:after {
     border-top: 30px solid #fff;
+    display: none;
 }
 
 .videoAulas {
-    background:radial-gradient( #0077ff5c, #fff) ;
+    background:radial-gradient( #00000000, #ffffff00) ;
 }
+
+.vantagens {
+  margin-top: 200px;
+}
+
+.vantagens .titulo-1 {
+  color: #000;
+  text-align: center;
+}
+
+.vantagens .titulo-2 {
+  color: #594A3F;
+  text-align: center;
+}
+
+.vantagensIcon {
+  display: flex;
+  gap: 60px;
+  flex-direction: column;
+}
+
+.vantagensIcon {
+  margin: 50px;
+  margin-top: 150px;
+}
+
+.txt-vantagens {
+  font-size: 1.25em;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 300px;
+}
+
+.txt-vantagens .titulo-4 {
+  font-weight: 600;
+  font-size: 1.04em;
+}
+
 
 /* PROFISSIONAIS */
 
@@ -379,7 +465,7 @@ ul a svg:hover {
 .wrapper .carousel .item .p {
     color: #ffffff;
 }
-
+/* 
   ::-webkit-scrollbar-track {
     background-color: #000000;
 }
@@ -390,7 +476,7 @@ ul a svg:hover {
   ::-webkit-scrollbar-thumb {
     background: #00000081;
     border-radius: 10vh;
-}
+} */
 
 /* AULAS */
 
@@ -406,19 +492,11 @@ ul a svg:hover {
   width: 100%;
 }
 
-.bannerAulas .titulo-1, .bannerAulas .titulo-2 {
-  color: #000000d2;
-}
-
 .bannerCirc {
   position: absolute;
   top: -1px;
   left: -1px;
   z-index: -1;
-}
-
-.progresso .titulo-1, .progresso .titulo-2 {
-  color: #000000d2;
 }
 
 .bannerAulas svg {
@@ -436,10 +514,6 @@ ul a svg:hover {
 .videoAulasAulas {
     background:radial-gradient( #08d47800, #ffffff00) ;
     backdrop-filter: blur(0);
-}
-
-.videoaulas .titulo-1, .videoaulas .titulo-2 {
-  color: #000000d2;
 }
 
 .questoes:after {
@@ -596,7 +670,7 @@ background-color: #fff;
     padding: 12px;
   }
   ::-webkit-scrollbar-thumb {
-    background: #ffffffd5;
+    background: #838383d5;
     border-radius: 10vh;
   }
 

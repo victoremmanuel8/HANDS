@@ -392,6 +392,10 @@ header ul a svg path {
 
 /* KIDS */
 
+.bannerKIDS {
+  display: none;
+}
+
 .banner1 {
     background:radial-gradient( #0077ff5c, #090C2F) ;
 }
@@ -461,6 +465,10 @@ header ul a svg path {
 }
 
 /* AULAS */
+
+.bannerCirc, footer, .container-cat, .formas {
+  display: none;
+}
 
 .bannerAulas {
   background:radial-gradient( #092056c9, #090C2F);
