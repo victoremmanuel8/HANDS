@@ -405,6 +405,7 @@ ul a svg:hover {
 
 .vantagens {
   margin-top: 200px;
+  margin-bottom: 200px;
 }
 
 .vantagens .titulo-1 {
@@ -445,26 +446,10 @@ ul a svg:hover {
 
 /* PROFISSIONAIS */
 
-.bannerProf {
-    background:radial-gradient( #ff00c348, #fff) ;
+.temaKIDS  {
+    display: none;
 }
 
-.bannerProf:after {
-    border-top: 30px solid #fff;    
-}
-
-.btn-saiba {
-    background-color: #fff;
-    color: #fff;
-}
-
-.sec-2 {
-    background: linear-gradient(180deg, #fff, #fff , #ffffff98, #ffffff0c, #ffffff00);
-}
-
-.wrapper .carousel .item .p {
-    color: #ffffff;
-}
 /* 
   ::-webkit-scrollbar-track {
     background-color: #000000;
@@ -477,6 +462,24 @@ ul a svg:hover {
     background: #00000081;
     border-radius: 10vh;
 } */
+
+.temaAdulto {
+  width: 100%;
+}
+
+.bannerPROF {
+  width: 100%;
+  margin-top: -160px;
+  z-index: -1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bannerPROF svg {
+  margin-right: 100px;
+}
 
 /* AULAS */
 
