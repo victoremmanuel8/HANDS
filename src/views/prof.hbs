@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1>Lista de Profissionais</h1>
+<img src="{{profPhoto.url}}" alt="Foto de Perfil">
+<ul>
+  {{#each profissionais}}
+    <li>{{this.nm_prof}} - {{this.nr_idade}}</li>
+    <li>{{this.dt_nascimento}}</li>
+  {{/each}}
+  {{#each prof_profile}}
+  <li>{{prof_profile.url}}</li>
+  {{/each}}
+</ul>
+<h1>Lista de Profissionais</h1>
+<ul>
+  {{#each profissionaisComFotos}}
+    <li>
+      <p>Nome: {{this.nome}}</p>
+      <img src="{{this.foto}}" alt="Foto de Perfil" width="145.269" height="156.839">
+    </li>
+  {{/each}}
+</ul>
+
+</body>
+</html>

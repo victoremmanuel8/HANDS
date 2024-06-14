@@ -670,6 +670,49 @@ router.get("/profissionais", checkAuthenticated, async (req, res) => {
   }
 });
 
+router.get("/prof", checkAuthenticated, async (req, res) => {
+  try {
+    let user_profile;
+    let prof_profile;
+
+    if (req.session.user) {
+      user_profile = await Profile.findOne({
+        userId: req.session.user.id_usuario,
+      });
+    } else if (req.session.prof) {
+      prof_profile = await Profile_prof.findOne({
+        profId: req.session.prof.id_profissional,
+      });
+    }
+
+    const profissionais = await tb_profissional.findAll();
+
+    const profPhotos = await Profile_prof.find();
+
+    const profissionaisComFotos = profissionais.map((profissional) => {
+      const profPhoto = profPhotos.find((photo) => photo.profId === profissional.id_profissional);
+      return {
+        ...profissional,
+        foto: profPhoto ? profPhoto.url : null,
+      };
+    });
+
+    res.render("prof", {
+      user: req.session.user,
+      prof: req.session.prof,
+      user_profile,
+      prof_profile,
+      profissionais,
+      profissionaisComFotos, 
+    });
+  } catch (error) {
+    req.flash("error_msg", "Erro ao carregar perfil");
+    console.log(error);
+    res.redirect("/");
+  }
+});
+
+
 router.get("/cat-num", checkAuthenticated, async (req, res) => {
   try {
     let user_profile;
