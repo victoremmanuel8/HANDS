@@ -494,6 +494,10 @@ ul a svg .s{
   display: none;
 }
 
-.bannerKIDS, .vantagens {
+.bannerKIDS, .vantagens, .crieContaKids {
+  display: none;
+}
+
+.temaAdulto, .crieContaProf {
   display: none;
 }

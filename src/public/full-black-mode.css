@@ -277,14 +277,49 @@ ul a svg:hover {
 
 .banner {
     background:radial-gradient( #a38d117e, #fff);
+    display: none;
+}
+
+.bannerAdulto {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: start;
+  height: 130vh;
+}
+
+.bannerAdulto .titulo-hands {
+  margin-top: 10vh;
+  margin-left: 10vw;
+}
+
+.bannerAdulto .titulo-hands path {
+  fill: #FC9404;
+}
+
+.bannerAdulto .estrelaBanner {
+  position: relative;
+  top: -45vh;
+  z-index: -1;
+  right: -10px;
+
+}
+
+.bannerPerti {
+  background:radial-gradient( #FAFAFA, #FAFAFA);
+  padding-left: 60px;
+}
+.bannerPerti .titulo-1, .bannerPerti .titulo-2-5{
+  transform: scale(.9);
 }
 
 .banner:after {
     border-top: 30px solid #fff;
+    display: none;
 }
 
 .banner2:after {
     border-top: 30px solid #fff;
+    display: none;
 }
 
 .objetivos:after {
@@ -293,14 +328,16 @@ ul a svg:hover {
 
 .banner2 {
     background:radial-gradient( #a38d117e, #fff);
+    display: none;
 }
 
 .banner3 {
     background:radial-gradient( #a38d117e, #fff);
+    display: none;
 }
 
 .verde {
-    background: linear-gradient(45deg, #d47c00, #d47c00);
+    background: linear-gradient(45deg, #001F60, #001F60);
     -webkit-background-clip: text; 
     -webkit-text-fill-color: transparent; 
 }
@@ -313,13 +350,14 @@ ul a svg:hover {
 }
 
 .objetivos-blur {
-    background:radial-gradient( #a38d117e, #fff);
-    color: #ffffff;
+    background:radial-gradient( #ffffff00, #ffffff00);
+    backdrop-filter: blur(0);
+    color: #000000;
 }
 
 .primeiro {
     padding: 120px 20px;
-    background-color: #232323;
+    background-color: #ffffff;
     border-radius: 25px;
     box-shadow: 1px 1px 20px 2px #8574745b;
     width: calc(80%/4);
@@ -335,6 +373,39 @@ ul a svg:hover {
 .liz-azul, .liz-rosa {
   display: none;
 }
+
+.app {
+  display: none;
+}
+
+.comentario {
+  display: none;
+}
+
+.intuito {
+  display: none;
+}
+
+.primeiro svg .path1 {
+  fill: #00287A;
+}
+
+.primeiro svg .vetor {
+  fill: #000000;
+}
+
+.primeiro svg .fundo {
+  fill-opacity: 1;
+}
+
+.liz-amarelo, .liz-rosa {
+  display: none;
+}
+
+.map .mapa {
+  fill: #000000;
+}
+
 
 /* KIDS */
 
@@ -442,6 +513,37 @@ ul a svg:hover {
   font-weight: 600;
   font-size: 1.04em;
 }
+
+.crieContaKids {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20vh;
+}
+.crieContaKids .txt-crieConta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.crieContaKids .txt-crieConta .titulo-1{
+  font-size: 3.5em;
+}
+.crieContaKids .txt-crieConta .titulo-2{
+  font-size: 1.5em;
+}
+.crieContaKids .txt-crieConta a {
+  padding: 5px 48px;
+  border-radius: 3.5vh;
+  border: solid 2px #6899FF;
+  font-size: 1.7em;
+  font-weight: 100;
+  margin-top: 5vh;
+}
+
 
 
 /* PROFISSIONAIS */
@@ -584,6 +686,48 @@ ul a svg:hover {
   background-color: #52DAFF;
   color: #ffffff;
   font-size: 20px;
+}
+
+.temaAdulto .profCadastrados {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 240px;
+  border: solid 1px #000;
+  margin-top: 10vh;
+}
+
+.temaAdulto .crieContaProf {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-right: 240px;
+  margin-top: 20vh;
+}
+.temaAdulto .crieContaProf .txt-crieConta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.temaAdulto .crieContaProf .txt-crieConta .titulo-1{
+  font-size: 3.5em;
+}
+.temaAdulto .crieContaProf .txt-crieConta .titulo-2{
+  font-size: 1.5em;
+}
+.temaAdulto .crieContaProf .txt-crieConta a {
+  padding: 5px 48px;
+  border-radius: 3.5vh;
+  border: solid 2px #6899FF;
+  font-size: 1.7em;
+  font-weight: 100;
+  margin-top: 5vh;
 }
 
 /* AULAS */
@@ -975,6 +1119,8 @@ footer {
   align-items: center;
   height: 300px;
   font-size: 1.2em;
+  background-color: #FBF9F3;
+  margin-top: 10vh;
 }
 
 .footerDiv .titulo-2 {

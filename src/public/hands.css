@@ -70,11 +70,28 @@ section {
   position: relative;
 }
 
+.bannerPerti {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  margin-bottom: 10vh;
+  width: 80%;
+  backdrop-filter: blur(200px);
+  padding: 40px;
+  border-radius: 10vh;
+  position: relative;
+  z-index: 7;
+  background:radial-gradient( #ffdc165c, #ffffff);
+  position: relative;
+}
+
 .banner p a {
   text-decoration: underline;
 }
 
-.banner .map {
+.bannerPerti .map {
   position: relative;
   right: -40px;
 }

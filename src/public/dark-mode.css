@@ -287,6 +287,10 @@ ul a svg:hover {
     background:radial-gradient( #a38d117e, #222);
 }
 
+.bannerPerti {
+  background:radial-gradient( #a38d117e, #222);
+}
+
 .banner:after {
     border-top: 30px solid #222;
 }
@@ -650,4 +654,16 @@ input[type=file] {
   border: 2px solid #16B0FF;
   border-radius: 19px;
   overflow: hidden;
+}
+
+.bannerCirc, footer, .container-cat, .formas {
+  display: none;
+}
+
+.bannerKIDS, .vantagens, .crieContaKids {
+  display: none;
+}
+
+.temaAdulto, .crieContaProf {
+  display: none;
 }

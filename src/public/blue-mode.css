@@ -741,3 +741,15 @@ input[type=file] {
 .cont {
   background: linear-gradient(to top, #06376f, transparent);
 }
+
+.bannerCirc, footer, .container-cat, .formas {
+  display: none;
+}
+
+.bannerKIDS, .vantagens, .crieContaKids {
+  display: none;
+}
+
+.temaAdulto, .crieContaProf {
+  display: none;
+}
