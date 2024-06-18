@@ -1,0 +1,9 @@
+{{#if userStatus.login}}
+  {{> -commentInput}}
+{{/if}}
+
+{{#if comments}}
+  {{> displayComment}}
+{{else}}
+  <h5>No comments</h5>
+{{/if}}

@@ -1,0 +1,68 @@
+<div class="comment-wrapper" id="comment-field">
+  <div class="comment-input">
+    <form action="/comment/postId" method="post">
+      <textarea rows="5" placeholder="Enter your comment" cols="40" name="comment"></textarea>
+      <br>
+      <button class="btn" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+<div class="comments-section">
+{{#each comments}}
+  <div class="comment" id="{{this._id}}">
+    <div class="comment-user">
+      <!-- Imagem de perfil -->
+      <div class="img-perfil-profile">
+        {{#if this.userProfile}}
+        <img src="{{this.userProfile.url}}" width="145.269" height="156.839" alt="Foto de perfil de {{this.postedBy.nm_usuario}}" />
+        {{else if this.profProfile}}
+        <img src="{{this.profProfile.url}}" width="145.269" height="156.839" alt="Foto de perfil de {{this.postedBy.nm_prof}}" />
+        {{else}}
+        <p><img class="padrão" src="default-profile.png" alt="Foto de perfil padrão" /></p>
+        {{/if}}
+      </div>
+      <!-- Nome do usuário e data do comentário -->
+      <strong>{{this.postedBy.nm_usuario}}</strong>
+      <span>{{formatDate this.commentedAt}}</span>
+    </div>
+    <div class="comment-text">
+      {{this.text}}
+    </div>
+    <!-- Ações do comentário -->
+    <div class="comment-actions">
+      <!-- Formulário de resposta -->
+      <form action="/comment/{{this._id}}/reply/{{postId}}" method="post">
+        <textarea rows="3" placeholder="Enter your reply" cols="40" name="replyText"></textarea>
+        <br>
+        <button class="btn" type="submit">Reply</button>
+      </form>
+      {{#if (eq this.postedBy._id ../user._id)}}
+      <form action="/comment/{{this._id}}/delete/{{postId}}" method="post">
+        <button class="btn" type="submit">Delete</button>
+      </form>
+      {{/if}}
+    </div>
+  <div class="replies-section">
+    {{#each this.replies}}
+    <div class="reply" id="{{this._id}}">
+      <!-- Informações do usuário que postou a resposta -->
+      <div class="reply-user">
+        <strong>{{this.postedBy.nm_usuario}}</strong> <!-- Nome do usuário -->
+        <span>{{formatDate this.commentedAt}}</span> <!-- Data formatada -->
+      </div>
+      <div class="reply-text">
+        {{this.text}}
+      </div>
+      <!-- Botão de deletar resposta (apenas se o usuário logado postou a resposta) -->
+      {{#if (eq this.postedBy._id ../../user._id)}}
+      <form action="/comment/{{this._id}}/delete/{{postId}}" method="post">
+        <button class="btn" type="submit">Delete</button>
+      </form>
+      {{/if}}
+    </div>
+    {{/each}}
+  </div>
+</div>
+{{/each}}
+</div>

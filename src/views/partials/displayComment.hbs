@@ -1,0 +1,33 @@
+<!-- Supondo que 'comments' seja a variável passada para o template com os dados dos comentários -->
+<div class="comments-section">
+  {{#each comments}}
+    <div class="comment">
+      <p>{{this.text}}</p>
+      <p>Posted by: {{this.postedBy.name}}</p>
+      <!-- Botão para deletar o comentário, se necessário -->
+      <form action="/comment/{{this._id}}/delete/{{this.postId}}" method="post">
+        <button type="submit">Delete</button>
+      </form>
+      <!-- Formulário para responder ao comentário -->
+      <form action="/comment/{{this._id}}/reply/{{this.postId}}" method="post">
+        <textarea name="replyText" rows="3" placeholder="Enter your reply"></textarea>
+        <button type="submit">Submit Reply</button>
+      </form>
+      <!-- Aqui você pode exibir respostas aos comentários, se houver -->
+      {{#if this.replies}}
+        <div class="replies-section">
+          {{#each this.replies}}
+            <div class="reply">
+              <p>{{this.text}}</p>
+              <p>Posted by: {{this.postedBy.name}}</p>
+              <!-- Botão para deletar a resposta, se necessário -->
+              <form action="/comment/{{this._id}}/delete/{{this.postId}}" method="post">
+                <button type="submit">Delete</button>
+              </form>
+            </div>
+          {{/each}}
+        </div>
+      {{/if}}
+    </div>
+  {{/each}}
+</div>

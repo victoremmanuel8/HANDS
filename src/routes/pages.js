@@ -13,14 +13,20 @@ const Profile_prof = require("../models/Profile_prof");
 const cl_views = require("../models/View");
 const Theme = require("../models/Theme");
 const Theme_prof = require("../models/Theme_prof");
+const Comment = require("../models/comments")
 const { tb_usuario } = require("../models/usu_model");
 const { tb_profissional } = require("../models/prof_model");
 const uploadMiddleware = require("../../middleware/photo_multer");
+const commentRoute = express.Router();
+const mongoose = require('mongoose');
+const { isLogin } = require('../utils/loginHandeler');
+const { body, validationResult } = require('express-validator');
 // const moment = require('moment');
 
 //analisar a questão do perfil para o profissional e a exibição do nome e a aparição da foto
 
 router.use(express.json());
+commentRoute.use(express.json());
 
 //function do middleware (de sessão do profissional)
 function checkAuthenticated_Prof(req, res, next) {
@@ -155,21 +161,6 @@ function convert_milli(milliseconds) {
     .toString()
     .padStart(2, "0")}:${remaining_seconds.toString().padStart(2, "0")}`;
 }
-
-/* async function calcul_time(req, res, next) {
-  if (req.session.user || req.session.prof) {
-    const userId = req.session.user ? req.session.user.id_usuario : null;
-    const profId = req.session.prof ? req.session.prof.id_profissional : null;
-
-    if (userId) {
-      await calculateAndSetSessionTime(userId, false, req, res);
-    }
-    if (profId) {
-      await calculateAndSetSessionTime(profId, true, req, res);
-    }
-  }
-  next();
-}*/
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -558,6 +549,88 @@ router.delete("/posts/:id", async (req, res) => {
   }
 });
 
+// commentRoute.post('/:postId', isLogin, [
+//   body('comment').trim().escape().notEmpty().withMessage('Comment field cannot be empty!')
+// ], async (req, res) => {
+//   const errors = validationResult(req);
+//   const { postId } = req.params;
+
+//   if (errors.isEmpty()) {
+//     const { comment } = req.body;
+
+//     let commentObj = {
+//       postedBy: req.session.user._id, // Ajuste conforme sua sessão
+//       postId,
+//       text: comment,
+//     };
+
+//     try {
+//       await new Comment(commentObj).save();
+//       req.flash('success', 'Comment posted successfully');
+//     } catch (err) {
+//       console.error('Failed to save comment:', err);
+//       req.flash('error', 'Failed to post comment');
+//     }
+//   } else {
+//     req.flash('error', errors.array().map(e => e.msg).join(', '));
+//   }
+
+//   res.redirect(`/${postId}#comment-field`);
+// });
+
+// // Rota para postar uma resposta
+// commentRoute.post('/:commentId/reply/:postId', isLogin, [
+//   body('replyText').trim().escape().notEmpty().withMessage('Reply field cannot be empty!')
+// ], async (req, res) => {
+//   const { commentId, postId } = req.params;
+//   const errors = validationResult(req);
+//   const { replyText } = req.body;
+
+//   if (errors.isEmpty()) {
+//     const replyObj = {
+//       postedBy: req.session.user._id, // Ajuste conforme sua sessão
+//       postId,
+//       text: replyText,
+//       parentComment: commentId
+//     };
+//     try {
+//       const newReply = await new Comment(replyObj).save();
+//       await Comment.findOneAndUpdate({ _id: commentId, postId }, { $push: { replies: newReply._id } });
+//       req.flash('success', 'Reply posted successfully');
+//     } catch (er) {
+//       console.log(er.message);
+//       req.flash('error', 'Failed to post reply');
+//     }
+//   } else {
+//     req.flash('error', 'Failed to post reply');
+//   }
+
+//   res.redirect(`/${postId}#${commentId}`);
+// });
+
+// // Rota para excluir um comentário
+// commentRoute.post('/:commentId/delete/:postId', isLogin, async (req, res) => {
+//   const { commentId, postId } = req.params;
+
+//   try {
+//     const comment = await Comment.findOne({ _id: commentId, postId }).lean();
+
+//     if (comment && comment.postedBy.toString() === req.session.user._id.toString()) {
+//       await Comment.deleteMany({ _id: { $in: comment.replies } });
+//       await Comment.deleteOne({ _id: commentId });
+//       req.flash('success', 'Comment deleted successfully');
+//     } else {
+//       req.flash('error', 'Failed to delete comment');
+//     }
+//   } catch (er) {
+//     console.log(er.message);
+//     req.flash('error', 'Failed to delete comment');
+//   }
+
+//   res.redirect(`/${postId}#comment-field`);
+// });
+
+
 //aqui a função get e render vai pegar a url e renderizar ela no site
 
 // a pagina inicial que irá aparecer ao entrar no server
@@ -615,6 +688,112 @@ router.get("/index", calcul_time, checkAuthenticated, async (req, res) => {
     res.redirect("/login");
   }
 });
+// router.get('/commenter', checkAuthenticated, async (req, res) => {
+//   try {
+//     // Buscar todos os comentários do MongoDB
+//     const comments = await Comment.find().populate('postedBy'); // Usar populate para incluir o usuário que postou o comentário
+
+//     res.render('commenter', {
+//       comments,
+//       user: req.session.user,
+//       prof: req.session.prof,
+//     });
+//   } catch (err) {
+//     console.error('Erro ao buscar comentários:', err);
+//     req.flash('error', 'Falha ao buscar comentários');
+//     res.redirect('/');
+//   }
+// });
+
+router.get('/comment', checkAuthenticated, async (req, res) => {
+  try {
+    // Buscar todos os comentários
+    let comments = await Comment.find({}).populate('replies');
+
+    // Adicionar informações de perfil a cada comentário
+    comments = await Promise.all(comments.map(async (comment) => {
+      const user_profile = await Profile.findOne({ userId: comment.postedBy });
+      const prof_profile = await Profile_prof.findOne({ profId: comment.postedBy });
+
+      return {
+        ...comment.toObject(),
+        userProfile: user_profile ? user_profile : null,
+        profProfile: prof_profile ? prof_profile : null,
+        postedBy: comment.postedBy // Supondo que 'postedBy' é um ID referenciando 'tb_usuario' ou 'tb_profissional'
+      };
+    }));
+
+    res.render('comment', {
+      comments,
+      user: req.session.user,
+      prof: req.session.prof,
+      // Não é necessário passar user_profile e prof_profile separadamente
+    });
+  } catch (err) {
+    console.error('Failed to fetch comments:', err);
+    req.flash('error', 'Failed to fetch comments');
+    res.redirect('/');
+  }
+});
+
+
+// router.get('/comment', checkAuthenticated, async (req, res) => {
+//   try {
+//     let user_profile;
+//     let prof_profile;
+
+//     if (req.session.user) {
+//       user_profile = await Profile.findOne({
+//         userId: req.session.user.id_usuario,
+//       });
+//     } else if (req.session.prof) {
+//       prof_profile = await Profile_prof.findOne({
+//         profId: req.session.prof.id_profissional,
+//       });
+//     }
+
+//     // Buscar todos os comentários sem filtrar por postId
+//     const comments = await Comment.find({})
+//       .populate('postedBy')
+//       .populate({
+//         path: 'replies',
+//         populate: {
+//           path: 'postedBy'
+//         }
+//       });
+
+//     res.render('comment', {
+//       comments,
+//       user: req.session.user,
+//       prof: req.session.prof,
+//       user_profile,
+//       prof_profile
+//       // Não é necessário passar o postId já que estamos buscando todos os comentários
+//     });
+//   } catch (err) {
+//     console.error('Failed to fetch comments:', err);
+//     req.flash('error', 'Failed to fetch comments');
+//     res.redirect('/');
+//   }
+// });
+
+// router.get('/comments/:postId', checkAuthenticated, async (req, res) => {
+//   const { postId } = req.params;
+
+//   try {
+//     // Buscando todos os comentários relacionados ao postId
+//     const comments = await Comment.find({ postId: postId }).lean();
+
+//     // Passando todos os comentários para o template
+//     res.render('comment', { comments, user: req.session.user });
+//   } catch (err) {
+//     console.error('Falha ao buscar comentários:', err);
+//     req.flash('error', 'Falha ao buscar comentários');
+//     res.redirect('/');
+//   }
+// });
+
+
 
 router.get("/kids", checkAuthenticated, async (req, res) => {
   try {

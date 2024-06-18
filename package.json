@@ -20,6 +20,7 @@
         "cookie-parser": "^1.4.6",
         "dotenv": "^16.4.1",
         "express": "^4.19.2",
+        "express-handlebars": "^7.1.2",
         "express-hbs": "^2.5.0",
         "express-session": "^1.18.0",
         "express-validator": "^7.0.1",

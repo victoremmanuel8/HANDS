@@ -4,6 +4,7 @@ const path = require("path");
 const mysql = require("mysql2");
 const dotenv = require("dotenv");
 require("dotenv").config();
+// const exphbs = require('express-handlebars');
 const hbs = require("hbs");
 const multer = require("multer");
 //definindo o swiper
@@ -20,9 +21,21 @@ const UsuarioRoutes = require("./src/routes/pages.js");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const flash = require("connect-flash");
+// const commentRoute = require("./src/routes/comment.js");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
+const {formatDate, showBtns} = require("./src/utils/helperFunctions");
+const userStatusChecker = require('./src/utils/userStatusChecker');
+const commentRoute = require("./src/routes/comment.js");
 //const video = require ('./src/assets/index.js')
+
+// Configuração do Handlebars
+const exphbs = require('express-handlebars').create({
+  extname: '.hbs',
+  defaultLayout: 'main',
+  layoutsDir: path.join(__dirname, 'views/layouts'),
+  partialsDir: path.join(__dirname, 'views/partials')
+});
 
 mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
@@ -56,6 +69,8 @@ app.use((req, res, next) => {
 
 app.use(morgan("dev"));
 
+app.use(userStatusChecker);
+
 app.use(
   "/image",
   express.static(path.join(__dirname, "res/photo/profile/tmp"))
@@ -83,6 +98,15 @@ hbs.registerHelper("and", function (a, b, options) {
   }
 });
 
+hbs.registerHelper("formatDate", function(date) {
+  return new Date(date).toLocaleString();
+  // Implemente a lógica de formatação de data aqui
+});
+
+hbs.registerHelper("showBtns", function(buttonType, userId, userStatus) {
+  // Implemente a lógica para mostrar botões com base nos parâmetros fornecidos
+});
+
 app.set("views", path.join(__dirname, "src/views"));
 
 const scripthbsDirectory = path.join(__dirname, "src/script");
@@ -98,8 +122,9 @@ app.use(express.static(videoDirectory));
 const imgDirectory = path.join(__dirname, "./res");
 app.use(express.static(imgDirectory));
 
-const partialDirectory = path.join(__dirname, "src/views/partials");
-app.use(express.static(partialDirectory));
+const partialsDir = path.join(__dirname, "src/views/partials");
+app.use(express.static(partialsDir));
+hbs.registerPartials(partialsDir);
 
 //Verificação do captcha
 app.post("/submit", async (req, res) => {
@@ -160,6 +185,7 @@ appBack.use("/prof", UsuarioRoutes);
 //Definir as rotas (Routes)
 app.use("/", require("./src/routes/pages.js"));
 app.use("/auth", require("./src/routes/auth.js"));
+app.use("/comment", require("./src/routes/comment.js"));
 
 //middleware
 // app.use('/' , require('./src/middleware/auth.js'))
