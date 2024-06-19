@@ -287,6 +287,46 @@ ul a svg:hover {
   height: 130vh;
 }
 
+.bannerAdultoApp {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 130vh;
+}
+
+.bannerAdultoApp .mão {
+  position: absolute;
+  left: 0px;
+}
+
+.bannerAdultoApp > div {
+  width: 60%;
+  margin-left: 50%;
+}
+
+.bannerAdultoBaixe {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 130vh;
+}
+
+.bannerAdultoBaixe .titulo-1{
+  transform: scale(.8);
+}
+
+.bannerAdultoBaixe .titulo-2 {
+  font-size: 1.3em;
+}
+
+.bannerAdultoBaixe a {
+  padding: 5px 48px;
+  border-radius: 3.5vh;
+  border: solid 2px #6899FF;
+  font-size: 1.7em;
+  font-weight: 100;
+}
+
 .bannerAdulto .titulo-hands {
   margin-top: 10vh;
   margin-left: 10vw;
