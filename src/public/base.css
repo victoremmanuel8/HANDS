@@ -490,14 +490,6 @@ ul a svg .s{
   fill: #35af6a;
 }
 
-.bannerCirc, footer, .container-cat, .formas {
-  display: none;
-}
-
-.bannerKIDS, .vantagens, .crieContaKids {
-  display: none;
-}
-
-.temaAdulto, .crieContaProf {
+.bannerCirc, footer, .container-cat, .formas, .bannerKIDS, .vantagens, .crieContaKids, .temaAdulto, .crieContaProf, .bannerAdulto, .bannerAdultoApp, .bannerAdultoBaixe, .formasPerfil  {
   display: none;
 }

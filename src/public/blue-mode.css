@@ -742,14 +742,6 @@ input[type=file] {
   background: linear-gradient(to top, #06376f, transparent);
 }
 
-.bannerCirc, footer, .container-cat, .formas {
-  display: none;
-}
-
-.bannerKIDS, .vantagens, .crieContaKids {
-  display: none;
-}
-
-.temaAdulto, .crieContaProf {
+.bannerCirc, footer, .container-cat, .formas, .bannerKIDS, .vantagens, .crieContaKids, .temaAdulto, .crieContaProf, .bannerAdulto, .bannerAdultoApp, .bannerAdultoBaixe, .formasPerfil  {
   display: none;
 }
