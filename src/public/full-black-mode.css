@@ -308,7 +308,7 @@ ul a svg:hover {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 130vh;
+  height: 70vh;
 }
 
 .bannerAdultoBaixe .titulo-1{
@@ -341,7 +341,6 @@ ul a svg:hover {
   top: -45vh;
   z-index: -1;
   right: -10px;
-
 }
 
 .bannerPerti {
@@ -419,7 +418,7 @@ ul a svg:hover {
 }
 
 .comentario {
-  display: none;
+  /* display: none; */
 }
 
 .intuito {
@@ -446,6 +445,12 @@ ul a svg:hover {
   fill: #000000;
 }
 
+.blur {
+  position: absolute;
+  z-index: -1;
+  margin-top: -160px;
+  margin-left: -150px;
+}
 
 /* KIDS */
 
@@ -619,8 +624,9 @@ ul a svg:hover {
   justify-content: space-between;
 }
 
+
 .bannerPROF svg {
-  margin-right: 100px;
+  margin-right: -50px;
 }
 
 .temaAdulto .carousel-container {
