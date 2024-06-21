@@ -552,6 +552,11 @@ router.get("/cadastro", (req, res) => {
   req.session.formData = null; // Limpe os dados do formulário da sessão
   res.render("cadastro", { formData: formData }); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
 });
+router.get("/cadastroAdulto", (req, res) => {
+  const formData = req.session.formData || {};
+  req.session.formData = null; // Limpe os dados do formulário da sessão
+  res.render("cadastroAdulto", { formData: formData }); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).
+});
 
 router.get("/cadastro1", (req, res) => {
   res.render("cadastro1"); //aqui você colocará o index que deseja ou o diretório para acessar os html (hbs).

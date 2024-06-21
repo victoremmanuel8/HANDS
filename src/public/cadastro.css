@@ -289,6 +289,10 @@ label {
     color: #898989;
 }
 
+.azul {
+    color: #324B7F;
+}
+
 .titulo-1 {
     color: #000;
     font-size: 2em;
@@ -909,4 +913,58 @@ form {
 
 .cadastro1-body {
     overflow: hidden;
+}
+
+.cadastro1-body header {
+    padding-right: 25px;
+}
+
+.cadastro1-body header div > a {
+    padding: 9px 25px;
+    border-radius: 10vh;
+    border: solid 4px #808080;
+    font-size: 1.4em;
+}
+
+.op .txt{
+    transform: scale(2);
+    text-align: center;
+}
+
+.op {
+    position: absolute;
+    top: 60%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    scale: 1.2;
+}
+
+.opcoes {
+    display: flex;
+    margin-top: 8vh;
+    gap: 50px;
+}
+
+.opcoes .opcoesBtn {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: #E9E9E9;
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+.p:hover {
+    background-color: #FFE9F0;
+}
+
+.s:hover {
+    background-color: #FFE9B2;
+}
+
+.t:hover {
+    background-color: #BFF1FF;
 }
