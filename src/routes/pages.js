@@ -30,7 +30,8 @@ function checkAuthenticated_Prof(req, res, next) {
   if (req.session.prof) {
     next();
   } else {
-    res.redirect("/index");
+    req.flash("success_msg", "Faça login para continuar navegando em nosso site");
+    res.redirect("/login_prof");
   }
 }
 
@@ -39,6 +40,7 @@ function checkAuthenticated(req, res, next) {
   if (req.session.user || req.session.prof) {
     next();
   } else {
+    req.flash("success_msg", "Faça login para continuar navegando em nosso site");
     res.redirect("/");
   }
 }
@@ -571,11 +573,12 @@ router.get("/delete", checkAuthenticated, (req, res) => {
 });
 
 // Rota que requer autenticação
-router.get("/index", calcul_time, checkAuthenticated, async (req, res) => {
+router.get("/index", calcul_time, async (req, res) => {
   try {
     let user_profile;
     let prof_profile;
 
+    // Busca perfis de usuário e profissional
     if (req.session.user) {
       user_profile = await Profile.findOne({
         userId: req.session.user.id_usuario,
@@ -586,24 +589,10 @@ router.get("/index", calcul_time, checkAuthenticated, async (req, res) => {
       });
     }
 
-    res.render("index", {
-      user: req.session.user,
-      prof: req.session.prof,
-      user_profile,
-      prof_profile,
-    });
-  } catch (error) {
-    req.flash("error_msg", "Erro ao carregar perfil");
-    res.redirect("/login");
-  }
-});
-
-router.get("/comment", checkAuthenticated, async (req, res) => {
-  try {
-    // Buscar todos os comentários
+    // Busca todos os comentários e suas respostas
     let comments = await Comment.find({}).populate("replies");
 
-    // Adicionar informações de perfil a cada comentário
+    // Adiciona informações de perfil a cada comentário
     comments = await Promise.all(
       comments.map(async (comment) => {
         const user_profile = await Profile.findOne({
@@ -622,23 +611,90 @@ router.get("/comment", checkAuthenticated, async (req, res) => {
       })
     );
 
-    res.render("comment", {
-      comments,
+    // Renderiza a página "index" com todos os dados necessários
+    res.render("index", {
       user: req.session.user,
       prof: req.session.prof,
+      user_profile,
+      prof_profile,
+      comments,  // Adiciona os comentários ao contexto da renderização
     });
-  } catch (err) {
-    console.error("Failed to fetch comments:", err);
-    req.flash("error", "Failed to fetch comments");
-    res.redirect("/");
+  } catch (error) {
+    console.error("Failed to load index page:", error);
+    req.flash("error_msg", "Erro ao carregar a página inicial");
+    res.redirect("/login");
   }
 });
 
-router.get("/kids", checkAuthenticated, async (req, res) => {
+// router.get("/comment", checkAuthenticated, async (req, res) => {
+//   try {
+//     // Buscar todos os comentários
+//     let comments = await Comment.find({}).populate("replies");
+
+//     // Adicionar informações de perfil a cada comentário
+//     comments = await Promise.all(
+//       comments.map(async (comment) => {
+//         const user_profile = await Profile.findOne({
+//           userId: comment.postedBy,
+//         });
+//         const prof_profile = await Profile_prof.findOne({
+//           profId: comment.postedBy,
+//         });
+
+//         return {
+//           ...comment.toObject(),
+//           userProfile: user_profile ? user_profile : null,
+//           profProfile: prof_profile ? prof_profile : null,
+//           postedBy: comment.postedBy,
+//         };
+//       })
+//     );
+
+//     res.render("comment", {
+//       comments,
+//       user: req.session.user,
+//       prof: req.session.prof,
+//     });
+//   } catch (err) {
+//     console.error("Failed to fetch comments:", err);
+//     req.flash("error", "Failed to fetch comments");
+//     res.redirect("/");
+//   }
+// });
+
+// router.get("/kids",  async (req, res) => {
+//   try {
+//     let user_profile;
+//     let prof_profile;
+
+//     if (req.session.user) {
+//       user_profile = await Profile.findOne({
+//         userId: req.session.user.id_usuario,
+//       });
+//     } else if (req.session.prof) {
+//       prof_profile = await Profile_prof.findOne({
+//         profId: req.session.prof.id_profissional,
+//       });
+//     }
+
+//     res.render("kids", {
+//       user: req.session.user,
+//       prof: req.session.prof,
+//       user_profile,
+//       prof_profile,
+//     });
+//   } catch (error) {
+//     req.flash("error_msg", "Erro ao carregar perfil");
+//     res.redirect("/login");
+//   }
+// });
+
+router.get("/profissionais", async (req, res) => {
   try {
     let user_profile;
     let prof_profile;
 
+    // Busca perfis de usuário e profissional
     if (req.session.user) {
       user_profile = await Profile.findOne({
         userId: req.session.user.id_usuario,
@@ -649,47 +705,6 @@ router.get("/kids", checkAuthenticated, async (req, res) => {
       });
     }
 
-    res.render("kids", {
-      user: req.session.user,
-      prof: req.session.prof,
-      user_profile,
-      prof_profile,
-    });
-  } catch (error) {
-    req.flash("error_msg", "Erro ao carregar perfil");
-    res.redirect("/login");
-  }
-});
-
-router.get("/profissionais", checkAuthenticated, async (req, res) => {
-  try {
-    let user_profile;
-    let prof_profile;
-
-    if (req.session.user) {
-      user_profile = await Profile.findOne({
-        userId: req.session.user.id_usuario,
-      });
-    } else if (req.session.prof) {
-      prof_profile = await Profile_prof.findOne({
-        profId: req.session.prof.id_profissional,
-      });
-    }
-
-    res.render("profissionais", {
-      user: req.session.user,
-      prof: req.session.prof,
-      user_profile,
-      prof_profile,
-    });
-  } catch (error) {
-    req.flash("error_msg", "Erro ao carregar perfil");
-    res.redirect("/login");
-  }
-});
-
-router.get("/prof", checkAuthenticated, async (req, res) => {
-  try {
     // Buscar todos os profissionais
     const profissionais = await tb_profissional.findAll();
 
@@ -709,17 +724,52 @@ router.get("/prof", checkAuthenticated, async (req, res) => {
       };
     });
 
-    res.render("prof", {
+    res.render("profissionais", {
       user: req.session.user,
       prof: req.session.prof,
+      user_profile,
+      prof_profile,
       Prof_map,
     });
   } catch (error) {
     console.error("Erro ao carregar perfil:", error);
     req.flash("error_msg", "Erro ao carregar perfil");
-    res.redirect("/");
+    res.redirect("/login");
   }
 });
+
+// router.get("/prof", checkAuthenticated, async (req, res) => {
+//   try {
+//     // Buscar todos os profissionais
+//     const profissionais = await tb_profissional.findAll();
+
+//     // Buscar todas as fotos dos profissionais no MongoDB
+//     const profPhotos = await Profile_prof.find();
+
+//     // Mapear os dados para incluir nome, foto e outras informações
+//     const Prof_map = profissionais.map((profissional) => {
+//       const profPhoto = profPhotos.find(
+//         (photo) => photo.profId.toString() === profissional.id_profissional.toString()
+//       );
+//       return {
+//         id_profissional: profissional.id_profissional,
+//         nm_prof: profissional.nm_prof,
+//         nr_idade: profissional.nr_idade,
+//         profPhoto: profPhoto ? profPhoto.url : null,
+//       };
+//     });
+
+//     res.render("prof", {
+//       user: req.session.user,
+//       prof: req.session.prof,
+//       Prof_map,
+//     });
+//   } catch (error) {
+//     console.error("Erro ao carregar perfil:", error);
+//     req.flash("error_msg", "Erro ao carregar perfil");
+//     res.redirect("/");
+//   }
+// });
 
 
 

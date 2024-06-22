@@ -67,6 +67,28 @@ header a svg path {
 fill: #000;
 }
 
+.alert.alert-success {
+  color: #000000;
+  background-color: #d7f8dc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.alert.alert-danger {
+  color: #000000;
+  background-color: #d3503e;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.alert-text {
+  position: absolute; left: 50%; top: 5%;
+  transform: translate(-50%, -50%);
+  gap: 20px;
+}
+
 .line-dash path, .line-dash-2 path, .line-dash-1 path, .line-dash-3 path {
 stroke: #00000000;
 }

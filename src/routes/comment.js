@@ -49,7 +49,7 @@ commentRoute.post(
       );
     }
 
-    res.redirect("/comment");
+    res.redirect("/index");
   }
 );
 
@@ -94,7 +94,7 @@ commentRoute.post(
       req.flash("error", "Failed to post reply");
     }
 
-    res.redirect("/comment");
+    res.redirect("/index");
   }
 );
 
@@ -125,7 +125,7 @@ commentRoute.post("/:commentId/delete/:postId", isLogin, async (req, res) => {
     req.flash("error", "Failed to delete comment");
   }
 
-  res.redirect("/comment");
+  res.redirect("/index");
 });
 
 module.exports = commentRoute;

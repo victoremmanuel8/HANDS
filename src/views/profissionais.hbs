@@ -443,9 +443,10 @@
         </script>
 
         <div class="profCadastrados">
-            espaço separado para o Luanzinho ser feliz 😀
+            {{>prof}}
+            {{!-- espaço separado para o Luanzinho ser feliz 😀 --}}
         </div>
-
+        {{#if (not user )}}
         <div class="crieContaProf">
             <svg width="506" height="473" viewBox="0 0 506 473" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -516,6 +517,7 @@
                 <h3 class="titulo-2">Faça parte da equipe HANDS</h3>
                 <a href="/cadastro_prof">Sign In</a>
             </div>
+             {{/if}}
         </div>
     </section>
     <footer>
