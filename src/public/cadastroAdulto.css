@@ -1,0 +1,235 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    width: 100%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    overflow-x: hidden;
+    background-color: #fff;
+    color: #000;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+.alert.alert-success {
+    color: #000000;
+    background-color: #d7f8dc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+
+.alert.alert-danger {
+    color: #000000;
+    background-color: #d3503e;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+  
+.alert-text {
+    position: absolute; left: 50%; top: 5%;
+    transform: translate(-50%, -50%);
+    gap: 20px;
+}
+
+.formas {
+    position: absolute;
+    z-index: -1;
+    scale: 1.3;
+    left: 0px;
+    top: 0px;
+}
+
+.formasLogin {
+    position: absolute;
+    z-index: -1;
+    scale: 1.3;
+    left: 140px;
+    top: 0px;
+}
+
+.areacadastro {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.areacadastroLogin {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 2vh;
+    padding: 25px;
+}
+
+header div a{
+    padding: 8px 19px;
+    border-radius: 10vh;
+    color: #000;
+    font-weight: 700;
+}
+
+header div > a {
+    padding: 9px 25px;
+    border-radius: 10vh;
+    border: solid 3px #808080;
+    font-size: 1.4em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    transform: scale(1.2);
+    color: #000;
+    gap: 10px;
+}
+
+#progress-bar {
+    width: 300px;
+    height: 20px;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    margin: 20px;
+    position: relative;
+  }
+  
+  #progress {
+    width: 0%;
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out;
+  }
+
+::-webkit-scrollbar-track {
+    background-color: #ffffff;
+}
+  ::-webkit-scrollbar {
+    width: 9px;
+    padding: 12px;
+}
+  ::-webkit-scrollbar-thumb {
+    background: #ffffffd5;
+    border-radius: 10vh;
+}
+
+.input {
+    background: transparent;
+    border: none;
+    margin-bottom: 5px;
+    padding: 5px 0px;
+    color: #000;
+}
+
+hr {
+    margin-bottom: 20px;
+}
+
+input:focus {
+    outline: 0;
+}
+
+#dt_nascimento {
+    color: #757575;
+}
+
+.inputSelect {
+    padding: 6px;
+    border-radius: 15px;
+    border: none;
+    margin-top: 10px;
+    margin-left: -10px;
+    width: calc(100% + 10px);
+    color: #000000;
+    background-color: #FAFAFA;
+    cursor: pointer;
+    font-size: 1.1em;  /*tira dps da banca*/
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(100%);
+    cursor: pointer;
+}
+
+.button {
+    border: none;
+    padding: 15px 16px;
+    font-size: larger;
+    border-radius: 10vh;
+    background-color:#ffffff;
+    transition: .5s ease;
+    color: #000000;
+    font-weight: 50;
+    /* box-shadow: 0px 5px 1px #b2b2b2; */
+    box-shadow: 0px 0px 10px #b2b2b25c;
+    cursor: pointer;
+}
+
+.button:hover{
+    border: none;
+    font-size: larger;
+    padding: 15px 16px;
+    border-radius: 10vh;
+    background-color:#ffffff;
+    transition: .5s ease;
+    color: #000000;
+    box-shadow: 0px 0px 5px #b2b2b2;
+    /* transform: translate3d(0px, 5px, 0);  */
+}
+
+.g-recaptcha {
+    border-radius: 2vh;
+    overflow: hidden;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 296px;
+    border: solid 1px #40404049;
+    box-shadow: 0 0 10px #40404049;
+}
+
+.captcha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.titulo-1 {
+    font-size: 2em;
+    text-align: center;
+}
+
+.titulo-2 {
+    color: #594A3F;
+    text-align: center;
+}
+
+.azul {
+    color: #334C80;
+}
+
+#class {
+    text-align: center;
+}
+
+.loginProf {
+    overflow: hidden;
+}

@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profissionais</title>
 </head>
+
 <body>
     <h1>Lista de Profissionais</h1>
     <ul>
         {{#each Prof_map}}
-            <li>
-                <img src="{{profPhoto}}" alt="{{nm_prof}}" width="80px" height="80px">
-                <p>Nome: {{nm_prof}}</p>
-                <p>Idade: {{nr_idade}}</p>
-            </li>
+        <li>
+            <img src="{{profPhoto}}" alt="{{nm_prof}}" width="80px" height="80px">
+            <p>Nome: {{nm_prof}}</p>
+            <p>Idade: {{nr_idade}}</p>
+        </li>
         {{/each}}
     </ul>
 </body>
+
 </html>

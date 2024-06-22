@@ -1,7 +1,6 @@
 body {
     flex-direction: column;
     margin: 0px;
-    font-family: Arial, Helvetica, sans-serif; /*fonte temporaria*/
     padding: 0px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     width: 100%;
@@ -27,13 +26,13 @@ a {
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 4px;
-  }
+}
   
-  .alert-text {
+.alert-text {
     position: absolute; left: 50%; top: 5%;
     transform: translate(-50%, -50%);
     gap: 20px;
-  }
+}
 
 header {
     display: flex;
@@ -943,6 +942,11 @@ form {
     display: flex;
     margin-top: 8vh;
     gap: 50px;
+}
+
+.opcoes > div{
+    color: #000;
+    text-align: center;
 }
 
 .opcoes .opcoesBtn {
