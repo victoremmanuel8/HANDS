@@ -7,6 +7,10 @@ const commentSchema = new Schema({
     required: true,
     ref: tb_usuario,
   },
+  postedByName: {
+    type: String,
+    required: true,
+  },
   postId: {
     type: Schema.Types.ObjectId,
     required: true,
@@ -38,11 +42,34 @@ commentSchema.pre(/^find/, function (next) {
     path: "replies",
     populate: {
       path: "postedBy",
-      select: "username", // Especifique os campos que deseja selecionar do usuário
+      select: "username", 
     },
   });
   next();
 });
+
+// commentSchema.pre("find", async function (next) {
+//   try {
+//     let userId;
+//     let profId;
+//     // Exemplo: Buscar o nome do usuário ou profissional no MySQL
+//     if (userId) {
+//     const user = await tb_usuario.findById(this.postedBy).exec();
+//     if (user) {
+//       this.postedByName = user.nm_usuario; // Ou user.nm_prof, dependendo do tipo
+//     }
+//   }
+//   if(profId){
+//     const prof = await tb_profissional.findById(this.postedBy).exec();
+//     if(prof) {
+//       this.postedByName = prof.nm_prof;
+//     }
+//   }
+
+//     next();
+//   } catch (err) {
+//     next(err);
+//   }
 
 const Comment = model("comments", commentSchema);
 module.exports = Comment;

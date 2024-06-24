@@ -35,6 +35,7 @@
             <li><a href="aulas">Aulas</a></li>
             {{!-- <li><a href="/"><span class="login-aulas">Log in</span></a></li> --}}
             {{!-- <li><a href="cadastro"><span class="sing-aulas">Usuário Premium</span></a></li> --}}
+            {{#if (yes user)}}
             <a href="/perfil">
                 <div class="img-perfil-profile">
                     {{#if user_profile}}
@@ -48,6 +49,7 @@
                     {{/if}}
                 </div>
             </a>
+            {{/if}}
         </ul>
     </header>
     <section>

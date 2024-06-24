@@ -102,6 +102,10 @@ hbs.registerHelper('not', function(value) {
   return !value;
 });
 
+hbs.registerHelper('yes', function(value) {
+  return value;
+})
+
 hbs.registerHelper("formatDate", function(date) {
   return new Date(date).toLocaleString();
   // Implemente a lógica de formatação de data aqui
