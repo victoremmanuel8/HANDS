@@ -468,3 +468,159 @@ section {
 .cont .row {
   gap: 20px;
 }
+
+/* COMENTARIOS */
+
+.comment-wrapper {
+  width: 300px;
+  height: 450px;
+  background: linear-gradient(180deg, #FFB800, #FFE500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 50px;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 40px;
+}
+
+.comment-wrapper .titulo-1, .comment-wrapper .titulo-3 {
+  color: #fff;
+  font-weight: 500;
+} 
+
+.comment-wrapper .titulo-3 {
+  font-size: 40px;
+  font-weight: 100;
+}
+
+.comment-input form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.comment-input form textarea{
+  background: #ffffff67;
+  border-radius: 15px;
+  height: 120px;
+  padding: 20px;
+  width: 270px;
+  border: none;
+  margin-top: 5vh;
+  outline: 0;
+  color: #000;
+  font-size: 17px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+}
+
+.comment-input form textarea::-webkit-input-placeholder {
+  color: #ffffff;
+}
+
+.btnComent {
+  border: none;
+  padding: 10px 36px;
+  border-radius: 10vh;
+  background-color:#ffffffd6;
+  font-size: large;
+  width: 100%; 
+  transition: .5s ease;
+  color: #000000;
+  font-weight: 50;
+  box-shadow: 0px 0px 10px #b2b2b25c;
+  cursor: pointer;
+}
+
+.btnComent:hover{
+  border: none;
+  padding: 10px 36px;
+  width: 100%;
+  font-size: large;
+  border-radius: 10vh;
+  background-color:#ffffffd6;
+  transition: .5s ease;
+  color: #000000;
+  box-shadow: 0px 0px 5px #b2b2b2;
+}
+
+/* .btnComentEnvi {
+  border: none;
+  border-radius: 100%;
+  background-color:#6a6a6ad6;
+  box-shadow: 0px 0px 10px #b2b2b25c;
+  cursor: pointer;
+} */
+
+.comment-principal {
+  width: 350px;
+  height: auto;
+  border-radius: 40px;
+  background-color: #F1F1F1;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.comment-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3vh;
+  gap: 10px; 
+}
+
+.comment-all{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.comments-section{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.comment-actions button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 7px;
+  background-color: #848484;
+  border: none;
+  border-radius: 100%;
+}
+
+.btnComentDel button{
+  background-color: #ff0000;
+}
+
+.comment-actions .cx-txt {
+  display: flex;
+  height: 100%;
+  gap: 5px; 
+  align-items: center;
+}
+
+.cx-excluir {
+  height: 100%;
+}
+
+.comment-actions .cx-txt textarea {
+  background-color: transparent;
+  border-radius: 10vh;
+  padding: 5px 10px;
+  width: 100%;
+  border: solid 1px #434343 ;
+  outline: 0;
+  color: #000;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}

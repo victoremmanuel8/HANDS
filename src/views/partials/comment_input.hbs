@@ -1,9 +1,12 @@
-<div class="comment-wrapper" id="comment-field">
+<div class="comment-all">
+  <div class="comment-wrapper" id="comment-field">
+  <p class="titulo-1">Publique</p>
+  <p class="titulo-3">seu comentário</p>
   <div class="comment-input">
     <form action="/comment/postId" method="post">
-      <textarea rows="5" placeholder="Enter your comment" cols="40" name="comment"></textarea>
+      <textarea style="resize: none" rows="5" placeholder="Digite sua mensagem" cols="40" name="comment"></textarea>
       <br>
-      <button class="btn" type="submit">Submit</button>
+      <button class="btnComent" type="submit">Enviar</button>
     </form>
   </div>
 </div>
@@ -11,7 +14,8 @@
 <div class="comments-section">
 {{#each comments}}
   <div class="comment" id="{{this._id}}">
-    <div class="comment-user">
+   <div class="comment-principal">
+     <div class="comment-user">
       <!-- Imagem de perfil -->
       <div class="img-perfil-profile">
         {{#if this.userProfile}}
@@ -24,7 +28,7 @@
       </div>
       <!-- Nome do usuário e data do comentário -->
       <strong>{{this.postedBy.nm_usuario}}</strong>
-      <span>{{formatDate this.commentedAt}}</span>
+      {{!-- <span>{{formatDate this.commentedAt}}</span> --}}
     </div>
     <div class="comment-text">
       {{this.text}}
@@ -32,37 +36,47 @@
     <!-- Ações do comentário -->
     <div class="comment-actions">
       <!-- Formulário de resposta -->
-      <form action="/comment/{{this._id}}/reply/{{postId}}" method="post">
-        <textarea rows="3" placeholder="Enter your reply" cols="40" name="replyText"></textarea>
+        <form class="cx-txt" action="/comment/{{this._id}}/reply/{{postId}}" method="post">
+        <textarea style="resize: none" rows="1" placeholder="Enter your reply" cols="40" name="replyText"></textarea>
         <br>
-        <button class="btn" type="submit">Reply</button>
+        <button class="btnComentEnvi" type="submit">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+            <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
+          </svg>
+        </button>
       </form>
       {{#if (eq this.postedBy._id ../user._id)}}
-      <form action="/comment/{{this._id}}/delete/{{postId}}" method="post">
-        <button class="btn" type="submit">Delete</button>
+      <form class="cx-excluir" action="/comment/{{this._id}}/delete/{{postId}}" method="post">
+        <button class="btnComentDel" type="submit">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+            <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+          </svg>
+        </button>
       </form>
       {{/if}}
     </div>
-  <div class="replies-section">
+   </div>
+  {{!-- <div class="replies-section">
     {{#each this.replies}}
     <div class="reply" id="{{this._id}}">
       <!-- Informações do usuário que postou a resposta -->
       <div class="reply-user">
         <strong>{{this.postedBy.nm_usuario}}</strong> <!-- Nome do usuário -->
-        <span>{{formatDate this.commentedAt}}</span> <!-- Data formatada -->
+        {{!-- <span>{{formatDate this.commentedAt}}</span> <!-- Data formatada -->
       </div>
       <div class="reply-text">
-        {{this.text}}
+        {{!-- {{this.text}} 
       </div>
       <!-- Botão de deletar resposta (apenas se o usuário logado postou a resposta) -->
       {{#if (eq this.postedBy._id ../../user._id)}}
       <form action="/comment/{{this._id}}/delete/{{postId}}" method="post">
-        <button class="btn" type="submit">Delete</button>
+        {{!-- <button class="btn" type="submit">Delete</button> 
       </form>
       {{/if}}
     </div>
     {{/each}}
-  </div>
+  </div> --}}
 </div>
 {{/each}}
+</div>
 </div>
