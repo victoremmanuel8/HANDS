@@ -32,11 +32,19 @@
                         fill="#a1a1a1" />
                 </svg>
             </a>
-            <li><a href="index">Home</a></li>
+           <li><a href="index">Home</a></li>
             <li><a href="kids">KIDS</a></li>
             <li><a class="atual" href="profissionais">Profissionais</a></li>
             <li><a href="aulas">Aulas</a></li>
-            {{!-- <li><a href="cadastro"><span class="sing-aulas">Usuário Premium</span></a></li> --}}
+            {{#if (eq user.nm_nivel 'Avancado')}}
+            <li><a href="upload">Upload</a></li>
+            {{/if}}
+              {{#if (not user)}}
+            {{#if (not prof)}}
+            <li><a class="login" href="/">Login</a></li>
+            <li><a class="cadastre" href="/cadastro1">Cadastro</a></li>
+        {{/if}}
+            {{/if}}
             {{#if (yes user)}}
             <a href="/perfil">
                 <div class="img-perfil-profile">
@@ -446,7 +454,6 @@
 
         <div class="profCadastrados">
             {{>prof}}
-            {{!-- espaço separado para o Luanzinho ser feliz 😀 --}}
         </div>
         {{#if (not user )}}
         <div class="crieContaProf">

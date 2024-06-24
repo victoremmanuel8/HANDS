@@ -656,6 +656,7 @@ router.get("/profissionais", async (req, res) => {
         id_profissional: profissional.id_profissional,
         nm_prof: profissional.nm_prof,
         nr_idade: profissional.nr_idade,
+        nm_estado: profissional.nm_estado,
         profPhoto: profPhoto ? profPhoto.url : null,
       };
     });

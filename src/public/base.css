@@ -15,10 +15,26 @@ body {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
+.login {
+  padding: 9px 25px;
+  border-radius: 10vh;
+  border: solid 3px #808080;
+  color: #000;
+  font-weight: 700;
+}
+
+.cadastre {
+  padding: 11px 35px;
+  border-radius: 10vh;
+  color: #ffffff;
+  font-weight: 700;
+  background: linear-gradient(180deg, #FF6D9C, #FC9404);
+}
+
 a {
-text-decoration: none;
-color: #A4A4A4;
-cursor: pointer;
+  text-decoration: none;
+  color: #A4A4A4;
+  cursor: pointer;
 }
 
 /* header {
@@ -84,7 +100,7 @@ fill: #000;
 }
 
 .alert-text {
-  position: absolute; left: 50%; top: 5%;
+  position: absolute; left: 50%; top: 2%;
   transform: translate(-50%, -50%);
   gap: 20px;
 }
@@ -763,8 +779,31 @@ display: flex;
 justify-content: center;
 align-items: center;
 margin-right: 240px;
-border: solid 1px #000;
 margin-top: 10vh;
+}
+
+.temaAdulto .profCadastrados .nm_prof-nr_idade {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  column-gap: 60px;
+  height: 50px;
+  flex-wrap: wrap;
+}
+
+.temaAdulto .profCadastrados .professoresCadastrados {
+  background-color: #F5F5F5;
+  padding: 40px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.temaAdulto .profCadastrados .imagemProfessorCadastrado img{
+  border-radius: 100%;
 }
 
 .temaAdulto .crieContaProf {

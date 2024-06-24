@@ -79,18 +79,13 @@ header {
     padding: 25px;
 }
 
-header div a{
-    padding: 8px 19px;
-    border-radius: 10vh;
-    color: #000;
-    font-weight: 700;
-}
-
 header div > a {
     padding: 9px 25px;
     border-radius: 10vh;
     border: solid 3px #808080;
     font-size: 1.4em;
+    color: #000;
+    font-weight: 700;
 }
 
 form {

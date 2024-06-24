@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profissionais</title>
 </head>
 <body>
-    <ul>
-{{#each Prof_map}}
-  <li>
-    {{#if profPhoto}}
-      <img src="{{profPhoto}}" alt="{{nm_prof}}" width="80px" height="80px">
-    {{else}}
-      <img src="default-profile.png" alt="Perfil padrão" width="80px" height="80px">
-    {{/if}}
-    <p>Nome: {{nm_prof}}</p>
+<div class="professoresCadastrados">
+  {{#each Prof_map}}
+    <div class="imagemProfessorCadastrado">
+        {{#if profPhoto}}
+          <img src="{{profPhoto}}" alt="{{nm_prof}}" width="80px" height="80px">
+        {{else}}
+          <img src="default-profile.png" alt="Perfil padrão" width="80px" height="80px">
+        {{/if}}
+    </div>
+   <div class="nm_prof-nr_idade">
+     <p>Nome: {{nm_prof}}</p>
     <p>Idade: {{nr_idade}}</p>
-  </li>
+    <P>Estado: {{nm_estado}}</P>
+   </div>
 {{/each}}
-    </ul>
+</div>
 </body>
-
 </html>

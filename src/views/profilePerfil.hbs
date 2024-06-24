@@ -144,8 +144,13 @@
           </div>
         </label>
         <div>
+          {{#if user}}
           <p>{{user.nm_usuario}} {{user.nm_sobrenome }}</p>
           <p>{{user.nr_idade}} Anos</p>
+          {{else if prof}}
+          <p>{{prof.nm_prof}} {{prof.nm_sobrenome }}</p>
+          <p>{{prof.nr_idade}} Anos</p>
+          {{/if}}
         </div>
         <div class="row-add-del">
           <form action="/profile" method="post" enctype="multipart/form-data">

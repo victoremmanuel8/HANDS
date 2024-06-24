@@ -21,7 +21,7 @@
 <body data-anime="stop">
     <header class="KIDS">
 
-        <ul>
+        <ul> 
             <a href="index">
                 <svg width="182" height="47" viewBox="0 0 182 47" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -33,8 +33,15 @@
             <li><a class="atual" href="kids">KIDS</a></li>
             <li><a href="profissionais">Profissionais</a></li>
             <li><a href="aulas">Aulas</a></li>
-            {{!-- <li><a href="/"><span class="login-aulas">Log in</span></a></li> --}}
-            {{!-- <li><a href="cadastro"><span class="sing-aulas">Usuário Premium</span></a></li> --}}
+            {{#if (eq user.nm_nivel 'Avancado')}}
+            <li><a href="upload">Upload</a></li>
+            {{/if}}
+              {{#if (not user)}}
+            {{#if (not prof)}}
+            <li><a class="login" href="/">Login</a></li>
+            <li><a class="cadastre" href="/cadastro1">Cadastro</a></li>
+        {{/if}}
+            {{/if}}
             {{#if (yes user)}}
             <a href="/perfil">
                 <div class="img-perfil-profile">
