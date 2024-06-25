@@ -24,12 +24,6 @@ header {
     opacity: .3;
 }
 
-.videoCat {
-    width: 600px;
-    display: flex;
-    flex-wrap: wrap;
-}
-
 .collun-cat {
     display: flex;
     flex-direction: column;

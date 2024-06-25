@@ -8,7 +8,8 @@
 <body>
 <div class="professoresCadastrados">
   {{#each Prof_map}}
-    <div class="imagemProfessorCadastrado">
+    <div class="professores">
+      <div class="imagemProfessorCadastrado">
         {{#if profPhoto}}
           <img src="{{profPhoto}}" alt="{{nm_prof}}" width="80px" height="80px">
         {{else}}
@@ -20,6 +21,7 @@
     <p>Idade: {{nr_idade}}</p>
     <P>Estado: {{nm_estado}}</P>
    </div>
+    </div>
 {{/each}}
 </div>
 </body>

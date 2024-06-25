@@ -20,8 +20,7 @@
 
 <body data-anime="stop">
     <header class="KIDS">
-
-        <ul> 
+        <ul>
             <a href="index">
                 <svg width="182" height="47" viewBox="0 0 182 47" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -38,9 +37,26 @@
             {{/if}}
               {{#if (not user)}}
             {{#if (not prof)}}
-            <li><a class="login" href="/">Login</a></li>
+           <li><a class="login" href="/">Login</a></li>
             <li><a class="cadastre" href="/cadastro1">Cadastro</a></li>
         {{/if}}
+            {{/if}}
+            {{!-- <li><a href="/"><span class="login-aulas">Log in</span></a></li> --}}
+            {{!-- <li><a href="cadastro"><span class="sing-aulas">Usuário Premium</span></a></li> --}}
+            {{#if (yes prof)}}
+            <a href="/perfil">
+                <div class="img-perfil-profile">
+                    {{#if user_profile}}
+                    <img src="{{user_profile.url}}" width="145.269" height="156.839"
+                        alt="Foto de perfil de {{user.nm_usuario}}" />
+                    {{else if prof_profile}}
+                    <img src="{{prof_profile.url}}" width="145.269" height="156.839"
+                        alt="Foto de perfil de {{user.nm_prof}}" />
+                    {{else}}
+                    <p><img class="padrão" src="default-profile.png" alt="Foto de perfil padrão" /></p>
+                    {{/if}}
+                </div>
+            </a>
             {{/if}}
             {{#if (yes user)}}
             <a href="/perfil">
