@@ -589,7 +589,8 @@ router.get("/index", calcul_time, async (req, res) => {
     }
 
     // Busca todos os comentários e suas respostas
-    let comments = await Comment.find({}).populate("replies");
+    let comments = await Comment.find({}).populate("postedBy")
+    .sort({ commentedAt: -1 });
 
     // Adiciona informações de perfil a cada comentário
     comments = await Promise.all(

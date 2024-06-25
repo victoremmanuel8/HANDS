@@ -29,6 +29,8 @@ const userStatusChecker = require('./src/utils/userStatusChecker');
 const commentRoute = require("./src/routes/comment.js");
 //const video = require ('./src/assets/index.js')
 
+
+
 // Configuração do Handlebars
 const exphbs = require('express-handlebars').create({
   extname: '.hbs',
@@ -88,6 +90,10 @@ app.use((req, res, next) => {
 //mexendo com partials de eq
 hbs.registerHelper("eq", function (a, b) {
   return a === b;
+});
+
+hbs.registerHelper("or", function (a, b) {
+  return a || b;
 });
 
 hbs.registerHelper("and", function (a, b, options) {
