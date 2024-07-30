@@ -9,6 +9,7 @@ const authControllerPassword = require("../controllers/authPassword");
 const authControllerUpgrade = require("../controllers/authUpdate_nv");
 const authControllerDelete = require("../controllers/authDelete");
 const authControllerEdit = require("../controllers/authEdit");
+const authControllerEdit1 = require("../controllers/authEdit1");
 // const uploadMiddleware = require("../../middleware/photo_multer");
 // const fotoPerfilController = require('../controllers/authControllerFoto');
 //aqui a função get e render vai pegar a url e renderizar ela no site
@@ -23,6 +24,9 @@ const authControllerEdit = require("../controllers/authEdit");
 
 ("auth/edit");
 router.post("/edit", authControllerEdit.edit);
+
+("auth/edit1");
+router.post("/edit1", authControllerEdit1.edit1);
 
 ("auth/delete");
 router.post("/delete", authControllerDelete.delete);

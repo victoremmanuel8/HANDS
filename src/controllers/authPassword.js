@@ -7,7 +7,7 @@ exports.pass = async (req, res) => {
   try {
     // Verifique se o usuário está logado
     if (!req.session.user) {
-      req.flash("success_msg", "Nenhum usuário logado");
+      req.flash("error_msg", "Nenhum usuário logado");
       return res.redirect("/");
     }
 
@@ -17,31 +17,31 @@ exports.pass = async (req, res) => {
     });
     if (!db_usu) {
       // req.flash('error_msg', 'Usuário não encontrado');
-      return res.redirect("/perfil");
+      return res.redirect("/profileSenha");
     }
 
     if (!(await bcrypt.compare(Atual_Pass, db_usu.nr_senha))) {
-      req.flash("success_msg", "Senha atual inválida");
-      return res.redirect("/perfil");
+      req.flash("error_msg", "Senha atual inválida");
+      return res.redirect("/profileSenha");
     }
     if (New_Pass.length < 8) {
       req.flash(
-        "success_msg",
+        "error_msg",
         "A nova senha deve ter pelo menos 8 caracteres."
       );
-      return res.redirect("/perfil");
+      return res.redirect("/profileSenha");
     }
     if (Confir_Pass.length < 8) {
       req.flash(
-        "success_msg",
+        "error_msg",
         "A nova senha deve ter pelo menos 8 caracteres."
       );
-      return res.redirect("/perfil");
+      return res.redirect("/profileSenha");
     }
 
     if (New_Pass !== Confir_Pass) {
-      req.flash("success_msg", "Senha não corresponde");
-      return res.redirect("/perfil");
+      req.flash("error_msg", "Senha não corresponde");
+      return res.redirect("/profileSenha");
     }
 
     // Criptografe a nova senha
@@ -62,10 +62,10 @@ exports.pass = async (req, res) => {
 
     console.log("Senha atualizada com sucesso");
     req.flash("success_msg", "Senha atualizada com sucesso");
-    return res.redirect("/index");
+    return res.redirect("/perfil");
   } catch (error) {
     console.log(error);
-    req.flash("success_msg", "Ocorreu um erro ao tentar atualizar a senha");
-    return res.redirect("/perfil");
+    req.flash("error_msg", "Ocorreu um erro ao tentar atualizar a senha");
+    return res.redirect("/profileSenha");
   }
 };
