@@ -322,6 +322,10 @@ header ul a svg path {
   background:radial-gradient( #092056c9, #090C2F);
 }
 
+.bannerPerti {
+  background:radial-gradient( #092056c9, #090C2F);
+}
+
 .verde {
     background: linear-gradient(45deg, #0A60C5, #0A60C5);
     -webkit-background-clip: text; 
@@ -389,6 +393,9 @@ header ul a svg path {
   fill: #52DAFF;
 }
 
+.coment {
+  color: #000;
+}
 
 /* KIDS */
 

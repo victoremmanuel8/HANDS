@@ -284,7 +284,7 @@ a {
     position: relative;
 }
 
-.videoAulasAulas iframe {
+.videoAulasAulas iframe,  .videoAulasAulas video{
     border-radius: 3vh;
 }
 
